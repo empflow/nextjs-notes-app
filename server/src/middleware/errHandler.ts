@@ -29,6 +29,7 @@ export default function errHandler(
     code = ErrCodes.BadRequest;
   } else {
     console.error(err);
+    errObj.message = "Internal server error";
   }
 
   res.status(code).json(errObj);
