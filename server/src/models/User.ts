@@ -9,6 +9,8 @@ export interface IUser extends Document {
   password: string;
   doPasswordsMatch: (password: string) => Promise<boolean>;
   getJwt: () => string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 const UserSchema = new mongoose.Schema<IUser>(
