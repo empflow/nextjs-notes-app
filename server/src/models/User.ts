@@ -7,7 +7,7 @@ import { emailRegex } from "../config/globalVars";
 export interface IUser extends Document {
   email: string;
   password: string;
-  doPasswordsMatch: (password: string) => boolean;
+  doPasswordsMatch: (password: string) => Promise<boolean>;
   getJwt: () => string;
 }
 
