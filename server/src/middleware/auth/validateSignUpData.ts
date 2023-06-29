@@ -4,7 +4,6 @@ import User from "../../models/User";
 import doesStrIncludeNumbers from "../../utils/doesStrIncludeNumbers";
 import doesStrIncludeSpecialChars from "../../utils/doesStrIncludeSpecialChar";
 import { BadRequestErr, ConflictErr } from "../../utils/errs";
-import throwIfSomeAuthDataNotPresent from "../../utils/throwIfSomeAuthDataNotPresent";
 
 export default async function validateSignUpData(
   req: Request,
@@ -12,7 +11,7 @@ export default async function validateSignUpData(
   next: NextFunction
 ) {
   const { email, password } = req.body;
-  throwIfSomeAuthDataNotPresent(req);
+  throwIfSomeDataNotPresent(req);
   throwIfInvalidEmail(email);
   await throwIfBadPassword(password);
   await throwIfDuplicateEmail(email);
@@ -45,5 +44,12 @@ async function throwIfDuplicateEmail(email: string) {
 function throwIfInvalidEmail(email: string) {
   if (!emailRegex.test(email)) {
     throw new BadRequestErr("Invalid email address");
+  }
+}
+
+function throwIfSomeDataNotPresent(req: Request) {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    throw new BadRequestErr("Both email and password are required to sign up");
   }
 }
