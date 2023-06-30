@@ -1,12 +1,8 @@
-import { NextFunction, Request, Response } from "express";
+import { Request, Response } from "express";
 import Note from "../../models/Note";
 import { NotFoundErr } from "../../utils/errs";
 
-export default async function getNote(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+export default async function getNote(req: Request, res: Response) {
   const { noteId } = req.params;
   const userId = res.locals.jwtPayload.userId;
   const note = await Note.findOne({ owner: userId, _id: noteId });
