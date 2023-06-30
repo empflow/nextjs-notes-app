@@ -39,5 +39,5 @@ function validateAndGetPayload(token: string) {
 
 function validateJwtPayload(payload: jwt.JwtPayload | string) {
   if (typeof payload === "string") throw new BadRequestErr("invalid token");
-  throwIfInvalidObjectId(payload.userId);
+  throwIfInvalidObjectId(payload.userId, { msg: "Invalid user ID" });
 }

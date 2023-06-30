@@ -7,6 +7,6 @@ export default async function validateGetNote(
   next: NextFunction
 ) {
   const { noteId } = req.params;
-  throwIfInvalidObjectId(noteId, "Invalid note id");
+  throwIfInvalidObjectId(noteId, { msg: "Invalid note id" });
   next();
 }

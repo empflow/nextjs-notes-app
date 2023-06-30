@@ -1,9 +1,13 @@
 import { isValidObjectId } from "mongoose";
 import { BadRequestErr } from "../errs";
 
-export default function throwIfInvalidObjectId(data: any, errMsg?: string) {
-  const defaultErrMsg = "Invalid id";
+interface Options {
+  msg?: string;
+}
+
+export default function throwIfInvalidObjectId(data: any, opts?: Options) {
+  const defaultErrMsg = "Invalid ID";
   if (!isValidObjectId(data)) {
-    throw new BadRequestErr(errMsg ?? defaultErrMsg);
+    throw new BadRequestErr(opts?.msg ?? defaultErrMsg);
   }
 }
