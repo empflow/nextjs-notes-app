@@ -8,6 +8,6 @@ router.use("/auth", authRouter);
 
 // routes that require authorization
 router.use(authorize);
-router.use(notesRouter);
+router.use("/notes", notesRouter);
 
 export default router;
