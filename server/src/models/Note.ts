@@ -27,11 +27,11 @@ const NoteSchema = new Schema(
     },
     isInTrash: {
       type: Boolean,
-      required: true,
+      default: false,
     },
     tags: {
       type: [String],
-      required: true,
+      default: [],
     },
   },
   { timestamps: true }
