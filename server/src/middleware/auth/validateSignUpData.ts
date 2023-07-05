@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { emailRegex } from "../../config/globalVars";
 import User from "../../models/User";
 import doesStrIncludeNumbers from "../../utils/doesStrIncludeNumbers";
-import doesStrIncludeSpecialChars from "../../utils/doesStrIncludeSpecialChar";
+import doesStrIncludeSpecialChars from "../../utils/doesStrIncludeSpecialChars";
 import { BadRequestErr, ConflictErr } from "../../utils/errs";
 
 export default async function validateSignUpData(
