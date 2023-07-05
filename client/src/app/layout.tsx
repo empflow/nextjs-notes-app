@@ -1,6 +1,6 @@
 import "./globals.css";
 export const metadata = {
-  title: "Notes app",
+  title: "Notes",
   description: "Made by GitHub @empflow",
 };
 
