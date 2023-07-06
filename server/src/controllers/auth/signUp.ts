@@ -4,6 +4,7 @@ import User from "../../models/User";
 export default async function signUp(req: Request, res: Response) {
   const { email, password } = req.body;
   const user = await User.create({ email, password });
-  const jwt = user.getJwt();
-  res.status(201).json({ jwt });
+  const token = user.getJwt();
+  res.json({ token });
 }
+
