@@ -1,11 +1,7 @@
 import mongoose from "mongoose";
-import { AccessTokenPayload, RefreshTokenForClient, RefreshTokenForDb, RefreshTokenPayload } from "../types";
+import { RefreshTokenForDb } from "../types";
 
 const RefreshTokenSchema = new mongoose.Schema<RefreshTokenForDb>({
-  uuid: {
-    required: true,
-    type: String
-  },
   tokenHash: {
     required: true,
     type: String

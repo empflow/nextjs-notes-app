@@ -24,11 +24,11 @@ function validateAndGetToken(req: Request) {
 }
 
 function validateAndGetPayload(token: string) {
-  const JWT_SECRET = getEnvVar("JWT_SECRET");
+  const secret = getEnvVar("JWT_ACCESS_TOKEN_SECRET");
   let payload: jwt.JwtPayload | string;
 
   try {
-    payload = jwt.verify(token, JWT_SECRET);
+    payload = jwt.verify(token, secret);
   } catch (err) {
     throw new UnauthorizedErr("jwt verification failed");
   }
