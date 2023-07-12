@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import RefreshToken from "../../models/RefreshToken";
 import { NotFoundErr } from "../../utils/errs";
 
-export default async function signOutCheckRefreshTokenExistsInDb(
+export default async function checkRefreshTokenExistsInDb(
   req: Request,
   res: Response,
   next: NextFunction

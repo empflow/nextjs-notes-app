@@ -3,7 +3,7 @@ import { isValidObjectId } from "mongoose";
 import { BadRequestErr } from "../../utils/errs";
 import throwIfInvalidRefreshTokenObj from "../../utils/throwers/throwIfInvalidRefreshTokenObj";
 
-export default async function signOutCheckRefreshToken(
+export default async function checkRefreshToken(
   req: Request,
   res: Response,
   next: NextFunction
