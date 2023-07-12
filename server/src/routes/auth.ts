@@ -1,18 +1,30 @@
 import express from "express";
 import signUp from "../controllers/auth/signUp";
-import validateSignUp from "../middleware/auth/validateSignUp";
-import signInCheckBodyData from "../middleware/auth/signIn/checkBodyData";
 import signIn from "../controllers/auth/signIn";
 import signOut from "../controllers/auth/signOut";
 import validateSignOut from "../middleware/auth/validateSignOut";
 import signInCheckUser from "../middleware/auth/signIn/checkUser";
 import signInComparePasswords from "../middleware/auth/signIn/comparePasswords";
+import checkEmail from "../middleware/auth/checkEmail";
+import checkPassword from "../middleware/auth/checkPassword";
+import signUpRegexCheckEmail from "../middleware/auth/signUp/regexCheckEmail";
+import signUpCheckPasswordStrength from "../middleware/auth/signUp/checkPasswordStrength";
+import signUpCheckDuplicateEmail from "../middleware/auth/signUp/checkDuplicateEmail";
 const router = express.Router();
 
-router.post("/sign-up", validateSignUp, signUp);
+router.post(
+  "/sign-up",
+  checkEmail,
+  checkPassword,
+  signUpRegexCheckEmail,
+  signUpCheckPasswordStrength,
+  signUpCheckDuplicateEmail,
+  signUp
+);
 router.post(
   "/sign-in",
-  signInCheckBodyData,
+  checkEmail,
+  checkPassword,
   signInCheckUser,
   signInComparePasswords,
   signIn
