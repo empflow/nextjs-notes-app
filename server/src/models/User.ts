@@ -3,11 +3,15 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import getEnvVar from "../utils/getEnvVar";
 import { emailRegex } from "../config/globalVars";
-import { AccessTokenPayload, RefreshTokenForDb, RefreshTokenPayload } from "../types";
+import {
+  AccessTokenPayload,
+  RefreshTokenForDb,
+  RefreshTokenPayload,
+} from "../types";
 
 interface GetRefreshTokenReturnVal {
-  forDb: RefreshTokenForDb,
-  plainTextToken: string
+  forDb: RefreshTokenForDb;
+  plainTextToken: string;
 }
 
 export interface IUser extends Document {
@@ -36,7 +40,7 @@ const UserSchema = new mongoose.Schema<IUser>(
   { timestamps: true }
 );
 
-UserSchema.pre("save", async function(next) {
+UserSchema.pre("save", async function (next) {
   if (!this.isNew) return next();
   const salt = await bcrypt.genSalt();
   this.password = await bcrypt.hash(this.password, salt);
@@ -50,19 +54,24 @@ UserSchema.methods.doPasswordsMatch = function (passwordToCheck: string) {
 UserSchema.methods.getAccessToken = function (): string {
   const nodeEnv = getEnvVar("NODE_ENV");
   const secret = getEnvVar("JWT_ACCESS_TOKEN_SECRET");
-  const expiresIn = nodeEnv === "dev" ? "10s" : getEnvVar("JWT_ACCESS_TOKEN_EXPIRES_IN");
+  const expiresIn =
+    nodeEnv === "dev" ? "10s" : getEnvVar("JWT_ACCESS_TOKEN_EXPIRES_IN");
   const payload: AccessTokenPayload = { userId: this._id };
   return jwt.sign(payload, secret, { expiresIn });
 };
 
-UserSchema.methods.getRefreshToken = async function (): Promise<GetRefreshTokenReturnVal> {
-  const secret = getEnvVar("JWT_REFRESH_TOKEN_SECRET");
-  const tokenPayload: RefreshTokenPayload = { userId: this._id };
-  const tokenPlainText = jwt.sign(tokenPayload, secret);
-  const tokenHash = await bcrypt.hash(tokenPlainText, 10);
-  const createdAt = Date.now();
-  return { forDb: { tokenHash, createdAt }, plainTextToken: tokenPlainText };
-}
+UserSchema.methods.getRefreshToken =
+  async function (): Promise<GetRefreshTokenReturnVal> {
+    const nodeEnv = getEnvVar("NODE_ENV");
+    const secret = getEnvVar("JWT_REFRESH_TOKEN_SECRET");
+    const tokenPayload: RefreshTokenPayload = { userId: this._id };
+    const expiresIn =
+      nodeEnv === "dev" ? "20s" : getEnvVar("JWT_REFRESH_TOKEN_EXPIRES_IN");
+    const tokenPlainText = jwt.sign(tokenPayload, secret, { expiresIn });
+    const tokenHash = await bcrypt.hash(tokenPlainText, 10);
+    const createdAt = Date.now();
+    return { forDb: { tokenHash, createdAt }, plainTextToken: tokenPlainText };
+  };
 
 const User = mongoose.model("User", UserSchema);
 
