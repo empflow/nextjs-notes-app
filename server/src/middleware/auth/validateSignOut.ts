@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import bcrypt from "bcrypt";
-import isRefreshTokenValid from "../../helpers/isRefreshTokenValid";
+import isRefreshTokenObjectStrctureValid from "../../utils/isRefreshTokenObjectStrctureValid";
 import RefreshToken from "../../models/RefreshToken";
 import { BadRequestErr, NotFoundErr } from "../../utils/errs";
 import { Document } from "mongoose";
@@ -12,7 +12,7 @@ export default async function validateSignOut(
   next: NextFunction
 ) {
   const { refreshToken } = req.body;
-  if (!isRefreshTokenValid(refreshToken)) {
+  if (!isRefreshTokenObjectStrctureValid(refreshToken)) {
     throw new BadRequestErr(
       "Invalid refresh token. Refresh tokens must be of type { token: string, id: string }"
     );
