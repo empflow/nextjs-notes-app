@@ -6,7 +6,7 @@ interface Options {
 }
 
 export default function throwIfInvalidObjectId(data: any, opts?: Options) {
-  const defaultErrMsg = "Invalid ID";
+  const defaultErrMsg = "Invalid id";
   if (!isValidObjectId(data)) {
     throw new BadRequestErr(opts?.msg ?? defaultErrMsg);
   }
