@@ -14,6 +14,7 @@ import checkHashAndPlainTextTokensMatch from "../middleware/auth/checkHashAndPla
 import checkRefreshTokenExistsInDb from "../middleware/auth/checkRefreshTokenExistsInDb";
 import getNewTokens from "../controllers/auth/getNewTokens";
 import getNewTokensJwtVerifyRefreshToken from "../middleware/auth/getNewTokens/jwtVerifyRefreshToken";
+import getNewTokensFindUserFromTokenPayload from "../middleware/auth/getNewTokens/findUserFromTokenPayload";
 const router = express.Router();
 
 router.post(
@@ -49,6 +50,7 @@ router.post(
   checkRefreshTokenExistsInDb,
   checkHashAndPlainTextTokensMatch,
   getNewTokensJwtVerifyRefreshToken,
+  getNewTokensFindUserFromTokenPayload,
   getNewTokens
 );
 
