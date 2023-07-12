@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcrypt";
-import { BadRequestErr } from "../../../utils/errs";
+import { BadRequestErr } from "../../utils/errs";
 
-export default async function signOutCheckHashAndPlainTextTokensMatch(
+export default async function checkHashAndPlainTextTokensMatch(
   req: Request,
   res: Response,
   next: NextFunction

@@ -13,6 +13,7 @@ import checkRefreshToken from "../middleware/auth/checkRefreshToken";
 import checkHashAndPlainTextTokensMatch from "../middleware/auth/checkHashAndPlainTextTokensMatch";
 import checkRefreshTokenExistsInDb from "../middleware/auth/checkRefreshTokenExistsInDb";
 import getNewTokens from "../controllers/auth/getNewTokens";
+import getNewTokensJwtVerifyRefreshToken from "../middleware/auth/getNewTokens/jwtVerifyRefreshToken";
 const router = express.Router();
 
 router.post(
@@ -46,6 +47,8 @@ router.post(
   "/get-new-tokens",
   checkRefreshToken,
   checkRefreshTokenExistsInDb,
+  checkHashAndPlainTextTokensMatch,
+  getNewTokensJwtVerifyRefreshToken,
   getNewTokens
 );
 
