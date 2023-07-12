@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import RefreshToken from "../../../models/RefreshToken";
-import { NotFoundErr } from "../../../utils/errs";
+import RefreshToken from "../../models/RefreshToken";
+import { NotFoundErr } from "../../utils/errs";
 
 export default async function signOutCheckRefreshTokenExistsInDb(
   req: Request,
