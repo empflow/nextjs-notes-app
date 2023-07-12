@@ -1,10 +1,14 @@
 import jwt from "jsonwebtoken";
 import { BadRequestErr } from "./errs";
 
-export default function decodeAndValidateJwt(
+export default function decodeJwt(
   token: string,
-  errMsg: string = "Invalid token"
+  opts?: {
+    errMsg?: string;
+  }
 ) {
+  const { errMsg = "Invalid token" } = opts ?? {};
+
   try {
     const payload = jwt.decode(token);
     if (!payload) throw new Error();
