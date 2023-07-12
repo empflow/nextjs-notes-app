@@ -2,14 +2,17 @@ import getEnvVar from "./getEnvVar";
 import jwt from "jsonwebtoken";
 import { BadRequestErr } from "./errs";
 
-export default function verifyAndValidateJwt(
+export default function verifyJwt(
   token: string,
   secretKeyEnvVarName: string,
-  errMsg: string = "Invalid token",
   opts?: {
+    errMsg?: string;
     jwtExpiredErrMsg?: string;
   }
 ) {
+  const { errMsg = "Invalid token", jwtExpiredErrMsg = "Jwt expired" } =
+    opts ?? {};
+
   try {
     const secret = getEnvVar(secretKeyEnvVarName);
     const payload = jwt.verify(token, secret);
@@ -17,8 +20,7 @@ export default function verifyAndValidateJwt(
     return payload;
   } catch (err) {
     if ((err as any).message === "jwt expired") {
-      const defaultErrMsg = "Jwt expired";
-      throw new BadRequestErr(opts?.jwtExpiredErrMsg || defaultErrMsg);
+      throw new BadRequestErr(jwtExpiredErrMsg);
     }
     throw new BadRequestErr(errMsg);
   }
