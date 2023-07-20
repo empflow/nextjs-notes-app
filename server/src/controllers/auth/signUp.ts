@@ -8,14 +8,16 @@ export default async function signUp(req: Request, res: Response) {
   const user = await User.create({ email, password });
 
   const accessToken = user.getAccessToken();
-  const { forDb: refreshTokenForDb, plainTextToken: plainTextRefreshToken } = await user.getRefreshToken();
+  const { forDb: refreshTokenForDb, plainTextToken: plainTextRefreshToken } =
+    await user.getRefreshToken();
 
-  const { id } = await RefreshToken.create(refreshTokenForDb);
+  const { id: refreshTokenId } = await RefreshToken.create(refreshTokenForDb);
   const response: SignUpOrInResponse = {
-    accessToken, refreshToken: {
-      id, token: plainTextRefreshToken
-    }
-  }
+    accessToken,
+    refreshToken: {
+      id: refreshTokenId,
+      token: plainTextRefreshToken,
+    },
+  };
   res.json(response);
 }
-
