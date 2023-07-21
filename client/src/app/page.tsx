@@ -1,6 +1,5 @@
 "use client";
 
-import Test from "./components/test";
 import axios from "axios";
 import Cookies from "js-cookie";
 
