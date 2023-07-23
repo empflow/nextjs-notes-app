@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 export default async function Home() {
   async function sendReq() {
     const response = await axios.post("http://localhost:3001/auth/sign-in", {
-      email: `johndo1e1@example.com`,
+      email: `johndoe@example.com`,
       password: "sldfjsldfkj435$$",
     });
     const daysIn15Mins = 0.010416;
