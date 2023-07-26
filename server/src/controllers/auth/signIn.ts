@@ -17,6 +17,7 @@ export default async function signIn(req: Request, res: Response) {
       id,
       token: plainTextRefreshToken,
     },
+    username: user.email,
   };
   res.status(200).json(response);
 }

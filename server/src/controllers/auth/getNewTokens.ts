@@ -22,7 +22,7 @@ export default async function getNewTokens(req: Request, res: Response) {
 
   const savedNewRefreshToken = await RefreshToken.create(newRefreshToken.forDb);
 
-  const response: SignUpOrInResponse = {
+  const response = {
     accessToken: newAccessToken,
     refreshToken: {
       id: savedNewRefreshToken.id,

@@ -18,6 +18,7 @@ export default async function signUp(req: Request, res: Response) {
       id: refreshTokenId,
       token: plainTextRefreshToken,
     },
+    username: user.email,
   };
   res.json(response);
 }

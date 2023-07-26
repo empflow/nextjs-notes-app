@@ -1,22 +1,23 @@
 export interface AccessTokenPayload {
-  userId: string
+  userId: string;
 }
 
 export interface RefreshTokenForDb {
-  createdAt: number,
-  tokenHash: string
+  createdAt: number;
+  tokenHash: string;
 }
 
 export interface RefreshTokenForClient {
-  token: string,
-  id: string
+  token: string;
+  id: string;
 }
 
 export interface RefreshTokenPayload {
-  userId: string
+  userId: string;
 }
 
 export interface SignUpOrInResponse {
-  accessToken: string,
-  refreshToken: RefreshTokenForClient
+  accessToken: string;
+  refreshToken: RefreshTokenForClient;
+  username: string;
 }
