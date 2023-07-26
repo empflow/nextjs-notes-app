@@ -1,8 +1,9 @@
+import "./globals.css";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import NameOrSignInButton from "./components/NameOrSignInButton";
-import "./globals.css";
+import Providers from "./providers";
+
 export const metadata = {
   title: "Notes",
   description: "Made by GitHub @empflow",
@@ -16,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex flex-col min-h-screen">
-        <Header />
-        <Main>{children}</Main>
-        <Footer />
+        <Providers>
+          <Header />
+          <Main>{children}</Main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
