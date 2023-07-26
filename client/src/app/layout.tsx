@@ -1,3 +1,4 @@
+import Main from "./components/Main";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import NameOrSignInButton from "./components/NameOrSignInButton";
@@ -16,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="flex flex-col min-h-screen">
         <Header />
-        <main className="min-h-screen flex-grow p-global">{children}</main>
+        <Main>{children}</Main>
         <Footer />
       </body>
     </html>
