@@ -1,6 +1,7 @@
 "use client";
 
 import Cookies from "js-cookie";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function NameOrSignInButton() {
@@ -14,16 +15,16 @@ export default function NameOrSignInButton() {
     setUsername(localStorage.getItem("username"));
   }, []);
 
-  console.log(`username ${username}`);
-  console.log(`accessToken ${accessToken}`);
-  console.log(`refreshToken ${refreshToken}`);
-
   if (!hasLoaded) {
     return <div>Loading...</div>;
   }
 
   if (!username || !accessToken || !refreshToken) {
-    return <button>Sign in</button>;
+    return (
+      <Link href="/sign-in">
+        <button>Sign in</button>
+      </Link>
+    );
   }
 
   return <>Signed in as {username}</>;
