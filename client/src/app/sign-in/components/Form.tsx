@@ -60,7 +60,7 @@ export default function Form() {
         </div>
         <div>
           <button className="px-8 py-1 bg-blue-600 hover:bg-blue-700 duration-200 text-white rounded">
-            {isLoading ? "Loading..." : "Submit"}
+            {isLoading ? "Loading..." : "Sign In"}
           </button>
         </div>
       </form>
