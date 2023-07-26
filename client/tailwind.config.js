@@ -6,4 +6,15 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   plugins: [],
+  theme: {
+    extend: {
+      padding: {
+        global: "15px",
+        "global-sm": "30px",
+      },
+      maxWidth: {
+        global: "768px",
+      },
+    },
+  },
 };
