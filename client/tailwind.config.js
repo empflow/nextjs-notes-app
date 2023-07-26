@@ -44,9 +44,9 @@ module.exports = {
         "l-secondary": "rgb(75, 75, 75)",
       },
       colors: {
-        "dark-blue": "rgb(34, 77, 120)",
-        "blue": "rgb(55, 110, 175)",
-        "light-blue": "rgb(98, 160, 230)",
+        "dark-blue": "rgb(8, 65, 120)",
+        "blue": "rgb(8, 82, 155)",
+        "light-blue": "rgb(12, 100, 185)",
 
         "dark-4xl-gray": "rgb(55, 55, 55)",
         "dark-3.5xl-gray": "rgb(62, 62, 62)",
