@@ -25,7 +25,7 @@ export default function Form() {
 
     checkResponseData(data);
     storeResponseData(data);
-    router.refresh();
+    router.push("/notes");
   }
 
   function onEmailChange(e: ChangeEvent<HTMLInputElement>) {
@@ -38,28 +38,30 @@ export default function Form() {
 
   return (
     <>
-      <form onSubmit={onSubmit} className="max-w-xl">
-        <div className="flex flex-col">
+      <form onSubmit={onSubmit} className="max-w-md flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
           <label htmlFor="email">Email</label>
           <input
             className="px-2 py-1 border border-blue-600 rounded"
             value={formData.email}
             onChange={onEmailChange}
             id="email"
+            type={"email"}
           />
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-2">
           <label htmlFor="password">Password</label>
           <input
             value={formData.password}
             onChange={onPasswordChange}
             id="password"
             className="px-2 py-1 border border-blue-600 rounded"
+            type={"password"}
           />
         </div>
         <div>
-          <button className="px-8 py-1 bg-blue-600 hover:bg-blue-700 duration-200 text-white rounded">
+          <button className="py-2 w-full bg-blue hover:bg-blue-700 duration-200 text-white rounded">
             {isLoading ? "Loading..." : "Sign In"}
           </button>
         </div>

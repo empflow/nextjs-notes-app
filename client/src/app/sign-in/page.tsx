@@ -2,11 +2,11 @@ import Form from "./components/Form";
 
 export default function SignIn() {
   return (
-    <div>
-      <h1>Sign in</h1>
+    <>
+      <h1 className="font-semibold text-3xl mb-8">Sign in</h1>
       <div>
         <Form />
       </div>
-    </div>
+    </>
   );
 }
