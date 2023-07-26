@@ -1,3 +1,5 @@
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 import NameOrSignInButton from "./components/NameOrSignInButton";
 import "./globals.css";
 export const metadata = {
@@ -12,14 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <header>
-          <h2>Notes app</h2>
-          <div>
-            <NameOrSignInButton />
-          </div>
-        </header>
-        <main>{children}</main>
+      <body className="flex flex-col min-h-screen">
+        <Header />
+        <main className="min-h-screen flex-grow p-global">{children}</main>
+        <Footer />
       </body>
     </html>
   );
