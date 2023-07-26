@@ -22,10 +22,12 @@ module.exports = {
         "d-main": "rgb(20, 20, 20)",
         "d-secondary": "rgb(31, 31, 31)",
         "d-tertiary": "rgb(58, 58, 58)",
+        "d-header": "rgba(55, 55, 55, 0.6)",
 
-        "l-main": "rgb(255, 255, 255)",
-        "l-secondary": "rgb(245, 245, 245)",
+        "l-main": "rgb(245, 245, 245)",
+        "l-secondary": "rgb(255, 255, 255)",
         "l-tertiary": "rgb(235, 235, 235)",
+        "l-header": "rgba(255, 255, 255, 0.6)"
       },
       textColor: {
         "d-main": "rgb(220, 220, 230)",
