@@ -24,7 +24,7 @@ module.exports = {
         "d-tertiary": "rgb(58, 58, 58)",
         "d-header": "rgba(55, 55, 55, 0.6)",
 
-        "l-main": "rgb(245, 245, 245)",
+        "l-main": "rgb(242, 242, 242)",
         "l-secondary": "rgb(255, 255, 255)",
         "l-tertiary": "rgb(235, 235, 235)",
         "l-header": "rgba(255, 255, 255, 0.6)"
