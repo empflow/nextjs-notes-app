@@ -22,7 +22,7 @@ export default function NameOrSignInButton() {
   if (!username || !accessToken || !refreshToken) {
     return (
       <Link href="/sign-in">
-        <button>Sign in</button>
+        <div>Sign in</div>
       </Link>
     );
   }
