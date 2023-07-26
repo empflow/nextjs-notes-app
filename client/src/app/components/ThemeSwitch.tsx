@@ -23,6 +23,7 @@ export default function ThemeSwitcher() {
           isLight ? "bg-gray-300 dark:bg-gray-700 " : ""
         }rounded-full flex h-[32px] w-[32px] cursor-pointer items-center justify-center`}
         onClick={() => setTheme("light")}
+        title="Light theme"
       >
         <SunIcon
           pxSize={24}
@@ -38,6 +39,7 @@ export default function ThemeSwitcher() {
           isSystem ? "bg-gray-300 dark:bg-gray-700 " : ""
         }rounded-full flex h-[32px] w-[32px] cursor-pointer items-center justify-center`}
         onClick={() => setTheme("system")}
+        title="System theme"
       >
         <ComputerIcon
           pxSize={24}
@@ -53,6 +55,7 @@ export default function ThemeSwitcher() {
           isDark ? "bg-gray-300 dark:bg-gray-700 " : ""
         }rounded-full flex h-[32px] w-[32px] cursor-pointer items-center justify-center`}
         onClick={() => setTheme("dark")}
+        title="Dark theme"
       >
         <MoonIcon
           pxSize={24}
