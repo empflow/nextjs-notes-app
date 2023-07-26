@@ -17,10 +17,10 @@ export default function ThemeSwitcher() {
   const isDark = theme === "dark";
 
   return (
-    <div className="flex rounded-full border border-gray-400 p-[2px] dark:border-gray-500">
+    <div className="flex rounded-full border border-gray p-[2px] dark:border-dark-xl-gray">
       <div
         className={`${
-          isLight ? "bg-gray-300 dark:bg-gray-700 " : ""
+          isLight ? "bg-light-3.5xl-gray " : ""
         }rounded-full flex h-[32px] w-[32px] cursor-pointer items-center justify-center`}
         onClick={() => setTheme("light")}
         title="Light theme"
@@ -29,14 +29,15 @@ export default function ThemeSwitcher() {
           pxSize={24}
           className={`${
             isLight
-              ? "fill-slate-700 dark:fill-slate-400 "
-              : "fill-slate-500 dark:fill-slate-500 "
+              ? "fill-dark-3xl-gray"
+              : "fill-dark-xl-gray dark:fill-dark-gray"
           }`}
         />
       </div>
+
       <div
         className={`${
-          isSystem ? "bg-gray-300 dark:bg-gray-700 " : ""
+          isSystem ? "bg-light-3.5xl-gray dark:bg-dark-3xl-gray " : ""
         }rounded-full flex h-[32px] w-[32px] cursor-pointer items-center justify-center`}
         onClick={() => setTheme("system")}
         title="System theme"
@@ -45,14 +46,15 @@ export default function ThemeSwitcher() {
           pxSize={24}
           className={`${
             isSystem
-              ? "fill-slate-700 dark:fill-slate-400 "
-              : "fill-slate-500 dark:fill-slate-500 "
+              ? "fill-dark-3xl-gray dark:fill-light-gray "
+              : "fill-dark-xl-gray dark:fill-dark-gray "
           }`}
         />
       </div>
+
       <div
         className={`${
-          isDark ? "bg-gray-300 dark:bg-gray-700 " : ""
+          isDark ? "dark:bg-dark-3xl-gray " : ""
         }rounded-full flex h-[32px] w-[32px] cursor-pointer items-center justify-center`}
         onClick={() => setTheme("dark")}
         title="Dark theme"
@@ -61,8 +63,8 @@ export default function ThemeSwitcher() {
           pxSize={24}
           className={`${
             isDark
-              ? "fill-slate-700 dark:fill-slate-400 "
-              : "fill-slate-500 dark:fill-slate-500 "
+              ? "dark:fill-light-gray "
+              : "fill-dark-xl-gray dark:fill-dark-gray "
           }`}
         />
       </div>

@@ -48,11 +48,21 @@ module.exports = {
         "blue": "rgb(55, 110, 175)",
         "light-blue": "rgb(98, 160, 230)",
 
-        "dark-xl-gray": "rgb(90, 90, 90)",
+        "dark-4xl-gray": "rgb(55, 55, 55)",
+        "dark-3.5xl-gray": "rgb(62, 62, 62)",
+        "dark-3xl-gray": "rgb(70, 70, 70)",
+        "dark-2xl-gray": "rgb(85, 85, 85)",
+        "dark-xl-gray": "rgb(100, 100, 100)",
         "dark-gray": "rgb(115, 115, 115)",
-        "gray": "rgb(136, 136, 136)",
-        "light-gray": "rgb(169, 169, 169)",
-        "light-xl-gray": "rgb(185, 185, 185)"
+
+        "gray": "rgb(130, 130, 130)",
+
+        "light-gray": "rgb(170, 170, 170)",
+        "light-xl-gray": "rgb(185, 185, 185)",
+        "light-2xl-gray": "rgb(200, 200, 200)",
+        "light-3xl-gray": "rgb(215, 215, 215)",
+        "light-3.5xl-gray": "rgb(223, 223, 223)",
+        "light-4xl-gray": "rgb(230, 230, 230)"
       },
     },
   },
