@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 
-export default function Form() {
+export default function SignInForm() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
