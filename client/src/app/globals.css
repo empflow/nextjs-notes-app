@@ -2,15 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-.blue-outline {
-  outline: none;
-  transition: 150ms;
+:root {
+  --outline-transition: 150ms;
 }
 
+.blue-outline {
+  outline: none;
+  transition: var(--outline-transition);
+}
 .dark .blue-outline:focus {
   box-shadow: 0 0 0 4px rgba(2, 153, 246, 0.6);
 }
-
 .light .blue-outline:focus {
   box-shadow: 0 0 0 4px rgb(10 135 215 / 60%);
+}
+
+a {
+  text-decoration: underline;
+}
+.light a {
+  color: rgb(8, 82, 155);
+}
+.dark a {
+  color: rgb(41, 141, 242);
 }
