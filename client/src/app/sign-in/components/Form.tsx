@@ -42,7 +42,7 @@ export default function Form() {
         <div className="flex flex-col gap-2">
           <label htmlFor="email">Email</label>
           <input
-            className="px-2 py-1 border border-blue-600 rounded"
+            className="px-3 py-2 rounded blue-outline"
             value={formData.email}
             onChange={onEmailChange}
             id="email"
@@ -56,7 +56,7 @@ export default function Form() {
             value={formData.password}
             onChange={onPasswordChange}
             id="password"
-            className="px-2 py-1 border border-blue-600 rounded"
+            className="px-3 py-2 rounded blue-outline"
             type={"password"}
           />
         </div>
