@@ -129,6 +129,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# mine
 init
 result
 results
