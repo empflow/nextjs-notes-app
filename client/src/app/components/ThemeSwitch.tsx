@@ -2,9 +2,9 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import ComputerIcon from "../icons/Computer";
-import MoonIcon from "../icons/Moon";
-import SunIcon from "../icons/Sun";
+import ComputerIcon from "@/icons/Computer";
+import MoonIcon from "@/icons/Moon";
+import SunIcon from "@/icons/Sun";
 
 export default function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
