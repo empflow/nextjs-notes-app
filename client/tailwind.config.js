@@ -35,6 +35,9 @@ module.exports = {
 
         "l-main": "rgb(0, 0, 0)",
         "l-secondary": "rgb(120, 130, 140)",
+
+        "l-link": "rgb(41, 141, 242)",
+        "d-link": "rgb(41, 141, 242)"
       },
       borderColor: {
         "d-main": "rgb(58, 58, 58)",
