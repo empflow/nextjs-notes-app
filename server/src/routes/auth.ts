@@ -15,10 +15,12 @@ import checkRefreshTokenExistsInDb from "../middleware/auth/checkRefreshTokenExi
 import getNewTokens from "../controllers/auth/getNewTokens";
 import getNewTokensJwtVerifyRefreshToken from "../middleware/auth/getNewTokens/jwtVerifyRefreshToken";
 import getNewTokensFindUserFromTokenPayload from "../middleware/auth/getNewTokens/findUserFromTokenPayload";
+import checkCaptchaToken from "../middleware/checkCaptchaToken";
 const router = express.Router();
 
 router.post(
   "/sign-up",
+  checkCaptchaToken,
   checkEmail,
   checkPassword,
   signUpRegexCheckEmail,
@@ -29,6 +31,7 @@ router.post(
 
 router.post(
   "/sign-in",
+  checkCaptchaToken,
   checkEmail,
   checkPassword,
   signInCheckUser,
