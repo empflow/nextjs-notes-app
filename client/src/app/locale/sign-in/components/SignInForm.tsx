@@ -1,6 +1,6 @@
 "use client";
 
-import axios from "../../../../config/axios";
+import axios from "@/config/axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useRef, useState } from "react";
