@@ -1,9 +1,12 @@
 "use client";
 
-import axios from "axios";
+import axios from "../../config/axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
+import Link from "next/link";
+import BigBtn from "@/app/components/buttons/Big";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function SignInForm() {
   const router = useRouter();
@@ -12,15 +15,17 @@ export default function SignInForm() {
     email: `johndoe@example.com`,
     password: "sldfjsldfkj435$$",
   });
+  const captchaRef = useRef<ReCAPTCHA>(null);
 
   async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    const captchaToken = await captchaRef.current?.executeAsync();
+    captchaRef.current?.reset();
     setIsLoading(true);
 
-    const response = await axios.post(
-      "http://localhost:3001/auth/sign-in",
-      formData
-    );
+    const payload = { ...formData, captchaToken };
+    const response = await axios.post("/auth/sign-in", payload);
     const { data } = response;
 
     checkResponseData(data);
@@ -38,7 +43,7 @@ export default function SignInForm() {
 
   return (
     <>
-      <form onSubmit={onSubmit} className="max-w-md flex flex-col gap-4">
+      <form onSubmit={onSubmit} className="max-w-md flex flex-col gap-5">
         <div className="flex flex-col gap-2">
           <label htmlFor="email">Email</label>
           <input
@@ -60,14 +65,35 @@ export default function SignInForm() {
             type={"password"}
           />
         </div>
-        <div>
-          <button className="py-2 w-full bg-blue hover:bg-blue-700 duration-200 text-white rounded">
-            {isLoading ? "Loading..." : "Sign In"}
-          </button>
+
+        <div className="flex flex-col gap-3">
+          <p>
+            Don't have an account?{" "}
+            <Link className="text-l-accent dark:text-d-accent" href="/sign-up">
+              Sign up
+            </Link>
+          </p>
+
+          <ReCAPTCHA
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
+            size="invisible"
+            ref={captchaRef}
+          />
+
+          <div>
+            <BigBtn className="w-full">
+              {isLoading ? "Loading..." : "Sign in"}
+            </BigBtn>
+          </div>
         </div>
       </form>
     </>
   );
+}
+
+function areAllInputsFilled(formData: Record<string, unknown>) {
+  const values = Object.values(formData);
+  return values.every((val) => !!val);
 }
 
 function checkResponseData(data: any) {
