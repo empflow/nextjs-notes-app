@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Logo from "./Logo";
 import ThemeSwitcher from "./ThemeSwitch";
 
 export default function Footer() {
@@ -8,7 +9,7 @@ export default function Footer() {
         <div className="mb-5 flex justify-between">
           <div>
             <Link href="/" style={{ textDecoration: "none" }}>
-              Notes app
+              <Logo />
             </Link>
           </div>
           <div>
@@ -22,7 +23,7 @@ export default function Footer() {
             <Link
               target="_blank"
               href="https://github.com/empflow"
-              className="underline hover:text-blue-600"
+              className="underline hover:text-l-link dark:hover:text-d-link"
             >
               me
             </Link>

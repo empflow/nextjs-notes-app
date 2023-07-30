@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Logo from "./Logo";
 import NameOrSignInButton from "./NameOrSignInButton";
 
 export default function Header() {
@@ -7,7 +8,7 @@ export default function Header() {
       <div className="flex max-w-global m-auto md justify-between w-full">
         <div>
           <Link href="/" className="no-underline">
-            <h2 className="text-white text-xl">Notes app</h2>
+            <Logo />
           </Link>
         </div>
 
