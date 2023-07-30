@@ -1,6 +1,6 @@
 "use client";
 
-import axios from "../../config/axios";
+import axios from "../../../../config/axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useRef, useState } from "react";
@@ -8,7 +8,7 @@ import Link from "next/link";
 import BigBtn from "@/app/components/buttons/Big";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useTheme } from "next-themes";
-import getCaptchaTheme from "@/app/utils/getCaptchaTheme";
+import getCaptchaTheme from "@/utils/getCaptchaTheme";
 
 export default function SignInForm() {
   const { resolvedTheme } = useTheme();

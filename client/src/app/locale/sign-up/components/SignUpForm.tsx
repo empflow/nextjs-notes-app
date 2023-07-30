@@ -1,8 +1,8 @@
 "use client";
 
 import BigBtn from "@/app/components/buttons/Big";
-import getCaptchaTheme from "@/app/utils/getCaptchaTheme";
-import axios from "../../config/axios";
+import getCaptchaTheme from "@/utils/getCaptchaTheme";
+import axios from "../../../../config/axios";
 import Cookies from "js-cookie";
 import { useTheme } from "next-themes";
 import Link from "next/link";
