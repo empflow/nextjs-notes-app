@@ -1,6 +1,6 @@
 import { ButtonProps } from "../../utils/componentsProps";
 
-const BigButton: React.FC<ButtonProps> = ({
+const BigBtn: React.FC<ButtonProps> = ({
   children,
   className,
   ...restProps
@@ -8,11 +8,11 @@ const BigButton: React.FC<ButtonProps> = ({
   return (
     <button
       {...restProps}
-      className={`py-2 w-full bg-blue bg-l- hover:bg-blue-700 duration-200 text-white rounded ${className}`}
+      className={`py-2 px-6 bg-blue hover:bg-blue-700 duration-200 text-white rounded ${className}`}
     >
       {children}
     </button>
   );
 };
 
-export default BigButton;
+export default BigBtn;
