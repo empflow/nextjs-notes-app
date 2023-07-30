@@ -3,5 +3,14 @@
     "title": "Главная страница",
     "subTitle": "Добрый день, дорогой пользователь моего сайта",
     "description": "Это главная страница этого сайта"
+  },
+  "SignUp": {
+    "title": "Создать аккаунт",
+    "emailLabel": "Почта",
+    "passwordLabel": "Пароль",
+    "alreadyHaveAccount": "Уже есть аккаунт?",
+    "alreadyHaveAccountSignInLink": "Войти в аккаунт",
+    "signUpBtn": "Создать аккаунт",
+    "loading": "Загрузка..."
   }
 }

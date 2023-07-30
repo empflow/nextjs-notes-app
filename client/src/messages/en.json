@@ -3,5 +3,14 @@
     "title": "Home page",
     "subTitle": "hello dear visitor of my website",
     "description": "this is my langing page"
+  },
+  "SignUp": {
+    "title": "Sign up",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "alreadyHaveAccount": "Already have an account?",
+    "alreadyHaveAccountSignInLink": "Sign in",
+    "signUpBtn": "Sign Up",
+    "loading": "Loading..."
   }
 }
