@@ -16,13 +16,3 @@
 .light .blue-outline:focus {
   box-shadow: 0 0 0 4px rgb(10 135 215 / 60%);
 }
-
-a {
-  text-decoration: underline;
-}
-.light a {
-  color: rgb(8, 82, 155);
-}
-.dark a {
-  color: rgb(41, 141, 242);
-}
