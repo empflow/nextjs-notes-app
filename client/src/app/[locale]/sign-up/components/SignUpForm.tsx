@@ -9,10 +9,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
+import { useTranslations } from "next-intl";
 
 export default function SignUpForm() {
   const { resolvedTheme } = useTheme();
   const theme = getCaptchaTheme(resolvedTheme);
+  const t = useTranslations("SignUp");
   const captchaRef = useRef<ReCAPTCHA>(null);
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -55,7 +57,7 @@ export default function SignUpForm() {
       />
       <form onSubmit={onSubmit} className="max-w-md flex flex-col gap-5">
         <div className="flex flex-col gap-2">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">{t("emailLabel")}</label>
           <input
             className="px-3 py-2 rounded blue-outline"
             value={formData.email}
@@ -66,7 +68,7 @@ export default function SignUpForm() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{t("passwordLabel")}</label>
           <input
             value={formData.password}
             onChange={onPasswordChange}
@@ -78,14 +80,14 @@ export default function SignUpForm() {
 
         <div className="flex flex-col gap-3">
           <p>
-            Already have an account?{" "}
+            {t("alreadyHaveAccount")}{" "}
             <Link className="text-l-accent dark:text-d-accent" href="/sign-in">
-              Sign in
+              {t("alreadyHaveAccountSignInLink")}
             </Link>
           </p>
           <div>
             <BigBtn className="w-full">
-              {isLoading ? "Loading..." : "Sign up"}
+              {isLoading ? t("loading") : t("signUpBtn")}
             </BigBtn>
           </div>
         </div>
