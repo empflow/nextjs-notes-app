@@ -7,8 +7,12 @@ import { ChangeEvent, useRef, useState } from "react";
 import Link from "next/link";
 import BigBtn from "@/app/components/buttons/Big";
 import ReCAPTCHA from "react-google-recaptcha";
+import { useTheme } from "next-themes";
+import getCaptchaTheme from "@/app/utils/getCaptchaTheme";
 
 export default function SignInForm() {
+  const { resolvedTheme } = useTheme();
+  const theme = getCaptchaTheme(resolvedTheme);
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -43,6 +47,13 @@ export default function SignInForm() {
 
   return (
     <>
+      <ReCAPTCHA
+        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
+        size="invisible"
+        ref={captchaRef}
+        theme={theme}
+      />
+
       <form onSubmit={onSubmit} className="max-w-md flex flex-col gap-5">
         <div className="flex flex-col gap-2">
           <label htmlFor="email">Email</label>
@@ -73,12 +84,6 @@ export default function SignInForm() {
               Sign up
             </Link>
           </p>
-
-          <ReCAPTCHA
-            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
-            size="invisible"
-            ref={captchaRef}
-          />
 
           <div>
             <BigBtn className="w-full">
