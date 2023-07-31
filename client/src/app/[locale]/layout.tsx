@@ -20,10 +20,6 @@ interface RootLayoutContext {
   };
 }
 
-export function generateStaticParams(): RootLayoutContext["params"][] {
-  return locales.map((locale) => ({ locale }));
-}
-
 export default async function RootLayout({
   children,
   params,
