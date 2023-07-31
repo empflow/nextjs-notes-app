@@ -1,4 +1,4 @@
-import { ButtonProps } from "../../utils/componentsProps";
+import { ButtonProps } from "@/utils/componentsProps";
 
 const BigBtn: React.FC<ButtonProps> = ({
   children,
