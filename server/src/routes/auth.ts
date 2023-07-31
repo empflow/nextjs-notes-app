@@ -16,6 +16,7 @@ import getNewTokens from "../controllers/auth/getNewTokens";
 import getNewTokensJwtVerifyRefreshToken from "../middleware/auth/getNewTokens/jwtVerifyRefreshToken";
 import getNewTokensFindUserFromTokenPayload from "../middleware/auth/getNewTokens/findUserFromTokenPayload";
 import checkCaptchaToken from "../middleware/checkCaptchaToken";
+import checkUsernameAvailability from "../controllers/auth/checkUsernameAvailability";
 const router = express.Router();
 
 router.post(
@@ -56,5 +57,7 @@ router.post(
   getNewTokensFindUserFromTokenPayload,
   getNewTokens
 );
+
+router.post("/check-username-availability", checkUsernameAvailability);
 
 export default router;
