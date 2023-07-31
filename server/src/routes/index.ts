@@ -7,7 +7,6 @@ const router = express.Router();
 router.use("/auth", authRouter);
 
 // routes that require authorization
-router.use(authorize);
-router.use("/notes", notesRouter);
+router.use("/notes", authorize, notesRouter);
 
 export default router;
