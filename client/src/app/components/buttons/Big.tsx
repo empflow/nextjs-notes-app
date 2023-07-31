@@ -8,7 +8,7 @@ const BigBtn: React.FC<ButtonProps> = ({
   return (
     <button
       {...restProps}
-      className={`py-2 px-6 bg-blue hover:bg-blue-700 duration-200 text-white rounded ${className}`}
+      className={`py-2 px-6 bg-l-accent dark:bg-d-accent hover:bg-blue-700 duration-200 text-white rounded ${className}`}
     >
       {children}
     </button>
