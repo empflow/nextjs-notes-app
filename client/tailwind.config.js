@@ -37,7 +37,10 @@ module.exports = {
         "l-secondary": "rgb(120, 130, 140)",
 
         "l-accent": "#005ee8",
-        "d-accent": "rgb(41, 141, 242)"
+        "d-accent": "rgb(41, 141, 242)",
+
+        "l-error": "#ff0000",
+        "d-error": "#ff4e4e"
       },
       borderColor: {
         "d-main": "rgb(58, 58, 58)",
