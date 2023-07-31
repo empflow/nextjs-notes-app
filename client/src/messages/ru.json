@@ -11,7 +11,10 @@
     "alreadyHaveAccount": "Уже есть аккаунт?",
     "alreadyHaveAccountSignInLink": "Войти в аккаунт",
     "signUpBtn": "Создать аккаунт",
-    "loading": "Загрузка..."
+    "loading": "Загрузка...",
+    "checkingUsernameAvailability": "Проверка доступности имени пользователя",
+    "usernameAvailable": "Имя пользователя доступно",
+    "usernameUnavailable": "Имя пользователя не доступно"
   },
   "Errors": {
     "noInternet": "Нет интернет соединения",
