@@ -12,5 +12,10 @@
     "alreadyHaveAccountSignInLink": "Sign in",
     "signUpBtn": "Sign Up",
     "loading": "Loading..."
+  },
+  "Errors": {
+    "noInternet": "No internet connection.",
+    "generic": "Unknown error. Try again later.",
+    "usernameTaken": "Username {username} is already taken. Choose a different one."
   }
 }

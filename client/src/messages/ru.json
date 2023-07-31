@@ -12,5 +12,10 @@
     "alreadyHaveAccountSignInLink": "Войти в аккаунт",
     "signUpBtn": "Создать аккаунт",
     "loading": "Загрузка..."
+  },
+  "Errors": {
+    "noInternet": "Нет интернет соединения",
+    "generic": "Неизвестная ошибка. Попробуйте позже.",
+    "usernameTaken": "Имя пользователя {username} уже занято. Выберите другое."
   }
 }
