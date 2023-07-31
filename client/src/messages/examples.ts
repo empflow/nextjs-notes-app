@@ -1,4 +1,6 @@
 /*
+  // ICU argument consists of 3 components: `name`, `type (base formatting type)`, `format`
+
   // select
   "message": "{gender, select, male {He} female {She} other {They} } will respond asap"
 
