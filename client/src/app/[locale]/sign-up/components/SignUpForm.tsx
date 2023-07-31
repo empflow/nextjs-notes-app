@@ -7,36 +7,58 @@ import Cookies from "js-cookie";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useTranslations } from "next-intl";
+import useFetch from "@/app/hooks/useFetch";
+import PreviousMap from "postcss/lib/previous-map";
+import Err from "@/app/components/Err";
 
 export default function SignUpForm() {
   const { resolvedTheme } = useTheme();
   const theme = getCaptchaTheme(resolvedTheme);
   const t = useTranslations("SignUp");
+  const errsT = useTranslations("Errors");
   const captchaRef = useRef<ReCAPTCHA>(null);
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
+  const errsInitState = {
+    usernameTakenErr: false,
+    unknownErr: false,
+  };
+  const [errs, setErrs] = useState(errsInitState);
   const [formData, setFormData] = useState({
     email: `johndoe@example.com`,
     password: "sldfjsldfkj435$$",
+    captchaToken: "",
+  });
+  const { data, err, fetch, loading } = useFetch("/auth/sign-up", {
+    method: "post",
+    body: formData,
   });
 
   async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    setErrs(errsInitState);
     const captchaToken = await captchaRef.current?.executeAsync();
-    captchaRef.current?.reset();
-    setIsLoading(true);
+    await fetch({ ...formData, captchaToken: captchaToken });
+  }
 
-    const payload = { ...formData, captchaToken };
-    const response = await axios.post("/auth/sign-up", payload);
-    const { data } = response;
+  useEffect(() => {
+    if (!err) return;
+    if (!err?.response) return unknownErr();
+    console.log("hello");
+    switch (err.response.status) {
+      case 409:
+        setErrs((prev) => ({ ...prev, usernameTakenErr: true }));
+        break;
+      default:
+        unknownErr();
+    }
+  }, [data, err]);
 
-    checkResponseData(data);
-    storeResponseData(data);
-    router.push("/notes");
+  function unknownErr() {
+    setErrs((prev) => ({ ...prev, unknownErr: true }));
   }
 
   function onEmailChange(e: ChangeEvent<HTMLInputElement>) {
@@ -87,8 +109,14 @@ export default function SignUpForm() {
           </p>
           <div>
             <BigBtn className="w-full">
-              {isLoading ? t("loading") : t("signUpBtn")}
+              {loading ? t("loading") : t("signUpBtn")}
             </BigBtn>
+          </div>
+          <div>
+            {errs.usernameTakenErr && (
+              <Err msg={errsT("usernameTaken", { username: formData.email })} />
+            )}
+            {errs.unknownErr && <Err msg={errsT("generic")} />}
           </div>
         </div>
       </form>
