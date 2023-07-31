@@ -47,5 +47,5 @@ export default function useFetch(
     }
   }
 
-  return { data, err, loading, fetch };
+  return { data, err, loading, setLoading, fetch };
 }
