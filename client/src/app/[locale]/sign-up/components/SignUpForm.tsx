@@ -13,6 +13,8 @@ import { useTranslations } from "next-intl";
 import useFetch from "@/app/hooks/useFetch";
 import PreviousMap from "postcss/lib/previous-map";
 import Err from "@/app/components/Err";
+import getCaptchaToken from "@/utils/getCaptchaToken";
+import checkEmailValid from "@/utils/checkEmailValid";
 
 export default function SignUpForm() {
   const { resolvedTheme } = useTheme();
@@ -21,9 +23,13 @@ export default function SignUpForm() {
   const errsT = useTranslations("Errors");
   const captchaRef = useRef<ReCAPTCHA>(null);
   const router = useRouter();
+  const [isEmailValid, setIsEmailValid] = useState(false);
   const errsInitState = {
     usernameTakenErr: false,
     unknownErr: false,
+    clientSide: {
+      invalidEmail: false,
+    },
   };
   const [errs, setErrs] = useState(errsInitState);
   const [formData, setFormData] = useState({
@@ -31,23 +37,22 @@ export default function SignUpForm() {
     password: "sldfjsldfkj435$$",
     captchaToken: "",
   });
-  const { data, err, fetch, loading } = useFetch("/auth/sign-up", {
+  const { data, err, fetch, loading, setLoading } = useFetch("/auth/sign-up", {
     method: "post",
     body: formData,
   });
 
   async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
-
-    setErrs(errsInitState);
-    const captchaToken = await captchaRef.current?.executeAsync();
-    await fetch({ ...formData, captchaToken: captchaToken });
   }
+
+  useEffect(() => {
+    setIsEmailValid(checkEmailValid(formData.email));
+  }, [formData.email]);
 
   useEffect(() => {
     if (!err) return;
     if (!err?.response) return unknownErr();
-    console.log("hello");
     switch (err.response.status) {
       case 409:
         setErrs((prev) => ({ ...prev, usernameTakenErr: true }));
@@ -56,6 +61,13 @@ export default function SignUpForm() {
         unknownErr();
     }
   }, [data, err]);
+
+  async function submitBtnOnClick() {
+    setErrs(errsInitState);
+    setLoading(true);
+    const captchaToken = await getCaptchaToken(captchaRef);
+    await fetch({ ...formData, captchaToken });
+  }
 
   function unknownErr() {
     setErrs((prev) => ({ ...prev, unknownErr: true }));
@@ -108,7 +120,7 @@ export default function SignUpForm() {
             </Link>
           </p>
           <div>
-            <BigBtn className="w-full">
+            <BigBtn className="w-full" onClick={submitBtnOnClick}>
               {loading ? t("loading") : t("signUpBtn")}
             </BigBtn>
           </div>
