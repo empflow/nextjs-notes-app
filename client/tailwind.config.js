@@ -35,12 +35,6 @@ module.exports = {
 
         "l-main": "rgb(0, 0, 0)",
         "l-secondary": "rgb(120, 130, 140)",
-
-        "l-accent": "#005ee8",
-        "d-accent": "rgb(41, 141, 242)",
-
-        "l-error": "#ff0000",
-        "d-error": "#ff4e4e"
       },
       borderColor: {
         "d-main": "rgb(58, 58, 58)",
@@ -68,7 +62,16 @@ module.exports = {
         "light-2xl-gray": "rgb(200, 200, 200)",
         "light-3xl-gray": "rgb(215, 215, 215)",
         "light-3.5xl-gray": "rgb(223, 223, 223)",
-        "light-4xl-gray": "rgb(230, 230, 230)"
+        "light-4xl-gray": "rgb(230, 230, 230)",
+
+        "l-error": "#ff0000",
+        "d-error": "#ff4e4e",
+
+        "l-accent": "#005ee8",
+        "d-accent": "rgb(41, 141, 242)",
+
+        "l-success": "#0f7d00",
+        "d-success": "#3ac427" 
       },
     },
   },
