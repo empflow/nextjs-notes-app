@@ -6,7 +6,14 @@ import Cookies from "js-cookie";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  FormEvent,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useTranslations } from "next-intl";
 import useFetch from "@/app/hooks/useFetch";
@@ -27,13 +34,14 @@ export default function SignUpForm() {
   const theme = getCaptchaTheme(resolvedTheme);
   const t = useTranslations("SignUp");
   const errsT = useTranslations("Errors");
+  const formT = useTranslations("Form");
   const captchaRef = useRef<ReCAPTCHA>(null);
   const [formData, setFormData] = useState({
     email: ``,
     password: "sldfjsldfkj435$$",
     captchaToken: "",
   });
-  const [isEmailValid, setIsEmailValid] = useState(false);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
   const checkUsernameAvailTimeoutId = useRef<null | NodeJS.Timeout>(null);
   const errsInitState = {
     usernameTakenErr: false,
@@ -64,8 +72,13 @@ export default function SignUpForm() {
   });
 
   useEffect(() => {
-    if (!isEmailValid) return;
-    setErrs((prev) => ({ ...prev, usernameTakenErr: false }));
+    const emailExists = !!formData.email.length;
+    if (errs.clientSide.invalidEmail || !emailExists) return;
+
+    setErrs((prev) => ({
+      ...prev,
+      usernameTakenErr: false,
+    }));
     if (checkUsernameAvailTimeoutId.current) {
       clearTimeout(checkUsernameAvailTimeoutId.current);
     }
@@ -88,6 +101,15 @@ export default function SignUpForm() {
   }, [signUpRespData, signUpRespErr]);
 
   async function submitBtnOnClick() {
+    setHasSubmitted(true);
+    if (!formData.email || !formData.password || errs.clientSide.invalidEmail) {
+      return;
+    }
+    if (!formData.email)
+      setErrs((prev) => ({
+        ...prev,
+        clientSide: { ...prev.clientSide, noEmail: true },
+      }));
     setErrs(errsInitState);
     signUpSetLoading(true);
     const captchaToken = await getCaptchaToken(captchaRef);
@@ -102,28 +124,43 @@ export default function SignUpForm() {
   }
 
   function onEmailChange(e: ChangeEvent<HTMLInputElement>) {
-    setIsEmailValid(checkEmailValid(e.target.value));
     setFormData((prev) => ({ ...prev, email: e.target.value }));
+    const { value } = e.target;
+
+    setErrs((prev) => ({
+      ...prev,
+      clientSide: {
+        ...prev.clientSide,
+        invalidEmail: value.length ? !checkEmailValid(e.target.value) : false,
+      },
+    }));
   }
 
   function onPasswordChange(e: ChangeEvent<HTMLInputElement>) {
     setFormData((prev) => ({ ...prev, password: e.target.value }));
   }
 
+  function onFormSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+  }
+
   const usernameAvailElem = useMemo(() => {
     if (isUsernameAvailLoading) {
       return (
-        <div className="flex gap-2">
-          <Loading /> {t("checkingUsernameAvailability")}
+        <div className="flex gap-2 items-center">
+          <div className="relative w-[20px] h-[20px]">
+            <Loading className="basis-[20px] flex-shrink-0" />
+          </div>
+          {t("checkingUsernameAvailability")}
         </div>
       );
     } else if (isObject(isUsernameAvailRespData)) {
       if ((isUsernameAvailRespData as UsernameAvailResp).ok) {
         return (
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center">
             <CheckmarkIcon
-              className="fill-l-success dark:fill-d-success"
-              pxSize={25}
+              className="fill-l-success dark:fill-d-success flex-shrink-0"
+              pxSize={24}
             />
             {t("usernameAvailable")}
           </div>
@@ -131,8 +168,11 @@ export default function SignUpForm() {
       } else unknownErr();
     } else if (isUsernameAvailErr?.response?.status === 409) {
       return (
-        <div className="flex gap-2">
-          <ErrIcon pxSize={25} className="fill-l-error dark:fill-d-error" />
+        <div className="flex gap-2 items-center">
+          <ErrIcon
+            pxSize={24}
+            className="fill-l-error dark:fill-d-error flex-shrink-0"
+          />
           {errsT("usernameTaken", { username: formData.email })}
         </div>
       );
@@ -147,10 +187,7 @@ export default function SignUpForm() {
         ref={captchaRef}
         theme={theme}
       />
-      <form
-        onSubmit={(e) => e.preventDefault()}
-        className="max-w-md flex flex-col gap-5"
-      >
+      <form onSubmit={onFormSubmit} className="max-w-md flex flex-col gap-5">
         <div className="flex flex-col gap-2">
           <label htmlFor="email">{t("emailLabel")}</label>
           <input
@@ -159,7 +196,13 @@ export default function SignUpForm() {
             onChange={onEmailChange}
             id="email"
             type={"email"}
+            placeholder="you@example.com"
+            required
           />
+          {!formData.email && hasSubmitted && <Err msg={formT("noEmail")} />}
+          {errs.clientSide.invalidEmail && hasSubmitted && (
+            <Err msg={formT("invalidEmail")} />
+          )}
           <div className="">{usernameAvailElem}</div>
         </div>
 
@@ -171,7 +214,11 @@ export default function SignUpForm() {
             id="password"
             className="px-3 py-2 rounded blue-outline"
             type={"password"}
+            required
           />
+          {!formData.password && hasSubmitted && (
+            <Err msg={formT("noPassword")} />
+          )}
         </div>
 
         <div className="flex flex-col gap-3">
@@ -182,8 +229,24 @@ export default function SignUpForm() {
             </Link>
           </p>
           <div>
-            <BigBtn className="w-full" onClick={submitBtnOnClick}>
-              {signUpLoading ? t("loading") : t("signUpBtn")}
+            <BigBtn
+              className={`w-full ${signUpLoading ? "cursor-wait" : ""}`}
+              onClick={submitBtnOnClick}
+            >
+              {signUpLoading ? (
+                <div className="w-full flex items-center justify-center">
+                  <div className="relative w-[1.5rem] h-[1.5rem]">
+                    <Loading
+                      style={{
+                        borderColor: "white",
+                        borderTopColor: "transparent",
+                      }}
+                    />
+                  </div>
+                </div>
+              ) : (
+                <div>{t("signUpBtn")}</div>
+              )}
             </BigBtn>
           </div>
           <div>
@@ -198,13 +261,13 @@ export default function SignUpForm() {
   );
 }
 
-function checkResponseData(data: any) {
+function checkSignUpRespData(data: any) {
   if (!data.accessToken || !data.refreshToken || !data.username) {
     throw new Error("something is not present in the response");
   }
 }
 
-function storeResponseData(data: any) {
+function storeSignUpRespData(data: any) {
   const daysIn15Mins = 0.010416;
   const ninetyDays = 90;
   const refreshToken = JSON.stringify(data.refreshToken);
