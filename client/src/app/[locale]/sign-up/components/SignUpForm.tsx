@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useTranslations } from "next-intl";
 import useFetch from "@/app/hooks/useFetch";
@@ -15,6 +15,12 @@ import getCaptchaToken from "@/utils/getCaptchaToken";
 import checkEmailValid from "@/utils/checkEmailValid";
 import Loading from "@/app/components/Loading";
 import CheckmarkIcon from "@/icons/Checkmark";
+import ErrIcon from "@/icons/Err";
+import isObject from "@/utils/isObject";
+
+interface UsernameAvailResp {
+  ok: boolean;
+}
 
 export default function SignUpForm() {
   const { resolvedTheme } = useTheme();
@@ -23,7 +29,7 @@ export default function SignUpForm() {
   const errsT = useTranslations("Errors");
   const captchaRef = useRef<ReCAPTCHA>(null);
   const [formData, setFormData] = useState({
-    email: `johndoe@example.com`,
+    email: ``,
     password: "sldfjsldfkj435$$",
     captchaToken: "",
   });
@@ -64,6 +70,7 @@ export default function SignUpForm() {
       clearTimeout(checkUsernameAvailTimeoutId.current);
     }
     checkUsernameAvailTimeoutId.current = setTimeout(async () => {
+      clearUnknownErr();
       await isUsernameAvailFetch();
     }, 500);
   }, [formData.email]);
@@ -90,6 +97,9 @@ export default function SignUpForm() {
   function unknownErr() {
     setErrs((prev) => ({ ...prev, unknownErr: true }));
   }
+  function clearUnknownErr() {
+    setErrs((prev) => ({ ...prev, unknownErr: false }));
+  }
 
   function onEmailChange(e: ChangeEvent<HTMLInputElement>) {
     setIsEmailValid(checkEmailValid(e.target.value));
@@ -100,35 +110,35 @@ export default function SignUpForm() {
     setFormData((prev) => ({ ...prev, password: e.target.value }));
   }
 
-  let usernameAvailElem = <></>;
-  interface UsernameAvailResp {
-    ok: boolean;
-  }
-  if (isUsernameAvailLoading) {
-    usernameAvailElem = (
-      <div className="flex gap-2">
-        <Loading /> {t("checkingUsernameAvailability")}
-      </div>
-    );
-  }
-  console.log(isUsernameAvailLoading);
-  if (
-    typeof isUsernameAvailRespData === "object" &&
-    isUsernameAvailRespData !== null &&
-    !Array.isArray(isUsernameAvailRespData)
-  ) {
-    if ((isUsernameAvailRespData as UsernameAvailResp).ok) {
-      usernameAvailElem = (
+  const usernameAvailElem = useMemo(() => {
+    if (isUsernameAvailLoading) {
+      return (
         <div className="flex gap-2">
-          <CheckmarkIcon
-            className="fill-l-success dark:fill-d-success"
-            pxSize={25}
-          />
-          {t("usernameAvailable")}
+          <Loading /> {t("checkingUsernameAvailability")}
+        </div>
+      );
+    } else if (isObject(isUsernameAvailRespData)) {
+      if ((isUsernameAvailRespData as UsernameAvailResp).ok) {
+        return (
+          <div className="flex gap-2">
+            <CheckmarkIcon
+              className="fill-l-success dark:fill-d-success"
+              pxSize={25}
+            />
+            {t("usernameAvailable")}
+          </div>
+        );
+      } else unknownErr();
+    } else if (isUsernameAvailErr?.response?.status === 409) {
+      return (
+        <div className="flex gap-2">
+          <ErrIcon pxSize={25} className="fill-l-error dark:fill-d-error" />
+          {errsT("usernameTaken", { username: formData.email })}
         </div>
       );
     }
-  }
+  }, [isUsernameAvailErr, isUsernameAvailLoading, isUsernameAvailRespData]);
+
   return (
     <>
       <ReCAPTCHA
