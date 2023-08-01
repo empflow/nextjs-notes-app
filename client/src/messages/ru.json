@@ -4,14 +4,18 @@
     "subTitle": "Добрый день, дорогой пользователь моего сайта",
     "description": "Это главная страница этого сайта"
   },
+  "Form": {
+    "noEmail": "Поле почта не заполнено.",
+    "noPassword": "Поле пароль не заполнено.",
+    "invalidEmail": "Неправильный формат элекронной почты."
+  },
   "SignUp": {
     "title": "Создать аккаунт",
-    "emailLabel": "Почта",
+    "emailLabel": "Электронная почта",
     "passwordLabel": "Пароль",
     "alreadyHaveAccount": "Уже есть аккаунт?",
     "alreadyHaveAccountSignInLink": "Войти в аккаунт",
     "signUpBtn": "Создать аккаунт",
-    "loading": "Загрузка...",
     "checkingUsernameAvailability": "Проверка доступности имени пользователя",
     "usernameAvailable": "Имя пользователя доступно",
     "usernameUnavailable": "Имя пользователя не доступно"

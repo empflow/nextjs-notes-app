@@ -4,6 +4,11 @@
     "subTitle": "hello dear visitor of my website",
     "description": "this is my langing page"
   },
+  "Form": {
+    "noEmail": "Email is not filled out.",
+    "noPassword": "Password is not filled out.",
+    "invalidEmail": "Invalid email address."
+  },
   "SignUp": {
     "title": "Sign up",
     "emailLabel": "Email",
