@@ -20,6 +20,14 @@
     "usernameAvailable": "Имя пользователя доступно",
     "usernameUnavailable": "Имя пользователя не доступно"
   },
+  "SignIn": {
+    "title": "Войти в аккаунт",
+    "emailLabel": "Электронная почта",
+    "passwordLabel": "Пароль",
+    "dontHaveAccount": "Ещё нету аккаунта?",
+    "dontHaveAccountSignUpLink": "Создать аккаунт",
+    "signInBtn": "Войти"
+  },
   "Errors": {
     "noInternet": "Нет интернет соединения",
     "generic": "Неизвестная ошибка. Попробуйте позже.",

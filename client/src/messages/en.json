@@ -16,10 +16,17 @@
     "alreadyHaveAccount": "Already have an account?",
     "alreadyHaveAccountSignInLink": "Sign in",
     "signUpBtn": "Sign Up",
-    "loading": "Loading...",
     "checkingUsernameAvailability": "Checking username availability",
     "usernameAvailable": "Username is available",
     "usernameUnavailable": "Username is unavailable"
+  },
+  "SignIn": {
+    "title": "Sign in",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "dontHaveAccount": "Don't have an account?",
+    "dontHaveAccountSignUpLink": "Sign up",
+    "signInBtn": "Sign In"
   },
   "Errors": {
     "noInternet": "No internet connection.",

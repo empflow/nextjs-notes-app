@@ -9,10 +9,15 @@ import BigBtn from "@/app/components/buttons/Big";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useTheme } from "next-themes";
 import getCaptchaTheme from "@/utils/getCaptchaTheme";
+import { useTranslations } from "next-intl";
 
 export default function SignInForm() {
+  const t = useTranslations("SignIn");
+  const errsT = useTranslations("Errors");
+  const formT = useTranslations("Form");
+
   const { resolvedTheme } = useTheme();
-  const theme = getCaptchaTheme(resolvedTheme);
+  const captchaTheme = getCaptchaTheme(resolvedTheme);
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -51,23 +56,24 @@ export default function SignInForm() {
         sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
         size="invisible"
         ref={captchaRef}
-        theme={theme}
+        theme={captchaTheme}
       />
 
       <form onSubmit={onSubmit} className="max-w-md flex flex-col gap-5">
         <div className="flex flex-col gap-2">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">{t("emailLabel")}</label>
           <input
             className="px-3 py-2 rounded blue-outline"
             value={formData.email}
             onChange={onEmailChange}
             id="email"
             type={"email"}
+            placeholder="you@example.com"
           />
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{t("passwordLabel")}</label>
           <input
             value={formData.password}
             onChange={onPasswordChange}
@@ -79,15 +85,15 @@ export default function SignInForm() {
 
         <div className="flex flex-col gap-3">
           <p>
-            Don't have an account?{" "}
+            {t("dontHaveAccount")}{" "}
             <Link className="text-l-accent dark:text-d-accent" href="/sign-up">
-              Sign up
+              {t("dontHaveAccountSignUpLink")}
             </Link>
           </p>
 
           <div>
             <BigBtn className="w-full">
-              {isLoading ? "Loading..." : "Sign in"}
+              {isLoading ? "Loading..." : t("signInBtn")}
             </BigBtn>
           </div>
         </div>
