@@ -5,9 +5,9 @@
     "description": "this is my langing page"
   },
   "Form": {
-    "noEmail": "Email is not filled out.",
-    "noPassword": "Password is not filled out.",
-    "invalidEmail": "Invalid email address."
+    "noEmail": "Email is not filled out",
+    "noPassword": "Password is not filled out",
+    "invalidEmail": "Invalid email address"
   },
   "SignUp": {
     "title": "Sign up",
@@ -17,8 +17,7 @@
     "alreadyHaveAccountSignInLink": "Sign in",
     "signUpBtn": "Sign Up",
     "checkingUsernameAvailability": "Checking username availability",
-    "usernameAvailable": "Username is available",
-    "usernameUnavailable": "Username is unavailable"
+    "usernameTaken": "Username {username} is already taken. Choose a different one"
   },
   "SignIn": {
     "title": "Sign in",
@@ -26,11 +25,11 @@
     "passwordLabel": "Password",
     "dontHaveAccount": "Don't have an account?",
     "dontHaveAccountSignUpLink": "Sign up",
-    "signInBtn": "Sign In"
+    "signInBtn": "Sign In",
+    "invalidCredentials": "Invalid username or password"
   },
   "Errors": {
-    "noInternet": "No internet connection.",
-    "generic": "Unknown error. Try again later.",
-    "usernameTaken": "Username {username} is already taken. Choose a different one."
+    "noInternet": "No internet connection",
+    "generic": "Unknown error. Try again later"
   }
 }

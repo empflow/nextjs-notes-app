@@ -183,7 +183,7 @@ export default function SignUpForm() {
             pxSize={24}
             className="fill-l-error dark:fill-d-error flex-shrink-0"
           />
-          {errsT("usernameTaken", { username: formData.email })}
+          {t("usernameTaken", { username: formData.email })}
         </div>
       );
     }
@@ -261,7 +261,7 @@ export default function SignUpForm() {
           </div>
           <div>
             {errs.usernameTakenErr && (
-              <Err msg={errsT("usernameTaken", { username: formData.email })} />
+              <Err msg={t("usernameTaken", { username: formData.email })} />
             )}
             {errs.unknownErr && <Err msg={errsT("generic")} />}
           </div>
