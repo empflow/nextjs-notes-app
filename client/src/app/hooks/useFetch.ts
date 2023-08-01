@@ -20,10 +20,11 @@ interface Opts {
   method: HttpMethod;
   body?: any;
   fetchImmediately?: boolean;
+  persistDataWhileFetching?: boolean;
 }
 export default function useFetch(
   url: string,
-  { method, body, fetchImmediately }: Opts
+  { method, body, fetchImmediately, persistDataWhileFetching }: Opts
 ) {
   const [err, setErr] = useState<AxiosError | null>(null);
   const [data, setData] = useState<null | unknown>(null);
@@ -34,6 +35,8 @@ export default function useFetch(
   }, []);
 
   async function fetch(customBody?: any) {
+    if (!persistDataWhileFetching) setData(null);
+    setErr(null);
     setLoading(true);
     try {
       const resp = await axios[method](url, customBody ?? body);
