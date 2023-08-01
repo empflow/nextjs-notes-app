@@ -124,14 +124,14 @@ export default function SignUpForm() {
   }
 
   function onEmailChange(e: ChangeEvent<HTMLInputElement>) {
-    setFormData((prev) => ({ ...prev, email: e.target.value }));
-    const { value } = e.target;
+    const { value: email } = e.target;
+    setFormData((prev) => ({ ...prev, email: email }));
 
     setErrs((prev) => ({
       ...prev,
       clientSide: {
         ...prev.clientSide,
-        invalidEmail: value.length ? !checkEmailValid(e.target.value) : false,
+        invalidEmail: isEmailInvalid(email),
       },
     }));
   }
@@ -259,6 +259,11 @@ export default function SignUpForm() {
       </form>
     </>
   );
+}
+
+function isEmailInvalid(email: string) {
+  if (email.length === 0) return false;
+  return !checkEmailValid(email);
 }
 
 function checkSignUpRespData(data: any) {
