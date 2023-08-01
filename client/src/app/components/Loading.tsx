@@ -1,5 +1,4 @@
 import { CSSProperties } from "react";
-import { Style } from "util";
 
 interface Props {
   className?: string;
