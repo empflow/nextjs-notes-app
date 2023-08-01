@@ -30,6 +30,7 @@ interface UsernameAvailResp {
 }
 
 export default function SignUpForm() {
+  const router = useRouter();
   const { resolvedTheme } = useTheme();
   const theme = getCaptchaTheme(resolvedTheme);
   const t = useTranslations("SignUp");
@@ -98,7 +99,16 @@ export default function SignUpForm() {
       default:
         unknownErr();
     }
-  }, [signUpRespData, signUpRespErr]);
+  }, [signUpRespErr]);
+
+  useEffect(() => {
+    if (!hasSubmitted) return;
+    if (!isSignUpRespDataValid(signUpRespData)) {
+      return unknownErr();
+    }
+    storeSignUpRespData(signUpRespData);
+    router.push("/notes");
+  }, [signUpRespData]);
 
   async function submitBtnOnClick() {
     setHasSubmitted(true);
@@ -266,10 +276,16 @@ function isEmailInvalid(email: string) {
   return !checkEmailValid(email);
 }
 
-function checkSignUpRespData(data: any) {
-  if (!data.accessToken || !data.refreshToken || !data.username) {
-    throw new Error("something is not present in the response");
+function isSignUpRespDataValid(data: any) {
+  if (
+    !isObject(data) ||
+    !data.accessToken ||
+    !data.refreshToken ||
+    !data.username
+  ) {
+    return false;
   }
+  return true;
 }
 
 function storeSignUpRespData(data: any) {
