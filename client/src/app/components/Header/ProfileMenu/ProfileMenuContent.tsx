@@ -6,26 +6,37 @@ import { useTranslations } from "next-intl";
 import useFetch from "@/app/hooks/useFetch";
 import ProfileMenuButton from "./ProfileMenuButton";
 import notify from "@/utils/notify";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
+import signOutClearData from "@/utils/signOutClearData";
 
 interface MenuProps {
   signedInAs: string;
 }
 
 export default function ProfileMenuContent({ signedInAs }: MenuProps) {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const t = useTranslations("Header");
   const errsT = useTranslations("Errors");
-  const { data, err, fetch, loading, setLoading } = useFetch("/auth/sign-out", {
+  const signOut = useFetch("/auth/sign-out", {
     method: "post",
   });
 
   function onSignOut(e: MouseEvent<HTMLButtonElement>) {
-    fetch();
+    const refreshToken = JSON.parse(Cookies.get("refreshToken") ?? "");
+    signOut.fetch({ refreshToken });
   }
 
   useEffect(() => {
     notify(errsT("generic"), "error");
-  }, [err]);
+  }, [signOut.err]);
+
+  useEffect(() => {
+    if (!signOut.data) return;
+    signOutClearData();
+    location.replace("/");
+  }, [signOut.data]);
 
   return (
     <div className="sm:relative">
