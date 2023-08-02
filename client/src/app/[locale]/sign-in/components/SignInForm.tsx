@@ -59,7 +59,7 @@ export default function SignInForm() {
     if (!hasSubmitted) return;
     checkResponseData(signInRespData);
     storeAuthRespData(signInRespData);
-    router.push("/notes");
+    location.replace("/notes");
   }, [signInRespData]);
 
   useEffect(() => {

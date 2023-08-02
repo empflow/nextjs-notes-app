@@ -2,7 +2,6 @@
 
 import BigBtn from "@/app/components/buttons/Big";
 import getCaptchaTheme from "@/utils/getCaptchaTheme";
-import Cookies from "js-cookie";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -108,7 +107,8 @@ export default function SignUpForm() {
       return unknownErr();
     }
     storeAuthRespData(signUpRespData);
-    router.push("/notes");
+
+    location.replace("/notes");
   }, [signUpRespData]);
 
   async function submitBtnOnClick() {
