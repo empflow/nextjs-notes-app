@@ -50,6 +50,7 @@ export default function SignInForm() {
   async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
     setHasSubmitted(true);
+    signInSetLoading(true);
 
     const captchaToken = await getCaptchaToken(captchaRef);
     signInFetch({ ...formData, captchaToken });
@@ -95,11 +96,11 @@ export default function SignInForm() {
         theme={captchaTheme}
       />
 
-      <form onSubmit={onSubmit} className="max-w-md flex flex-col gap-5">
+      <form onSubmit={onSubmit} className="flex max-w-md flex-col gap-5">
         <div className="flex flex-col gap-2">
           <label htmlFor="email">{t("emailLabel")}</label>
           <input
-            className="px-3 py-2 rounded blue-outline"
+            className="blue-outline rounded px-3 py-2"
             value={formData.email}
             onChange={onEmailChange}
             id="email"
@@ -114,7 +115,7 @@ export default function SignInForm() {
             value={formData.password}
             onChange={onPasswordChange}
             id="password"
-            className="px-3 py-2 rounded blue-outline"
+            className="blue-outline rounded px-3 py-2"
             type={"password"}
           />
         </div>
@@ -130,8 +131,8 @@ export default function SignInForm() {
           <div>
             <BigBtn className={`w-full ${signInLoading ? "cursor-wait" : ""}`}>
               {signInLoading ? (
-                <div className="w-full flex items-center justify-center">
-                  <div className="relative w-[1.5rem] h-[1.5rem]">
+                <div className="flex w-full items-center justify-center">
+                  <div className="relative h-[1.5rem] w-[1.5rem]">
                     <Loading
                       childStyle={{
                         borderColor: "white",
