@@ -22,9 +22,10 @@ interface Opts {
   fetchImmediately?: boolean;
   persistDataWhileFetching?: boolean;
 }
+
 export default function useFetch(
   url: string,
-  { method, body, fetchImmediately, persistDataWhileFetching }: Opts
+  { method, body, fetchImmediately, persistDataWhileFetching }: Opts,
 ) {
   const [err, setErr] = useState<AxiosError | null>(null);
   const [data, setData] = useState<null | unknown>(null);
