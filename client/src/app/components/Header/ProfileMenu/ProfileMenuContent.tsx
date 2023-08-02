@@ -1,9 +1,13 @@
 "use client";
 
 import ExpandIcon from "@/icons/Expand";
-import { useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import SignOutIcon from "@/icons/SignOut";
+import useFetch from "@/app/hooks/useFetch";
+import ProfileMenuButton from "./ProfileMenuButton";
+import { toast } from "react-toastify";
+import notify from "@/utils/notify";
 
 interface MenuProps {
   signedInAs: string;
@@ -12,7 +16,18 @@ interface MenuProps {
 export default function ProfileMenuContent({ signedInAs }: MenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const t = useTranslations("Header");
-  const btnsT = useTranslations("Header.Buttons");
+  const errsT = useTranslations("Errors");
+  const { data, err, fetch, loading, setLoading } = useFetch("/auth/sign-out", {
+    method: "post",
+  });
+
+  function onSignOut(e: MouseEvent<HTMLButtonElement>) {
+    fetch();
+  }
+
+  useEffect(() => {
+    notify(errsT("generic"), "error");
+  }, [err]);
 
   return (
     <div className="sm:relative">
@@ -40,13 +55,7 @@ export default function ProfileMenuContent({ signedInAs }: MenuProps) {
 
           {/* list of menu buttons */}
           <div className={`flex flex-col gap-1`}>
-            <button className="flex items-center gap-1 p-2 hover:bg-light-5xl-gray dark:hover:bg-dark-4xl-gray">
-              <SignOutIcon
-                pxSize={22}
-                className="fill-l-accent dark:fill-d-accent"
-              />
-              <div>{btnsT("signOut")}</div>
-            </button>
+            <ProfileMenuButton translationText="signOut" onClick={onSignOut} />
           </div>
         </div>
       </div>
