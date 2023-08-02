@@ -5,7 +5,12 @@
     "description": "this is my langing page"
   },
   "Header": {
-    "signedInAsUnknown": "Unknown"
+    "signedInAsUnknown": "Unknown",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "Buttons": {
+      "signOut": "Sign out"
+    }
   },
   "Form": {
     "noEmail": "Email is not filled out",
