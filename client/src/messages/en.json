@@ -4,6 +4,9 @@
     "subTitle": "hello dear visitor of my website",
     "description": "this is my langing page"
   },
+  "Header": {
+    "signedInAsUnknown": "Unknown"
+  },
   "Form": {
     "noEmail": "Email is not filled out",
     "noPassword": "Password is not filled out",
