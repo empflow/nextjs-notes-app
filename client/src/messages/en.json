@@ -39,6 +39,6 @@
   },
   "Errors": {
     "noInternet": "No internet connection",
-    "generic": "Unknown error. Try again later"
+    "generic": "Something went wrong. Try again later"
   }
 }
