@@ -1,23 +1,31 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ComputerIcon from "@/icons/Computer";
 import MoonIcon from "@/icons/Moon";
 import SunIcon from "@/icons/Sun";
 
 export default function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
+  const [isMounted, setIsMounted] = useState(false);
+  const switchRef = useRef<null | HTMLDivElement>(null);
+
+  useEffect(() => setIsMounted(true), []);
 
   const isSystem = theme === "system";
   const isLight = theme === "light";
   const isDark = theme === "dark";
 
+  if (!isMounted) {
+    return <div style={{ height: "38px" }}></div>;
+  }
+
   return (
-    <div className="flex rounded-full border border-gray p-[2px] dark:border-dark-xl-gray">
+    <div
+      ref={switchRef}
+      className="flex rounded-full border border-gray p-[2px] dark:border-dark-xl-gray"
+    >
       <div
         className={`${
           isLight ? "bg-light-3.5xl-gray " : ""
