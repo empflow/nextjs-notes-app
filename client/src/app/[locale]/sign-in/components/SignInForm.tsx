@@ -133,6 +133,7 @@ export default function SignInForm() {
                   <div className="relative w-[1.5rem] h-[1.5rem]">
                     <Loading
                       style={{
+                      childStyle={{
                         borderColor: "white",
                         borderTopColor: "transparent",
                       }}
