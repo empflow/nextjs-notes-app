@@ -17,6 +17,7 @@
     "alreadyHaveAccountSignInLink": "Sign in",
     "signUpBtn": "Sign Up",
     "checkingUsernameAvailability": "Checking username availability",
+    "usernameAvailable": "Username is available",
     "usernameTaken": "Username {username} is already taken. Choose a different one"
   },
   "SignIn": {

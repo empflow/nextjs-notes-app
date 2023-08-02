@@ -17,6 +17,7 @@
     "alreadyHaveAccountSignInLink": "Войти в аккаунт",
     "signUpBtn": "Создать аккаунт",
     "checkingUsernameAvailability": "Проверка доступности имени пользователя",
+    "usernameAvailable": "Имя пользователя доступно",
     "usernameTaken": "Имя пользователя {username} уже занято. Выберите другое"
   },
   "SignIn": {
