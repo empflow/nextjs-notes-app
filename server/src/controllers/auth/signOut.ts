@@ -10,5 +10,8 @@ export default async function signOut(req: Request, res: Response) {
   const deletedToken = await RefreshToken.findByIdAndDelete(tokenId);
   if (!deletedToken) throw new NotFoundErr("Token not found");
 
+  res.clearCookie("accessToken");
+  res.clearCookie("refreshToken");
+  res.clearCookie("username");
   res.status(200).json({ ok: true });
 }
