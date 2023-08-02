@@ -15,6 +15,7 @@ import getCaptchaToken from "@/utils/getCaptchaToken";
 import Err from "@/app/components/Err";
 import isObject from "@/utils/isObject";
 import Loading from "@/app/components/Loading";
+import storeAuthRespData from "@/utils/storeAuthRespData";
 
 export default function SignInForm() {
   const t = useTranslations("SignIn");
@@ -57,7 +58,7 @@ export default function SignInForm() {
   useEffect(() => {
     if (!hasSubmitted) return;
     checkResponseData(signInRespData);
-    storeResponseData(signInRespData);
+    storeAuthRespData(signInRespData);
     router.push("/notes");
   }, [signInRespData]);
 
@@ -132,7 +133,6 @@ export default function SignInForm() {
                 <div className="w-full flex items-center justify-center">
                   <div className="relative w-[1.5rem] h-[1.5rem]">
                     <Loading
-                      style={{
                       childStyle={{
                         borderColor: "white",
                         borderTopColor: "transparent",
@@ -166,16 +166,4 @@ function checkResponseData(data: any) {
     return false;
   }
   return true;
-}
-
-function storeResponseData(data: any) {
-  const daysIn15Mins = 0.010416;
-  const ninetyDays = 90;
-  const refreshToken = JSON.stringify(data.refreshToken);
-
-  Cookies.set("accessToken", data.accessToken, {
-    expires: daysIn15Mins,
-  });
-  Cookies.set("refreshToken", refreshToken, { expires: ninetyDays });
-  localStorage.setItem("username", data.username);
 }

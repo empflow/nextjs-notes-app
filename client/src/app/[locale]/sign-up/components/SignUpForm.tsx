@@ -24,6 +24,7 @@ import Loading from "@/app/components/Loading";
 import CheckmarkIcon from "@/icons/Checkmark";
 import ErrIcon from "@/icons/Err";
 import isObject from "@/utils/isObject";
+import storeAuthRespData from "@/utils/storeAuthRespData";
 
 interface UsernameAvailResp {
   ok: boolean;
@@ -106,7 +107,7 @@ export default function SignUpForm() {
     if (!isSignUpRespDataValid(signUpRespData)) {
       return unknownErr();
     }
-    storeSignUpRespData(signUpRespData);
+    storeAuthRespData(signUpRespData);
     router.push("/notes");
   }, [signUpRespData]);
 
@@ -284,15 +285,4 @@ function isSignUpRespDataValid(data: any) {
     return false;
   }
   return true;
-}
-
-function storeSignUpRespData(data: any) {
-  const daysIn15Mins = 0.010416;
-  const ninetyDays = 90;
-  const refreshToken = JSON.stringify(data.refreshToken);
-
-  Cookies.set("accessToken", data.accessToken, {
-    expires: daysIn15Mins,
-  });
-  Cookies.set("refreshToken", refreshToken, { expires: ninetyDays });
 }
