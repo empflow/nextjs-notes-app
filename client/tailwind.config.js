@@ -63,6 +63,7 @@ module.exports = {
         "light-3xl-gray": "rgb(215, 215, 215)",
         "light-3.5xl-gray": "rgb(223, 223, 223)",
         "light-4xl-gray": "rgb(230, 230, 230)",
+        "light-5xl-gray": "rgb(245, 245, 245)",
 
         "l-error": "#ff0000",
         "d-error": "#ff4e4e",
