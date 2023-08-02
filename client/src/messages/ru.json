@@ -17,8 +17,7 @@
     "alreadyHaveAccountSignInLink": "Войти в аккаунт",
     "signUpBtn": "Создать аккаунт",
     "checkingUsernameAvailability": "Проверка доступности имени пользователя",
-    "usernameAvailable": "Имя пользователя доступно",
-    "usernameUnavailable": "Имя пользователя не доступно"
+    "usernameTaken": "Имя пользователя {username} уже занято. Выберите другое"
   },
   "SignIn": {
     "title": "Войти в аккаунт",
@@ -31,7 +30,6 @@
   },
   "Errors": {
     "noInternet": "Нет интернет соединения",
-    "generic": "Неизвестная ошибка. Попробуйте позже",
-    "usernameTaken": "Имя пользователя {username} уже занято. Выберите другое"
+    "generic": "Неизвестная ошибка. Попробуйте позже"
   }
 }
