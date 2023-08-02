@@ -1,11 +1,11 @@
 import Link from "next/link";
 import Logo from "../Logo";
-import ProfileMenu from "./ProfileMenu";
+import ProfileMenu from "./ProfileMenu/ProfileMenu";
 
 export default function Header() {
   return (
-    <header className="px-global sm:px-global-sm py-3 sticky top-0 z-10 backdrop-blur-lg bg-l-header dark:bg-d-header border-b border-light-xl-gray dark:border-dark-3xl-gray">
-      <div className="flex max-w-global m-auto md justify-between items-center w-full">
+    <header className="sticky top-0 z-10 border-b border-light-xl-gray bg-l-header px-global py-3 backdrop-blur-lg dark:border-dark-3xl-gray dark:bg-d-header sm:px-global-sm">
+      <div className="md m-auto flex w-full max-w-global items-center justify-between">
         <div>
           <Link href="/">
             <Logo />
