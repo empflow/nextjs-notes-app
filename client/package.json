@@ -29,6 +29,8 @@
   "devDependencies": {
     "@types/js-cookie": "^3.0.3",
     "@types/react": "^18.2.16",
-    "@types/react-google-recaptcha": "^2.1.5"
+    "@types/react-google-recaptcha": "^2.1.5",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.4.1"
   }
 }
