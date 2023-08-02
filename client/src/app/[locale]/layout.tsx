@@ -2,7 +2,7 @@ import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import Main from "../components/Main";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import Providers from "../providers";
 import { notFound } from "next/navigation";
 import { useLocale } from "next-intl";

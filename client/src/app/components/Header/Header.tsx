@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Logo from "./Logo";
-import NameOrSignInButton from "./NameOrSignInButton";
+import Logo from "../Logo";
+import ProfileMenu from "./ProfileMenu";
 
 export default function Header() {
   return (
@@ -13,7 +13,7 @@ export default function Header() {
         </div>
 
         <div>
-          <NameOrSignInButton />
+          <ProfileMenu />
         </div>
       </div>
     </header>
