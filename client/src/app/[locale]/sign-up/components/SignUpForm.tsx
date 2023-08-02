@@ -158,9 +158,7 @@ export default function SignUpForm() {
     if (isUsernameAvailLoading) {
       return (
         <div className="flex gap-2 items-center">
-          <div className="relative w-[20px] h-[20px]">
-            <Loading className="basis-[20px] flex-shrink-0" />
-          </div>
+          <Loading />
           {t("checkingUsernameAvailability")}
         </div>
       );
@@ -247,7 +245,7 @@ export default function SignUpForm() {
                 <div className="w-full flex items-center justify-center">
                   <div className="relative w-[1.5rem] h-[1.5rem]">
                     <Loading
-                      style={{
+                      childStyle={{
                         borderColor: "white",
                         borderTopColor: "transparent",
                       }}
@@ -297,5 +295,4 @@ function storeSignUpRespData(data: any) {
     expires: daysIn15Mins,
   });
   Cookies.set("refreshToken", refreshToken, { expires: ninetyDays });
-  localStorage.setItem("username", data.username);
 }
