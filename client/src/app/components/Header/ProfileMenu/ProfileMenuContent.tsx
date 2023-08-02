@@ -3,10 +3,8 @@
 import ExpandIcon from "@/icons/Expand";
 import { MouseEvent, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import SignOutIcon from "@/icons/SignOut";
 import useFetch from "@/app/hooks/useFetch";
 import ProfileMenuButton from "./ProfileMenuButton";
-import { toast } from "react-toastify";
 import notify from "@/utils/notify";
 
 interface MenuProps {
