@@ -1,7 +1,7 @@
 "use client";
 
 import ExpandIcon from "@/icons/Expand";
-import { MouseEvent, useEffect, useState } from "react";
+import { MouseEvent, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import useFetch from "@/app/hooks/useFetch";
 import ProfileMenuButton from "./ProfileMenuButton";
@@ -15,7 +15,8 @@ interface MenuProps {
 }
 
 export default function ProfileMenuContent({ signedInAs }: MenuProps) {
-  const router = useRouter();
+  const menuRef = useRef<HTMLDivElement>(null);
+  const avatarRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const t = useTranslations("Header");
   const errsT = useTranslations("Errors");
@@ -26,6 +27,25 @@ export default function ProfileMenuContent({ signedInAs }: MenuProps) {
   function onSignOut(e: MouseEvent<HTMLButtonElement>) {
     const refreshToken = JSON.parse(Cookies.get("refreshToken") ?? "");
     signOut.fetch({ refreshToken });
+  }
+
+  useEffect(() => {
+    document.addEventListener("click", onClickOutside);
+    return () => document.removeEventListener("click", onClickOutside);
+  }, []);
+
+  function onClickOutside(e: globalThis.MouseEvent) {
+    const { current: menuElem } = menuRef;
+    const { current: avatarElem } = avatarRef;
+    if (!(e.target instanceof Node)) return;
+
+    const isClickInsideAvatar = avatarElem?.contains(e.target);
+    if (isClickInsideAvatar) return;
+
+    const isClickOutsideMenu = !menuElem?.contains(e.target);
+    if (isClickOutsideMenu) {
+      setIsOpen(false);
+    }
   }
 
   useEffect(() => {
@@ -40,7 +60,7 @@ export default function ProfileMenuContent({ signedInAs }: MenuProps) {
   }, [signOut.data]);
 
   return (
-    <div className="sm:relative">
+    <div ref={avatarRef} className="sm:relative">
       <div
         onClick={() => setIsOpen((prev) => !prev)}
         className="flex items-center gap-1 rounded p-1 hover:cursor-pointer hover:bg-light-5xl-gray dark:hover:bg-dark-4xl-gray"
@@ -56,6 +76,7 @@ export default function ProfileMenuContent({ signedInAs }: MenuProps) {
 
       {/* menu */}
       <div
+        ref={menuRef}
         className={`absolute left-0 right-0 top-[70px] bg-transparent px-global dark:shadow-none  sm:left-auto sm:top-[56px] sm:px-global-sm sm:w-[300px]${
           !isOpen ? " hidden" : ""
         }`}
