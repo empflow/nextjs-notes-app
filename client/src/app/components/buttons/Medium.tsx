@@ -1,4 +1,4 @@
-import { ButtonProps } from "../../utils/componentsProps";
+import { ButtonProps } from "@/utils/componentsProps";
 
 const MediumBtn: React.FC<ButtonProps> = ({
   children,
@@ -8,7 +8,7 @@ const MediumBtn: React.FC<ButtonProps> = ({
   return (
     <button
       {...restProps}
-      className={`py-[0.4rem] px-5 text-[0.95rem] bg-blue hover:bg-blue-700 duration-200 text-white rounded ${className}`}
+      className={`hover:bg-blue-700 rounded bg-blue px-5 py-[0.4rem] text-[0.95rem] text-white duration-200 ${className}`}
     >
       {children}
     </button>
