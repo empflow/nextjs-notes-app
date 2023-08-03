@@ -29,6 +29,7 @@ export default function ProfileMenuContent({ signedInAs }: MenuProps) {
   }
 
   useEffect(() => {
+    if (!signOut.err) return;
     notify(errsT("generic"), "error");
   }, [signOut.err]);
 
