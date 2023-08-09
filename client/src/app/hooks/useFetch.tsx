@@ -1,6 +1,11 @@
 import axios from "@/config/axios";
 import { AxiosError, Method } from "axios";
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import HttpCodes from "@/constants/httpCodes";
+import notify from "@/utils/notify";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 type HttpMethod =
   | "get"
@@ -10,11 +15,6 @@ type HttpMethod =
   | "delete"
   | "head"
   | "options";
-
-// fn to trigger req
-// err state (typeof Error)
-// response data
-// status code
 
 interface Opts {
   method: HttpMethod;
@@ -30,6 +30,7 @@ export default function useFetch(
   const [err, setErr] = useState<AxiosError | null>(null);
   const [data, setData] = useState<null | unknown>(null);
   const [loading, setLoading] = useState(false);
+  const errsT = useTranslations("Errors");
 
   useEffect(() => {
     if (fetchImmediately) fetch();
@@ -43,9 +44,34 @@ export default function useFetch(
       const resp = await axios[method](url, customBody ?? body);
       setData(resp.data);
     } catch (err) {
-      if (err instanceof AxiosError) {
-        setErr(err);
+      if (!(err instanceof AxiosError)) return;
+      if (!navigator.onLine) {
+        return notify(errsT("noInternet"));
       }
+      if (!err.response) return;
+
+      if (err.response.status === HttpCodes.Unauthorized) {
+        const refreshToken = Cookies.get("refreshToken");
+        const notSignedInMsg = (
+          <>
+            {errsT("notSignedIn")}{" "}
+            <Link href="/sign-in">{errsT("notSignedInLink")}</Link>
+          </>
+        );
+
+        if (!refreshToken) notify(errsT(notSignedInMsg));
+
+        try {
+          const resp = await axios.post("/auth/get-new-tokens");
+          const data = resp;
+        } catch (err) {
+          notify(<p>You are not signed in</p>);
+        }
+
+        if (!refreshToken) setErr(err);
+      }
+
+      setErr(err);
     } finally {
       setLoading(false);
     }
