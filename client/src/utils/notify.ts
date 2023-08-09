@@ -1,10 +1,13 @@
-import { CSSProperties } from "react";
+import React, { CSSProperties } from "react";
 import { toast, ToastOptions } from "react-toastify";
 
 type Theme = "dark" | "light";
 type NotificationType = "info" | "error" | "warning" | "success";
 
-export default function notify(content: string, type?: NotificationType) {
+export default function notify(
+  content: React.ReactNode | string,
+  type?: NotificationType,
+) {
   const theme = getTheme();
 
   const className = "dark:bg-d-secondary bg-l-secondary";
