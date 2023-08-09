@@ -8,7 +8,17 @@ export default async function checkCaptchaToken(
   res: Response,
   next: NextFunction
 ) {
-  const { captchaToken } = req.body;
+  const { captchaToken, captchaBypassToken } = req.body;
+  if (captchaBypassToken) {
+    const actualBypassToken = getEnvVar("RECAPTCHA_BYPASS_TOKEN");
+
+    if (captchaBypassToken !== actualBypassToken) {
+      throw new BadRequestErr("Invalid captcha bypass token");
+    }
+
+    return next();
+  }
+
   if (!captchaToken) throw new BadRequestErr("No captcha token provided");
 
   const secret = getEnvVar("RECAPTCHA_SECRET_KEY");
