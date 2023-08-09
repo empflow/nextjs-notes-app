@@ -4,10 +4,13 @@ import { useTranslations } from "next-intl";
 
 interface Props {
   onClick: (e: MouseEvent<HTMLButtonElement>) => void;
-  translationText: string;
+  translationName: string;
 }
 
-export default function ProfileMenuButton({ onClick, translationText }: Props) {
+export default function ProfileMenuDropdownButton({
+  onClick,
+  translationName,
+}: Props) {
   const btnsT = useTranslations("Header.Buttons");
 
   return (
@@ -16,7 +19,7 @@ export default function ProfileMenuButton({ onClick, translationText }: Props) {
       className="flex items-center gap-1 p-2 hover:bg-light-5xl-gray dark:hover:bg-dark-4xl-gray"
     >
       <SignOutIcon pxSize={22} className="fill-l-accent dark:fill-d-accent" />
-      <div>{btnsT(translationText)}</div>
+      <div>{btnsT(translationName)}</div>
     </button>
   );
 }
