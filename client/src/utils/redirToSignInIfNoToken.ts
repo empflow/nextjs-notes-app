@@ -7,6 +7,6 @@ export default function redirToSignInIfNoToken() {
   const refreshToken = cookieStore.get("refreshToken");
 
   if (!accessToken || !refreshToken) {
-    return redirect("/auth/sign-in");
+    return redirect("/sign-in");
   }
 }
