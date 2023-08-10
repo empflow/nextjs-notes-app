@@ -1,10 +1,7 @@
-import ApiErr, { ErrCodes } from "./ApiErr";
-
+import ApiErr, { HttpCodes } from "./ApiErr";
 
 export default class BadRequestErr extends ApiErr {
-  constructor (
-    message: string,
-  ) {
-    super(message, ErrCodes.BadRequest);
+  constructor(message: string) {
+    super(message, HttpCodes.BadRequest);
   }
 }

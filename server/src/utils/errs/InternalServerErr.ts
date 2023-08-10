@@ -1,8 +1,8 @@
 import ApiErr from "./ApiErr";
-import { ErrCodes } from "./ApiErr";
+import { HttpCodes } from "./ApiErr";
 
 export default class InternalServerErr extends ApiErr {
   constructor(message: string) {
-    super(message, ErrCodes.InternalServer);
+    super(message, HttpCodes.InternalServer);
   }
 }

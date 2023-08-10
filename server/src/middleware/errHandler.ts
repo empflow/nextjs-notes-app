@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import ApiErr, { ErrCodes } from "../utils/errs/ApiErr";
+import ApiErr, { HttpCodes } from "../utils/errs/ApiErr";
 import { TApiErrs } from "../utils/errs";
 import { MongoError } from "mongodb";
 import isErrCausedByUser from "../utils/isErrCausedByUser";
@@ -26,7 +26,7 @@ export default function errHandler(
   if (err.name === "ApiErr") {
     code = (err as ApiErr).code;
   } else if (isErrCausedByUser(err)) {
-    code = ErrCodes.BadRequest;
+    code = HttpCodes.BadRequest;
   } else {
     console.error(err);
     errObj.message = "Internal server error";
