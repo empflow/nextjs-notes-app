@@ -1,8 +1,9 @@
+import ErrCode from "../errCodes";
 import ApiErr from "./ApiErr";
-import { HttpCodes } from "./ApiErr";
+import { HttpCode } from "./ApiErr";
 
 export default class InternalServerErr extends ApiErr {
-  constructor(message: string) {
-    super(message, HttpCodes.InternalServer);
+  constructor(message: string, errCode?: ErrCode) {
+    super(message, HttpCode.InternalServer, errCode);
   }
 }
