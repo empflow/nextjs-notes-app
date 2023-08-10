@@ -1,0 +1,6 @@
+const enum ErrCode {
+  ACCESS_TOKEN_EXPIRED = "ACCESS_TOKEN_EXPIRED",
+  INVALID_CREDENTIALS = "INVALID_CREDENTIALS",
+}
+
+export default ErrCode;
