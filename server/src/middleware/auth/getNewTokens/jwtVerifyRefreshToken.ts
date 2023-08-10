@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import verifyJwt from "../../../utils/verifyJwt";
+import verifyRefreshTokenJwt from "../../../utils/verifyJwt";
 
 export default async function getNewTokensJwtVerifyRefreshToken(
   req: Request,
@@ -10,10 +10,14 @@ export default async function getNewTokensJwtVerifyRefreshToken(
     refreshToken: { token: tokenPlainText },
   } = req.body;
 
-  const payload = verifyJwt(tokenPlainText, "JWT_REFRESH_TOKEN_SECRET", {
-    errMsg: "Invalid jwt refresh token",
-    jwtExpiredErrMsg: "Jwt refresh token expired",
-  });
+  const payload = verifyRefreshTokenJwt(
+    tokenPlainText,
+    "JWT_REFRESH_TOKEN_SECRET",
+    {
+      errMsg: "Invalid jwt refresh token",
+      jwtExpiredErrMsg: "Jwt refresh token expired",
+    }
+  );
 
   res.locals.refreshTokenPayload = payload;
 
