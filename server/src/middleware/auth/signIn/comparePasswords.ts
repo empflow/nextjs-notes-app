@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from "express";
+import ErrCode from "../../../utils/errCodes";
 import { UnauthorizedErr } from "../../../utils/errs";
 
 export default async function signInComparePasswords(
@@ -11,7 +12,7 @@ export default async function signInComparePasswords(
 
   const doPasswordsMatch = await user.doPasswordsMatch(password);
   if (!doPasswordsMatch) {
-    throw new UnauthorizedErr("Wrong password");
+    throw new UnauthorizedErr("Wrong password", ErrCode.INVALID_CREDENTIALS);
   }
 
   next();
