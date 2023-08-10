@@ -1,4 +1,6 @@
-export enum HttpCodes {
+import ErrCode from "../errCodes";
+
+export enum HttpCode {
   BadRequest = 400,
   Unauthorized = 401,
   Forbidden = 403,
@@ -8,8 +10,11 @@ export enum HttpCodes {
 }
 
 export default class ApiErr extends Error {
-  protected constructor(message: string, public readonly code: HttpCodes) {
+  protected constructor(
+    message: string,
+    public readonly httpCode: HttpCode,
+    public errCode?: ErrCode
+  ) {
     super(message);
-    this.name = "ApiErr";
   }
 }
