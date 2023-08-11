@@ -27,8 +27,8 @@ export default function SignInForm() {
   const captchaTheme = getCaptchaTheme(resolvedTheme);
   const router = useRouter();
   const [formData, setFormData] = useState({
-    email: `johndoe@example.com`,
-    password: "sldfjsldfkj435$$",
+    email: `john@example.adt`,
+    password: "os7aYP6cAMcTReo0#",
   });
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const captchaRef = useRef<ReCAPTCHA>(null);
