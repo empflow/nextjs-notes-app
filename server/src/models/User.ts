@@ -66,7 +66,7 @@ UserSchema.methods.getRefreshToken =
     const secret = getEnvVar("JWT_REFRESH_TOKEN_SECRET");
     const tokenPayload: RefreshTokenPayload = { userId: this._id };
     const expiresIn =
-      nodeEnv === "dev" ? "20s" : getEnvVar("JWT_REFRESH_TOKEN_EXPIRES_IN");
+      nodeEnv === "dev" ? "60s" : getEnvVar("JWT_REFRESH_TOKEN_EXPIRES_IN");
     const tokenPlainText = jwt.sign(tokenPayload, secret, { expiresIn });
     const tokenHash = await bcrypt.hash(tokenPlainText, 10);
     const createdAt = Date.now();
