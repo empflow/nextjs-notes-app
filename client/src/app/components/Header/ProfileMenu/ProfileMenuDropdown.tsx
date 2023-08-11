@@ -1,4 +1,4 @@
-import useFetch from "@/app/hooks/useFetch";
+import useFetch from "@/app/hooks/useFetch/useFetch";
 import notify from "@/utils/notify";
 import signOutClearData from "@/utils/signOutClearData";
 import throwIfValueNullOrUndefined from "@/utils/throwIfValueNullOrUndefined";

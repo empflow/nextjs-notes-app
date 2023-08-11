@@ -10,7 +10,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { useTheme } from "next-themes";
 import getCaptchaTheme from "@/utils/getCaptchaTheme";
 import { useTranslations } from "next-intl";
-import useFetch from "@/app/hooks/useFetch";
+import useFetch from "@/app/hooks/useFetch/useFetch";
 import getCaptchaToken from "@/utils/getCaptchaToken";
 import Err from "@/app/components/Err";
 import isObject from "@/utils/isObject";

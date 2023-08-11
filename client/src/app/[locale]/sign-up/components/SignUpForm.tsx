@@ -15,7 +15,7 @@ import {
 } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useTranslations } from "next-intl";
-import useFetch from "@/app/hooks/useFetch";
+import useFetch from "@/app/hooks/useFetch/useFetch";
 import Err from "@/app/components/Err";
 import getCaptchaToken from "@/utils/getCaptchaToken";
 import checkEmailValid from "@/utils/checkEmailValid";
@@ -106,7 +106,7 @@ export default function SignUpForm() {
     if (!isSignUpRespDataValid(signUpRespData)) {
       return unknownErr();
     }
-    storeAuthRespData(signUpRespData);
+    storeAuthRespData(signUpRespData, errsT);
 
     location.replace("/notes");
   }, [signUpRespData]);
@@ -158,7 +158,7 @@ export default function SignUpForm() {
   const usernameAvailElem = useMemo(() => {
     if (isUsernameAvailLoading) {
       return (
-        <div className="flex gap-2 items-center">
+        <div className="flex items-center gap-2">
           <Loading />
           {t("checkingUsernameAvailability")}
         </div>
@@ -166,9 +166,9 @@ export default function SignUpForm() {
     } else if (isObject(isUsernameAvailRespData)) {
       if ((isUsernameAvailRespData as UsernameAvailResp).ok) {
         return (
-          <div className="flex gap-2 items-center">
+          <div className="flex items-center gap-2">
             <CheckmarkIcon
-              className="fill-l-success dark:fill-d-success flex-shrink-0"
+              className="flex-shrink-0 fill-l-success dark:fill-d-success"
               pxSize={24}
             />
             {t("usernameAvailable")}
@@ -177,10 +177,10 @@ export default function SignUpForm() {
       } else unknownErr();
     } else if (isUsernameAvailErr?.response?.status === 409) {
       return (
-        <div className="flex gap-2 items-center">
+        <div className="flex items-center gap-2">
           <ErrIcon
             pxSize={24}
-            className="fill-l-error dark:fill-d-error flex-shrink-0"
+            className="flex-shrink-0 fill-l-error dark:fill-d-error"
           />
           {t("usernameTaken", { username: formData.email })}
         </div>
@@ -196,11 +196,11 @@ export default function SignUpForm() {
         ref={captchaRef}
         theme={theme}
       />
-      <form onSubmit={onFormSubmit} className="max-w-md flex flex-col gap-5">
+      <form onSubmit={onFormSubmit} className="flex max-w-md flex-col gap-5">
         <div className="flex flex-col gap-2">
           <label htmlFor="email">{t("emailLabel")}</label>
           <input
-            className="px-3 py-2 rounded blue-outline"
+            className="blue-outline rounded px-3 py-2"
             value={formData.email}
             onChange={onEmailChange}
             id="email"
@@ -221,7 +221,7 @@ export default function SignUpForm() {
             value={formData.password}
             onChange={onPasswordChange}
             id="password"
-            className="px-3 py-2 rounded blue-outline"
+            className="blue-outline rounded px-3 py-2"
             type={"password"}
             required
           />
@@ -243,8 +243,8 @@ export default function SignUpForm() {
               onClick={submitBtnOnClick}
             >
               {signUpLoading ? (
-                <div className="w-full flex items-center justify-center">
-                  <div className="relative w-[1.5rem] h-[1.5rem]">
+                <div className="flex w-full items-center justify-center">
+                  <div className="relative h-[1.5rem] w-[1.5rem]">
                     <Loading
                       childStyle={{
                         borderColor: "white",
