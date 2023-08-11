@@ -1,6 +1,6 @@
 import useFetch from "@/app/hooks/useFetch/useFetch";
 import notify from "@/utils/notify";
-import signOutClearData from "@/utils/signOutClearData";
+import clearAuthData from "@/utils/clearAuthData";
 import throwIfValueNullOrUndefined from "@/utils/throwIfValueNullOrUndefined";
 import Cookies from "js-cookie";
 import { useTranslations } from "next-intl";
@@ -33,7 +33,7 @@ const ProfileMenuDropdown = forwardRef<HTMLDivElement>((props, ref) => {
 
   useEffect(() => {
     if (!signOut.data) return;
-    signOutClearData();
+    clearAuthData();
     location.replace("/");
   }, [signOut.data]);
 
