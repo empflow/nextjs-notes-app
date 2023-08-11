@@ -16,6 +16,7 @@ import Err from "@/app/components/Err";
 import isObject from "@/utils/isObject";
 import Loading from "@/app/components/Loading";
 import storeAuthRespData from "@/utils/storeAuthRespData";
+import isInDevMode from "@/utils/isInDevMode";
 
 export default function SignInForm() {
   const t = useTranslations("SignIn");
@@ -52,6 +53,11 @@ export default function SignInForm() {
     setHasSubmitted(true);
     signInSetLoading(true);
 
+    if (isInDevMode()) {
+      const captchaBypassToken = process.env.NEXT_PUBLIC_CAPTCHA_BYPASS_TOKEN;
+      return await signInFetch({ ...formData, captchaBypassToken });
+    }
+
     const captchaToken = await getCaptchaToken(captchaRef);
     signInFetch({ ...formData, captchaToken });
   }
@@ -59,7 +65,7 @@ export default function SignInForm() {
   useEffect(() => {
     if (!hasSubmitted) return;
     checkResponseData(signInRespData);
-    storeAuthRespData(signInRespData);
+    storeAuthRespData(signInRespData, errsT);
     location.replace("/notes");
   }, [signInRespData]);
 

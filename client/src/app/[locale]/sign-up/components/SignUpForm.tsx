@@ -24,6 +24,7 @@ import CheckmarkIcon from "@/icons/Checkmark";
 import ErrIcon from "@/icons/Err";
 import isObject from "@/utils/isObject";
 import storeAuthRespData from "@/utils/storeAuthRespData";
+import isInDevMode from "@/utils/isInDevMode";
 
 interface UsernameAvailResp {
   ok: boolean;
@@ -123,6 +124,11 @@ export default function SignUpForm() {
       }));
     setErrs(errsInitState);
     signUpSetLoading(true);
+
+    if (isInDevMode()) {
+      const captchaBypassToken = process.env.CAPTCHA_BYPASS_TOKEN;
+      return await signUpFetch({ ...formData, captchaBypassToken });
+    }
     const captchaToken = await getCaptchaToken(captchaRef);
     await signUpFetch({ ...formData, captchaToken });
   }
