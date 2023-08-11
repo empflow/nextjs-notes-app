@@ -81,6 +81,13 @@ export default function useFetch(
         if (err) return notify(err.msg);
 
         storeGetNewTokensRespData(data);
+
+        try {
+          const resp = await axios[method](url, customBody ?? body);
+          setData(resp.data);
+        } catch (err) {
+          notify(errsT("generic"));
+        }
       }
     }
 
