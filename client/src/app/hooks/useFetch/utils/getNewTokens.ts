@@ -1,4 +1,5 @@
 import notify from "@/utils/notify";
+import clearAuthData from "@/utils/clearAuthData";
 import { TTranslations } from "@/utils/types";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -18,12 +19,18 @@ export default async function getNewTokens(
   translations: TTranslations,
   notSignedInMsg: React.ReactNode,
 ): Promise<TGetNewTokensReturnValue> {
-  const refreshToken = JSON.parse(Cookies.get("refreshToken") ?? "");
-  const isOnline = navigator.onLine;
-
   const genericErr: TGetNewTokensReturnValue = {
     err: { msg: translations("generic") },
   };
+  const notSignedInErr: TGetNewTokensReturnValue = {
+    err: { msg: notSignedInMsg },
+  };
+
+  const refreshTokenSerialized = Cookies.get("refreshToken");
+  if (!refreshTokenSerialized) return notSignedInErr;
+
+  const refreshToken = JSON.parse(refreshTokenSerialized);
+  const isOnline = navigator.onLine;
 
   if (!isOnline) return { err: { msg: translations("noInternet") } };
 
@@ -36,7 +43,10 @@ export default async function getNewTokens(
     if (isErrUnknown(err)) return genericErr;
 
     const { data } = (err as any).response;
-    if (hasRefreshTokenExpired(data)) return { err: { msg: notSignedInMsg } };
+    if (hasRefreshTokenExpired(data)) {
+      clearAuthData();
+      return { err: { msg: notSignedInMsg } };
+    }
     return genericErr;
   }
 }
