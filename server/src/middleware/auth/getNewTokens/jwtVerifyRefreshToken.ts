@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import verifyRefreshTokenJwt from "../../../utils/verifyJwt";
+import verifyRefreshTokenJwt from "../../../utils/verifyRefreshTokenJwt";
 
 export default async function getNewTokensJwtVerifyRefreshToken(
   req: Request,
