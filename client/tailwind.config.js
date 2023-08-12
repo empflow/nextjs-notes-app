@@ -47,6 +47,11 @@ module.exports = {
         "dark-blue": "rgb(8, 65, 120)",
         "blue": "rgb(8, 82, 155)",
         "light-blue": "rgb(12, 100, 185)",
+        "light-xl-blue": "#0976DF",
+        "light-2xl-blue": "#2192FF",
+        "light-3xl-blue": "#4BA7FF",
+        "light-4xl-blue": "#73BAFF",
+        "light-5xl-blue": "#9ECFFF",
 
         "dark-4xl-gray": "rgb(55, 55, 55)",
         "dark-3.5xl-gray": "rgb(62, 62, 62)",
