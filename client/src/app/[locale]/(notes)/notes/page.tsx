@@ -17,7 +17,7 @@ export default function Notes() {
   }, []);
 
   return (
-    <div className="flex">
+    <div className="flex min-h-[100dvh]">
       <LeftSide />
       <RightSide />
     </div>
