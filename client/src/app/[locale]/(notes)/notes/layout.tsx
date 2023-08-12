@@ -5,5 +5,5 @@ interface NotesLayoutContext {
 }
 
 export default async function NotesLayout({ children }: NotesLayoutContext) {
-  return <main>{children}</main>;
+  return <div>{children}</div>;
 }

@@ -1,3 +1,3 @@
 export default function Editor() {
-  return <div></div>;
+  return <main></main>;
 }
