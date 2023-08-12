@@ -1,15 +1,9 @@
 import "../globals.css";
 import "react-toastify/dist/ReactToastify.css";
-import { NextIntlClientProvider } from "next-intl";
-import Main from "../components/Main";
-import Footer from "../components/Footer";
-import Header from "../components/Header/Header";
-import Providers from "../providers";
+import { NextIntlClientProvider, useLocale } from "next-intl";
 import { notFound } from "next/navigation";
-import { useLocale } from "next-intl";
-import { ToastContainer, toast } from "react-toastify";
-import { useTheme } from "next-themes";
-import NotificationCloseButton from "../components/NotificationCloseButton";
+import { ToastContainer } from "react-toastify";
+import Providers from "../providers";
 
 export const metadata = {
   title: "Notes",
@@ -28,6 +22,7 @@ export default async function RootLayout({
   params,
 }: RootLayoutContext) {
   const locale = useLocale();
+  console.log(locale);
 
   if (params.locale !== locale) {
     notFound();
@@ -44,11 +39,7 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <body className="flex min-h-screen flex-col">
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <Providers>
-            <Header />
-            <Main>{children}</Main>
-            <Footer />
-          </Providers>
+          <Providers>{children}</Providers>
           <ToastContainer hideProgressBar autoClose={3000} />
         </NextIntlClientProvider>
       </body>
