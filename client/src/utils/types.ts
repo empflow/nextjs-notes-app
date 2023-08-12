@@ -5,3 +5,13 @@ export type TTranslations = (
   values?: TranslationValues,
   formats?: Partial<Formats>,
 ) => string;
+
+export interface TNote {
+  title: string;
+  content: string;
+  isInTrash: boolean;
+  tags: string[];
+  _id: string;
+  createdAt: string;
+  updatedAt: string;
+}
