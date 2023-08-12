@@ -1,7 +1,9 @@
+import Sidebar from "./Sidebar/Sidebar";
+
 export default function LeftSide() {
   return (
     <div>
-      <div></div>
+      <Sidebar />
     </div>
   );
 }
