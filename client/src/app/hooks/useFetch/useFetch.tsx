@@ -41,7 +41,7 @@ export default function useFetch<T = unknown>(
 ) {
   withAuth = withAuth ?? true;
   const [err, setErr] = useState<AxiosError | null>(null);
-  const [data, setData] = useState<null | unknown>(null);
+  const [data, setData] = useState<null | T>(null);
   const [loading, setLoading] = useState(false);
   const errsT = useTranslations("Errors");
   const notSignedInMsg = (
@@ -78,7 +78,6 @@ export default function useFetch<T = unknown>(
       const resp = await axios[method](url, customBody ?? body);
       setData(resp.data);
     } catch (err) {
-      console.log(err);
       if (isErrUnknown(err)) return notify(errsT("generic"));
 
       const { data } = (err as any).response;
@@ -100,7 +99,7 @@ export default function useFetch<T = unknown>(
     setLoading(false);
   }
 
-  return { data, err, loading, setLoading, fetch };
+  return { data, setData, err, loading, setLoading, fetch };
 }
 
 function getAuthHeader() {
