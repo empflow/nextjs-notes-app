@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { FilterQuery } from "mongoose";
 import Note, { INote } from "../../models/Note";
 import Tag, { ITag } from "../../models/Tag";
 import { NotFoundErr } from "../../utils/errs";
