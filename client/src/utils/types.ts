@@ -15,3 +15,9 @@ export interface TNote {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface TTag {
+  name: string;
+  color: string;
+  owner: string;
+}
