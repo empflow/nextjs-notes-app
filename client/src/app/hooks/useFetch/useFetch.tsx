@@ -29,7 +29,13 @@ interface Opts {
   withAuth?: boolean;
 }
 
-export default function useFetch(
+/**
+ *
+ * @param url request url
+ * @param options fetchImmediately defaults to false
+ * @returns
+ */
+export default function useFetch<T = unknown>(
   url: string,
   { method, body, fetchImmediately, persistDataWhileFetching, withAuth }: Opts,
 ) {
