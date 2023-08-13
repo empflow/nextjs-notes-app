@@ -1,3 +1,9 @@
+import ThemeSwitcher from "@/app/components/ThemeSwitch";
+
 export default function Header() {
-  return <header></header>;
+  return (
+    <header>
+      <ThemeSwitcher />
+    </header>
+  );
 }
