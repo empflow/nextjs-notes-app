@@ -22,7 +22,6 @@ export default async function RootLayout({
   params,
 }: RootLayoutContext) {
   const locale = useLocale();
-  console.log(locale);
 
   if (params.locale !== locale) {
     notFound();
