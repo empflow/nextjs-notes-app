@@ -37,6 +37,10 @@
     "signInBtn": "Sign In",
     "invalidCredentials": "Invalid username or password"
   },
+  "Notes": {
+    "allNotes": "All notes",
+    "filter": "Filter"
+  },
   "Errors": {
     "noInternet": "Please check your internet connection",
     "generic": "Something went wrong. Try again later",
