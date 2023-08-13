@@ -1,5 +1,6 @@
 import express from "express";
 import addTag from "../controllers/tags/addTag";
+import deleteTag from "../controllers/tags/deleteTag";
 import updateTag from "../controllers/tags/updateTag";
 import addTagCheckData from "../middleware/tags/addTag/checkData";
 import addTagValidateColor from "../middleware/tags/addTag/validateColor";
@@ -11,6 +12,7 @@ router.post("/add", addTagCheckData, addTagValidateColor, addTag);
 
 router
   .route("/:tagId")
-  .patch(updateTagCheckTagId, updateTagValidateColor, updateTag);
+  .patch(updateTagCheckTagId, updateTagValidateColor, updateTag)
+  .delete(deleteTag);
 
 export default router;
