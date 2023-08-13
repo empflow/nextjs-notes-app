@@ -1,6 +1,6 @@
 import mongoose, { Schema, Types } from "mongoose";
 
-interface ITag {
+export interface ITag {
   name: string;
   color: string;
   owner: Types.ObjectId;
