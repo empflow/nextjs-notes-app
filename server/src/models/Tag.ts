@@ -1,8 +1,9 @@
-import mongoose from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
 
 interface ITag {
   name: string;
   color: string;
+  owner: Types.ObjectId;
 }
 
 const TagSchema = new mongoose.Schema<ITag>({
@@ -13,6 +14,11 @@ const TagSchema = new mongoose.Schema<ITag>({
   color: {
     required: true,
     type: String,
+  },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
   },
 });
 
