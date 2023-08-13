@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { BadRequestErr } from "../../../utils/errs";
+import isValidHexColor from "../../../utils/isValidHexColor";
 
 export default async function addTagValidateColor(
   req: Request,
@@ -7,10 +8,8 @@ export default async function addTagValidateColor(
   next: NextFunction
 ) {
   const { color } = req.body;
-  const hexColorRegex = /^#[0-9A-F]{6}$/i;
 
-  const isValidHexColor = hexColorRegex.test(color);
-  if (!isValidHexColor) {
+  if (!isValidHexColor(color)) {
     throw new BadRequestErr("Invalid hex color");
   }
 
