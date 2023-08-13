@@ -2,6 +2,7 @@ import express from "express";
 import addTag from "../controllers/tags/addTag";
 import assignTagToNote from "../controllers/tags/assignTagToNote";
 import deleteTag from "../controllers/tags/deleteTag";
+import getTags from "../controllers/tags/getTags";
 import updateTag from "../controllers/tags/updateTag";
 import addTagCheckData from "../middleware/tags/addTag/checkData";
 import addTagValidateColor from "../middleware/tags/addTag/validateColor";
@@ -18,6 +19,8 @@ router.post(
   assignTagToNoteCheckTag,
   assignTagToNote
 );
+
+router.route("/").get(getTags);
 
 router
   .route("/:tagId")
