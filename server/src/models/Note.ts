@@ -5,7 +5,7 @@ export interface INote extends Document {
   content: string;
   owner: Types.ObjectId | string;
   isInTrash: boolean;
-  tags: string[];
+  tags: Types.ObjectId[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -30,7 +30,7 @@ const NoteSchema = new Schema(
       default: false,
     },
     tags: {
-      type: [String],
+      type: [{ type: Schema.Types.ObjectId, ref: "Tag" }],
       default: [],
     },
   },
