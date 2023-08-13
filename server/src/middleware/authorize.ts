@@ -25,7 +25,7 @@ function validateAndGetToken(req: Request) {
 }
 
 function validateAndGetPayload(token: string) {
-  const secret = getEnvVar("JWT_ACCESS_TOKEN_SECRET");
+  const secret = getEnvVar("ACCESS_TOKEN_SECRET");
   let payload: jwt.JwtPayload | string;
 
   try {

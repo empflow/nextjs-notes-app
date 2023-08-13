@@ -12,7 +12,7 @@ export default async function getNewTokensJwtVerifyRefreshToken(
 
   const payload = verifyRefreshTokenJwt(
     tokenPlainText,
-    "JWT_REFRESH_TOKEN_SECRET",
+    "REFRESH_TOKEN_SECRET",
     {
       errMsg: "Invalid jwt refresh token",
       jwtExpiredErrMsg: "Jwt refresh token expired",
