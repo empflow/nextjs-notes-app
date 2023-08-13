@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import { isValidObjectId } from "mongoose";
-import { BadRequestErr } from "../../../utils/errs";
+import { BadRequestErr } from "../../utils/errs";
 
-export default async function updateTagCheckTagId(
+export default async function checkTagId(
   req: Request,
   res: Response,
   next: NextFunction
