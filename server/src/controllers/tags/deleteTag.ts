@@ -12,7 +12,6 @@ export default async function deleteTag(req: Request, res: Response) {
     owner,
     _id: tagId,
   });
-  console.log(deletedTag);
   if (!deletedTag) {
     throw new NotFoundErr("Tag not found");
   }
@@ -21,7 +20,6 @@ export default async function deleteTag(req: Request, res: Response) {
     { tags: { $in: [tagId] } },
     { $pull: { tags: tagId } }
   );
-  console.log(updatedNotes);
 
   res.status(200).json({ ok: true });
 }
