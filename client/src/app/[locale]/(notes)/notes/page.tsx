@@ -16,17 +16,20 @@ import RightSide from "./components/RightSide";
 interface TNotesContextValue {
   notes: TNote[] | null;
   setNotes: Dispatch<SetStateAction<null | TNote[]>>;
+  selectedNoteId: string | null;
   tags: TTag[] | null;
   setTags: Dispatch<SetStateAction<null | TTag[]>>;
+  selectedTagId: string | null;
 }
 
 type TNotesContext = null | TNotesContextValue;
 
-const NotesContext = createContext<TNotesContext>(null);
+export const NotesContext = createContext<TNotesContext>(null);
 
 export default function Notes() {
   const t = useTranslations("Index");
   const [selectedNoteId, setSelectedNoteId] = useState<string | null>(null);
+  const [selectedTagId, setSelectedTagId] = useState<string | null>(null);
   const {
     data: notes,
     setData: setNotes,
@@ -53,7 +56,17 @@ export default function Notes() {
 
   return (
     <div className="flex min-h-[100dvh]">
-      <NotesContext.Provider value={{ notes: notes, setNotes, tags, setTags }}>
+      <NotesContext.Provider
+        value={{
+          notes,
+          setNotes,
+          selectedNoteId,
+
+          tags,
+          setTags,
+          selectedTagId,
+        }}
+      >
         <LeftSide />
         <RightSide />
       </NotesContext.Provider>
