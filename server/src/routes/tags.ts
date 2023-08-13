@@ -16,5 +16,6 @@ router
   .patch(updateTagCheckTagId, updateTagValidateColor, updateTag)
   .delete(deleteTag);
   .patch(checkTagId, updateTagValidateColor, updateTag)
+  .delete(checkTagId, deleteTag);
 
 export default router;
