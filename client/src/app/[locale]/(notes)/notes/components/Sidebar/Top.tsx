@@ -6,11 +6,11 @@ import { NotesContext } from "../../page";
 import { useTranslations } from "next-intl";
 import { TTag, TTranslations } from "@/utils/types";
 import SmallBtn from "@/app/components/buttons/Small";
+import useGetContext from "@/app/hooks/useGetContext/useGetContext";
 
 export default function SidebarTop() {
   const t = useTranslations("Notes");
-  const context = useContext(NotesContext);
-  if (!context) throw new Error("no context");
+  const context = useGetContext(NotesContext);
   const { selectedTagId, tags } = context;
 
   const tagName = getTagName(tags, selectedTagId, t);

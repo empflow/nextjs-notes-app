@@ -1,3 +1,4 @@
+import useGetContext from "@/app/hooks/useGetContext/useGetContext";
 import ExpandIcon from "@/icons/Expand";
 import throwIfValueNullOrUndefined from "@/utils/throwIfValueNullOrUndefined";
 import { useTranslations } from "next-intl";
@@ -9,10 +10,8 @@ import {
 
 const ProfileMenuHeaderIcon = forwardRef<HTMLDivElement>((props, ref) => {
   const t = useTranslations("Header");
-  const profileMenuContext = useContext(ProfileMenuContext);
-  throwIfValueNullOrUndefined(profileMenuContext);
-  const { signedInAs, setIsDropdownOpen, isDropdownOpen } =
-    profileMenuContext as IProfileMenuContextValue;
+  const profileMenuContext = useGetContext(ProfileMenuContext);
+  const { signedInAs, setIsDropdownOpen, isDropdownOpen } = profileMenuContext;
 
   return (
     <div

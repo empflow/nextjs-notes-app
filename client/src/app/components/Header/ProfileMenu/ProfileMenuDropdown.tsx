@@ -10,13 +10,12 @@ import {
   ProfileMenuContext,
 } from "./ProfileMenuContent";
 import ProfileMenuDropdownButton from "./ProfileMenuDropdownButton";
+import useGetContext from "@/app/hooks/useGetContext/useGetContext";
 
 const ProfileMenuDropdown = forwardRef<HTMLDivElement>((props, ref) => {
-  const profileMenuContext = useContext(ProfileMenuContext);
+  const profileMenuContext = useGetContext(ProfileMenuContext);
   const errsT = useTranslations("Errors");
-  throwIfValueNullOrUndefined(profileMenuContext);
-  const { signedInAs, setIsDropdownOpen, isDropdownOpen } =
-    profileMenuContext as IProfileMenuContextValue;
+  const { signedInAs, setIsDropdownOpen, isDropdownOpen } = profileMenuContext;
   const signOut = useFetch("/auth/sign-out", {
     method: "post",
   });
