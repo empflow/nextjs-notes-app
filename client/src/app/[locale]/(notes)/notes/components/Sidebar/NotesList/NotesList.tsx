@@ -8,7 +8,7 @@ import EditOffIcon from "@/icons/svg/editOff.svg";
 import { TWidth } from "@/utils/types";
 import { useTranslations } from "next-intl";
 import { useContext, useEffect, useRef, useState } from "react";
-import { NotesContext } from "../../page";
+import { NotesContext } from "../../../page";
 
 export default function SidebarNotesList() {
   const context = useGetContext(NotesContext);

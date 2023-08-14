@@ -6,7 +6,7 @@ import BigBtn from "@/app/components/buttons/Big";
 import Image from "next/image";
 import { SVGProps } from "react";
 import SidebarTop from "./Top";
-import SidebarNotesList from "./NotesList";
+import SidebarNotesList from "./NotesList/NotesList";
 import useGetContext from "@/app/hooks/useGetContext/useGetContext";
 
 export default function Sidebar() {
