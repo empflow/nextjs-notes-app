@@ -1,4 +1,5 @@
 import { ButtonProps } from "@/utils/componentsProps";
+import { baseClassName } from "./common";
 
 const BigBtn: React.FC<ButtonProps> = ({
   children,
@@ -8,7 +9,7 @@ const BigBtn: React.FC<ButtonProps> = ({
   return (
     <button
       {...restProps}
-      className={`hover:bg-blue-700 flex items-center rounded bg-l-accent px-6 py-2 text-white duration-200 dark:bg-d-accent ${className}`}
+      className={`${baseClassName} px-6 py-2 ${className}`}
     >
       {children}
     </button>
