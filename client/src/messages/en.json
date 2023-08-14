@@ -39,7 +39,9 @@
   },
   "Notes": {
     "allNotes": "All notes",
-    "filter": "Filter"
+    "filter": "Filter",
+    "edit": "Edit",
+    "stopEditing": "Stop editing"
   },
   "Errors": {
     "noInternet": "Please check your internet connection",
