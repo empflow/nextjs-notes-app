@@ -20,6 +20,10 @@ interface TNotesContextValue {
   tags: TTag[] | null;
   setTags: Dispatch<SetStateAction<null | TTag[]>>;
   selectedTagId: string | null;
+  isEditing: boolean;
+  setIsEditing: Dispatch<SetStateAction<boolean>>;
+  isFilterMenuOpen: boolean;
+  setIsFilterMenuOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 type TNotesContext = null | TNotesContextValue;
@@ -49,6 +53,8 @@ export default function Notes() {
     method: "get",
     fetchImmediately: true,
   });
+  const [isEditing, setIsEditing] = useState(false);
+  const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
 
   useEffect(() => {
     redirToSignInIfNoToken({ mode: "client" });
@@ -65,6 +71,12 @@ export default function Notes() {
           tags,
           setTags,
           selectedTagId,
+
+          isEditing,
+          setIsEditing,
+
+          isFilterMenuOpen,
+          setIsFilterMenuOpen,
         }}
       >
         <LeftSide />
