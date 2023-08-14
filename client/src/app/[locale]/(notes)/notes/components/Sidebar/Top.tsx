@@ -27,8 +27,8 @@ export default function SidebarTop() {
       </div>
       <div className="flex justify-between">
         <SmallBtn className="flex gap-1">
-          {t("filter")}
           <FilterIcon fill="white" width={20} />
+          {t("filter")}
         </SmallBtn>
       </div>
     </div>
