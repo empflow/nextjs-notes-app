@@ -22,3 +22,6 @@ export interface TTag {
   owner: string;
   _id: string;
 }
+
+export type TWidth = "auto" | number;
+export type THeight = TWidth;
