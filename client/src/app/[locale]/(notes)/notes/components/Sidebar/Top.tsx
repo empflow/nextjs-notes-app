@@ -11,7 +11,8 @@ import useGetContext from "@/app/hooks/useGetContext/useGetContext";
 export default function SidebarTop() {
   const t = useTranslations("Notes");
   const context = useGetContext(NotesContext);
-  const { selectedTagId, tags } = context;
+  const { selectedTagId, tags, isFilterMenuOpen, setIsFilterMenuOpen } =
+    context;
 
   const tagName = getTagName(tags, selectedTagId, t);
 
@@ -26,7 +27,10 @@ export default function SidebarTop() {
         </BigBtn>
       </div>
       <div className="flex justify-between">
-        <SmallBtn className="flex gap-1">
+        <SmallBtn
+          className="flex gap-1"
+          onClick={() => setIsFilterMenuOpen((prev) => !prev)}
+        >
           <FilterIcon fill="white" width={20} />
           {t("filter")}
         </SmallBtn>
