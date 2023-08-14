@@ -28,6 +28,7 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.0.1",
     "@types/js-cookie": "^3.0.3",
     "@types/react": "^18.2.16",
     "@types/react-google-recaptcha": "^2.1.5",
