@@ -16,7 +16,7 @@ export default async function checkRefreshTokenExistsInDb(
   if (!foundTokenObj) {
     throw new NotFoundErr(
       `No refresh token with such id`,
-      ErrCode.INVALID_REFRESH_TOKEN
+      ErrCode.OLD_REFRESH_TOKEN_NOT_FOUND
     );
   }
 
