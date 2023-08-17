@@ -13,12 +13,7 @@ export default async function getNewTokens(req: Request, res: Response) {
   const newRefreshToken = await user.getRefreshToken();
   const newAccessToken = user.getAccessToken();
 
-  const deletedOldRefreshToken = await RefreshToken.findByIdAndDelete(
-    oldRefreshTokenId
-  );
-  if (!deletedOldRefreshToken) {
-    throw new InternalServerErr("Could not delete old refresh token");
-  }
+  deleteOldRefreshTokenFromDbAfterDelay(oldRefreshTokenId);
 
   const savedNewRefreshToken = await RefreshToken.create(newRefreshToken.forDb);
 
@@ -30,4 +25,15 @@ export default async function getNewTokens(req: Request, res: Response) {
     },
   };
   res.status(200).json(response);
+}
+
+function deleteOldRefreshTokenFromDbAfterDelay(oldRefreshTokenId: string) {
+  new Promise((resolve) => {
+    setTimeout(async () => {
+      try {
+        await RefreshToken.findByIdAndDelete(oldRefreshTokenId);
+      } catch (err) {}
+      resolve({});
+    }, 5000);
+  });
 }
