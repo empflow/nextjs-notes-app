@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
 import RefreshToken from "../../models/RefreshToken";
 import { IUser } from "../../models/User";
-import { SignUpOrInResponse } from "../../types";
-import InternalServerErr from "../../utils/errs/InternalServerErr";
 
 export default async function getNewTokens(req: Request, res: Response) {
   const { user }: { user: IUser } = res.locals as any;

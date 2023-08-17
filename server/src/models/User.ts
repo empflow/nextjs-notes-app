@@ -53,7 +53,6 @@ UserSchema.methods.doPasswordsMatch = function (passwordToCheck: string) {
 };
 
 UserSchema.methods.getAccessToken = function (): string {
-  const nodeEnv = getEnvVar("NODE_ENV");
   const secret = getEnvVar("ACCESS_TOKEN_SECRET");
   const expiresIn = getAccessTokenExpiresIn();
   const payload: AccessTokenPayload = { userId: this._id };
@@ -62,7 +61,6 @@ UserSchema.methods.getAccessToken = function (): string {
 
 UserSchema.methods.getRefreshToken =
   async function (): Promise<GetRefreshTokenReturnVal> {
-    const nodeEnv = getEnvVar("NODE_ENV");
     const secret = getEnvVar("REFRESH_TOKEN_SECRET");
     const tokenPayload: RefreshTokenPayload = { userId: this._id };
     const expiresIn = getRefreshTokenExpiresIn();
