@@ -1,3 +1,4 @@
+import { TUsernameAvailResp } from "@shared/types";
 import { Request, Response } from "express";
 import User from "../../models/User";
 import { BadRequestErr } from "../../utils/errs";
@@ -14,10 +15,12 @@ export default async function checkUsernameAvailability(
   await waitIfInDevMode();
 
   if (!user) {
-    return res.json({ ok: true });
+    const resp: TUsernameAvailResp = { ok: true };
+    return res.json(resp);
   }
 
-  return res.status(409).json({ ok: false });
+  const resp: TUsernameAvailResp = { ok: false };
+  return res.status(409).json(resp);
 }
 
 async function waitIfInDevMode() {
