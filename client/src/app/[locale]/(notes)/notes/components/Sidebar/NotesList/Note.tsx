@@ -1,7 +1,7 @@
 import useGetContext from "@/app/hooks/useGetContext/useGetContext";
 import { SetState } from "@/utils/types";
 import { useTranslations } from "next-intl";
-import { NotesContext } from "../../../page";
+import NotesContext from "@/contexts/NotesContext";
 
 interface INoteProps {
   title: string;

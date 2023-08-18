@@ -2,7 +2,7 @@ import BigBtn from "@/app/components/buttons/Big";
 import FilterIcon from "@/icons/svg/filter.svg";
 import AddIcon from "@/icons/svg/addCircle.svg";
 import { useContext } from "react";
-import { NotesContext } from "../../page";
+import NotesContext from "@/contexts/NotesContext";
 import { useTranslations } from "next-intl";
 import { TTag, TTranslations } from "@/utils/types";
 import SmallBtn from "@/app/components/buttons/Small";

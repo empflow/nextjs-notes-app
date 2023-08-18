@@ -3,7 +3,7 @@ import EditIcon from "@/icons/svg/edit.svg";
 import EditOffIcon from "@/icons/svg/editOff.svg";
 import useGetContext from "@/app/hooks/useGetContext/useGetContext";
 import { useTranslations } from "next-intl";
-import { NotesContext } from "../../../page";
+import NotesContext from "@/contexts/NotesContext";
 
 export default function EditBtn() {
   const t = useTranslations("Notes");

@@ -7,7 +7,7 @@ import useGetContext from "@/app/hooks/useGetContext/useGetContext";
 import { TWidth } from "@/utils/types";
 import { useTranslations } from "next-intl";
 import { useContext, useEffect, useRef, useState } from "react";
-import { NotesContext } from "../../../page";
+import NotesContext from "@/contexts/NotesContext";
 import EditBtn from "./EditBtn";
 import Note from "./Note";
 

@@ -1,7 +1,7 @@
 import { TTag, TTranslations } from "@/utils/types";
 import { useTranslations } from "next-intl";
 import { useContext, useState } from "react";
-import { NotesContext } from "../../page";
+import NotesContext from "@/contexts/NotesContext";
 import BigBtn from "@/app/components/buttons/Big";
 import Image from "next/image";
 import { SVGProps } from "react";
