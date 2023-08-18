@@ -3,9 +3,10 @@ import Logo from "./Logo";
 import ThemeSwitcher from "./ThemeSwitch";
 
 export default function Footer() {
+  const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-light-xl-gray dark:border-dark-3xl-gray px-global sm:px-global-sm py-8 bg-l-secondary dark:bg-d-secondary">
-      <div className="max-w-global m-auto">
+    <footer className="border-t border-light-xl-gray bg-l-secondary px-global py-8 dark:border-dark-3xl-gray dark:bg-d-secondary sm:px-global-sm">
+      <div className="m-auto max-w-global">
         <div className="mb-5 flex justify-between">
           <div>
             <Link href="/" style={{ textDecoration: "none" }}>
@@ -23,14 +24,14 @@ export default function Footer() {
             <Link
               target="_blank"
               href="https://github.com/empflow"
-              className="underline hover:text-l-link dark:hover:text-d-link"
+              className="hover:text-l-link dark:hover:text-d-link underline"
             >
               me
             </Link>
           </div>
 
           <div>
-            Copyright © 2023 Me
+            Copyright © {year} Me
             <br />
             Absolutely no rights reserved
           </div>
