@@ -41,7 +41,9 @@
     "allNotes": "All notes",
     "filter": "Filter",
     "edit": "Edit",
-    "stopEditing": "Stop editing"
+    "stopEditing": "Stop editing",
+    "noTitle": "No title",
+    "noAdditionalText": "No additional text"
   },
   "Errors": {
     "noInternet": "Please check your internet connection",
