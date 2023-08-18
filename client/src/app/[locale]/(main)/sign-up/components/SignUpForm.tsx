@@ -126,8 +126,8 @@ export default function SignUpForm() {
     setErrs(errsInitState);
     signUpSetLoading(true);
 
-      const captchaBypassToken = process.env.CAPTCHA_BYPASS_TOKEN;
     if (devMode()) {
+      const captchaBypassToken = process.env.NEXT_PUBLIC_CAPTCHA_BYPASS_TOKEN;
       return await signUpFetch({ ...formData, captchaBypassToken });
     }
     const captchaToken = await getCaptchaToken(captchaRef);
