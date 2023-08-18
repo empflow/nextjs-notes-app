@@ -3,7 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { NextIntlClientProvider, useLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { ToastContainer } from "react-toastify";
-import Providers from "../providers";
+import ThemeProviders from "../ThemeProviders";
 
 export const metadata = {
   title: "Notes",
@@ -38,7 +38,7 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <body className="flex min-h-screen flex-col">
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <Providers>{children}</Providers>
+          <ThemeProviders>{children}</ThemeProviders>
           <ToastContainer hideProgressBar autoClose={3000} />
         </NextIntlClientProvider>
       </body>
