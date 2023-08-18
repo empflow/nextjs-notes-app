@@ -17,6 +17,7 @@ interface TNotesContextValue {
   notes: TNote[] | null;
   setNotes: SetState<null | TNote[]>;
   selectedNoteId: string | null;
+  setSelectedNoteId: SetState<string | null>;
   tags: TTag[] | null;
   setTags: SetState<null | TTag[]>;
   selectedTagId: string | null;
