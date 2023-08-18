@@ -7,10 +7,17 @@ interface INoteProps {
   title: string;
   desc: string;
   isSelected: boolean;
+  isAboveSelectedNote: boolean;
   _id: string;
 }
 
-export default function Note({ desc, title, isSelected, _id }: INoteProps) {
+export default function Note({
+  desc,
+  title,
+  isSelected,
+  _id,
+  isAboveSelectedNote,
+}: INoteProps) {
   const { setSelectedNoteId } = useGetContext(NotesContext);
   const t = useTranslations("Notes");
 
@@ -20,9 +27,11 @@ export default function Note({ desc, title, isSelected, _id }: INoteProps) {
 
   return (
     <div
-      className={`box-border flex flex-col rounded border-b-8 p-[10px] ${
-        isSelected ? "bg-light-5xl-blue dark:bg-dark-blue" : ""
-      }`}
+      className={`box-border flex flex-col rounded-t border-b border-light-2xl-gray p-[10px] dark:border-dark-3xl-gray ${
+        isSelected
+          ? "rounded-b border-transparent bg-light-5xl-blue dark:bg-dark-blue"
+          : ""
+      } ${isAboveSelectedNote ? "border-transparent" : ""}`}
       onClick={() => setSelectedNoteId(_id)}
     >
       <div className={`${truncateClassName}`}>{title}</div>
