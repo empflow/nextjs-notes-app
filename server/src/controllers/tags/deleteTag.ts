@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import Note, { INote } from "../../models/Note";
-import Tag, { ITag } from "../../models/Tag";
+import Note, { TNote } from "../../models/Note";
+import Tag, { TTag } from "../../models/Tag";
 import { NotFoundErr } from "../../utils/errs";
 
 export default async function deleteTag(req: Request, res: Response) {

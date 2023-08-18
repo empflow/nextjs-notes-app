@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import RefreshToken from "../../models/RefreshToken";
-import { IUser } from "../../models/User";
+import { TUser } from "../../models/User";
 
 export default async function getNewTokens(req: Request, res: Response) {
-  const { user }: { user: IUser } = res.locals as any;
+  const { user }: { user: TUser } = res.locals as any;
   const {
     refreshToken: { id: oldRefreshTokenId },
   }: { refreshToken: { id: string } } = req.body;

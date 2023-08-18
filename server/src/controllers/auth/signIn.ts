@@ -1,17 +1,17 @@
 import { Request, Response } from "express";
-import User, { IUser } from "../../models/User";
+import User, { TUser } from "../../models/User";
 import RefreshToken from "../../models/RefreshToken";
-import { SignUpOrInResponse } from "../../types";
+import { TAuthResp } from "../../types";
 
 export default async function signIn(req: Request, res: Response) {
-  const user: IUser = res.locals.user;
+  const user: TUser = res.locals.user;
 
   const accessToken = user.getAccessToken();
   const { forDb: refreshTokenForDb, plainTextToken: plainTextRefreshToken } =
     await user.getRefreshToken();
 
   const { id } = await RefreshToken.create(refreshTokenForDb);
-  const response: SignUpOrInResponse = {
+  const response: TAuthResp = {
     accessToken,
     refreshToken: {
       id,

@@ -7,7 +7,7 @@ import ErrCode from "../utils/errCodes";
 
 export type TErr = TApiErrs | Error | MongoError | SyntaxError;
 
-interface IErrObject {
+interface TErrObject {
   message: string;
   errCode?: ErrCode;
   httpCode?: number;
@@ -20,7 +20,7 @@ export default function errHandler(
   res: Response,
   next: NextFunction
 ) {
-  const errObj: IErrObject = {
+  const errObj: TErrObject = {
     message: err.message || "No error message provided",
   };
 

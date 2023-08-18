@@ -4,28 +4,28 @@ import jwt from "jsonwebtoken";
 import getEnvVar from "../utils/getEnvVar";
 import { emailRegex } from "../config/globalVars";
 import {
-  AccessTokenPayload,
-  RefreshTokenForDb,
-  RefreshTokenPayload,
+  TAccessTokenPayload,
+  TRefreshTokenForDb,
+  TRefreshTokenPayload,
 } from "../types";
 import getNodeEnv from "../utils/getNodeEnv";
 
-interface GetRefreshTokenReturnVal {
-  forDb: RefreshTokenForDb;
+interface TGetRefreshTokenReturnVal {
+  forDb: TRefreshTokenForDb;
   plainTextToken: string;
 }
 
-export interface IUser extends Document {
+export interface TUser extends Document {
   email: string;
   password: string;
   doPasswordsMatch: (password: string) => Promise<boolean>;
   getAccessToken: () => string;
-  getRefreshToken: () => Promise<GetRefreshTokenReturnVal>;
+  getRefreshToken: () => Promise<TGetRefreshTokenReturnVal>;
   createdAt: Date;
   updatedAt: Date;
 }
 
-const UserSchema = new mongoose.Schema<IUser>(
+const UserSchema = new mongoose.Schema<TUser>(
   {
     email: {
       type: String,
@@ -55,14 +55,14 @@ UserSchema.methods.doPasswordsMatch = function (passwordToCheck: string) {
 UserSchema.methods.getAccessToken = function (): string {
   const secret = getEnvVar("ACCESS_TOKEN_SECRET");
   const expiresIn = getAccessTokenExpiresIn();
-  const payload: AccessTokenPayload = { userId: this._id };
+  const payload: TAccessTokenPayload = { userId: this._id };
   return jwt.sign(payload, secret, { expiresIn });
 };
 
 UserSchema.methods.getRefreshToken =
-  async function (): Promise<GetRefreshTokenReturnVal> {
+  async function (): Promise<TGetRefreshTokenReturnVal> {
     const secret = getEnvVar("REFRESH_TOKEN_SECRET");
-    const tokenPayload: RefreshTokenPayload = { userId: this._id };
+    const tokenPayload: TRefreshTokenPayload = { userId: this._id };
     const expiresIn = getRefreshTokenExpiresIn();
     const tokenPlainText = jwt.sign(tokenPayload, secret, { expiresIn });
     const tokenHash = await bcrypt.hash(tokenPlainText, 10);

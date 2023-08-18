@@ -1,16 +1,19 @@
 import mongoose from "mongoose";
-import { RefreshTokenForDb } from "../types";
+import { TRefreshTokenForDb } from "../types";
 
-const RefreshTokenSchema = new mongoose.Schema<RefreshTokenForDb>({
+const RefreshTokenSchema = new mongoose.Schema<TRefreshTokenForDb>({
   tokenHash: {
     required: true,
-    type: String
+    type: String,
   },
   createdAt: {
     required: true,
-    type: Number
-  }
-})
+    type: Number,
+  },
+});
 
-const RefreshToken = mongoose.model<RefreshTokenForDb>("RefreshToken", RefreshTokenSchema);
+const RefreshToken = mongoose.model<TRefreshTokenForDb>(
+  "RefreshToken",
+  RefreshTokenSchema
+);
 export default RefreshToken;

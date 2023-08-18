@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import User from "../../models/User";
 import RefreshToken from "../../models/RefreshToken";
-import { SignUpOrInResponse } from "../../types";
+import { TAuthResp } from "../../types";
 
 export default async function signUp(req: Request, res: Response) {
   const { email, password } = req.body;
@@ -12,7 +12,7 @@ export default async function signUp(req: Request, res: Response) {
     await user.getRefreshToken();
 
   const { id: refreshTokenId } = await RefreshToken.create(refreshTokenForDb);
-  const response: SignUpOrInResponse = {
+  const response: TAuthResp = {
     accessToken,
     refreshToken: {
       id: refreshTokenId,

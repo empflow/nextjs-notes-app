@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema, Types } from "mongoose";
 
-export interface INote extends Document {
+export interface TNote extends Document {
   title: string;
   content: string;
   owner: Types.ObjectId | string;
@@ -37,6 +37,6 @@ const NoteSchema = new Schema(
   { timestamps: true }
 );
 
-const Note = mongoose.model<INote>("Note", NoteSchema);
+const Note = mongoose.model<TNote>("Note", NoteSchema);
 
 export default Note;

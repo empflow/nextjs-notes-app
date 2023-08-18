@@ -1,23 +1,23 @@
-export interface AccessTokenPayload {
+export interface TAccessTokenPayload {
   userId: string;
 }
 
-export interface RefreshTokenForDb {
+export interface TRefreshTokenForDb {
   createdAt: number;
   tokenHash: string;
 }
 
-export interface RefreshTokenForClient {
+export interface TRefreshTokenForClient {
   token: string;
   id: string;
 }
 
-export interface RefreshTokenPayload {
+export interface TRefreshTokenPayload {
   userId: string;
 }
 
-export interface SignUpOrInResponse {
+export interface TAuthResp {
   accessToken: string;
-  refreshToken: RefreshTokenForClient;
+  refreshToken: TRefreshTokenForClient;
   username: string;
 }
