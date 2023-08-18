@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { TRefreshTokenForDb } from "../types";
+import { TRefreshTokenForDb } from "../utils/types";
 
 const RefreshTokenSchema = new mongoose.Schema<TRefreshTokenForDb>({
   tokenHash: {

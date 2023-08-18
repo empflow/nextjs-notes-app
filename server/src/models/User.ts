@@ -7,7 +7,7 @@ import {
   TAccessTokenPayload,
   TRefreshTokenForDb,
   TRefreshTokenPayload,
-} from "../types";
+} from "../utils/types";
 import getNodeEnv from "../utils/getNodeEnv";
 
 interface TGetRefreshTokenReturnVal {
