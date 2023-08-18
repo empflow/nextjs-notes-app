@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import ErrCode from "../utils/errCodes";
+import { TErrCode } from "@shared/types";
 import { BadRequestErr, UnauthorizedErr } from "../utils/errs";
 import getEnvVar from "../utils/getEnvVar";
 import throwIfInvalidObjectId from "../utils/throwers/throwIfInvalidObjectId";
@@ -19,7 +19,7 @@ export default async function authorize(
 function validateAndGetToken(req: Request) {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    throw new UnauthorizedErr("unauthorized", ErrCode.NO_ACCESS_TOKEN);
+    throw new UnauthorizedErr("unauthorized", TErrCode.NO_ACCESS_TOKEN);
   }
   return authHeader.split(" ")[1];
 }
@@ -33,7 +33,7 @@ function validateAndGetPayload(token: string) {
   } catch (err) {
     throw new UnauthorizedErr(
       "jwt verification failed",
-      ErrCode.INVALID_ACCESS_TOKEN
+      TErrCode.INVALID_ACCESS_TOKEN
     );
   }
 

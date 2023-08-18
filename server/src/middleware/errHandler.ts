@@ -3,13 +3,13 @@ import ApiErr, { HttpCode } from "../utils/errs/ApiErr";
 import { TApiErrs } from "../utils/errs";
 import { MongoError } from "mongodb";
 import isErrCausedByUser from "../utils/isErrCausedByUser";
-import ErrCode from "../utils/errCodes";
+import { TErrCode } from "@shared/types";
 
 export type TErr = TApiErrs | Error | MongoError | SyntaxError;
 
 interface TErrObject {
   message: string;
-  errCode?: ErrCode;
+  errCode?: TErrCode;
   httpCode?: number;
   duplicates?: string[];
 }

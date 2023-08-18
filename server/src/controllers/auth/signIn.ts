@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import User, { TUser } from "../../models/User";
 import RefreshToken from "../../models/RefreshToken";
-import { TAuthResp } from "../../types";
+import { TAuthResp } from "@shared/types";
 
 export default async function signIn(req: Request, res: Response) {
   const user: TUser = res.locals.user;

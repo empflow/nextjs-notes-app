@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import User from "../../models/User";
 import RefreshToken from "../../models/RefreshToken";
-import { TAuthResp } from "../../types";
+import { TAuthResp } from "@shared/types";
 
 export default async function signUp(req: Request, res: Response) {
   const { email, password } = req.body;

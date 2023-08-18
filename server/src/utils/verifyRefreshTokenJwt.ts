@@ -1,7 +1,7 @@
 import getEnvVar from "./getEnvVar";
 import jwt from "jsonwebtoken";
 import { BadRequestErr } from "./errs";
-import ErrCode from "./errCodes";
+import { TErrCode } from "@shared/types";
 
 export default function verifyRefreshTokenJwt(
   token: string,
@@ -21,8 +21,8 @@ export default function verifyRefreshTokenJwt(
     return payload;
   } catch (err) {
     if ((err as any).message === "jwt expired") {
-      throw new BadRequestErr(jwtExpiredErrMsg, ErrCode.INVALID_REFRESH_TOKEN);
+      throw new BadRequestErr(jwtExpiredErrMsg, TErrCode.INVALID_REFRESH_TOKEN);
     }
-    throw new BadRequestErr(errMsg, ErrCode.INVALID_REFRESH_TOKEN);
+    throw new BadRequestErr(errMsg, TErrCode.INVALID_REFRESH_TOKEN);
   }
 }

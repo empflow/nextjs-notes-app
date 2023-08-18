@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcrypt";
 import { BadRequestErr } from "../../utils/errs";
-import ErrCode from "../../utils/errCodes";
+import { TErrCode } from "@shared/types";
 
 export default async function checkHashAndPlainTextTokensMatch(
   req: Request,
@@ -18,7 +18,7 @@ export default async function checkHashAndPlainTextTokensMatch(
     foundTokenObj.tokenHash
   );
   if (!hashAndPlainTextTokensMatch)
-    throw new BadRequestErr("Wrong token", ErrCode.INVALID_REFRESH_TOKEN);
+    throw new BadRequestErr("Wrong token", TErrCode.INVALID_REFRESH_TOKEN);
 
   next();
 }

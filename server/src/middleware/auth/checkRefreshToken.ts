@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { isValidObjectId } from "mongoose";
-import ErrCode from "../../utils/errCodes";
+import { TErrCode } from "@shared/types";
 import { BadRequestErr } from "../../utils/errs";
 import throwIfInvalidRefreshTokenObj from "../../utils/throwers/throwIfInvalidRefreshTokenObj";
 
@@ -14,7 +14,7 @@ export default async function checkRefreshToken(
   if (!refreshToken) {
     throw new BadRequestErr(
       "No refresh token provided",
-      ErrCode.NO_REFRESH_TOKEN
+      TErrCode.NO_REFRESH_TOKEN
     );
   }
 
@@ -22,7 +22,7 @@ export default async function checkRefreshToken(
 
   const isTokenIdValid = isValidObjectId(refreshToken.id);
   if (!isTokenIdValid)
-    throw new BadRequestErr("Invalid token id", ErrCode.INVALID_REFRESH_TOKEN);
+    throw new BadRequestErr("Invalid token id", TErrCode.INVALID_REFRESH_TOKEN);
 
   next();
 }

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import RefreshToken from "../../models/RefreshToken";
-import ErrCode from "../../utils/errCodes";
+import { TErrCode } from "@shared/types";
 import { NotFoundErr } from "../../utils/errs";
 
 export default async function checkRefreshTokenExistsInDb(
@@ -16,7 +16,7 @@ export default async function checkRefreshTokenExistsInDb(
   if (!foundTokenObj) {
     throw new NotFoundErr(
       `No refresh token with such id`,
-      ErrCode.OLD_REFRESH_TOKEN_NOT_FOUND
+      TErrCode.OLD_REFRESH_TOKEN_NOT_FOUND
     );
   }
 

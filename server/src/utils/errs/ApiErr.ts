@@ -1,4 +1,4 @@
-import ErrCode from "../errCodes";
+import { TErrCode } from "@shared/types";
 
 export enum HttpCode {
   BadRequest = 400,
@@ -13,7 +13,7 @@ export default class ApiErr extends Error {
   protected constructor(
     message: string,
     public readonly httpCode: HttpCode,
-    public errCode?: ErrCode
+    public errCode?: TErrCode
   ) {
     super(message);
   }

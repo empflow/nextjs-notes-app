@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import User from "../../../models/User";
-import ErrCode from "../../../utils/errCodes";
+import { TErrCode } from "@shared/types";
 import { NotFoundErr } from "../../../utils/errs";
 
 export default async function getNewTokensFindUserFromTokenPayload(
@@ -12,7 +12,7 @@ export default async function getNewTokensFindUserFromTokenPayload(
 
   const user = await User.findById(payload.userId);
   if (!user)
-    throw new NotFoundErr("User not found", ErrCode.INVALID_REFRESH_TOKEN);
+    throw new NotFoundErr("User not found", TErrCode.INVALID_REFRESH_TOKEN);
 
   res.locals.user = user;
   next();
