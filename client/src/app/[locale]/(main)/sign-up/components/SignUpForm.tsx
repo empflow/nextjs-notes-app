@@ -25,10 +25,8 @@ import ErrIcon from "@/icons/Err";
 import isObject from "@/utils/isObject";
 import storeAuthRespData from "@/utils/storeAuthRespData";
 import isInDevMode from "@/utils/isInDevMode";
-
-interface UsernameAvailResp {
-  ok: boolean;
-}
+import isValidAuthResp from "@/utils/isValidAuthResp";
+import isValidUsernameAvailResp from "@/utils/isValidUsernameAvailResp";
 
 export default function SignUpForm() {
   const { resolvedTheme } = useTheme();
