@@ -71,7 +71,7 @@ export default function SignInForm() {
     } else {
       notify(errsT("generic"));
     }
-    location.replace("/notes");
+    router.push("/notes");
   }, [signInRespData]);
 
   useEffect(() => {

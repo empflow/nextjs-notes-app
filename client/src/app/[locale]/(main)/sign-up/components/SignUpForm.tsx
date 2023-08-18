@@ -1,10 +1,10 @@
 "use client";
 
 import BigBtn from "@/app/components/buttons/Big";
+import { useRouter } from "next/navigation";
 import getCaptchaTheme from "@/utils/getCaptchaTheme";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import {
   ChangeEvent,
   FormEvent,
@@ -29,6 +29,7 @@ import isValidAuthResp from "@/utils/isValidAuthResp";
 import isValidUsernameAvailResp from "@/utils/isValidUsernameAvailResp";
 
 export default function SignUpForm() {
+  const router = useRouter();
   const { resolvedTheme } = useTheme();
   const theme = getCaptchaTheme(resolvedTheme);
   const t = useTranslations("SignUp");
@@ -110,7 +111,7 @@ export default function SignUpForm() {
       return unknownErr();
     }
 
-    location.replace("/notes");
+    router.push("/notes");
   }, [signUpRespData]);
 
   async function submitBtnOnClick() {
