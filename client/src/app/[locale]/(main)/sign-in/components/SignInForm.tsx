@@ -14,7 +14,7 @@ import Err from "@/app/components/Err";
 import isObject from "@/utils/isObject";
 import Loading from "@/app/components/Loading";
 import storeAuthRespData from "@/utils/storeAuthRespData";
-import isInDevMode from "@/utils/isInDevMode";
+import devMode from "@/utils/devMode";
 import isValidAuthResp from "@/utils/isValidAuthResp";
 import notify from "@/utils/notify";
 
@@ -55,7 +55,7 @@ export default function SignInForm() {
     setHasSubmitted(true);
     signInSetLoading(true);
 
-    if (isInDevMode()) {
+    if (devMode()) {
       const captchaBypassToken = process.env.NEXT_PUBLIC_CAPTCHA_BYPASS_TOKEN;
       return await signInFetch({ ...formData, captchaBypassToken });
     }

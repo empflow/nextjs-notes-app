@@ -24,7 +24,7 @@ import CheckmarkIcon from "@/icons/Checkmark";
 import ErrIcon from "@/icons/Err";
 import isObject from "@/utils/isObject";
 import storeAuthRespData from "@/utils/storeAuthRespData";
-import isInDevMode from "@/utils/isInDevMode";
+import devMode from "@/utils/devMode";
 import isValidAuthResp from "@/utils/isValidAuthResp";
 import isValidUsernameAvailResp from "@/utils/isValidUsernameAvailResp";
 
@@ -126,8 +126,8 @@ export default function SignUpForm() {
     setErrs(errsInitState);
     signUpSetLoading(true);
 
-    if (isInDevMode()) {
       const captchaBypassToken = process.env.CAPTCHA_BYPASS_TOKEN;
+    if (devMode()) {
       return await signUpFetch({ ...formData, captchaBypassToken });
     }
     const captchaToken = await getCaptchaToken(captchaRef);
