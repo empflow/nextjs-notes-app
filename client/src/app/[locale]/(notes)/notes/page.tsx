@@ -1,7 +1,7 @@
 "use client";
 import useFetch from "@/app/hooks/useFetch/useFetch";
 import redirToSignInIfNoToken from "@/utils/redirToSignInIfNoToken";
-import { TNote, TTag } from "@/utils/types";
+import { SetState, TNote, TTag } from "@/utils/types";
 import { useTranslations } from "next-intl";
 import {
   createContext,
@@ -15,15 +15,15 @@ import RightSide from "./components/RightSide";
 
 interface TNotesContextValue {
   notes: TNote[] | null;
-  setNotes: Dispatch<SetStateAction<null | TNote[]>>;
+  setNotes: SetState<null | TNote[]>;
   selectedNoteId: string | null;
   tags: TTag[] | null;
-  setTags: Dispatch<SetStateAction<null | TTag[]>>;
+  setTags: SetState<null | TTag[]>;
   selectedTagId: string | null;
   isEditing: boolean;
-  setIsEditing: Dispatch<SetStateAction<boolean>>;
+  setIsEditing: SetState<boolean>;
   isFilterMenuOpen: boolean;
-  setIsFilterMenuOpen: Dispatch<SetStateAction<boolean>>;
+  setIsFilterMenuOpen: SetState<boolean>;
 }
 
 type TNotesContext = null | TNotesContextValue;

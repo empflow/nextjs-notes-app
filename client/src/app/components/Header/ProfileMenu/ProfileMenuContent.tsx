@@ -10,6 +10,7 @@ import {
 } from "react";
 import ProfileMenuHeaderIcon from "./ProfileMenuHeaderIcon";
 import ProfileMenuDropdown from "./ProfileMenuDropdown";
+import { SetState } from "@/utils/types";
 
 interface IMenuProps {
   signedInAs: string;
@@ -18,7 +19,7 @@ interface IMenuProps {
 export interface IProfileMenuContextValue {
   signedInAs: string;
   isDropdownOpen: boolean;
-  setIsDropdownOpen: Dispatch<SetStateAction<boolean>>;
+  setIsDropdownOpen: SetState<boolean>;
 }
 export type TProfileMenuContext = null | IProfileMenuContextValue;
 export const ProfileMenuContext = createContext<TProfileMenuContext>(null);
