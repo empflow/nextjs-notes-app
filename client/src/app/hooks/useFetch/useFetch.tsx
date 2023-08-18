@@ -1,16 +1,15 @@
-import axios from "@/config/axios";
-import { AxiosError, isAxiosError, Method } from "axios";
-import { useEffect, useState } from "react";
+"use client";
+import { TAuthResp, TErrCode } from "@shared/types";
+import { AxiosError, AxiosResponse, isAxiosError } from "axios";
+import axios from "@config/axios";
 import Cookies from "js-cookie";
-import HttpCodes from "@/constants/httpCodes";
+import { useEffect, useState } from "react";
 import notify from "@/utils/notify";
-import { Formats, TranslationValues, useTranslations } from "next-intl";
+import isOnline from "@/utils/isOnline";
+import storeAuthRespData from "@/utils/storeAuthRespData";
+import isValidAuthResp from "@/utils/isValidAuthResp";
 import Link from "next/link";
-import storeGetNewTokensRespData from "@/utils/storeGetNewTokensRespData";
-import isErrUnknown from "./utils/isErrUnknown";
-import hasRefreshTokenExpired from "./utils/hasRefreshTokenExpired";
-import hasAccessTokenExpired from "./utils/hasAccessTokenExpired";
-import getNewTokens from "./utils/getNewTokens";
+import { useTranslations } from "next-intl";
 
 type HttpMethod =
   | "get"
@@ -21,39 +20,54 @@ type HttpMethod =
   | "head"
   | "options";
 
-interface Opts {
+interface Params {
+  url: string;
   method: HttpMethod;
   body?: any;
-  fetchImmediately?: boolean;
-  persistDataWhileFetching?: boolean;
-  withAuth?: boolean;
+  opts?: {
+    fetchImmediately?: boolean;
+    persistDataWhileFetching?: boolean;
+    withAuth?: boolean;
+  };
 }
 
-/**
- *
- * @param url request url
- * @param options fetchImmediately defaults to false
- * @returns
- */
-export default function useFetch<T = unknown>(
-  url: string,
-  { method, body, fetchImmediately, persistDataWhileFetching, withAuth }: Opts,
-) {
-  withAuth = withAuth ?? true;
-  const [err, setErr] = useState<AxiosError | null>(null);
+export default function useFetch<T extends unknown>({
+  url,
+  method,
+  body,
+  opts,
+}: Params) {
+  const errsT = useTranslations("Errors");
+  const {
+    fetchImmediately = true,
+    persistDataWhileFetching = true,
+    withAuth = true,
+  } = opts ?? {};
+
+  const [err, setErr] = useState<AxiosResponse | null>(null);
   const [data, setData] = useState<null | T>(null);
   const [loading, setLoading] = useState(false);
-  const errsT = useTranslations("Errors");
-  const notSignedInMsg = (
+  const notSignedInNotificationContent = (
     <>
-      {errsT("notSignedIn")}{" "}
-      <Link href="/sign-in">{errsT("notSignedInLink")}</Link>
+      {errsT("notSignedIn")} <Link href="/">{errsT("notSignedInLink")}</Link>
     </>
   );
 
   useEffect(() => {
-    if (fetchImmediately) fetch();
+    (async () => {
+      if (fetchImmediately) await fetch();
+    })();
   }, []);
+
+  async function fetch(customBody?: unknown) {
+    fetchSetup();
+    if (!notifyIfCantFetch().ok) return;
+
+    if (withAuth) await fetchWithAuth(customBody);
+    else await fetchWithoutAuth(customBody);
+
+    fetchTeardown();
+  }
 
   function fetchSetup() {
     if (!persistDataWhileFetching) setData(null);
@@ -61,48 +75,111 @@ export default function useFetch<T = unknown>(
     setLoading(true);
   }
 
-  async function fetch(customBody?: any) {
-    fetchSetup();
-    const isOnline = navigator.onLine;
+  function notifyIfCantFetch(): { ok: boolean } {
+    if (isOnline()) return { ok: true };
 
-    try {
-      if (!isOnline) return notify(errsT("noInternet"));
+    setLoading(false);
+    notify("Check your internet connection and try again");
+    return { ok: false };
+  }
 
-      if (withAuth) {
-        axios.interceptors.request.use((config) => {
-          config.headers.Authorization = getAuthHeader();
-          return config;
-        });
-      }
-
-      const resp = await axios[method](url, customBody ?? body);
-      setData(resp.data);
-    } catch (err) {
-      if (isErrUnknown(err)) return notify(errsT("generic"));
-
-      const { data } = (err as any).response;
-      if (hasAccessTokenExpired(data)) {
-        const { data, err } = await getNewTokens(errsT, notSignedInMsg);
-        if (err) return notify(err.msg);
-
-        storeGetNewTokensRespData(data);
-
-        try {
-          const resp = await axios[method](url, customBody ?? body);
-          setData(resp.data);
-        } catch (err) {
-          notify(errsT("generic"));
-        }
-      }
-    }
-
+  function fetchTeardown() {
     setLoading(false);
   }
 
-  return { data, setData, err, loading, setLoading, fetch };
-}
+  async function fetchWithAuth(customBody?: unknown) {
+    const authHeader = await getAuthHeader();
+    if (!authHeader) return;
 
-function getAuthHeader() {
-  const accessToken = Cookies.get("accessToken");
-  return `Bearer ${accessToken}`;
+    try {
+      const resp = await axios({
+        url,
+        method,
+        headers: { Authorization: authHeader },
+        data: customBody ?? body,
+      });
+      setData(resp.data);
+    } catch (err) {
+      handleFetchWithAuthErr(err);
+    }
+  }
+
+  function handleFetchWithAuthErr(err: unknown) {
+    if (!isAxiosError(err) || !err.response) {
+      return notify(errsT("generic"));
+    }
+    setErr(err.response);
+  }
+
+  async function getAuthHeader(): Promise<string | null> {
+    let accessToken = Cookies.get("accessToken");
+    if (!accessToken) {
+      const newTokens = await getAndStoreNewTokens();
+      if (!newTokens) return null;
+      accessToken = newTokens.accessToken;
+    }
+    return `Bearer ${accessToken}`;
+  }
+
+  async function getAndStoreNewTokens(): Promise<TAuthResp | null> {
+    const refreshToken = Cookies.get("refreshToken");
+    if (!refreshToken) {
+      notify(notSignedInNotificationContent);
+      return null;
+    }
+
+    try {
+      const data = await getNewTokens(refreshToken);
+      if (!data) return null;
+      storeAuthRespData(data);
+      return data;
+    } catch (err) {
+      handleGetAndStoreNewTokensErr(err);
+      return null;
+    }
+  }
+
+  /**
+   *
+   * @param refreshTokenFromCookies must be serialized (Pass the token as is it in cookies, don't JSON.parse() it)
+   */
+  async function getNewTokens(refreshTokenFromCookies: string) {
+    const refreshTokenDeserialized = JSON.parse(refreshTokenFromCookies);
+    const resp = await axios({
+      url: "/auth/get-new-tokens",
+      method: "post",
+      data: { refreshToken: refreshTokenDeserialized },
+    });
+    if (!isValidAuthResp(resp.data)) {
+      notify(errsT("generic"));
+      return null;
+    }
+    return resp.data;
+  }
+
+  function handleGetAndStoreNewTokensErr(err: unknown) {
+    if (!isAxiosError(err) || !err.response) {
+      notify(errsT("generic"));
+    }
+    notify(notSignedInNotificationContent);
+  }
+
+  async function fetchWithoutAuth(customBody?: unknown) {
+    try {
+      const resp = await axios({ url, method, data: customBody ?? body });
+      setData(resp.data);
+    } catch (err) {
+      handleFetchWithoutAuthErr(err);
+    }
+  }
+
+  function handleFetchWithoutAuthErr(err: unknown) {
+    if (isAxiosError(err) && err.response) {
+      setErr(err.response);
+    } else {
+      notify(errsT("generic"));
+    }
+  }
+
+  return { err, data, setData, loading, setLoading, fetch };
 }

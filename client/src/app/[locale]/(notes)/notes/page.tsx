@@ -40,18 +40,21 @@ export default function Notes() {
     err: notesErr,
     fetch: fetchNotes,
     loading: notesLoading,
-  } = useFetch<TNote[]>("/notes", {
+  } = useFetch<TNote[]>({
+    url: "/notes",
     method: "get",
-    fetchImmediately: true,
+    opts: { fetchImmediately: true },
   });
   const {
     data: tags,
     setData: setTags,
     err: tagsErr,
-    fetch: tagsFetch,
-  } = useFetch<TTag[]>("/tags", {
+    fetch: fetchTags,
+    loading: tagsLoading,
+  } = useFetch<TTag[]>({
+    url: "/tag",
     method: "get",
-    fetchImmediately: true,
+    opts: { fetchImmediately: true },
   });
   const [isEditing, setIsEditing] = useState(false);
   const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
@@ -67,6 +70,7 @@ export default function Notes() {
           notes,
           setNotes,
           selectedNoteId,
+          setSelectedNoteId,
 
           tags,
           setTags,

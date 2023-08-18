@@ -31,7 +31,6 @@ interface UsernameAvailResp {
 }
 
 export default function SignUpForm() {
-  const router = useRouter();
   const { resolvedTheme } = useTheme();
   const theme = getCaptchaTheme(resolvedTheme);
   const t = useTranslations("SignUp");
@@ -59,18 +58,22 @@ export default function SignUpForm() {
     fetch: signUpFetch,
     loading: signUpLoading,
     setLoading: signUpSetLoading,
-  } = useFetch("/auth/sign-up", {
+  } = useFetch({
+    url: "/auth/sign-up",
     method: "post",
     body: formData,
+    opts: { fetchImmediately: false, withAuth: false },
   });
   const {
     data: isUsernameAvailRespData,
     err: isUsernameAvailErr,
     fetch: isUsernameAvailFetch,
     loading: isUsernameAvailLoading,
-  } = useFetch("/auth/check-username-availability", {
+  } = useFetch({
+    url: "/auth/check-username-availability",
     method: "post",
     body: { username: formData.email },
+    opts: { fetchImmediately: false, withAuth: false },
   });
 
   useEffect(() => {
@@ -92,8 +95,7 @@ export default function SignUpForm() {
 
   useEffect(() => {
     if (!signUpRespErr) return;
-    if (!signUpRespErr?.response) return unknownErr();
-    switch (signUpRespErr.response.status) {
+    switch (signUpRespErr.status) {
       case 409:
         setErrs((prev) => ({ ...prev, usernameTakenErr: true }));
         break;
@@ -104,10 +106,11 @@ export default function SignUpForm() {
 
   useEffect(() => {
     if (!hasSubmitted) return;
-    if (!isSignUpRespDataValid(signUpRespData)) {
+    if (isValidAuthResp(signUpRespData)) {
+      storeAuthRespData(signUpRespData);
+    } else {
       return unknownErr();
     }
-    storeAuthRespData(signUpRespData, errsT);
 
     location.replace("/notes");
   }, [signUpRespData]);
@@ -170,7 +173,7 @@ export default function SignUpForm() {
         </div>
       );
     } else if (isObject(isUsernameAvailRespData)) {
-      if ((isUsernameAvailRespData as UsernameAvailResp).ok) {
+      if (isValidUsernameAvailResp(isUsernameAvailRespData)) {
         return (
           <div className="flex items-center gap-2">
             <CheckmarkIcon
@@ -181,7 +184,8 @@ export default function SignUpForm() {
           </div>
         );
       } else unknownErr();
-    } else if (isUsernameAvailErr?.response?.status === 409) {
+    } else if (isUsernameAvailErr) {
+      if (isUsernameAvailErr.status !== 409) return;
       return (
         <div className="flex items-center gap-2">
           <ErrIcon
@@ -279,16 +283,4 @@ export default function SignUpForm() {
 function isEmailInvalid(email: string) {
   if (email.length === 0) return false;
   return !checkEmailValid(email);
-}
-
-function isSignUpRespDataValid(data: any) {
-  if (
-    !isObject(data) ||
-    !data.accessToken ||
-    !data.refreshToken ||
-    !data.username
-  ) {
-    return false;
-  }
-  return true;
 }

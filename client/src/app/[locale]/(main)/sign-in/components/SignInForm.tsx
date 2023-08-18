@@ -1,7 +1,5 @@
 "use client";
 
-import axios from "@/config/axios";
-import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -17,6 +15,8 @@ import isObject from "@/utils/isObject";
 import Loading from "@/app/components/Loading";
 import storeAuthRespData from "@/utils/storeAuthRespData";
 import isInDevMode from "@/utils/isInDevMode";
+import isValidAuthResp from "@/utils/isValidAuthResp";
+import notify from "@/utils/notify";
 
 export default function SignInForm() {
   const t = useTranslations("SignIn");
@@ -43,9 +43,11 @@ export default function SignInForm() {
     fetch: signInFetch,
     loading: signInLoading,
     setLoading: signInSetLoading,
-  } = useFetch("/auth/sign-in", {
+  } = useFetch({
+    url: "/auth/sign-in",
     method: "post",
     body: formData,
+    opts: { withAuth: false, fetchImmediately: false },
   });
 
   async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
@@ -64,15 +66,17 @@ export default function SignInForm() {
 
   useEffect(() => {
     if (!hasSubmitted) return;
-    checkResponseData(signInRespData);
-    storeAuthRespData(signInRespData, errsT);
+    if (isValidAuthResp(signInRespData)) {
+      storeAuthRespData(signInRespData);
+    } else {
+      notify(errsT("generic"));
+    }
     location.replace("/notes");
   }, [signInRespData]);
 
   useEffect(() => {
     if (!signInRespErr) return;
-    if (!signInRespErr?.response) return unknownErr();
-    switch (signInRespErr.response.status) {
+    switch (signInRespErr.status) {
       case 401:
         setErrs((prev) => ({ ...prev, invalidCredentials: true }));
         break;
@@ -161,16 +165,4 @@ export default function SignInForm() {
       </form>
     </>
   );
-}
-
-function checkResponseData(data: any) {
-  if (
-    !isObject(data) ||
-    !data.accessToken ||
-    !data.refreshToken ||
-    !data.username
-  ) {
-    return false;
-  }
-  return true;
 }
