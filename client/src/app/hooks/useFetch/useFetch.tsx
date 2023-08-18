@@ -88,36 +88,72 @@ export default function useFetch<T extends unknown>({
   }
 
   async function fetchWithAuth(customBody?: unknown) {
-    const authHeader = await getAuthHeader();
+    const authHeader = await getExistingAuthHeader();
     if (!authHeader) return;
 
     try {
-      const resp = await axios({
-        url,
-        method,
-        headers: { Authorization: authHeader },
-        data: customBody ?? body,
-      });
+      const resp = await makeReq(authHeader, customBody);
       setData(resp.data);
     } catch (err) {
-      handleFetchWithAuthErr(err);
+      await handleFetchWithAuthErr(err);
     }
   }
 
-  function handleFetchWithAuthErr(err: unknown) {
+  /**
+   * WARNING: this function will throw if axios will throw, make sure to put it in a try-catch block
+   */
+  function makeReq(authHeader: string, customBody?: unknown) {
+    return axios({
+      url,
+      method,
+      headers: { Authorization: authHeader },
+      data: customBody ?? body,
+    });
+  }
+
+  async function handleFetchWithAuthErr(err: unknown, customBody?: unknown) {
     if (!isAxiosError(err) || !err.response) {
       return notify(errsT("generic"));
+    }
+
+    if (err.response.data.errCode === TErrCode.INVALID_ACCESS_TOKEN) {
+      const authHeader = await getNewAuthHeader();
+      if (!authHeader) return;
+
+      try {
+        const resp = await makeReq(authHeader, customBody);
+        setData(resp.data);
+      } catch (err) {
+        if (!isAxiosError(err) || !err.response) {
+          return notify(errsT("generic"));
+        }
+        notify(errsT("generic"));
+        setErr(err.response);
+      }
     }
     setErr(err.response);
   }
 
-  async function getAuthHeader(): Promise<string | null> {
+  type TGetAuthHeaderReturnVal = string | null;
+
+  async function getExistingAuthHeader(): Promise<TGetAuthHeaderReturnVal> {
     let accessToken = Cookies.get("accessToken");
     if (!accessToken) {
       const newTokens = await getAndStoreNewTokens();
       if (!newTokens) return null;
       accessToken = newTokens.accessToken;
     }
+    return convertAccessTokenToAuthHeader(accessToken);
+  }
+
+  async function getNewAuthHeader(): Promise<TGetAuthHeaderReturnVal> {
+    const newTokens = await getAndStoreNewTokens();
+    console.log(newTokens);
+    if (!newTokens) return null;
+    return convertAccessTokenToAuthHeader(newTokens.accessToken);
+  }
+
+  function convertAccessTokenToAuthHeader(accessToken: string) {
     return `Bearer ${accessToken}`;
   }
 
@@ -159,7 +195,7 @@ export default function useFetch<T extends unknown>({
 
   function handleGetAndStoreNewTokensErr(err: unknown) {
     if (!isAxiosError(err) || !err.response) {
-      notify(errsT("generic"));
+      return notify(errsT("generic"));
     }
     notify(notSignedInNotificationContent);
   }
@@ -174,11 +210,10 @@ export default function useFetch<T extends unknown>({
   }
 
   function handleFetchWithoutAuthErr(err: unknown) {
-    if (isAxiosError(err) && err.response) {
-      setErr(err.response);
-    } else {
-      notify(errsT("generic"));
+    if (!isAxiosError(err) || !err.response) {
+      return notify(errsT("generic"));
     }
+    setErr(err.response);
   }
 
   return { err, data, setData, loading, setLoading, fetch };
