@@ -1,7 +1,7 @@
 "use client";
 import useFetch from "@/app/hooks/useFetch/useFetch";
 import redirToSignInIfNoToken from "@/utils/redirToSignInIfNoToken";
-import { SetState, TNote, TTag } from "@/utils/types";
+import { SetState, TNote, TNoteMeta, TTag } from "@/utils/types";
 import { useTranslations } from "next-intl";
 import {
   createContext,
@@ -14,8 +14,8 @@ import LeftSide from "./components/LeftSide";
 import RightSide from "./components/RightSide";
 
 interface TNotesContextValue {
-  notes: TNote[] | null;
-  setNotes: SetState<null | TNote[]>;
+  notes: TNoteMeta[] | null;
+  setNotes: SetState<null | TNoteMeta[]>;
   selectedNoteId: string | null;
   setSelectedNoteId: SetState<string | null>;
   tags: TTag[] | null;
@@ -41,7 +41,7 @@ export default function Notes() {
     err: notesErr,
     fetch: fetchNotes,
     loading: notesLoading,
-  } = useFetch<TNote[]>({
+  } = useFetch<TNoteMeta[]>({
     url: "/notes",
     method: "get",
     opts: { fetchImmediately: true },
