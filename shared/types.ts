@@ -16,3 +16,7 @@ export const enum TErrCode {
   ACCESS_DENIED = "ACCESS_DENIED",
   OLD_REFRESH_TOKEN_NOT_FOUND = "OLD_REFRESH_TOKEN_NOT_FOUND",
 }
+
+export interface TUsernameAvailResp {
+  ok: boolean;
+}
