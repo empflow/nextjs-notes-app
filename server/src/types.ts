@@ -7,11 +7,17 @@ export interface TRefreshTokenForDb {
   tokenHash: string;
 }
 
+export interface TRefreshTokenForClient {
+  token: string;
+  id: string;
+}
+
 export interface TRefreshTokenPayload {
   userId: string;
 }
 
-export interface TRefreshTokenForClient {
-  token: string;
-  id: string;
+export interface TAuthResp {
+  accessToken: string;
+  refreshToken: TRefreshTokenForClient;
+  username: string;
 }
