@@ -16,8 +16,10 @@ const ProfileMenuDropdown = forwardRef<HTMLDivElement>((props, ref) => {
   const profileMenuContext = useGetContext(ProfileMenuContext);
   const errsT = useTranslations("Errors");
   const { signedInAs, setIsDropdownOpen, isDropdownOpen } = profileMenuContext;
-  const signOut = useFetch("/auth/sign-out", {
+  const signOut = useFetch({
+    url: "/auth/sign-out",
     method: "post",
+    opts: { fetchImmediately: false, withAuth: false },
   });
 
   function onSignOut(e: MouseEvent<HTMLButtonElement>) {
