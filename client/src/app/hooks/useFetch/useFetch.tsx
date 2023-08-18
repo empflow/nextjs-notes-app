@@ -145,7 +145,6 @@ export default function useFetch<T extends unknown>({
 
   async function getNewAuthHeader(): Promise<TGetAuthHeaderReturnVal> {
     const newTokens = await getAndStoreNewTokens();
-    console.log(newTokens);
     if (!newTokens) return null;
     return convertAccessTokenToAuthHeader(newTokens.accessToken);
   }
