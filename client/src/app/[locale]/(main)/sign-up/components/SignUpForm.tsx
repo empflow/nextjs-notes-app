@@ -166,7 +166,7 @@ export default function SignUpForm() {
     if (isUsernameAvailLoading) {
       return (
         <div className="flex items-center gap-2">
-          <Loading />
+          <Loading pxSize={24} />
           {t("checkingUsernameAvailability")}
         </div>
       );
