@@ -4,6 +4,7 @@ import { AxiosError, AxiosResponse, isAxiosError } from "axios";
 import axios from "@config/axios";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
+import { AxiosErrWithResp } from "@/utils/types";
 import notify from "@/utils/notify";
 import isOnline from "@/utils/isOnline";
 import storeAuthRespData from "@/utils/storeAuthRespData";
@@ -112,9 +113,7 @@ export default function useFetch<T extends unknown>({
   }
 
   async function handleFetchWithAuthErr(err: unknown, customBody?: unknown) {
-    if (!isAxiosError(err) || !err.response) {
-      return notify(errsT("generic"));
-    }
+    if (!isKnownErr(err)) return;
 
     if (err.response.data.errCode === TErrCode.INVALID_ACCESS_TOKEN) {
       const authHeader = await getNewAuthHeader();
@@ -124,9 +123,7 @@ export default function useFetch<T extends unknown>({
         const resp = await makeReq(authHeader, customBody);
         setData(resp.data);
       } catch (err) {
-        if (!isAxiosError(err) || !err.response) {
-          return notify(errsT("generic"));
-        }
+        if (!isKnownErr(err)) return;
         notify(errsT("generic"));
         setErr(err.response);
       }
@@ -194,9 +191,7 @@ export default function useFetch<T extends unknown>({
   }
 
   function handleGetAndStoreNewTokensErr(err: unknown) {
-    if (!isAxiosError(err) || !err.response) {
-      return notify(errsT("generic"));
-    }
+    if (!isKnownErr(err)) return;
     notify(notSignedInNotificationContent);
   }
 
@@ -210,10 +205,17 @@ export default function useFetch<T extends unknown>({
   }
 
   function handleFetchWithoutAuthErr(err: unknown) {
-    if (!isAxiosError(err) || !err.response) {
-      return notify(errsT("generic"));
-    }
+    if (!isKnownErr(err)) return;
     setErr(err.response);
+  }
+
+  function isKnownErr(err: unknown): err is AxiosErrWithResp {
+    if (!isAxiosError(err) || !err.response) {
+      notify(errsT("generic"));
+      return false;
+    }
+    err.response;
+    return true;
   }
 
   return { err, data, setData, loading, setLoading, fetch };
