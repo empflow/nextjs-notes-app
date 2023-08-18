@@ -1,3 +1,4 @@
+import { AxiosError, AxiosResponse } from "axios";
 import { Formats, TranslationValues } from "next-intl";
 import React from "react";
 
@@ -28,3 +29,7 @@ export type TWidth = "auto" | number;
 export type THeight = TWidth;
 
 export type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
+
+export type AxiosErrWithResp<T = any> = Omit<AxiosError<T>, "response"> & {
+  response: AxiosResponse<T>;
+};
