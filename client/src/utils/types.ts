@@ -10,13 +10,15 @@ export type TTranslations = (
 
 export interface TNote {
   title: string;
-  content: string;
+  content: string | null;
   isInTrash: boolean;
   tags: string[];
   _id: string;
   createdAt: string;
   updatedAt: string;
 }
+
+export type TNoteMeta = Omit<TNote, "content">;
 
 export interface TTag {
   name: string;
