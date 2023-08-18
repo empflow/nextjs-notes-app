@@ -53,7 +53,7 @@ export default function Notes() {
     fetch: fetchTags,
     loading: tagsLoading,
   } = useFetch<TTag[]>({
-    url: "/tag",
+    url: "/tags",
     method: "get",
     opts: { fetchImmediately: true },
   });
