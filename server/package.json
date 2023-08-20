@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "NODE_ENV=dev ts-node-dev ./src/server.ts",
     "build": "tsc -p ./tsconfig.json",
-    "start": "NODE_ENV=prod node ./dist/server.js"
+    "start": "NODE_ENV=prod node ./dist/server/src/server.js"
   },
   "keywords": [],
   "author": "",
