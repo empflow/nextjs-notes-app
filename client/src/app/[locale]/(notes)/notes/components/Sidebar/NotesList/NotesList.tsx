@@ -14,6 +14,7 @@ import Note from "./Note";
 export default function SidebarNotesList() {
   const context = useGetContext(NotesContext);
   const { notes, selectedNoteId, setSelectedNoteId } = context;
+  const t = useTranslations("Notes");
 
   const notesElems =
     notes?.map((note, i, notes) => {
@@ -37,11 +38,21 @@ export default function SidebarNotesList() {
     }) ?? null;
 
   return (
-    <div className="flex flex-col gap-3">
-      <div>
-        <EditBtn />
-      </div>
-      <div>{notes && notesElems}</div>
+    <div className="flex flex-grow flex-col gap-3">
+      {!notes?.length ? (
+        <div className="flex-grow">
+          <div className="flex h-full items-center justify-center text-center text-xl text-light-gray">
+            {t("noNotes")}
+          </div>
+        </div>
+      ) : (
+        <>
+          <div>
+            <EditBtn />
+          </div>
+          <div>{notesElems}</div>
+        </>
+      )}
     </div>
   );
 }
