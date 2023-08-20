@@ -53,6 +53,9 @@ export default function SignInForm() {
   async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
     setHasSubmitted(true);
+    if (!formData.email || !formData.password) {
+      return;
+    }
     signInSetLoading(true);
 
     if (devMode()) {
@@ -118,6 +121,7 @@ export default function SignInForm() {
             type={"email"}
             placeholder="you@example.com"
           />
+          {!formData.email && hasSubmitted && <Err msg={formT("noEmail")} />}
         </div>
 
         <div className="flex flex-col gap-2">
@@ -129,6 +133,9 @@ export default function SignInForm() {
             className="blue-outline rounded px-3 py-2"
             type={"password"}
           />
+          {!formData.password && hasSubmitted && (
+            <Err msg={formT("noPassword")} />
+          )}
         </div>
 
         <div className="flex flex-col gap-3">

@@ -114,27 +114,6 @@ export default function SignUpForm() {
     router.push("/notes");
   }, [signUpRespData]);
 
-  async function submitBtnOnClick() {
-    setHasSubmitted(true);
-    if (!formData.email || !formData.password || errs.clientSide.invalidEmail) {
-      return;
-    }
-    if (!formData.email)
-      setErrs((prev) => ({
-        ...prev,
-        clientSide: { ...prev.clientSide, noEmail: true },
-      }));
-    setErrs(errsInitState);
-    signUpSetLoading(true);
-
-    if (devMode()) {
-      const captchaBypassToken = process.env.NEXT_PUBLIC_CAPTCHA_BYPASS_TOKEN;
-      return await signUpFetch({ ...formData, captchaBypassToken });
-    }
-    const captchaToken = await getCaptchaToken(captchaRef);
-    await signUpFetch({ ...formData, captchaToken });
-  }
-
   function unknownErr() {
     setErrs((prev) => ({ ...prev, unknownErr: true }));
   }
@@ -159,8 +138,21 @@ export default function SignUpForm() {
     setFormData((prev) => ({ ...prev, password: e.target.value }));
   }
 
-  function onFormSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setHasSubmitted(true);
+    if (!formData.email || !formData.password || errs.clientSide.invalidEmail) {
+      return;
+    }
+    setErrs(errsInitState);
+    signUpSetLoading(true);
+
+    if (devMode()) {
+      const captchaBypassToken = process.env.NEXT_PUBLIC_CAPTCHA_BYPASS_TOKEN;
+      return await signUpFetch({ ...formData, captchaBypassToken });
+    }
+    const captchaToken = await getCaptchaToken(captchaRef);
+    await signUpFetch({ ...formData, captchaToken });
   }
 
   const usernameAvailElem = useMemo(() => {
@@ -205,7 +197,11 @@ export default function SignUpForm() {
         ref={captchaRef}
         theme={theme}
       />
-      <form onSubmit={onFormSubmit} className="flex max-w-md flex-col gap-5">
+      <form
+        noValidate
+        onSubmit={onSubmit}
+        className="flex max-w-md flex-col gap-5"
+      >
         <div className="flex flex-col gap-2">
           <label htmlFor="email">{t("emailLabel")}</label>
           <input
@@ -247,10 +243,7 @@ export default function SignUpForm() {
             </Link>
           </p>
           <div>
-            <BigBtn
-              className={`w-full ${signUpLoading ? "cursor-wait" : ""}`}
-              onClick={submitBtnOnClick}
-            >
+            <BigBtn className={`w-full ${signUpLoading ? "cursor-wait" : ""}`}>
               {signUpLoading ? (
                 <div className="flex w-full items-center justify-center">
                   <div className="relative h-[1.5rem] w-[1.5rem]">
