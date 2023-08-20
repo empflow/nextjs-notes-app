@@ -10,7 +10,7 @@ export default async function checkCaptchaToken(
 ) {
   const { captchaToken, captchaBypassToken } = req.body;
   if (captchaBypassToken) {
-    const actualBypassToken = getEnvVar("RECAPTCHA_BYPASS_TOKEN");
+    const actualBypassToken = getEnvVar("CAPTCHA_BYPASS_TOKEN");
 
     if (captchaBypassToken !== actualBypassToken) {
       throw new BadRequestErr("Invalid captcha bypass token");
@@ -21,7 +21,7 @@ export default async function checkCaptchaToken(
 
   if (!captchaToken) throw new BadRequestErr("No captcha token provided");
 
-  const secret = getEnvVar("RECAPTCHA_SECRET_KEY");
+  const secret = getEnvVar("CAPTCHA_SECRET_KEY");
 
   const resp = await axios.post(
     `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${captchaToken}`,

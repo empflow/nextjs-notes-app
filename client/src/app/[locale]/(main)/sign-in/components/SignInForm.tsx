@@ -57,6 +57,7 @@ export default function SignInForm() {
 
     if (devMode()) {
       const captchaBypassToken = process.env.NEXT_PUBLIC_CAPTCHA_BYPASS_TOKEN;
+      console.log(captchaBypassToken);
       return await signInFetch({ ...formData, captchaBypassToken });
     }
 
@@ -100,7 +101,7 @@ export default function SignInForm() {
   return (
     <>
       <ReCAPTCHA
-        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
+        sitekey={process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY as string}
         size="invisible"
         ref={captchaRef}
         theme={captchaTheme}

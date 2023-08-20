@@ -200,7 +200,7 @@ export default function SignUpForm() {
   return (
     <>
       <ReCAPTCHA
-        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
+        sitekey={process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY as string}
         size="invisible"
         ref={captchaRef}
         theme={theme}
