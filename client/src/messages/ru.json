@@ -35,7 +35,8 @@
     "dontHaveAccount": "Ещё нету аккаунта?",
     "dontHaveAccountSignUpLink": "Создать аккаунт",
     "signInBtn": "Войти",
-    "invalidCredentials": "Неверная электронная почта или пароль"
+    "invalidCredentials": "Неверная электронная почта или пароль",
+    "userNotFound": "Пользователь не найден"
   },
   "Notes": {
     "allNotes": "Все заметки",

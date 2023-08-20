@@ -35,7 +35,8 @@
     "dontHaveAccount": "Don't have an account?",
     "dontHaveAccountSignUpLink": "Sign up",
     "signInBtn": "Sign In",
-    "invalidCredentials": "Invalid username or password"
+    "invalidCredentials": "Invalid username or password",
+    "userNotFound": "User not found"
   },
   "Notes": {
     "allNotes": "All notes",

@@ -17,6 +17,7 @@ import storeAuthRespData from "@/utils/storeAuthRespData";
 import devMode from "@/utils/devMode";
 import isValidAuthResp from "@/utils/isValidAuthResp";
 import notify from "@/utils/notify";
+import { TErrCode } from "@shared/types";
 
 export default function SignInForm() {
   const t = useTranslations("SignIn");
@@ -34,6 +35,7 @@ export default function SignInForm() {
   const captchaRef = useRef<ReCAPTCHA>(null);
   const errsInitState = {
     invalidCredentials: false,
+    userNotFound: false,
     unknownErr: false,
   };
   const [errs, setErrs] = useState<typeof errsInitState>(errsInitState);
@@ -80,9 +82,12 @@ export default function SignInForm() {
 
   useEffect(() => {
     if (!signInRespErr) return;
-    switch (signInRespErr.status) {
-      case 401:
+    switch (signInRespErr.data.errCode) {
+      case TErrCode.INVALID_CREDENTIALS:
         setErrs((prev) => ({ ...prev, invalidCredentials: true }));
+        break;
+      case TErrCode.USER_NOT_FOUND:
+        setErrs((prev) => ({ ...prev, userNotFound: true }));
         break;
       default:
         unknownErr();
@@ -167,6 +172,7 @@ export default function SignInForm() {
 
           <div>
             {errs.invalidCredentials && <Err msg={t("invalidCredentials")} />}
+            {errs.userNotFound && <Err msg={t("userNotFound")} />}
             {errs.unknownErr && <Err msg={errsT("generic")} />}
           </div>
         </div>
