@@ -6,10 +6,8 @@ import useGetContext from "@/app/hooks/useGetContext/useGetContext";
 
 import { TWidth } from "@/utils/types";
 import { useTranslations } from "next-intl";
-import { useContext, useEffect, useRef, useState } from "react";
 import NotesContext from "@/contexts/NotesContext";
-import EditBtn from "./EditBtn";
-import Note from "./Note";
+import { ErrorBoundary } from "react-error-boundary";
 import NotesElems from "./NotesElems";
 
 export default function NotesList() {
@@ -19,20 +17,9 @@ export default function NotesList() {
 
   return (
     <div className="flex flex-grow flex-col gap-3">
-      {!notes?.length ? (
-        <></>
-      ) : (
-        <>
-          <div>
-            <NotesElems />
-          </div>
-        </>
-      )}
+      <ErrorBoundary fallback={<>Something went wrong</>}>
+        <NotesElems />
+      </ErrorBoundary>
     </div>
   );
-}
-
-function getNoteDesc(noteContent: string | unknown) {
-  if (!noteContent || typeof noteContent !== "string") return "";
-  return noteContent.trim().split("\n")[1];
 }
