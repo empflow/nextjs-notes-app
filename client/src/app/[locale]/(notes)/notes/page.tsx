@@ -1,21 +1,14 @@
 "use client";
 import useFetch from "@/app/hooks/useFetch/useFetch";
-import redirToSignInIfNoToken from "@/utils/redirToSignInIfNoToken";
-import { SetState, TNote, TNoteMeta, TTag } from "@/utils/types";
-import { useTranslations } from "next-intl";
-import {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
-import LeftSide from "./components/LeftSide";
-import RightSide from "./components/RightSide";
+import protectedPage from "@/utils/protectedPage";
+import { TNoteMeta, TTag } from "@/utils/types";
+import { useEffect, useState } from "react";
 import NotesContext from "@/contexts/NotesContext";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Header from "./components/Header/Header";
+import Editor from "./components/Editor/Editor";
 
 export default function Notes() {
-  const t = useTranslations("Index");
   protectedPage({ mode: "client" });
   const [selectedNoteId, setSelectedNoteId] = useState<string | null>(null);
   const [selectedTagId, setSelectedTagId] = useState<string | null>(null);
@@ -28,7 +21,7 @@ export default function Notes() {
   } = useFetch<TNoteMeta[]>({
     url: "/notes",
     method: "get",
-    opts: { fetchImmediately: true },
+    opts: { fetchImmediately: true, redirIfNoAuth: true },
   });
   const {
     data: tags,
@@ -39,14 +32,10 @@ export default function Notes() {
   } = useFetch<TTag[]>({
     url: "/tags",
     method: "get",
-    opts: { fetchImmediately: true },
+    opts: { fetchImmediately: true, redirIfNoAuth: true },
   });
   const [isEditing, setIsEditing] = useState(false);
   const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
-
-  useEffect(() => {
-    redirToSignInIfNoToken({ mode: "client" });
-  }, []);
 
   return (
     <div className="flex min-h-[100dvh]">
@@ -68,8 +57,11 @@ export default function Notes() {
           setIsFilterMenuOpen,
         }}
       >
-        <LeftSide />
-        <RightSide />
+        <Sidebar />
+        <div>
+          <Header />
+          <Editor />
+        </div>
       </NotesContext.Provider>
     </div>
   );
