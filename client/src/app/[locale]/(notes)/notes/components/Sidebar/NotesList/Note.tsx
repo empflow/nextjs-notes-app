@@ -27,7 +27,7 @@ export default function Note({
 
   return (
     <div
-      className={`box-border flex flex-col rounded-t border-b border-light-2xl-gray p-[10px] dark:border-dark-3xl-gray ${
+      className={`flex flex-col rounded-t border-b border-light-2xl-gray p-[14px] dark:border-dark-3xl-gray ${
         isSelected
           ? "rounded-b border-transparent bg-light-5xl-blue dark:bg-dark-blue"
           : ""
@@ -36,6 +36,15 @@ export default function Note({
     >
       <div className={`${truncateClassName}`}>{title}</div>
       <div className={`${truncateClassName}`}>{desc}</div>
+    </div>
+  );
+}
+
+export function NoteSkeleton() {
+  return (
+    <div className="flex flex-col gap-[0.2rem] rounded-t border-b border-light-2xl-gray p-[14px] dark:border-dark-3xl-gray">
+      <div className="h-[0.9rem] rounded bg-light-gray"></div>
+      <div className="h-[0.9rem] rounded bg-light-gray"></div>
     </div>
   );
 }

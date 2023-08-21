@@ -16,7 +16,7 @@ export default function NotesList() {
   const t = useTranslations("Notes");
 
   return (
-    <div className="flex flex-grow flex-col gap-3">
+    <div className="flex flex-grow flex-col">
       <ErrorBoundary fallback={<>Something went wrong</>}>
         <NotesElems />
       </ErrorBoundary>

@@ -1,11 +1,21 @@
 import useGetContext from "@/app/hooks/useGetContext/useGetContext";
 import NotesContext from "@/contexts/NotesContext";
-import Note from "./Note";
+import Note, { NoteSkeleton } from "./Note";
+import arrOfLength from "@/utils/arrOfLength";
 import { useErrorBoundary } from "react-error-boundary";
 
 export default function NotesElems() {
-  const { notes, notesErr, selectedNoteId } = useGetContext(NotesContext);
+  const { notes, notesErr, notesLoading, selectedNoteId } =
+    useGetContext(NotesContext);
 
+  if (notesLoading)
+    return (
+      <>
+        {arrOfLength(15).map((item, i) => (
+          <NoteSkeleton key={i} />
+        ))}
+      </>
+    );
   if (!notes) return <>hello</>;
   return (
     <>
