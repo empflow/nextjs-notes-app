@@ -10,47 +10,22 @@ import { useContext, useEffect, useRef, useState } from "react";
 import NotesContext from "@/contexts/NotesContext";
 import EditBtn from "./EditBtn";
 import Note from "./Note";
+import NotesElems from "./NotesElems";
 
-export default function SidebarNotesList() {
+export default function NotesList() {
   const context = useGetContext(NotesContext);
-  const { notes, selectedNoteId, setSelectedNoteId } = context;
+  const { notes, selectedNoteId, setSelectedNoteId, notesLoading } = context;
   const t = useTranslations("Notes");
-
-  const notesElems =
-    notes?.map((note, i, notes) => {
-      const { _id, title } = note;
-      // TODO: add proper descriptions
-      // const desc = getNoteDesc(content);
-      const desc = `description ${i}`;
-
-      const isSelected = selectedNoteId === _id;
-      const nextNote = notes[i + 1];
-      const isAboveSelectedNote = nextNote && selectedNoteId === nextNote._id;
-      const props = {
-        title,
-        desc,
-        isSelected,
-        setSelectedNoteId,
-        isAboveSelectedNote,
-        _id,
-      };
-      return <Note {...props} key={i} />;
-    }) ?? null;
 
   return (
     <div className="flex flex-grow flex-col gap-3">
       {!notes?.length ? (
-        <div className="flex-grow">
-          <div className="flex h-full items-center justify-center text-center text-xl text-light-gray">
-            {t("noNotes")}
-          </div>
-        </div>
+        <></>
       ) : (
         <>
           <div>
-            <EditBtn />
+            <NotesElems />
           </div>
-          <div>{notesElems}</div>
         </>
       )}
     </div>

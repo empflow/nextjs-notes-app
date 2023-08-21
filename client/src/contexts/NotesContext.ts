@@ -4,10 +4,12 @@ import { createContext } from "react";
 interface TNotesContextValue {
   notes: TNoteMeta[] | null;
   setNotes: SetState<null | TNoteMeta[]>;
+  notesLoading: boolean;
   selectedNoteId: string | null;
   setSelectedNoteId: SetState<string | null>;
   tags: TTag[] | null;
   setTags: SetState<null | TTag[]>;
+  tagsLoading: boolean;
   selectedTagId: string | null;
   isEditing: boolean;
   setIsEditing: SetState<boolean>;

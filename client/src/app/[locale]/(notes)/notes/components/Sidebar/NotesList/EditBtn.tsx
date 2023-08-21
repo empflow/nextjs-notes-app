@@ -11,21 +11,23 @@ export default function EditBtn() {
   const { isEditing, setIsEditing } = context;
 
   return (
-    <TinyBtn
-      className="flex gap-1 duration-200"
-      onClick={() => setIsEditing((prev) => !prev)}
-    >
-      {isEditing ? (
-        <>
-          <EditOffIcon width={20} fill="white" />
-          {t("stopEditing")}
-        </>
-      ) : (
-        <>
-          <EditIcon width={20} fill="white" />
-          {t("edit")}
-        </>
-      )}
-    </TinyBtn>
+    <div>
+      <TinyBtn
+        className="flex gap-1 duration-200"
+        onClick={() => setIsEditing((prev) => !prev)}
+      >
+        {isEditing ? (
+          <>
+            <EditOffIcon width={20} fill="white" />
+            {t("stopEditing")}
+          </>
+        ) : (
+          <>
+            <EditIcon width={20} fill="white" />
+            {t("edit")}
+          </>
+        )}
+      </TinyBtn>
+    </div>
   );
 }

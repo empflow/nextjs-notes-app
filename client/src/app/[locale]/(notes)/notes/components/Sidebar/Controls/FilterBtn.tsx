@@ -10,7 +10,7 @@ export default function FilterBtn() {
 
   if (notes?.length) {
     return (
-      <div className="flex justify-between">
+      <div className="flex">
         <SmallBtn
           className="flex gap-1"
           onClick={() => setIsFilterMenuOpen((prev) => !prev)}

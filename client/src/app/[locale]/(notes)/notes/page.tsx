@@ -43,11 +43,14 @@ export default function Notes() {
         value={{
           notes,
           setNotes,
+          notesLoading,
+
           selectedNoteId,
           setSelectedNoteId,
 
           tags,
           setTags,
+          tagsLoading,
           selectedTagId,
 
           isEditing,
