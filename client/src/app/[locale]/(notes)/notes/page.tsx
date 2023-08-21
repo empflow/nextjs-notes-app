@@ -44,6 +44,7 @@ export default function Notes() {
           notes,
           setNotes,
           notesLoading,
+          notesErr,
 
           selectedNoteId,
           setSelectedNoteId,
@@ -51,6 +52,7 @@ export default function Notes() {
           tags,
           setTags,
           tagsLoading,
+          tagsErr,
           selectedTagId,
 
           isEditing,
