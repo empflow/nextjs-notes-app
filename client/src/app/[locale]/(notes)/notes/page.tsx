@@ -16,6 +16,7 @@ import NotesContext from "@/contexts/NotesContext";
 
 export default function Notes() {
   const t = useTranslations("Index");
+  protectedPage({ mode: "client" });
   const [selectedNoteId, setSelectedNoteId] = useState<string | null>(null);
   const [selectedTagId, setSelectedTagId] = useState<string | null>(null);
   const {
