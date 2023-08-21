@@ -11,6 +11,7 @@ import storeAuthRespData from "@/utils/storeAuthRespData";
 import isValidAuthResp from "@/utils/isValidAuthResp";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 
 type HttpMethod =
   | "get"
@@ -29,6 +30,7 @@ interface Params {
     fetchImmediately?: boolean;
     persistDataWhileFetching?: boolean;
     withAuth?: boolean;
+    redirIfNoAuth?: boolean;
   };
 }
 
@@ -39,6 +41,7 @@ export default function useFetch<T extends unknown>({
   opts,
 }: Params) {
   const errsT = useTranslations("Errors");
+  const router = useRouter();
   const {
     fetchImmediately = true,
     persistDataWhileFetching = true,
@@ -191,6 +194,9 @@ export default function useFetch<T extends unknown>({
 
   function handleGetAndStoreNewTokensErr(err: unknown) {
     if (!isKnownErr(err)) return;
+    if (opts?.redirIfNoAuth) {
+      router.push("/sign-in");
+    }
     notify(notSignedInNotificationContent);
   }
 
