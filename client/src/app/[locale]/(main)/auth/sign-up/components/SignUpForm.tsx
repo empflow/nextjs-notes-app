@@ -238,7 +238,10 @@ export default function SignUpForm() {
         <div className="flex flex-col gap-3">
           <p>
             {t("alreadyHaveAccount")}{" "}
-            <Link className="text-l-accent dark:text-d-accent" href="/sign-in">
+            <Link
+              className="text-l-accent dark:text-d-accent"
+              href="/auth/sign-in"
+            >
               {t("alreadyHaveAccountSignInLink")}
             </Link>
           </p>
