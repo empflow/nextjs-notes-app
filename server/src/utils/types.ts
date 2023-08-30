@@ -15,9 +15,3 @@ export interface TRefreshTokenForClient {
 export interface TRefreshTokenPayload {
   userId: string;
 }
-
-export interface TAuthResp {
-  accessToken: string;
-  refreshToken: TRefreshTokenForClient;
-  username: string;
-}
