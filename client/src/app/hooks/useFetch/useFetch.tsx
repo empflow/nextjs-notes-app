@@ -104,7 +104,7 @@ export default function useFetch<T extends unknown>({
   }
 
   /**
-   * WARNING: this function will throw if axios will throw, make sure to put it in a try-catch block
+   * @throws {AxiosError}
    */
   function makeReq(authHeader: string, customBody?: unknown) {
     return axios({
