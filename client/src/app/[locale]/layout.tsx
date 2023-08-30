@@ -3,7 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { NextIntlClientProvider, useLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { ToastContainer } from "react-toastify";
-import ThemeProviders from "../ThemeProviders";
+import ThemeProviders from "../providers/ThemeProviders";
 
 export const metadata = {
   title: "Notes",
