@@ -35,3 +35,5 @@ export type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
 export type AxiosErrWithResp<T = any> = Omit<AxiosError<T>, "response"> & {
   response: AxiosResponse<T>;
 };
+
+export type TCaptchaTheme = "light" | "dark";
