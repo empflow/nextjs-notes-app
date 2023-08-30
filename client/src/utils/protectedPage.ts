@@ -6,6 +6,6 @@ export default function protectedPage() {
   const refreshToken = cookieStore.get("refreshToken");
 
   if (!refreshToken) {
-    return redirect("/sign-in");
+    return redirect("/auth/sign-in");
   }
 }

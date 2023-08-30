@@ -9,12 +9,8 @@ export default function ProfileMenu() {
   const username = cookiesStore.get("username")?.value ?? null;
   const refreshToken = cookiesStore.get("refreshToken")?.value ?? null;
 
-    return (
-      <Link href="/sign-in">
-        <button>Sign in</button>
-      </Link>
-    );
   if (!username || !refreshToken) {
+    return <Link href="/auth/sign-in">Sign in</Link>;
   }
 
   return <ProfileMenuContent signedInAs={username || t("signedInAsUnknown")} />;
