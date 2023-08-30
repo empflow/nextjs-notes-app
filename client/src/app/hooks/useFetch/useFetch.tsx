@@ -1,7 +1,7 @@
 "use client";
 import { TAuthResp, TErrCode } from "@shared/types";
 import { AxiosError, AxiosResponse, isAxiosError } from "axios";
-import axios from "@config/axios";
+import axios from "@/utils/http";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { AxiosErrWithResp } from "@/utils/types";
