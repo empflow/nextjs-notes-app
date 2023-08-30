@@ -1,10 +1,4 @@
-import { TRefreshTokenForClient } from "@server/utils/types";
-
-export interface TAuthResp {
-  accessToken: string;
-  refreshToken: TRefreshTokenForClient;
-  username: string;
-}
+import { z } from "zod";
 
 export const enum TErrCode {
   ACCESS_TOKEN_EXPIRED = "ACCESS_TOKEN_EXPIRED",
@@ -21,3 +15,14 @@ export const enum TErrCode {
 export interface TUsernameAvailResp {
   ok: boolean;
 }
+
+export const authRespSchema = z.object({
+  accessToken: z.string(),
+  refreshToken: z.object({
+    id: z.string(),
+    token: z.string(),
+  }),
+  username: z.string(),
+});
+
+export type TAuthResp = z.infer<typeof authRespSchema>;
