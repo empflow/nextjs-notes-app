@@ -1,4 +1,4 @@
-import useGetContext from "@/app/hooks/useGetContext/useGetContext";
+import useGetContext from "@/app/hooks/useGetContext";
 import { SetState } from "@/utils/types";
 import { useTranslations } from "next-intl";
 import NotesContext from "@/contexts/NotesContext";

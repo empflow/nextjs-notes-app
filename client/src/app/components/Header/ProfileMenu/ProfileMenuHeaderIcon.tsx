@@ -1,4 +1,4 @@
-import useGetContext from "@/app/hooks/useGetContext/useGetContext";
+import useGetContext from "@/app/hooks/useGetContext";
 import ExpandIcon from "@/icons/Expand";
 import throwIfValueNullOrUndefined from "@/utils/throwIfValueNullOrUndefined";
 import { useTranslations } from "next-intl";

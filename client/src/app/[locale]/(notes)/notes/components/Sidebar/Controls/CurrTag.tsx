@@ -1,4 +1,4 @@
-import useGetContext from "@/app/hooks/useGetContext/useGetContext";
+import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext from "@/contexts/NotesContext";
 import { TTag, TTranslations } from "@/utils/types";
 import { useTranslations } from "next-intl";

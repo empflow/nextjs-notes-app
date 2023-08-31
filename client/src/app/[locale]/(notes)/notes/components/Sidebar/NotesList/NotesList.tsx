@@ -2,7 +2,7 @@ import BigBtn from "@/app/components/buttons/Big";
 import MediumBtn from "@/app/components/buttons/Medium";
 import SmallBtn from "@/app/components/buttons/Small";
 import TinyBtn from "@/app/components/buttons/Tiny";
-import useGetContext from "@/app/hooks/useGetContext/useGetContext";
+import useGetContext from "@/app/hooks/useGetContext";
 
 import { TWidth } from "@/utils/types";
 import { useTranslations } from "next-intl";

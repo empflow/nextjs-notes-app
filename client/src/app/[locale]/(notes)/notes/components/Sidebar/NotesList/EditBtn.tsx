@@ -1,7 +1,7 @@
 import TinyBtn from "@/app/components/buttons/Tiny";
 import EditIcon from "@/icons/svg/edit.svg";
 import EditOffIcon from "@/icons/svg/editOff.svg";
-import useGetContext from "@/app/hooks/useGetContext/useGetContext";
+import useGetContext from "@/app/hooks/useGetContext";
 import { useTranslations } from "next-intl";
 import NotesContext from "@/contexts/NotesContext";
 

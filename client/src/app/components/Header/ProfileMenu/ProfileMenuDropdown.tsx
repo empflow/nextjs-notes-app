@@ -1,4 +1,4 @@
-import useFetch from "@/app/hooks/useFetch/useFetch";
+import useFetch from "@/app/hooks/useFetch";
 import notify from "@/utils/notify";
 import clearAuthData from "@/utils/clearAuthData";
 import throwIfValueNullOrUndefined from "@/utils/throwIfValueNullOrUndefined";
@@ -10,7 +10,7 @@ import {
   ProfileMenuContext,
 } from "./ProfileMenuContent";
 import ProfileMenuDropdownButton from "./ProfileMenuDropdownButton";
-import useGetContext from "@/app/hooks/useGetContext/useGetContext";
+import useGetContext from "@/app/hooks/useGetContext";
 
 const ProfileMenuDropdown = forwardRef<HTMLDivElement>((props, ref) => {
   const profileMenuContext = useGetContext(ProfileMenuContext);
