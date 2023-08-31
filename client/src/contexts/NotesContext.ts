@@ -1,4 +1,4 @@
-import { SetState, TNoteMeta, TTag } from "@/utils/types";
+import { SetState, TContext, TNoteMeta, TTag } from "@/utils/types";
 import { AxiosResponse } from "axios";
 import { createContext } from "react";
 
@@ -20,8 +20,7 @@ interface TNotesContextValue {
   setIsFilterMenuOpen: SetState<boolean>;
 }
 
-type TNotesContext = null | TNotesContextValue;
-
+type TNotesContext = TContext<TNotesContextValue>;
 const NotesContext = createContext<TNotesContext>(null);
 
 export default NotesContext;
