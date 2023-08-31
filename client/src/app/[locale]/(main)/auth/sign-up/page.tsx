@@ -6,7 +6,7 @@ export default function SignUp() {
 
   return (
     <>
-      <h1 className="font-semibold text-3xl mb-8">{t("title")}</h1>
+      <h1 className="mb-8 text-3xl font-semibold">{t("title")}</h1>
       <div>
         <SignUpForm />
       </div>
