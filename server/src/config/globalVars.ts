@@ -16,8 +16,6 @@ export type TApiErrs =
   | ForbiddenErr
   | ConflictErr;
 
-export const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
 export const errMsgs = {
   noteInvalidId: "Invalid note ID",
 };
