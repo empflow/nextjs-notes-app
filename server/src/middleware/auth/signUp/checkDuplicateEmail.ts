@@ -1,3 +1,4 @@
+import { TErrCode } from "@shared/types";
 import { Request, Response, NextFunction } from "express";
 import User from "../../../models/User";
 import { ConflictErr } from "../../../utils/errs";
@@ -9,11 +10,11 @@ export default async function signUpCheckDuplicateEmail(
 ) {
   const { email } = req.body;
 
-  const userWithSameEmail = await User.findOne({ email });
+  const userWithSameEmail = await User.findOne({ email: email });
 
   if (userWithSameEmail) {
     const msg = "A user with this email already exists";
-    throw new ConflictErr(msg);
+    throw new ConflictErr(msg, TErrCode.USERNAME_TAKEN);
   }
 
   next();

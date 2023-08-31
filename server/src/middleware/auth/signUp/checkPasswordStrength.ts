@@ -1,5 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { BadRequestErr } from "../../../utils/errs";
+import { minPasswordLength } from "../../../../../shared/values";
+import { TErrCode } from "@shared/types";
 
 export default async function signUpCheckPasswordStrength(
   req: Request,
@@ -8,9 +10,9 @@ export default async function signUpCheckPasswordStrength(
 ) {
   const { password } = req.body;
 
-  if (password.length < 8) {
-    const msg = "Password is too short. Must be 8 or more characters";
-    throw new BadRequestErr(msg);
+  if (password.length < minPasswordLength) {
+    const msg = `Password is too short. Must be ${minPasswordLength} or more characters`;
+    throw new BadRequestErr(msg, TErrCode.PASSWORD_TOO_WEAK);
   }
 
   next();

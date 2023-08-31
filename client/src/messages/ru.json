@@ -13,20 +13,23 @@
     }
   },
   "Form": {
-    "noEmail": "Поле почта не заполнено",
-    "noPassword": "Поле пароль не заполнено",
-    "invalidEmail": "Неправильный формат элекронной почты"
+    "email": "Электронная почта",
+    "password": "Пароль",
+    "noEmail": "Почта не заполнена",
+    "noPassword": "Пароль не заполнен",
+    "invalidEmail": "Неверный формат элекронной почты",
+    "passwordTooShort": "Пароль должен состоять из минимум {pwdLength} символов",
+    "passwordTooLong": "Длина пароля не должна превышать {pwdLength} символов"
   },
   "SignUp": {
     "title": "Создать аккаунт",
-    "emailLabel": "Электронная почта",
-    "passwordLabel": "Пароль",
     "alreadyHaveAccount": "Уже есть аккаунт?",
     "alreadyHaveAccountSignInLink": "Войти в аккаунт",
     "signUpBtn": "Создать аккаунт",
     "checkingUsernameAvailability": "Проверка доступности имени пользователя",
     "usernameAvailable": "Имя пользователя доступно",
-    "usernameTaken": "Имя пользователя {username} уже занято. Выберите другое"
+    "usernameTaken": "Имя пользователя {username} уже занято. Выберите другое",
+    "passwordTooWeak": "Пароль слишком слабый"
   },
   "SignIn": {
     "title": "Войти в аккаунт",
@@ -35,7 +38,7 @@
     "dontHaveAccount": "Ещё нету аккаунта?",
     "dontHaveAccountSignUpLink": "Создать аккаунт",
     "signInBtn": "Войти",
-    "invalidCredentials": "Неверная электронная почта или пароль",
+    "wrongPassword": "Неверный пароль",
     "userNotFound": "Пользователь не найден"
   },
   "Notes": {

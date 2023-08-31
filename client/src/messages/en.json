@@ -13,20 +13,23 @@
     }
   },
   "Form": {
+    "email": "Email",
+    "password": "Password",
     "noEmail": "Email is not filled out",
     "noPassword": "Password is not filled out",
-    "invalidEmail": "Invalid email address"
+    "invalidEmail": "Invalid email address",
+    "passwordTooShort": "Password must be at least {pwdLength} characters long",
+    "passwordTooLong": "Password must not exceed {pwdLength} characters"
   },
   "SignUp": {
     "title": "Sign up",
-    "emailLabel": "Email",
-    "passwordLabel": "Password",
     "alreadyHaveAccount": "Already have an account?",
     "alreadyHaveAccountSignInLink": "Sign in",
     "signUpBtn": "Sign Up",
     "checkingUsernameAvailability": "Checking username availability",
     "usernameAvailable": "Username is available",
-    "usernameTaken": "Username {username} is already taken. Choose a different one"
+    "usernameTaken": "Username {username} is already taken. Choose a different one",
+    "passwordTooWeak": "Password is too weak"
   },
   "SignIn": {
     "title": "Sign in",
@@ -35,7 +38,7 @@
     "dontHaveAccount": "Don't have an account?",
     "dontHaveAccountSignUpLink": "Sign up",
     "signInBtn": "Sign In",
-    "invalidCredentials": "Invalid username or password",
+    "wrongPassword": "Wrong password",
     "userNotFound": "User not found"
   },
   "Notes": {

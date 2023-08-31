@@ -6,14 +6,12 @@ export const enum TErrCode {
   NO_REFRESH_TOKEN = "NO_REFRESH_TOKEN",
   INVALID_ACCESS_TOKEN = "INVALID_ACCESS_TOKEN",
   INVALID_REFRESH_TOKEN = "INVALID_REFRESH_TOKEN",
-  INVALID_CREDENTIALS = "INVALID_CREDENTIALS",
+  WRONG_PASSWORD = "WRONG_PASSWORD",
   ACCESS_DENIED = "ACCESS_DENIED",
   OLD_REFRESH_TOKEN_NOT_FOUND = "OLD_REFRESH_TOKEN_NOT_FOUND",
   USER_NOT_FOUND = "USER_NOT_FOUND",
-}
-
-export interface TUsernameAvailResp {
-  ok: boolean;
+  USERNAME_TAKEN = "USERNAME_TAKEN",
+  PASSWORD_TOO_WEAK = "PASSWORD_TOO_WEAK",
 }
 
 export const authRespSchema = z.object({
@@ -24,7 +22,6 @@ export const authRespSchema = z.object({
   }),
   username: z.string(),
 });
-
 export type TAuthResp = z.infer<typeof authRespSchema>;
 
 export const isUsernameAvailableRespSchema = z.object({

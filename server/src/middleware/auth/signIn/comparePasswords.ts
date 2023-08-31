@@ -12,10 +12,7 @@ export default async function signInComparePasswords(
 
   const doPasswordsMatch = await user.doPasswordsMatch(password);
   if (!doPasswordsMatch) {
-    throw new UnauthorizedErr(
-      "Invalid credentials",
-      TErrCode.INVALID_CREDENTIALS
-    );
+    throw new UnauthorizedErr("Wrong password", TErrCode.WRONG_PASSWORD);
   }
 
   next();

@@ -56,14 +56,16 @@ export default function SignInForm() {
     router.push("/notes");
   }
 
-  useEffect(() => {
+  useEffect(handleServerErr, [signInFetchErr]);
+
+  function handleServerErr() {
     if (!signInFetchErr) return;
     if (!isAxiosErrWithResp(signInFetchErr)) return setUnknownErr();
     switch (signInFetchErr.response.data.errCode) {
-      case TErrCode.INVALID_CREDENTIALS:
+      case TErrCode.WRONG_PASSWORD:
         return setFormErr("root.server", {
-          type: "invalidCredentials",
-          message: t("invalidCredentials"),
+          type: "wrongPassword",
+          message: t("wrongPassword"),
         });
       case TErrCode.USER_NOT_FOUND:
         return setFormErr("root.server", {
@@ -73,7 +75,7 @@ export default function SignInForm() {
       default:
         return setUnknownErr();
     }
-  }, [signInIsErr]);
+  }
 
   function setUnknownErr() {
     setFormErr("root.server", {
@@ -92,13 +94,13 @@ export default function SignInForm() {
       >
         <div className="flex flex-col gap-3">
           <Input
-            label="Email"
+            label={formT("email")}
             register={register("email", { required: formT("noEmail") })}
             type="email"
             errMsg={formErrs.email?.message}
           />
           <Input
-            label="Password"
+            label={formT("password")}
             register={register("password", { required: formT("noPassword") })}
             type="password"
             errMsg={formErrs.password?.message}
