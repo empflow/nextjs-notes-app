@@ -26,3 +26,10 @@ export const authRespSchema = z.object({
 });
 
 export type TAuthResp = z.infer<typeof authRespSchema>;
+
+export const isUsernameAvailableRespSchema = z.object({
+  ok: z.boolean(),
+});
+export type TIsUsernameAvailableResp = z.infer<
+  typeof isUsernameAvailableRespSchema
+>;
