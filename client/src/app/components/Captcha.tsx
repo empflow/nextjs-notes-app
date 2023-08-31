@@ -1,4 +1,4 @@
-import { forwardRef, LegacyRef } from "react";
+import { forwardRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { TCaptchaTheme } from "@/utils/types";
 
