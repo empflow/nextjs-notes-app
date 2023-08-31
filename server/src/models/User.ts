@@ -2,7 +2,7 @@ import mongoose, { Document } from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import getEnvVar from "../utils/getEnvVar";
-import { emailRegex } from "../config/globalVars";
+import { emailRegex } from "../../../shared/regexes";
 import {
   TAccessTokenPayload,
   TRefreshTokenForDb,

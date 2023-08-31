@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { emailRegex } from "../../../config/globalVars";
+import { emailRegex } from "../../../../../shared/regexes";
 import { BadRequestErr } from "../../../utils/errs";
 
 export default async function signUpRegexCheckEmail(
