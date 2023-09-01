@@ -1,7 +1,73 @@
+"use client";
+import useFetch from "@/app/hooks/useFetch";
 import protectedPage from "@/utils/protectedPage";
-import NotesPageContent from "./pageContent";
+import { TNoteMeta, TTag } from "@/utils/types";
+import { useState } from "react";
+import NotesContext from "@/contexts/NotesContext";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Header from "./components/Header/Header";
+import Editor from "./components/Editor/Editor";
 
 export default function Notes() {
   protectedPage();
-  return <NotesPageContent />;
+  const [selectedNoteId, setSelectedNoteId] = useState<string | null>(null);
+  const [selectedTagId, setSelectedTagId] = useState<string | null>(null);
+  const {
+    data: notes,
+    setData: setNotes,
+    err: notesErr,
+    fetch: fetchNotes,
+    loading: notesLoading,
+  } = useFetch<TNoteMeta[]>({
+    url: "/notes",
+    method: "get",
+    opts: { fetchImmediately: true, redirIfNoAuth: true },
+  });
+  const {
+    data: tags,
+    setData: setTags,
+    err: tagsErr,
+    fetch: fetchTags,
+    loading: tagsLoading,
+  } = useFetch<TTag[]>({
+    url: "/tags",
+    method: "get",
+    opts: { fetchImmediately: true, redirIfNoAuth: true },
+  });
+  const [isEditing, setIsEditing] = useState(false);
+  const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
+
+  return (
+    <div className="flex min-h-[100dvh]">
+      <NotesContext.Provider
+        value={{
+          notes,
+          setNotes,
+          notesLoading,
+          notesErr,
+
+          selectedNoteId,
+          setSelectedNoteId,
+
+          tags,
+          setTags,
+          tagsLoading,
+          tagsErr,
+          selectedTagId,
+
+          isEditing,
+          setIsEditing,
+
+          isFilterMenuOpen,
+          setIsFilterMenuOpen,
+        }}
+      >
+        <Sidebar />
+        <div>
+          <Header />
+          <Editor />
+        </div>
+      </NotesContext.Provider>
+    </div>
+  );
 }
