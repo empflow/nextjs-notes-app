@@ -1,5 +1,6 @@
 import { AxiosError, AxiosResponse } from "axios";
 import { Formats, TranslationValues } from "next-intl";
+import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import React from "react";
 
 export type TTranslations = (
@@ -43,3 +44,5 @@ export type TAxiosErrWithResp<T = any> = Omit<AxiosError<T>, "response"> & {
 };
 
 export type TContext<T> = T | null;
+
+export type TCookie = RequestCookie | string;
