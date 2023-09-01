@@ -1,5 +1,5 @@
 import Loading from "@/app/components/Loading";
-import observeQuery from "@/app/hooks/observeQuery";
+import useObserveQuery from "@/app/hooks/useObserveQuery";
 import useGetContext from "@/app/hooks/useGetContext";
 import SignUpFormContext from "@/contexts/SignUpFormContext";
 import CheckmarkIcon from "@/icons/Checkmark";
