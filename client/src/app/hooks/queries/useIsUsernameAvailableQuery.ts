@@ -23,15 +23,12 @@ export default function useIsUsernameAvailableQuery({
   });
 
   useEffect(() => {
-    console.log(username);
     clearFormErrs("root.server");
     clearTimeout(checkIsUsernameAvailTimeout.current!);
 
     const usernameExists = !!username.length;
     if (!usernameExists || !isEmailValid(username)) return;
-    console.log("will set timeout");
     checkIsUsernameAvailTimeout.current = setTimeout(async () => {
-      console.log("inside timeout");
       await query.refetch();
     }, 500);
   }, [username]);
