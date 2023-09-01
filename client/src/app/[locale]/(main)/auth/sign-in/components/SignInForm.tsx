@@ -1,21 +1,16 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useRef } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
-import { useTheme } from "next-themes";
-import getCaptchaTheme from "@/utils/getCaptchaTheme";
-import { useTranslations } from "next-intl";
-import { TErrCode } from "@shared/types";
 import { useForm } from "react-hook-form";
 import Captcha from "@/app/components/Captcha";
-import Input from "@/app/components/form/Input";
 import useSignInQuery from "@/app/hooks/queries/useSignInQuery";
-import FormBtn from "@/app/components/form/FormBtn";
-import DontHaveAccount from "./DontHaveAccount";
-import isAxiosErrWithResp from "@/utils/isAxiosErrWithResp";
-import FormErr from "@/app/components/form/FormErr";
 import storeAuthRespData from "@/utils/storeAuthRespData";
+import useSignInTranslations from "./hooks/useFormTranslations";
+import SignInInputs from "./Inputs";
+import SignInSectionBelowInputs from "./SectionBelowInputs";
+import SignInFormContext from "@/contexts/SignInFormContext";
+import useHandleSignInErrs from "./hooks/useHandleErrs";
+import useCaptcha from "@/app/hooks/useCaptcha";
 
 export interface TSignInFormInputValues {
   email: string;
@@ -23,14 +18,9 @@ export interface TSignInFormInputValues {
 }
 
 export default function SignInForm() {
-  const t = useTranslations("SignIn");
-  const errsT = useTranslations("Errors");
-  const formT = useTranslations("Form");
-
-  const { resolvedTheme } = useTheme();
-  const captchaTheme = getCaptchaTheme(resolvedTheme);
+  const { errsT } = useSignInTranslations();
   const router = useRouter();
-  const captchaRef = useRef<ReCAPTCHA>(null);
+  const { captchaRef, captchaTheme } = useCaptcha();
 
   const {
     register,
@@ -38,43 +28,20 @@ export default function SignInForm() {
     handleSubmit,
     getValues: getFormValues,
     setError: setFormErr,
+    watch: formWatch,
   } = useForm<TSignInFormInputValues>();
-  const {
-    refetch: signIn,
-    isError: signInIsErr,
-    error: signInFetchErr,
-    data: signInData,
-  } = useSignInQuery({
+  const email = formWatch("email", "");
+  const { refetch: signIn } = useSignInQuery({
     formData: getFormValues(),
     captchaRef,
   });
+  useHandleSignInErrs({ setFormErr, setUnknownErr });
 
   async function onSubmit() {
-    const { isError } = await signIn();
-    if (isError || !signInData) return setUnknownErr();
-    storeAuthRespData(signInData);
+    const { isError, data } = await signIn();
+    if (isError || !data) return setUnknownErr();
+    storeAuthRespData(data);
     router.push("/notes");
-  }
-
-  useEffect(handleServerErr, [signInFetchErr]);
-
-  function handleServerErr() {
-    if (!signInFetchErr) return;
-    if (!isAxiosErrWithResp(signInFetchErr)) return setUnknownErr();
-    switch (signInFetchErr.response.data.errCode) {
-      case TErrCode.WRONG_PASSWORD:
-        return setFormErr("root.server", {
-          type: "wrongPassword",
-          message: t("wrongPassword"),
-        });
-      case TErrCode.USER_NOT_FOUND:
-        return setFormErr("root.server", {
-          type: "userNotFound",
-          message: t("userNotFound"),
-        });
-      default:
-        return setUnknownErr();
-    }
   }
 
   function setUnknownErr() {
@@ -85,34 +52,18 @@ export default function SignInForm() {
   }
 
   return (
-    <>
+    <SignInFormContext.Provider
+      value={{ formErrs, register, email, isSubmitting, formWatch }}
+    >
       <Captcha theme={captchaTheme} ref={captchaRef} />
 
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex max-w-md flex-col gap-5"
       >
-        <div className="flex flex-col gap-3">
-          <Input
-            label={formT("email")}
-            register={register("email", { required: formT("noEmail") })}
-            type="email"
-            errMsg={formErrs.email?.message}
-          />
-          <Input
-            label={formT("password")}
-            register={register("password", { required: formT("noPassword") })}
-            type="password"
-            errMsg={formErrs.password?.message}
-          />
-        </div>
-
-        <div className="flex flex-col gap-3">
-          <DontHaveAccount />
-          <FormBtn isLoading={isSubmitting} text={t("signInBtn")} />
-          <FormErr content={formErrs.root?.server.message} />
-        </div>
+        <SignInInputs />
+        <SignInSectionBelowInputs />
       </form>
-    </>
+    </SignInFormContext.Provider>
   );
 }
