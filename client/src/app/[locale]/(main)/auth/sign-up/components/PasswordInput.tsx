@@ -1,12 +1,12 @@
 import Input from "@/app/components/form/Input";
 import useGetContext from "@/app/hooks/useGetContext";
 import SignUpFormContext from "@/contexts/SignUpFormContext";
-import useSignUpFormTranslations from "../hooks/useSignUpFormTranslations";
 import { minPasswordLength, maxPasswordLength } from "@shared/values";
+import useSignUpFormTranslations from "../hooks/useSignUpFormTranslations";
 
-export default function PasswordInput() {
-  const { formErrs, register } = useGetContext(SignUpFormContext);
+export default function SignUpPasswordInput() {
   const { formT } = useSignUpFormTranslations();
+  const { register, formErrs } = useGetContext(SignUpFormContext);
 
   return (
     <Input

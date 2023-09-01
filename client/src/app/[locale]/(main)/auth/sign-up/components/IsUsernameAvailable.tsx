@@ -7,14 +7,14 @@ import ErrIcon from "@/icons/Err";
 import isEmailValid from "@/utils/isEmailValid";
 import { TIsUsernameAvailableResp } from "@shared/types";
 import { useQueryClient } from "@tanstack/react-query";
-import { useTranslations } from "next-intl";
+import useSignUpFormTranslations from "../hooks/useSignUpFormTranslations";
 
-export default function IsUsernameAvailable() {
+export default function SignUpIsUsernameAvailable() {
   const { email } = useGetContext(SignUpFormContext);
-  const t = useTranslations("SignUp");
+  const { t } = useSignUpFormTranslations();
   const queryClient = useQueryClient();
 
-  const { data, isFetching } = observeQuery<TIsUsernameAvailableResp>([
+  const { data, isFetching } = useObserveQuery<TIsUsernameAvailableResp>([
     "isUsernameAvailable",
   ]);
 

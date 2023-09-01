@@ -3,15 +3,15 @@ import FormErr from "@/app/components/form/FormErr";
 import useGetContext from "@/app/hooks/useGetContext";
 import SignUpFormContext from "@/contexts/SignUpFormContext";
 import useSignUpFormTranslations from "../hooks/useSignUpFormTranslations";
-import AlreadyHaveAccount from "./AlreadyHaveAccount";
+import SignUpAlreadyHaveAccount from "./AlreadyHaveAccount";
 
-export default function SectionBelowInputs() {
+export default function SignUpSectionBelowInputs() {
   const { formErrs, isSubmitting } = useGetContext(SignUpFormContext);
   const { t } = useSignUpFormTranslations();
 
   return (
     <div className="flex flex-col gap-3">
-      <AlreadyHaveAccount />
+      <SignUpAlreadyHaveAccount />
       <FormBtn isLoading={isSubmitting} text={t("signUpBtn")} />
       <FormErr content={formErrs.root?.server.message} />
     </div>

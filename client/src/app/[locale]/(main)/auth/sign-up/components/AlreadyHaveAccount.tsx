@@ -1,8 +1,8 @@
-import { useTranslations } from "next-intl";
 import Link from "next/link";
+import useSignUpFormTranslations from "../hooks/useSignUpFormTranslations";
 
-export default function DontHaveAccount() {
-  const t = useTranslations("SignUp");
+export default function SignUpAlreadyHaveAccount() {
+  const { t } = useSignUpFormTranslations();
 
   return (
     <p>

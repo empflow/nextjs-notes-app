@@ -4,9 +4,9 @@ import SignUpFormContext from "@/contexts/SignUpFormContext";
 import { emailRegex } from "@shared/regexes";
 import useSignUpFormTranslations from "../hooks/useSignUpFormTranslations";
 
-export default function EmailInput() {
-  const { formErrs, register } = useGetContext(SignUpFormContext);
+export default function SignUpEmailInput() {
   const { formT } = useSignUpFormTranslations();
+  const { register, formErrs } = useGetContext(SignUpFormContext);
 
   return (
     <Input
