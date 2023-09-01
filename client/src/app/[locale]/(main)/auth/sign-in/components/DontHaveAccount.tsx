@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 
-export default function DontHaveAccount() {
+export default function SignInDontHaveAccount() {
   const t = useTranslations("SignIn");
 
   return (
