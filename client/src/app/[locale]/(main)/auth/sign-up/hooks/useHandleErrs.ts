@@ -1,11 +1,10 @@
 import isAxiosErrWithResp from "@/utils/isAxiosErrWithResp";
-import { TAuthResp, TErrCode } from "@shared/types";
-import { useTranslations } from "next-intl";
+import { TErrCode } from "@shared/types";
 import { useEffect } from "react";
 import { UseFormSetError } from "react-hook-form";
 import { TSignUpFormInputValues } from "../components/SignUpForm";
-import { useQueryClient } from "@tanstack/react-query";
-import { AxiosError } from "axios";
+import useSignUpFormTranslations from "./useSignUpFormTranslations";
+import useObserveQuery from "@/app/hooks/useObserveQuery";
 
 interface TProps {
   setUnknownErr: () => void;
@@ -18,12 +17,8 @@ export default function useHandleErrs({
   setFormErr,
   email,
 }: TProps) {
-  const t = useTranslations("SignUp");
-
-  const queryClient = useQueryClient();
-  const state = queryClient.getQueryState<TAuthResp, AxiosError>(["signUp"]);
-  if (!state) return null;
-  const { error: err } = state;
+  const { t } = useSignUpFormTranslations();
+  const { error: err } = useObserveQuery(["signUp"]);
 
   useEffect(() => {
     if (!err) return;
