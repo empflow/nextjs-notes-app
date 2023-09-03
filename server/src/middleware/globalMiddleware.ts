@@ -4,7 +4,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
 
-router.use(cors({ origin: "*" }))
+router.use(cors({ origin: "*" }));
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 router.use(helmet());
