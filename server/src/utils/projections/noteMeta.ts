@@ -1,7 +1,7 @@
 import { ProjectionType } from "mongoose";
-import { TNote } from "../../models/Note";
+import { TNoteServer } from "../../models/Note";
 
-const noteMetaProjection: ProjectionType<TNote> = {
+const noteMetaProjection: ProjectionType<TNoteServer> = {
   content: 0,
 };
 

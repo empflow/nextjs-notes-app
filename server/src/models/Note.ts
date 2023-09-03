@@ -1,16 +1,14 @@
-import mongoose, { Document, Schema, Types } from "mongoose";
+import { TNoteSchemaBase } from "@shared/types";
+import mongoose, { Schema, Types } from "mongoose";
 
-export interface TNote extends Document {
-  title: string;
-  content: string;
-  owner: Types.ObjectId | string;
-  isInTrash: boolean;
+export interface TNoteServer extends TNoteSchemaBase {
+  owner: Types.ObjectId;
   tags: Types.ObjectId[];
   createdAt: Date;
   updatedAt: Date;
 }
 
-const NoteSchema = new Schema(
+const NoteSchema = new Schema<TNoteServer>(
   {
     title: {
       type: String,
@@ -37,6 +35,6 @@ const NoteSchema = new Schema(
   { timestamps: true }
 );
 
-const Note = mongoose.model<TNote>("Note", NoteSchema);
+const Note = mongoose.model<TNoteServer>("Note", NoteSchema);
 
 export default Note;

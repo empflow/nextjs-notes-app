@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import Note, { TNote } from "../../models/Note";
+import Note, { TNoteServer } from "../../models/Note";
 import Tag, { TTag } from "../../models/Tag";
 import { NotFoundErr } from "../../utils/errs";
 
