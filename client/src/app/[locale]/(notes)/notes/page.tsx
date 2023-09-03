@@ -13,16 +13,6 @@ export default function Notes() {
   protectedPage();
   const [selectedNoteId, setSelectedNoteId] = useState<string | null>(null);
   const [selectedTagId, setSelectedTagId] = useState<string | null>(null);
-  const {
-    data: tags,
-    setData: setTags,
-    err: tagsErr,
-    loading: tagsLoading,
-  } = useFetch<TTag[]>({
-    url: "/tags",
-    method: "get",
-    opts: { fetchImmediately: true, redirIfNoAuth: true },
-  });
   const [isEditing, setIsEditing] = useState(false);
   const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
 
@@ -32,16 +22,10 @@ export default function Notes() {
         value={{
           selectedNoteId,
           setSelectedNoteId,
-
-          tags,
-          setTags,
-          tagsLoading,
-          tagsErr,
           selectedTagId,
-
+          setSelectedTagId,
           isEditing,
           setIsEditing,
-
           isFilterMenuOpen,
           setIsFilterMenuOpen,
         }}
