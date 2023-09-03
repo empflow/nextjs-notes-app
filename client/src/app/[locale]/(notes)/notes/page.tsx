@@ -7,27 +7,16 @@ import NotesContext from "@/contexts/NotesContext";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Header from "./components/Header/Header";
 import Editor from "./components/Editor/Editor";
+import useNotesMetaQuery from "@/app/hooks/queries/useNotesMetaQuery";
 
 export default function Notes() {
   protectedPage();
   const [selectedNoteId, setSelectedNoteId] = useState<string | null>(null);
   const [selectedTagId, setSelectedTagId] = useState<string | null>(null);
   const {
-    data: notes,
-    setData: setNotes,
-    err: notesErr,
-    fetch: fetchNotes,
-    loading: notesLoading,
-  } = useFetch<TNoteMeta[]>({
-    url: "/notes",
-    method: "get",
-    opts: { fetchImmediately: true, redirIfNoAuth: true },
-  });
-  const {
     data: tags,
     setData: setTags,
     err: tagsErr,
-    fetch: fetchTags,
     loading: tagsLoading,
   } = useFetch<TTag[]>({
     url: "/tags",
@@ -41,11 +30,6 @@ export default function Notes() {
     <div className="flex min-h-[100dvh]">
       <NotesContext.Provider
         value={{
-          notes,
-          setNotes,
-          notesLoading,
-          notesErr,
-
           selectedNoteId,
           setSelectedNoteId,
 

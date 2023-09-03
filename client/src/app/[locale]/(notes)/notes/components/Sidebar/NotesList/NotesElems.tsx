@@ -3,12 +3,13 @@ import NotesContext from "@/contexts/NotesContext";
 import Note, { NoteSkeleton } from "./Note";
 import arrOfLength from "@/utils/arrOfLength";
 import { useErrorBoundary } from "react-error-boundary";
+import useNotesMetaQuery from "@/app/hooks/queries/useNotesMetaQuery";
 
 export default function NotesElems() {
-  const { notes, notesErr, notesLoading, selectedNoteId } =
-    useGetContext(NotesContext);
+  const { isLoading, data: notes } = useNotesMetaQuery();
+  const { selectedNoteId } = useGetContext(NotesContext);
 
-  if (notesLoading)
+  if (isLoading)
     return (
       <>
         {arrOfLength(15).map((item, i) => (
@@ -16,7 +17,8 @@ export default function NotesElems() {
         ))}
       </>
     );
-  if (!notes) return <>hello</>;
+  if (!notes) return <>No notes</>;
+
   return (
     <>
       {notes.map((note, i, notes) => {
