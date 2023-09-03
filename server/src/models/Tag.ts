@@ -1,12 +1,11 @@
+import { TTagSchemaBase } from "@shared/types";
 import mongoose, { Schema, Types } from "mongoose";
 
-export interface TTag {
-  name: string;
-  color: string;
+export interface TTagServer extends TTagSchemaBase {
   owner: Types.ObjectId;
 }
 
-const TagSchema = new mongoose.Schema<TTag>({
+const TagSchema = new mongoose.Schema<TTagServer>({
   name: {
     required: true,
     type: String,
@@ -22,5 +21,5 @@ const TagSchema = new mongoose.Schema<TTag>({
   },
 });
 
-const Tag = mongoose.model<TTag>("Tag", TagSchema);
+const Tag = mongoose.model<TTagServer>("Tag", TagSchema);
 export default Tag;
