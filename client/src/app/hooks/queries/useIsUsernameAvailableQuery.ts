@@ -1,5 +1,5 @@
 import { TSignUpFormInputValues } from "@/app/[locale]/(main)/auth/sign-up/components/SignUpForm";
-import http from "@utils/http";
+import http from "@/utils/http/http";
 import { isUsernameAvailableRespSchema } from "@shared/types";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
