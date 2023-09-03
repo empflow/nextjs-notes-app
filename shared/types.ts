@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { isoDateRegex } from "./regexes";
 
 export const enum TErrCode {
   ACCESS_TOKEN_EXPIRED = "ACCESS_TOKEN_EXPIRED",
@@ -30,3 +31,29 @@ export const isUsernameAvailableRespSchema = z.object({
 export type TIsUsernameAvailableResp = z.infer<
   typeof isUsernameAvailableRespSchema
 >;
+
+export const noteMetaSchema = z.object({
+  title: z.string(),
+  isInTrash: z.boolean(),
+  _id: z.string(),
+  owner: z.string(),
+  tags: z.string().array(),
+  createdAt: z.string().regex(isoDateRegex),
+  updatedAt: z.string().regex(isoDateRegex),
+});
+export type TNoteMetaSchema = z.infer<typeof noteMetaSchema>;
+
+export const noteSchemaBase = z.object({
+  title: z.string(),
+  content: z.string(),
+  isInTrash: z.boolean(),
+  _id: z.string(),
+});
+export const noteSchema = noteSchemaBase.extend({
+  owner: z.string(),
+  tags: z.string().array(),
+  createdAt: z.string().regex(isoDateRegex),
+  updatedAt: z.string().regex(isoDateRegex),
+});
+export type TNoteSchemaBase = z.infer<typeof noteSchemaBase>;
+export type TNoteSchema = z.infer<typeof noteSchema>;
