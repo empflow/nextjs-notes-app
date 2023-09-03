@@ -1,5 +1,5 @@
 import httpWithAuth from "@/utils/http/httpWIthAuth";
-import { noteMetaSchema } from "@shared/types";
+import { noteMetaSchema } from "@shared/schemas";
 import { useQuery } from "@tanstack/react-query";
 
 export default function useNotesMetaQuery() {

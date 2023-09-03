@@ -1,7 +1,7 @@
 import { TSignUpFormInputValues } from "@/app/[locale]/(main)/auth/sign-up/components/SignUpForm";
 import http from "@/utils/http/http";
 import { getCaptchaTokenOrBypassToken } from "@/utils/getCaptchaTokenOrBypassToken";
-import { authRespSchema, TAuthResp } from "@shared/types";
+import { authRespSchema, TAuthResp } from "@shared/respsSchemas";
 import { useQuery } from "@tanstack/react-query";
 import { RefObject } from "react";
 import ReCAPTCHA from "react-google-recaptcha";

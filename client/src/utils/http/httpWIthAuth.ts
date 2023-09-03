@@ -1,4 +1,4 @@
-import { authRespSchema, TAuthResp } from "@shared/types";
+import { authRespSchema, TAuthResp } from "@shared/respsSchemas";
 import axios from "axios";
 import Cookies from "js-cookie";
 import storeAuthRespData from "../storeAuthRespData";
