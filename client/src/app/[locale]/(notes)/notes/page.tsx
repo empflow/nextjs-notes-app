@@ -1,5 +1,4 @@
 "use client";
-import useFetch from "@/app/hooks/useFetch";
 import protectedPage from "@/utils/protectedPage";
 import { TNoteMeta, TTag } from "@/utils/types";
 import { useState } from "react";
