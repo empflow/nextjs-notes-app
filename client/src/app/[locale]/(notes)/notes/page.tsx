@@ -30,7 +30,7 @@ export default function Notes() {
         }}
       >
         <Sidebar />
-        <div>
+        <div className="flex w-full flex-col">
           <Header />
           <Editor />
         </div>
