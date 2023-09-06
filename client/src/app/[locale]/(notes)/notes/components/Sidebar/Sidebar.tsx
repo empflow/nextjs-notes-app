@@ -7,7 +7,7 @@ import ResizeHandle from "./ResizeHandle";
 export default function Sidebar() {
   return (
     <ResizableBox
-      width={300}
+      width={400}
       axis="x"
       className="flex min-h-[100dvh]"
       maxConstraints={[700, 0]}
