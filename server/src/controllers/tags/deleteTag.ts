@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import Note, { TNoteServer } from "../../models/Note";
-import Tag, { TTag } from "../../models/Tag";
+import Note from "../../models/Note";
+import Tag from "../../models/Tag";
 import { NotFoundErr } from "../../utils/errs";
 
 export default async function deleteTag(req: Request, res: Response) {

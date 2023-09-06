@@ -1,4 +1,4 @@
-import { TNoteSchemaBase } from "@shared/types";
+import { TNoteSchemaBase } from "@shared/schemas";
 import mongoose, { Schema, Types } from "mongoose";
 
 export interface TNoteServer extends TNoteSchemaBase {
