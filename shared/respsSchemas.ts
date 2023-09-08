@@ -10,6 +10,11 @@ export const authRespSchema = z.object({
 });
 export type TAuthResp = z.infer<typeof authRespSchema>;
 
+export const getNewTokensRespSchema = authRespSchema.extend({
+  username: z.undefined(),
+});
+export type TGetNewTokensResp = z.infer<typeof getNewTokensRespSchema>;
+
 export const isUsernameAvailableRespSchema = z.object({
   ok: z.boolean(),
 });
