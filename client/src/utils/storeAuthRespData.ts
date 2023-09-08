@@ -31,7 +31,7 @@ function setAccessTokenCookie(value: string) {
 }
 function setRefreshTokenCookie(value: string) {
   Cookies.set("refreshToken", value, {
-    expires: daysIn15Mins,
+    expires: ninetyDays,
     ...commonOpts,
   });
 }
