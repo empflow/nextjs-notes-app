@@ -1,5 +1,5 @@
 import Cookies, { CookieAttributes } from "js-cookie";
-import { TAuthResp } from "@shared/types";
+import { TAuthResp, TGetNewTokensResp } from "@shared/respsSchemas";
 
 const ninetyDays = 90;
 const daysIn15Mins = 0.010416;
@@ -8,7 +8,7 @@ const daysIn15Mins = 0.010416;
  * this is used to store data received from the backend on sign in or sign up
  * @param data data from /auth/sign-up or /auth/sign-in (url may change, but this is unlikely)
  */
-export default function storeAuthRespData(data: TAuthResp) {
+export default function storeAuthRespData(data: TGetNewTokensResp) {
   const { refreshToken, accessToken, username } = data;
   const refreshTokenSerialized = JSON.stringify(refreshToken);
 
