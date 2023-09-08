@@ -1,13 +1,11 @@
 import axios from "axios";
-import baseUrl from "./baseUrl";
-import sharedInterceptorFunctionality from "./sharedInterceptorFunctionality";
+import baseUrl from "../baseUrl";
 
 const http = axios.create({
   baseURL: baseUrl,
 });
 
 http.interceptors.request.use(async (req) => {
-  sharedInterceptorFunctionality(req);
   return req;
 });
 

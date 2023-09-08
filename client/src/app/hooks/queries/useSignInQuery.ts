@@ -1,5 +1,5 @@
 import { TSignInFormInputValues } from "@/app/[locale]/(main)/auth/sign-in/components/SignInForm";
-import http from "@/utils/http/http";
+import http from "@/utils/http/http/http";
 import { getCaptchaTokenOrBypassToken } from "@/utils/getCaptchaTokenOrBypassToken";
 import { authRespSchema, TAuthResp } from "@shared/respsSchemas";
 import { useQuery } from "@tanstack/react-query";
