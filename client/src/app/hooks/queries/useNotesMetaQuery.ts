@@ -1,4 +1,4 @@
-import httpWithAuth from "@/utils/http/httpWIthAuth";
+import httpWithAuth from "@/utils/http/httpWithAuth/httpWithAuth";
 import { noteMetaSchema } from "@shared/schemas";
 import { useQuery } from "@tanstack/react-query";
 
