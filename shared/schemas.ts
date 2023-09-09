@@ -1,17 +1,6 @@
 import { z } from "zod";
 import { isoDateRegex } from "./regexes";
 
-export const noteMetaSchema = z.object({
-  title: z.string(),
-  isInTrash: z.boolean(),
-  _id: z.string(),
-  owner: z.string(),
-  tags: z.string().array(),
-  createdAt: z.string().regex(isoDateRegex),
-  updatedAt: z.string().regex(isoDateRegex),
-});
-export type TNoteMetaSchema = z.infer<typeof noteMetaSchema>;
-
 export const noteSchemaBase = z.object({
   title: z.string(),
   content: z.string(),
@@ -24,6 +13,10 @@ export const noteSchema = noteSchemaBase.extend({
   createdAt: z.string().regex(isoDateRegex),
   updatedAt: z.string().regex(isoDateRegex),
 });
+export const noteMetaSchema = noteSchema.extend({
+  content: z.undefined(),
+});
+export type TNoteMetaSchema = z.infer<typeof noteMetaSchema>;
 export type TNoteSchemaBase = z.infer<typeof noteSchemaBase>;
 export type TNoteSchema = z.infer<typeof noteSchema>;
 
