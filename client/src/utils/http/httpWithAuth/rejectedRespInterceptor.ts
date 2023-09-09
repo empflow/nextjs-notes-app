@@ -41,10 +41,12 @@ function canHandleErr(err: any): err is ReturnTCanHandleErr {
   return true;
 }
 
-function getReqConfig(err: ReturnTCanHandleErr, authToken: string) {
-  const reqConfig: AxiosRequestConfig = {
+function getReqConfig(
+  err: ReturnTCanHandleErr,
+  authToken: string,
+): AxiosRequestConfig {
+  return {
     ...err.config,
     headers: { ...err.config.headers, Authorization: authToken },
   };
-  return reqConfig;
 }
