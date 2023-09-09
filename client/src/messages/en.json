@@ -53,7 +53,9 @@
   "Errors": {
     "noInternet": "Please check your internet connection",
     "generic": "Something went wrong. Try again later",
-    "notSignedIn": "You're not signed in.",
+    "errHasOccurred": "An error has occurred",
+    "tryAgain": "Try again",
+    "notSignedIn": "You're not signed in",
     "notSignedInLink": "Sign in here"
   }
 }
