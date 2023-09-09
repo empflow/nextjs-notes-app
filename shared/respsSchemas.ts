@@ -11,7 +11,7 @@ export const authRespSchema = z.object({
 export type TAuthResp = z.infer<typeof authRespSchema>;
 
 export const getNewTokensRespSchema = authRespSchema.extend({
-  username: z.undefined(),
+  username: z.string().optional(),
 });
 export type TGetNewTokensResp = z.infer<typeof getNewTokensRespSchema>;
 

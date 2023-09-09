@@ -31,14 +31,14 @@ export default function SignInForm() {
     watch: formWatch,
   } = useForm<TSignInFormInputValues>();
   const email = formWatch("email", "");
-  const { refetch: signIn } = useSignInQuery({
+  const { refetch: fetchSignIn } = useSignInQuery({
     formData: getFormValues(),
     captchaRef,
   });
   useHandleSignInErrs({ setFormErr, setUnknownErr });
 
   async function onSubmit() {
-    const { isError, data } = await signIn();
+    const { isError, data } = await fetchSignIn();
     if (isError || !data) return setUnknownErr();
     storeAuthRespData(data);
     router.push("/notes");
