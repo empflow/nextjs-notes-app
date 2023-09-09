@@ -1,4 +1,10 @@
 .editor div[contenteditable="true"] {
   flex-grow: 1;
   outline: none;
+
+  /* this is for making long words wrap without setting the width or max-width to a fixed value */
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  word-wrap: break-word;
 }
