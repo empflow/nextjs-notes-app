@@ -2,13 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --outline-transition: 150ms;
-}
-
 .blue-outline {
   outline: none;
-  transition: var(--outline-transition);
 }
 .dark .blue-outline:focus {
   box-shadow: 0 0 0 4px rgba(2, 153, 246, 0.6);
