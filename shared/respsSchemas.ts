@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { noteSchema } from "./schemas";
 
 export const authRespSchema = z.object({
   accessToken: z.string(),
@@ -26,3 +27,5 @@ export const signOutRespSchema = z.object({
   ok: z.boolean(),
 });
 export type TSignOutRespSchema = z.infer<typeof signOutRespSchema>;
+
+export const noteRespSchema = z.nullable(noteSchema);
