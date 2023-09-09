@@ -17,13 +17,18 @@ export default function Editor() {
   } = useNoteQuery();
 
   if (!selectedNote) return <div>Select a note to start editing</div>;
-  if (isNoteLoading) return <div>Loading note...</div>;
-  if (isNoteErr || !note) return <div>An error has occurred</div>;
+  if (isNoteErr) return <div>An error has occurred</div>;
 
   return (
-    <div className="flex flex-grow">
-      <div></div>
-      <EditorContent initContent={note.content} />
+    <div className="flex flex-grow flex-col p-global sm:p-global-sm">
+      <div className="flex justify-center text-dark-gray dark:text-gray">
+        some data
+      </div>
+      {isNoteLoading ? (
+        <div>Loading note...</div>
+      ) : (
+        <EditorContent initContent={note.content} />
+      )}
     </div>
   );
 }

@@ -10,10 +10,13 @@ export default function EditorContent({ initContent }: TProps) {
   const editor = useEditor({
     content: initContent,
     extensions: [StarterKit],
+    onUpdate(props) {
+      console.log(props.editor.getJSON());
+    },
   });
   return (
     <TiptapEditorContent
-      className={`flex w-full flex-grow p-global ${styles.editor} sm:p-global-sm`}
+      className={`flex flex-grow ${styles.editor}`}
       editor={editor}
     />
   );
