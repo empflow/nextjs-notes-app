@@ -5,11 +5,11 @@ interface Props {
   className?: string;
 }
 
-export default function Err({ msg, className }: Props) {
+export default function RedErrMsg({ msg, className }: Props) {
   className = className ? className : "";
   return (
     <div
-      className={`text-l-error dark:text-d-error font-semibold ${className}`}
+      className={`font-semibold text-l-error dark:text-d-error ${className}`}
     >
       {msg}
     </div>
