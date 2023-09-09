@@ -3,9 +3,15 @@ import NotesContext from "@/contexts/NotesContext";
 import Note, { NoteSkeleton } from "./Note";
 import arrOfLength from "@/utils/arrOfLength";
 import useNotesMetaQuery from "@/app/hooks/queries/useNotesMetaQuery";
+import Err from "@/app/components/Err/Err";
 
 export default function NotesElems() {
-  const { isLoading, data: notes } = useNotesMetaQuery();
+  const {
+    isLoading,
+    data: notes,
+    isError,
+    refetch: fetchNotesMeta,
+  } = useNotesMetaQuery();
   const { selectedNoteId } = useGetContext(NotesContext);
 
   if (isLoading)
@@ -16,6 +22,7 @@ export default function NotesElems() {
         ))}
       </>
     );
+  if (isError) return <Err retryFn={fetchNotesMeta} />;
   if (!notes) return <>No notes</>;
 
   return (
