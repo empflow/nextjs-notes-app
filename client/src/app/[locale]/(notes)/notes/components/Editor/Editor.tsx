@@ -12,7 +12,7 @@ export default function Editor() {
   return (
     <div className="flex flex-grow">
       <EditorContent
-        className={`flex w-full flex-grow ${styles.editor}`}
+        className={`flex w-full flex-grow p-global ${styles.editor} sm:p-global-sm`}
         editor={editor}
       />
     </div>
