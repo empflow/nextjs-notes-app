@@ -1,0 +1,4 @@
+.editor div[contenteditable="true"] {
+  flex-grow: 1;
+  outline: none;
+}
