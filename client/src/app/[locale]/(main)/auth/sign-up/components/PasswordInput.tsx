@@ -22,6 +22,7 @@ export default function SignUpPasswordInput() {
           message: formT("passwordTooLong", { pwdLength: maxPasswordLength }),
         },
       })}
+      className="blue-outline"
       type="password"
       errMsg={formErrs.password?.message}
     />

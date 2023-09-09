@@ -18,6 +18,7 @@ export default function SignInEmailInput() {
           message: formT("invalidEmail"),
         },
       })}
+      className="blue-outline"
       type="email"
       errMsg={formErrs.email?.message}
     />

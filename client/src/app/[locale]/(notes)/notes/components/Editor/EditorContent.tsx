@@ -14,6 +14,7 @@ export default function EditorContent({ initContent }: TProps) {
       console.log(props.editor.getJSON());
     },
   });
+
   return (
     <TiptapEditorContent
       className={`flex flex-grow ${styles.editor}`}
