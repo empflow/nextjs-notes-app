@@ -14,7 +14,7 @@ export default function Sidebar() {
       minConstraints={[180, 0]}
       handle={<ResizeHandle />}
     >
-      <aside className="flex w-full flex-col gap-2 p-5">
+      <aside className="flex w-full flex-col gap-3 p-5">
         <Controls />
         <NotesList />
       </aside>
