@@ -1,6 +1,6 @@
 import NotesContext from "@/contexts/NotesContext";
 import httpWithAuth from "@/utils/http/httpWithAuth/httpWithAuth";
-import { noteRespSchema } from "@shared/respsSchemas";
+import { noteSchema } from "@shared/schemas";
 import { useQuery } from "@tanstack/react-query";
 import useGetContext from "../useGetContext";
 
@@ -18,5 +18,5 @@ export default function useNoteQuery() {
 
 async function fetchNote(noteId?: string) {
   const { data } = await httpWithAuth.get(`/notes/${noteId}`);
-  return noteRespSchema.parse(data);
+  return noteSchema.parse(data);
 }
