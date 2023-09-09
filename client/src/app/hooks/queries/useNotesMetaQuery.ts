@@ -3,7 +3,7 @@ import { noteMetaSchema } from "@shared/schemas";
 import { useQuery } from "@tanstack/react-query";
 
 export default function useNotesMetaQuery() {
-  return useQuery(["notes"], fetchNotesMeta);
+  return useQuery(["notes"], fetchNotesMeta, { retry: false });
 }
 
 async function fetchNotesMeta() {
