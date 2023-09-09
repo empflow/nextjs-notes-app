@@ -3,6 +3,7 @@ import { TErrCode } from "@shared/types";
 import axios, { AxiosRequestConfig } from "axios";
 import isAxiosErrWithResp from "../../isAxiosErrWithResp";
 import redirToSignIn from "../redirToSignIn";
+import convertAccessTokenToAuthHeader from "./convertAccessTokenToAuthHeader";
 import getAndStoreNewTokens from "./getAndStoreNewTokens";
 
 export default async function rejectedRespInterceptor(err: any) {
@@ -21,11 +22,13 @@ export default async function rejectedRespInterceptor(err: any) {
   }
 
   try {
+    const authToken = convertAccessTokenToAuthHeader(newTokens.accessToken);
     const reqConfig: AxiosRequestConfig = {
       ...err.config,
-      headers: { ...err.config.headers, Authorization: newTokens.accessToken },
+      headers: { ...err.config.headers, Authorization: authToken },
     };
-    return axios(reqConfig);
+    const resp = await axios(reqConfig);
+    return resp;
   } catch (err) {
     return Promise.reject(err);
   }
