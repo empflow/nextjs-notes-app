@@ -1,9 +1,10 @@
-import { SetState, TContext, TTag } from "@/utils/types";
+import { SetState, TContext, TNoteMeta, TTag } from "@/utils/types";
 import { createContext } from "react";
 
 interface TNotesContextValue {
   selectedNoteId: string | null;
   setSelectedNoteId: SetState<string | null>;
+  selectedNote: TNoteMeta | null;
   selectedTagId: string | null;
   setSelectedTagId: SetState<string | null>;
   isEditing: boolean;
