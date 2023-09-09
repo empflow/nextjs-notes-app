@@ -1,5 +1,5 @@
 import Cookies, { CookieAttributes } from "js-cookie";
-import { TAuthResp, TGetNewTokensResp } from "@shared/respsSchemas";
+import { TGetNewTokensResp } from "@shared/respsSchemas";
 
 const ninetyDays = 90;
 const daysIn15Mins = 0.010416;

@@ -1,6 +1,6 @@
 import axios, { InternalAxiosRequestConfig } from "axios";
 import getAuthHeader from "./getAuthHeader";
-import redirToSignIn from "../redirToSignIn";
+import redirToSignInAndClearAuthData from "../redirToSignInAndClearAuthData";
 
 export default async function fulfilledReqInterceptor(
   req: InternalAxiosRequestConfig<any>,
@@ -10,7 +10,7 @@ export default async function fulfilledReqInterceptor(
   if (authHeader) {
     req.headers.Authorization = authHeader;
   } else {
-    redirToSignIn();
+    redirToSignInAndClearAuthData();
     throw new axios.Cancel();
   }
   return req;

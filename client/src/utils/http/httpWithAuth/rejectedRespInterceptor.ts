@@ -1,9 +1,8 @@
-import clearAuthData from "@/utils/clearAuthData";
 import { TAxiosErrWithResp } from "@/utils/types";
 import { TErrCode } from "@shared/types";
 import axios, { AxiosRequestConfig } from "axios";
 import isAxiosErrWithResp from "../../isAxiosErrWithResp";
-import redirToSignIn from "../redirToSignIn";
+import redirToSignInAndClearAuthData from "../redirToSignInAndClearAuthData";
 import convertAccessTokenToAuthHeader from "./convertAccessTokenToAuthHeader";
 import getAndStoreNewTokens from "./getAndStoreNewTokens";
 
@@ -12,8 +11,7 @@ export default async function rejectedRespInterceptor(err: any) {
 
   const newTokens = await getAndStoreNewTokens();
   if (!newTokens) {
-    clearAuthData();
-    redirToSignIn();
+    redirToSignInAndClearAuthData();
     return Promise.reject(err);
   }
 
