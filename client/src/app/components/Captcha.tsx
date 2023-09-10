@@ -1,9 +1,9 @@
 import { forwardRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import { TCaptchaTheme } from "@/utils/types";
+import { TResolvedTheme } from "@/utils/types";
 
 interface TProps {
-  theme: TCaptchaTheme;
+  theme: TResolvedTheme;
 }
 
 const Captcha = forwardRef<ReCAPTCHA, TProps>(({ theme }, ref) => {

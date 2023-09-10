@@ -37,7 +37,7 @@ export type AxiosErrWithResp<T = any> = Omit<AxiosError<T>, "response"> & {
   response: AxiosResponse<T>;
 };
 
-export type TCaptchaTheme = "light" | "dark";
+export type TResolvedTheme = "light" | "dark";
 
 export type TAxiosErrWithResp<T = any> = Omit<AxiosError<T>, "response"> & {
   response: AxiosResponse<T>;
