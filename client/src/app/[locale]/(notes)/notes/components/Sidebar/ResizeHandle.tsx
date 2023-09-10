@@ -7,7 +7,7 @@ import { forwardRef } from "react";
 const ResizeHandle = forwardRef<any, any>((props, ref) => {
   const { handleAxis, ...restProps } = props;
   return (
-    <div className="relative flex w-[1px] bg-light-3.5xl-gray dark:bg-dark-4xl-gray">
+    <div className="relative flex w-[1px] border-r border-light-3.5xl-gray dark:border-dark-4xl-gray">
       <div
         className="absolute bottom-0 left-[-5px] top-0 w-[10px] hover:cursor-ew-resize"
         ref={ref}
