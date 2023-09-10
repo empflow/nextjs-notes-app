@@ -1,10 +1,12 @@
 import "../globals.css";
 import "react-toastify/dist/ReactToastify.css";
+import "react-loading-skeleton/dist/skeleton.css";
 import { NextIntlClientProvider, useLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { ToastContainer } from "react-toastify";
 import ThemeProviders from "../providers/ThemeProviders";
 import ReactQueryProviders from "../providers/ReactQueryProviders";
+import SkeletonThemeProviders from "../providers/SkeletonThemeProviders";
 
 export const metadata = {
   title: "Notes",
@@ -24,9 +26,8 @@ export default async function RootLayout({
 }: RootLayoutContext) {
   const locale = useLocale();
 
-  if (params.locale !== locale) {
-    notFound();
-  }
+  // no idea what this is honestly but i saw this in the docs
+  if (params.locale !== locale) notFound();
 
   let messages;
   try {
@@ -38,12 +39,16 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className="flex min-h-screen flex-col">
-        <ReactQueryProviders>
-          <NextIntlClientProvider locale={locale} messages={messages}>
-            <ThemeProviders>{children}</ThemeProviders>
-            <ToastContainer hideProgressBar autoClose={3000} />
-          </NextIntlClientProvider>
-        </ReactQueryProviders>
+        <ThemeProviders>
+          <ReactQueryProviders>
+            <NextIntlClientProvider locale={locale} messages={messages}>
+              <SkeletonThemeProviders>
+                {children}
+                <ToastContainer hideProgressBar autoClose={3000} />
+              </SkeletonThemeProviders>
+            </NextIntlClientProvider>
+          </ReactQueryProviders>
+        </ThemeProviders>
       </body>
     </html>
   );
