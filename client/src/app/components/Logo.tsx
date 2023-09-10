@@ -1,3 +1,3 @@
 export default function Logo() {
-  return <h2 className="text-l-main dark:text-d-main text-xl">Notes app</h2>;
+  return <h2 className="text-xl text-l-main dark:text-d-main">Notes app</h2>;
 }
