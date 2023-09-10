@@ -2,6 +2,7 @@ import useGetContext from "@/app/hooks/useGetContext";
 import { useTranslations } from "next-intl";
 import NotesContext from "@/contexts/NotesContext";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { Property as CSSProperty } from "csstype";
 
 interface INoteProps {
   state?: "normal" | "loading";
@@ -28,13 +29,15 @@ export default function Note({
     desc = !desc ? t("noAdditionalText") : desc;
   }
 
+  let borderColor: undefined | CSSProperty.BorderColor = undefined;
+  if (isSelected || isAboveSelectedNote) borderColor = "transparent";
+
   return (
     <div
-      className={`flex flex-col rounded-t border-b border-light-2xl-gray p-[14px] dark:border-dark-3xl-gray ${
-        isSelected
-          ? "rounded-b border-transparent bg-light-5xl-blue dark:bg-dark-blue"
-          : ""
+      className={`flex flex-col rounded-t border-b border-light-2xl-gray p-[14px] last:border-transparent dark:border-dark-3xl-gray dark:last:border-transparent ${
+        isSelected ? "rounded-b bg-light-5xl-blue dark:bg-dark-blue" : ""
       } ${isAboveSelectedNote ? "border-transparent" : ""}`}
+      style={{ borderColor }}
       onClick={_id ? () => setSelectedNoteId(_id) : () => {}}
     >
       <div className="truncate">{title || <Skeleton />}</div>
