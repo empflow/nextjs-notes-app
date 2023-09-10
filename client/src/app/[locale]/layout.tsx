@@ -1,4 +1,5 @@
 import "../globals.css";
+import "../globalStyles/reactLoadingSkeleton.css";
 import "react-toastify/dist/ReactToastify.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import { NextIntlClientProvider, useLocale } from "next-intl";

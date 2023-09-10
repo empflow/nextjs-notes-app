@@ -1,0 +1,33 @@
+:root {
+  --clr-l-skeleton-base: #f0f0f0;
+  --clr-l-skeleton-highlight: #e0e0e0;
+
+  --clr-d-skeleton-base: #404040;
+  --clr-d-skeleton-highlight: #505050;
+}
+
+html.light .react-loading-skeleton {
+  background-color: var(--clr-l-skeleton-base);
+}
+
+html.light .react-loading-skeleton::after {
+  background-image: linear-gradient(
+    90deg,
+    var(--clr-l-skeleton-base),
+    var(--clr-l-skeleton-highlight),
+    var(--clr-l-skeleton-base)
+  );
+}
+
+html.dark .react-loading-skeleton {
+  background-color: var(--clr-d-skeleton-base);
+}
+
+html.dark .react-loading-skeleton::after {
+  background-image: linear-gradient(
+    90deg,
+    var(--clr-d-skeleton-base),
+    var(--clr-d-skeleton-highlight),
+    var(--clr-d-skeleton-base)
+  );
+}
