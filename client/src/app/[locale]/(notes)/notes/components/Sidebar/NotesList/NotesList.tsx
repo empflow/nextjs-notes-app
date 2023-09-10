@@ -18,7 +18,7 @@ export default function NotesList() {
   if (isError) return <Err retryFn={fetchNotesMeta} />;
   if (!notes) return <>No notes</>;
   return (
-    <div className="flex flex-grow flex-col">
+    <>
       {notes.map((note, i, notes) => {
         const { _id, title } = note;
         // TODO: add proper descriptions
@@ -35,7 +35,7 @@ export default function NotesList() {
           />
         );
       })}
-    </div>
+    </>
   );
 }
 
