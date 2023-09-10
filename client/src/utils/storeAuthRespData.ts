@@ -1,7 +1,6 @@
 import Cookies, { CookieAttributes } from "js-cookie";
 import { TGetNewTokensResp } from "@shared/respsSchemas";
 
-const ninetyDays = 90;
 const daysIn15Mins = 0.010416;
 
 /**
@@ -31,11 +30,11 @@ function setAccessTokenCookie(value: string) {
 }
 function setRefreshTokenCookie(value: string) {
   Cookies.set("refreshToken", value, {
-    expires: ninetyDays,
+    expires: 90,
     ...commonOpts,
   });
 }
 
 function setUsernameCookie(value: string) {
-  Cookies.set("username", value, { ...commonOpts });
+  Cookies.set("username", value, { ...commonOpts, expires: 1000 });
 }
