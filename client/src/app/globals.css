@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+a {
+  text-decoration: underline;
+}
+
 .blue-outline {
   outline: none;
 }
@@ -10,8 +14,4 @@
 }
 .light .blue-outline:focus {
   box-shadow: 0 0 0 4px rgb(10 135 215 / 60%);
-}
-
-.Toastify a {
-  text-decoration: underline;
 }

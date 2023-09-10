@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="m-auto max-w-global">
         <div className="mb-5 flex justify-between">
           <div>
-            <Link href="/" style={{ textDecoration: "none" }}>
+            <Link href="/" className="no-underline">
               <Logo />
             </Link>
           </div>
