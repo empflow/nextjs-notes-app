@@ -1,4 +1,4 @@
-export default function arrOfLength(length: number) {
+export default function getIterable(length: number) {
   const result = [];
   for (let i = 0; i < length; i++) {
     result.push(i);
