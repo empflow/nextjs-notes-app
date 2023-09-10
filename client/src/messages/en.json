@@ -2,7 +2,8 @@
   "Index": {
     "title": "Home page",
     "subTitle": "hello dear visitor of my website",
-    "description": "this is my landing page"
+    "description": "this is my landing page",
+    "notesLink": "Notes"
   },
   "Header": {
     "signedInAsUnknown": "Unknown",
