@@ -1,14 +1,15 @@
 import useGetContext from "@/app/hooks/useGetContext";
-import { SetState } from "@/utils/types";
 import { useTranslations } from "next-intl";
 import NotesContext from "@/contexts/NotesContext";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 interface INoteProps {
-  title: string;
-  desc: string;
-  isSelected: boolean;
-  isAboveSelectedNote: boolean;
-  _id: string;
+  state?: "normal" | "loading";
+  title?: string;
+  desc?: string;
+  isSelected?: boolean;
+  isAboveSelectedNote?: boolean;
+  _id?: string;
 }
 
 export default function Note({
@@ -17,13 +18,15 @@ export default function Note({
   isSelected,
   _id,
   isAboveSelectedNote,
+  state = "normal",
 }: INoteProps) {
   const { setSelectedNoteId } = useGetContext(NotesContext);
   const t = useTranslations("Notes");
 
-  const truncateClassName = "overflow-hidden text-ellipsis whitespace-nowrap";
-  title = !title ? t("noTitle") : title;
-  desc = !desc ? t("noAdditionalText") : desc;
+  if (state === "normal") {
+    title = !title ? t("noTitle") : title;
+    desc = !desc ? t("noAdditionalText") : desc;
+  }
 
   return (
     <div
@@ -32,10 +35,10 @@ export default function Note({
           ? "rounded-b border-transparent bg-light-5xl-blue dark:bg-dark-blue"
           : ""
       } ${isAboveSelectedNote ? "border-transparent" : ""}`}
-      onClick={() => setSelectedNoteId(_id)}
+      onClick={_id ? () => setSelectedNoteId(_id) : () => {}}
     >
-      <div className={`${truncateClassName}`}>{title}</div>
-      <div className={`${truncateClassName}`}>{desc}</div>
+      <div className="truncate">{title || <Skeleton />}</div>
+      <div className="truncate">{desc || <Skeleton />}</div>
     </div>
   );
 }

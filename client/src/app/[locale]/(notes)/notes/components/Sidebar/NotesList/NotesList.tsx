@@ -1,8 +1,9 @@
 import Err from "@/app/components/Err/Err";
+import RepeatingElem from "@/app/components/RepeatingElem";
 import useNotesMetaQuery from "@/app/hooks/queries/useNotesMetaQuery";
 import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext from "@/contexts/NotesContext";
-import NotesListLoadingSkeleton from "./LoadingSkeleton";
+import getIterable from "@/utils/getIterable";
 import Note from "./Note";
 
 export default function NotesList() {
@@ -14,7 +15,7 @@ export default function NotesList() {
   } = useNotesMetaQuery();
   const { selectedNoteId } = useGetContext(NotesContext);
 
-  if (isLoading) return <NotesListLoadingSkeleton />;
+  if (isLoading) return <NotesListLoading />;
   if (isError) return <Err retryFn={fetchNotesMeta} />;
   if (!notes) return <>No notes</>;
   return (
@@ -31,12 +32,16 @@ export default function NotesList() {
         return (
           <Note
             {...{ title, desc, isSelected, isAboveSelectedNote, _id }}
-            key={i}
+            key={_id}
           />
         );
       })}
     </>
   );
+}
+
+function NotesListLoading() {
+  return <RepeatingElem count={10} elem={<Note state="loading" />} />;
 }
 
 // function getNoteDesc(note: TNote) {
