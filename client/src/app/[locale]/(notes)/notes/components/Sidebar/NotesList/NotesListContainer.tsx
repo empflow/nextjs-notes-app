@@ -5,5 +5,5 @@ export default function NotesListContainer({
 }: {
   children: ReactNode;
 }) {
-  return <div className="flex flex-grow flex-col">{children}</div>;
+  return <div className="flex flex-grow flex-col p-5">{children}</div>;
 }

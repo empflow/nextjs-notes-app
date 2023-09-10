@@ -10,12 +10,12 @@ export default function Sidebar() {
     <ResizableBox
       width={400}
       axis="x"
-      className="flex min-h-[100dvh]"
+      className="flex h-[100dvh]"
       maxConstraints={[500, 0]}
       minConstraints={[180, 0]}
       handle={<ResizeHandle />}
     >
-      <aside className="flex w-full flex-col gap-3 p-5">
+      <aside className="flex w-full flex-col gap-3 overflow-auto ">
         <Controls />
         <NotesListContainer>
           <NotesList />
