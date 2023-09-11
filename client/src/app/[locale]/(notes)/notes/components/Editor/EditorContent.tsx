@@ -3,12 +3,12 @@ import StarterKit from "@tiptap/starter-kit";
 import styles from "./editor.module.css";
 
 interface TProps {
-  initContent: string;
+  initContent: string | null;
 }
 
 export default function EditorContent({ initContent }: TProps) {
   const editor = useEditor({
-    content: initContent,
+    content: initContent ?? "",
     extensions: [StarterKit],
     onUpdate(props) {
       console.log(props.editor.getJSON());
