@@ -18,6 +18,7 @@ const noteContent: z.ZodType<TNoteJsonContent> = z.lazy(() =>
 export const noteSchemaBase = z.object({
   title: z.string().nullable(),
   content: noteContent.nullable(),
+  description: z.string().nullable(),
   isInTrash: z.boolean(),
   _id: z.string(),
 });
@@ -27,8 +28,12 @@ export const noteSchema = noteSchemaBase.extend({
   createdAt: z.string().regex(isoDateRegex),
   updatedAt: z.string().regex(isoDateRegex),
 });
+export const noteMetaSchema = noteSchema.extend({
+  content: z.undefined(),
+});
 export type TNoteSchemaBase = z.infer<typeof noteSchemaBase>;
 export type TNoteSchema = z.infer<typeof noteSchema>;
+export type TNoteMetaSchema = z.infer<typeof noteMetaSchema>;
 
 export const tagSchemaBase = z.object({
   name: z.string(),
