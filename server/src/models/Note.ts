@@ -15,9 +15,11 @@ const NoteSchema = new Schema<TNoteServer>(
       default: null,
     },
     content: {
+      type: Schema.Types.Mixed,
+      default: null,
+    },
     description: {
       type: String,
-      required: true,
       default: null,
     },
     owner: {
