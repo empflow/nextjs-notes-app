@@ -1,9 +1,13 @@
-import { EditorContent as TiptapEditorContent, useEditor } from "@tiptap/react";
+import {
+  EditorContent as TiptapEditorContent,
+  JSONContent,
+  useEditor,
+} from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import styles from "./editor.module.css";
 
 interface TProps {
-  initContent: string | null;
+  initContent: JSONContent | null;
 }
 
 export default function EditorContent({ initContent }: TProps) {
@@ -11,7 +15,7 @@ export default function EditorContent({ initContent }: TProps) {
     content: initContent ?? "",
     extensions: [StarterKit],
     onUpdate(props) {
-      console.log(props.editor.getJSON());
+      console.log(JSON.stringify(props.editor.getJSON()));
     },
   });
 
