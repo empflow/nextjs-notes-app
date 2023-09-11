@@ -5,8 +5,8 @@ import { NotFoundErr } from "../../utils/errs";
 export default async function updateNote(req: Request, res: Response) {
   const { noteId } = req.params;
   const userId = res.locals.jwtPayload.userId;
-  const { title, isInTrash, tags, content } = req.body;
-  const { description } = res.locals;
+  const { isInTrash, tags, content } = req.body;
+  const { description, title } = res.locals;
 
   const noteUpdateResult = await Note.updateOne(
     { owner: userId, _id: noteId },

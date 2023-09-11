@@ -8,16 +8,16 @@ import validateAddNote from "../middleware/notes/validateAddNote";
 import validateDeleteNote from "../middleware/notes/validateDeleteNote";
 import validateGetNote from "../middleware/notes/validateGetNote";
 import validateUpdateNote from "../middleware/notes/updateNote/validateUpdateNote";
-import noteGetDescription from "../middleware/notes/getDescription";
+import noteGetTitleAndDescription from "../middleware/notes/getTitleAndDescription";
 const router = express.Router();
 
 router.get("/", getNotesMeta);
-router.post("/add", validateAddNote, noteGetDescription, addNote);
+router.post("/add", validateAddNote, noteGetTitleAndDescription, addNote);
 
 router
   .route("/:noteId")
   .get(validateGetNote, getNote)
-  .patch(validateUpdateNote, noteGetDescription, updateNote)
+  .patch(validateUpdateNote, noteGetTitleAndDescription, updateNote)
   .delete(validateDeleteNote, deleteNote);
 
 export default router;
