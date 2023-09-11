@@ -42,7 +42,15 @@ export default function Note({
       onClick={_id ? () => setSelectedNoteId(_id) : () => {}}
     >
       <div className="truncate">{title || <Skeleton />}</div>
-      <div className="truncate">{description || <Skeleton />}</div>
+      <div
+        className={`truncate  ${
+          isSelected
+            ? "text-dark-2xl-gray dark:text-light-xl-gray"
+            : "text-dark-gray dark:text-gray"
+        }`}
+      >
+        {description || <Skeleton />}
+      </div>
     </div>
   );
 }
