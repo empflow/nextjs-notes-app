@@ -12,7 +12,7 @@ const NoteSchema = new Schema<TNoteServer>(
   {
     title: {
       type: String,
-      required: true,
+      default: null,
     },
     content: {
       type: String,
