@@ -17,7 +17,7 @@ export default function NotesList() {
 
   if (isLoading) return <NotesListLoading />;
   if (isError) return <Err retryFn={fetchNotesMeta} />;
-  if (!notes) return <>No notes</>;
+  if (!notes.length) return <>No notes</>;
   return (
     <>
       {notes.map((note, i, notes) => {
