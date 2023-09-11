@@ -1,9 +1,23 @@
 import { z } from "zod";
 import { isoDateRegex } from "./regexes";
+import { JSONContent as TNoteJsonContent } from "@tiptap/react";
+
+const noteContent: z.ZodType<TNoteJsonContent> = z.lazy(() =>
+  z.object({
+    type: z.string().optional(),
+    attrs: z.record(z.unknown()).optional(),
+    content: noteContent.array().optional(),
+    marks: z
+      .object({ type: z.string(), attrs: z.record(z.any()) })
+      .array()
+      .optional(),
+    text: z.string().optional(),
+  })
+);
 
 export const noteSchemaBase = z.object({
-  title: z.string(),
-  content: z.string(),
+  title: z.string().nullable(),
+  content: noteContent.nullable(),
   isInTrash: z.boolean(),
   _id: z.string(),
 });
@@ -13,10 +27,6 @@ export const noteSchema = noteSchemaBase.extend({
   createdAt: z.string().regex(isoDateRegex),
   updatedAt: z.string().regex(isoDateRegex),
 });
-export const noteMetaSchema = noteSchema.extend({
-  content: z.undefined(),
-});
-export type TNoteMetaSchema = z.infer<typeof noteMetaSchema>;
 export type TNoteSchemaBase = z.infer<typeof noteSchemaBase>;
 export type TNoteSchema = z.infer<typeof noteSchema>;
 
