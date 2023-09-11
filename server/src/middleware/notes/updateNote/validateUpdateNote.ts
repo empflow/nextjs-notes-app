@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import { errMsgs } from "../../config/globalVars";
-import { BadRequestErr } from "../../utils/errs";
-import throwIfInvalidObjectId from "../../utils/throwers/throwIfInvalidObjectId";
+import { errMsgs } from "../../../config/globalVars";
+import { BadRequestErr } from "../../../utils/errs";
+import throwIfInvalidObjectId from "../../../utils/throwers/throwIfInvalidObjectId";
 
 export default async function validateUpdateNote(
   req: Request,

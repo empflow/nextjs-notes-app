@@ -7,7 +7,7 @@ import updateNote from "../controllers/notes/updateNote";
 import validateAddNote from "../middleware/notes/validateAddNote";
 import validateDeleteNote from "../middleware/notes/validateDeleteNote";
 import validateGetNote from "../middleware/notes/validateGetNote";
-import validateUpdateNote from "../middleware/notes/validateUpdateNote";
+import validateUpdateNote from "../middleware/notes/updateNote/validateUpdateNote";
 const router = express.Router();
 
 router.get("/", getNotesMeta);
