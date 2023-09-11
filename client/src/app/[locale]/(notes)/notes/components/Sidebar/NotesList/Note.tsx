@@ -1,32 +1,33 @@
 import useGetContext from "@/app/hooks/useGetContext";
 import { useTranslations } from "next-intl";
 import NotesContext from "@/contexts/NotesContext";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import Skeleton from "react-loading-skeleton";
 import { Property as CSSProperty } from "csstype";
+import { TNoteSchema } from "@shared/schemas";
 
-interface INoteProps {
+interface TNoteProps {
   state?: "normal" | "loading";
-  title?: string;
-  desc?: string;
+  title?: TNoteSchema["title"];
+  description?: TNoteSchema["description"];
   isSelected?: boolean;
   isAboveSelectedNote?: boolean;
   _id?: string;
 }
 
 export default function Note({
-  desc,
+  description,
   title,
   isSelected,
   _id,
   isAboveSelectedNote,
   state = "normal",
-}: INoteProps) {
+}: TNoteProps) {
   const { setSelectedNoteId } = useGetContext(NotesContext);
   const t = useTranslations("Notes");
 
   if (state === "normal") {
     title = !title ? t("noTitle") : title;
-    desc = !desc ? t("noAdditionalText") : desc;
+    description = !description ? t("noAdditionalText") : description;
   }
 
   let borderColor: undefined | CSSProperty.BorderColor = undefined;
@@ -41,7 +42,7 @@ export default function Note({
       onClick={_id ? () => setSelectedNoteId(_id) : () => {}}
     >
       <div className="truncate">{title || <Skeleton />}</div>
-      <div className="truncate">{desc || <Skeleton />}</div>
+      <div className="truncate">{description || <Skeleton />}</div>
     </div>
   );
 }
