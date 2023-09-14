@@ -45,3 +45,5 @@ export const tagSchema = tagSchemaBase.extend({
 });
 export type TTagSchemaBase = z.infer<typeof tagSchemaBase>;
 export type TTagSchema = z.infer<typeof tagSchema>;
+
+export const dateSchema = z.date();
