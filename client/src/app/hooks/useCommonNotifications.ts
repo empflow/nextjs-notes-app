@@ -5,8 +5,12 @@ export default function useCommonNotifications() {
   const errsT = useTranslations("Errors");
 
   function notifyGenericErr() {
-    notify(errsT("generic"));
+    notify(errsT("generic"), "error");
   }
 
-  return { notifyGenericErr };
+  function notifyCouldNotSyncEditorContent() {
+    notify(errsT("couldNotSyncEditorContent"), "error");
+  }
+
+  return { notifyGenericErr, notifyCouldNotSyncEditorContent };
 }
