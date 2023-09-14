@@ -19,11 +19,8 @@ export default function TopElem({ createdAt, updatedAt }: TProps) {
   const updatedAtFormatted = useGetTimeAgoFormatted(updatedAt, locale);
   let content: ReactNode;
 
-  if (state === "createdAt") {
-    content = `${t("created")} ${createdAtFormatted}`;
-  } else {
-    content = `${t("updated")} ${updatedAtFormatted}`;
-  }
+  if (state === "createdAt") content = `${t("created")} ${createdAtFormatted}`;
+  else content = `${t("updated")} ${updatedAtFormatted}`;
 
   function handleClick() {
     setState((prev) => (prev === "createdAt" ? "updatedAt" : "createdAt"));
