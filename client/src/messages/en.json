@@ -54,11 +54,17 @@
     "updated": "Modified"
   },
   "Errors": {
-    "noInternet": "Please check your internet connection",
+    "offline": "Please check your internet connection",
     "generic": "Something went wrong. Try again later",
     "errHasOccurred": "An error has occurred",
     "tryAgain": "Try again",
     "notSignedIn": "You're not signed in",
-    "notSignedInLink": "Sign in here"
+    "notSignedInLink": "Sign in here",
+    "couldNotSyncEditorContent": "Could not sync changes"
+  },
+  "NetworkStatusListener": {
+    "offline": "You're offline",
+    "online": "You're back online",
+    "editorWarning": "Your changes will be saved locally until you're back online"
   }
 }
