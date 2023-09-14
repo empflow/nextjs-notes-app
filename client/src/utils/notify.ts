@@ -7,17 +7,14 @@ type NotificationType = "info" | "error" | "warning" | "success";
 export default function notify(
   content: React.ReactNode | string,
   type?: NotificationType,
+  opts: ToastOptions = {},
 ) {
   const theme = getTheme();
-
-  const className = "dark:bg-d-secondary bg-l-secondary";
-  const style: CSSProperties = {
-    color: theme === "dark" ? "whitesmoke" : "black",
-  };
   const toastOptions: ToastOptions = {
     theme,
-    className,
-    style,
+    className: "dark:bg-d-secondary bg-l-secondary",
+    style: { color: theme === "dark" ? "whitesmoke" : "black" },
+    ...opts,
   };
 
   if (!type) return toast(content, toastOptions);
