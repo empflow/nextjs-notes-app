@@ -49,7 +49,9 @@
     "stopEditing": "Stop editing",
     "noTitle": "No title",
     "noAdditionalText": "No additional text",
-    "noNotes": "You don't have any notes"
+    "noNotes": "You don't have any notes",
+    "created": "Created",
+    "updated": "Modified"
   },
   "Errors": {
     "noInternet": "Please check your internet connection",
