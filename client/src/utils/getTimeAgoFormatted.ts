@@ -19,11 +19,11 @@ export default function getTimeAgoFormatted(
   const f = new Intl.RelativeTimeFormat(locale, { numeric: "auto" });
   if (!isDateValid(date)) return null;
   date = new Date(date);
-  let durationSecs = (date.getTime() - Date.now()) / 1000;
+  let durationSecs = (Date.now() - date.getTime()) / 1000;
 
   for (const division of DIVISIONS) {
     if (Math.abs(durationSecs) < division.amount) {
-      return f.format(Math.round(durationSecs), division.name);
+      return f.format(Math.round(-durationSecs), division.name);
     }
     durationSecs /= division.amount;
   }
