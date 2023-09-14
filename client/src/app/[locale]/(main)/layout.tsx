@@ -1,6 +1,7 @@
 import Main from "../../components/Main";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header/Header";
+import NetworkStatusListener from "@/app/components/NetworkStatusListener";
 
 interface MainLayoutContext {
   children: React.ReactNode;
@@ -15,6 +16,7 @@ export default async function MainLayout({ children }: MainLayoutContext) {
       <Header />
       <Main>{children}</Main>
       <Footer />
+      <NetworkStatusListener />
     </>
   );
 }

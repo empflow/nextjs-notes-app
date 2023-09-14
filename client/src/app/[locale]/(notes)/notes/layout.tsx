@@ -1,3 +1,4 @@
+import NetworkStatusListener from "@/app/components/NetworkStatusListener";
 import React from "react";
 
 interface NotesLayoutContext {
@@ -5,5 +6,10 @@ interface NotesLayoutContext {
 }
 
 export default async function NotesLayout({ children }: NotesLayoutContext) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <NetworkStatusListener editorWarning={true} />
+    </>
+  );
 }
