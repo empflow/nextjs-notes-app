@@ -7,7 +7,6 @@ import TopElem from "./TopElem/TopElem";
 
 export default function Editor() {
   const { selectedNote } = useGetContext(NotesContext);
-
   const {
     data: note,
     isLoading: isNoteLoading,
@@ -19,9 +18,8 @@ export default function Editor() {
 
   let content: ReactNode;
 
-  if (isNoteLoading) {
-    content = <div>Loading note...</div>;
-  } else {
+  if (isNoteLoading) content = <div>Loading note...</div>;
+  else {
     content = (
       <>
         <TopElem createdAt={note.createdAt} updatedAt={note.updatedAt} />
