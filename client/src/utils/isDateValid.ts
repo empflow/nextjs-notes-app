@@ -1,3 +1,4 @@
-export default function isValidDate(date: unknown) {
-  return date instanceof Date && !isNaN(date as any);
+export default function isValidDate(date: Date | string) {
+  if (typeof date === "string") date = new Date(date);
+  return !isNaN(date.getTime());
 }
