@@ -3,8 +3,8 @@ import httpWithAuth from "@/utils/http/httpWithAuth/httpWithAuth";
 import { useMutation } from "@tanstack/react-query";
 import { JSONContent } from "@tiptap/react";
 import { useEffect, useRef } from "react";
-import useCommonNotifications from "./useCommonNotifications";
-import useGetContext from "./useGetContext";
+import useCommonNotifications from "../useCommonNotifications";
+import useGetContext from "../useGetContext";
 
 export default function useSaveEditorContent(content: JSONContent | null) {
   const saveTimeout = useRef<NodeJS.Timeout | null>(null);

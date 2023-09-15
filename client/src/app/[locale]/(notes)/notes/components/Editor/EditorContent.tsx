@@ -1,4 +1,4 @@
-import useSaveEditorContent from "@/app/hooks/useSaveEditorContent";
+import useSaveEditorContent from "@/app/hooks/queries/useSaveEditorContent";
 import {
   EditorContent as TiptapEditorContent,
   JSONContent,
