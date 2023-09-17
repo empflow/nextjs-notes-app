@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import { BadRequestErr } from "./errs";
 import { TErrCode } from "@shared/types";
 
-export default function verifyRefreshTokenJwt(
+export default function checkRefreshTokenJwt(
   token: string,
   secretKeyEnvVarName: string,
   opts?: {

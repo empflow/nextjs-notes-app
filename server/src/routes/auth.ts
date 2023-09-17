@@ -13,7 +13,7 @@ import checkRefreshToken from "../middleware/auth/checkRefreshToken";
 import checkHashAndPlainTextTokensMatch from "../middleware/auth/checkHashAndPlainTextTokensMatch";
 import checkRefreshTokenExistsInDb from "../middleware/auth/checkRefreshTokenExistsInDb";
 import getNewTokens from "../controllers/auth/getNewTokens";
-import getNewTokensJwtVerifyRefreshToken from "../middleware/auth/getNewTokens/jwtVerifyRefreshToken";
+import getNewTokensJwtCheckRefreshToken from "../middleware/auth/getNewTokens/jwtCheckRefreshToken";
 import getNewTokensFindUserFromTokenPayload from "../middleware/auth/getNewTokens/findUserFromTokenPayload";
 import checkCaptchaToken from "../middleware/checkCaptchaToken";
 import checkUsernameAvailability from "../controllers/auth/checkUsernameAvailability";
@@ -53,7 +53,7 @@ router.post(
   checkRefreshToken,
   checkRefreshTokenExistsInDb,
   checkHashAndPlainTextTokensMatch,
-  getNewTokensJwtVerifyRefreshToken,
+  getNewTokensJwtCheckRefreshToken,
   getNewTokensFindUserFromTokenPayload,
   getNewTokens
 );
