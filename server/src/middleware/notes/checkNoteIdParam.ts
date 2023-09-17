@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
-import throwIfInvalidObjectId from "../../../utils/throwers/throwIfInvalidObjectId";
+import throwIfInvalidObjectId from "../../utils/throwers/throwIfInvalidObjectId";
 
-export default async function updateNoteCheckNoteId(
+export default async function checkNoteIdParam(
   req: Request,
   _res: Response,
   next: NextFunction
