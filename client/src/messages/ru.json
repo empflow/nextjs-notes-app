@@ -60,7 +60,8 @@
     "tryAgain": "Попробовать снова",
     "notSignedIn": "Вы не вошли в аккаунт",
     "notSignedInLink": "Войти",
-    "couldNotSyncEditorContent": "Не удалось синхронизировать изменения"
+    "couldNotSyncEditorContent": "Не удалось синхронизировать изменения",
+    "couldNotAddNote": "Не удалось добавить заметку"
   },
   "NetworkStatusListener": {
     "offline": "Нет интернет соединения",

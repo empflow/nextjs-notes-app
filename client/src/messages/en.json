@@ -60,7 +60,8 @@
     "tryAgain": "Try again",
     "notSignedIn": "You're not signed in",
     "notSignedInLink": "Sign in here",
-    "couldNotSyncEditorContent": "Could not sync changes"
+    "couldNotSyncEditorContent": "Could not sync changes",
+    "couldNotAddNote": "Could not add note"
   },
   "NetworkStatusListener": {
     "offline": "You're offline",
