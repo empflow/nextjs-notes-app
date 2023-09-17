@@ -15,7 +15,3 @@ export type TApiErrs =
   | NotFoundErr
   | ForbiddenErr
   | ConflictErr;
-
-export const errMsgs = {
-  noteInvalidId: "Invalid note ID",
-};

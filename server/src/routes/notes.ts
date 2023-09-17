@@ -7,8 +7,9 @@ import updateNote from "../controllers/notes/updateNote";
 import validateAddNote from "../middleware/notes/validateAddNote";
 import validateDeleteNote from "../middleware/notes/validateDeleteNote";
 import validateGetNote from "../middleware/notes/validateGetNote";
-import validateUpdateNote from "../middleware/notes/updateNote/validateUpdateNote";
 import noteGetTitleAndDescription from "../middleware/notes/getTitleAndDescription";
+import updateNoteCheckNoteId from "../middleware/notes/updateNote/checkNoteId";
+import updateNoteCheckNewDataProvided from "../middleware/notes/updateNote/checkNewDataProvided";
 const router = express.Router();
 
 router.get("/", getNotesMeta);
@@ -17,7 +18,12 @@ router.post("/add", validateAddNote, noteGetTitleAndDescription, addNote);
 router
   .route("/:noteId")
   .get(validateGetNote, getNote)
-  .patch(validateUpdateNote, noteGetTitleAndDescription, updateNote)
+  .patch(
+    updateNoteCheckNoteId,
+    updateNoteCheckNewDataProvided,
+    noteGetTitleAndDescription,
+    updateNote
+  )
   .delete(validateDeleteNote, deleteNote);
 
 export default router;
