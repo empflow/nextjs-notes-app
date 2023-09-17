@@ -1,7 +1,13 @@
-import { SetState, TContext, TNoteMeta, TTag } from "@/utils/types";
+import { SetState, TContext } from "@/utils/types";
+import { TNoteMetaSchema } from "@shared/schemas";
 import { createContext } from "react";
 
+export type TNotesListNotesMeta = TNoteMetaSchema[] | null;
+
 interface TNotesContextValue {
+  notes: TNotesListNotesMeta;
+  setNotes: SetState<TNotesListNotesMeta>;
+  sortedNotes: TNotesListNotesMeta;
   selectedNoteId: string | null;
   setSelectedNoteId: SetState<string | null>;
   selectedNote: TNoteMetaSchema | null;

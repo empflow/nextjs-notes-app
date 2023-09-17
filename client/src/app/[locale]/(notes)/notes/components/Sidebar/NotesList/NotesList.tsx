@@ -3,24 +3,18 @@ import RepeatingElem from "@/app/components/RepeatingElem";
 import useNotesMetaQuery from "@/app/hooks/queries/useNotesMetaQuery";
 import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext from "@/contexts/NotesContext";
-import getIterable from "@/utils/getIterable";
 import Note from "./Note";
 
 export default function NotesList() {
-  const {
-    isLoading,
-    data: notes,
-    isError,
-    refetch: fetchNotesMeta,
-  } = useNotesMetaQuery();
-  const { selectedNoteId } = useGetContext(NotesContext);
+  const { isLoading, isError, refetch: fetchNotesMeta } = useNotesMetaQuery();
+  const { selectedNoteId, notes, sortedNotes } = useGetContext(NotesContext);
 
   if (isLoading) return <NotesListLoading />;
   if (isError) return <Err retryFn={fetchNotesMeta} />;
-  if (!notes.length) return <>No notes</>;
+  if (!notes?.length) return <>No notes</>;
   return (
     <>
-      {notes.map((note, i, notes) => {
+      {sortedNotes?.map((note, i, notes) => {
         const { _id, title, description } = note;
 
         const isSelected = selectedNoteId === _id;

@@ -1,14 +1,13 @@
 "use client";
 import protectedPage from "@/utils/protectedPage";
-import { TNote, TNoteMeta, TTag } from "@/utils/types";
 import { useState } from "react";
 import NotesContext from "@/contexts/NotesContext";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Header from "./components/Header/Header";
 import Editor from "./components/Editor/Editor";
-import useNotesMetaQuery from "@/app/hooks/queries/useNotesMetaQuery";
-import useObserveQuery from "@/app/hooks/useObserveQuery";
 import getSelectedNote from "@/utils/getSelectedNote";
+import useNotesMetaState from "@/app/hooks/useNotesMetaState";
+import useSortNotes from "@/app/hooks/useSortNotes";
 
 export default function Notes() {
   protectedPage();
@@ -16,13 +15,17 @@ export default function Notes() {
   const [selectedTagId, setSelectedTagId] = useState<string | null>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
-  const { data: notes } = useObserveQuery<TNoteMeta[]>(["notes"]);
+  const [notes, setNotes] = useNotesMetaState();
+  const sortedNotes = useSortNotes(notes);
   const selectedNote = getSelectedNote(notes, selectedNoteId);
 
   return (
     <div className="flex min-h-[100dvh]">
       <NotesContext.Provider
         value={{
+          notes,
+          setNotes,
+          sortedNotes,
           selectedNoteId,
           setSelectedNoteId,
           selectedNote,
