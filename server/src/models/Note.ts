@@ -35,10 +35,6 @@ const NoteSchema = new Schema<TNoteServer>(
       type: [{ type: Schema.Types.ObjectId, ref: "Tag" }],
       default: [],
     },
-    clientId: {
-      type: String,
-      required: true,
-    },
   },
   { timestamps: true }
 );

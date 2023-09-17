@@ -7,11 +7,10 @@ import updateNote from "../controllers/notes/updateNote";
 import noteGetTitleAndDescription from "../middleware/notes/getTitleAndDescription";
 import checkNoteIdParam from "../middleware/notes/checkNoteIdParam";
 import updateNoteCheckNewDataProvided from "../middleware/notes/updateNote/checkNewDataProvided";
-import addNoteCheckClientId from "../middleware/notes/addNote/checkClientId";
 const router = express.Router();
 
 router.get("/", getNotesMeta);
-router.post("/add", addNoteCheckClientId, noteGetTitleAndDescription, addNote);
+router.post("/add", noteGetTitleAndDescription, addNote);
 
 router
   .route("/:noteId")

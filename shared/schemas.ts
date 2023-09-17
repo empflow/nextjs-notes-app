@@ -21,7 +21,6 @@ export const noteSchemaBase = z.object({
   description: z.string().nullable(),
   isInTrash: z.boolean(),
   _id: z.string(),
-  clientId: z.string(),
 });
 export const noteSchema = noteSchemaBase.extend({
   owner: z.string(),
