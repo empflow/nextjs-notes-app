@@ -9,25 +9,6 @@ export type TTranslations = (
   formats?: Partial<Formats>,
 ) => string;
 
-export interface TNote {
-  title: string;
-  content: string | null;
-  isInTrash: boolean;
-  tags: string[];
-  _id: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
-export type TNoteMeta = Omit<TNote, "content">;
-
-export interface TTag {
-  name: string;
-  color: string;
-  owner: string;
-  _id: string;
-}
-
 export type TWidth = "auto" | number;
 export type THeight = TWidth;
 

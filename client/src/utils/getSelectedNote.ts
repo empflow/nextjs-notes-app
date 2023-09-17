@@ -1,9 +1,9 @@
-import { TNoteMeta } from "./types";
+import { TNoteMetaSchema } from "@shared/schemas";
 
-type ReturnT = null | TNoteMeta;
+type ReturnT = null | TNoteMetaSchema;
 
 export default function getSelectedNote(
-  notes?: TNoteMeta[],
+  notes: TNoteMetaSchema[] | null,
   selectedNoteId?: string | null,
 ): ReturnT {
   if (!notes || !selectedNoteId) return null;

@@ -4,7 +4,7 @@ import { createContext } from "react";
 interface TNotesContextValue {
   selectedNoteId: string | null;
   setSelectedNoteId: SetState<string | null>;
-  selectedNote: TNoteMeta | null;
+  selectedNote: TNoteMetaSchema | null;
   selectedTagId: string | null;
   setSelectedTagId: SetState<string | null>;
   isEditing: boolean;
