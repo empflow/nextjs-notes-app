@@ -35,7 +35,7 @@ export default function Note({
 
   return (
     <div
-      className={`flex flex-col rounded-t border-b border-light-2xl-gray p-[14px] last:border-transparent dark:border-dark-3xl-gray dark:last:border-transparent ${
+      className={`flex flex-col rounded-t border-b border-light-2xl-gray p-[14px] last:border-transparent dark:border-dark-4xl-gray dark:last:border-transparent ${
         isSelected ? "rounded-b bg-light-5xl-blue dark:bg-dark-blue" : ""
       } ${state === "normal" ? "cursor-pointer" : ""}`}
       style={{ borderColor }}
