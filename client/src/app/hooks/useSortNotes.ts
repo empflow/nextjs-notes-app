@@ -6,9 +6,9 @@ export default function useSortNotes(notes: TNotesListNotesMeta) {
   const [sortedNotes, setSortedNotes] = useState<TNotesListNotesMeta>(null);
 
   useMemo(() => {
+    // TODO: this sorts the notes on every content change. That's pretty bad
     if (!notes) return;
     const unsortedNotesCopy = copyVal(notes);
-    console.log("sort");
 
     const sortedNotes = unsortedNotesCopy.sort((a, b) => {
       const updatedAtA = new Date(a.updatedAt);
