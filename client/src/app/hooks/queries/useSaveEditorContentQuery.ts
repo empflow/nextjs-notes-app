@@ -8,7 +8,7 @@ import useGetContext from "../useGetContext";
 
 export default function useSaveEditorContent(content: JSONContent | null) {
   const saveTimeout = useRef<NodeJS.Timeout | null>(null);
-  const saveAfterMs = 1000;
+  const saveAfterMs = 500;
   const { selectedNote } = useGetContext(NotesContext);
   const { notifyCouldNotSyncEditorContent } = useCommonNotifications();
   const mutation = useMutation(saveEditorContent, {
