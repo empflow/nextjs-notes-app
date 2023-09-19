@@ -3,6 +3,7 @@ import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext from "@/contexts/NotesContext";
 import { ReactNode } from "react";
 import EditorContent from "./EditorContent";
+import EditorLoading from "./EditorLoading";
 import TopElem from "./TopElem/TopElem";
 
 export default function Editor() {
@@ -14,14 +15,16 @@ export default function Editor() {
   } = useNoteQuery();
   let content: ReactNode;
 
-  if (!selectedNoteId) return <div>Select a note to start editing</div>;
-  if (isNoteErr) return <div>An error has occurred</div>;
-  if (isNoteLoading) content = <div>Loading note...</div>;
+  if (!selectedNoteId) content = <div>Select a note to start editing</div>;
+  else if (isNoteErr) content = <div>An error has occurred</div>;
   else {
+    let editor: ReactNode;
+    if (isNoteLoading) editor = <EditorLoading />;
+    else editor = <EditorContent initContent={note.content} />;
     content = (
       <>
-        <TopElem createdAt={note.createdAt} updatedAt={note.updatedAt} />
-        <EditorContent initContent={note.content} />
+        <TopElem createdAt={note?.createdAt} updatedAt={note?.updatedAt} />
+        {editor}
       </>
     );
   }

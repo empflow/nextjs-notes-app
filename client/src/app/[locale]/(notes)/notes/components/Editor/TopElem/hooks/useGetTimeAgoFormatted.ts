@@ -3,16 +3,17 @@ import getTimeAgoFormatted from "@/utils/getTimeAgoFormatted";
 import { useEffect } from "react";
 
 export default function useGetTimeAgoFormatted(
-  date: string | Date,
+  date?: string | Date,
   locale?: string,
 ) {
   const rerender = useRerender();
-  const timeAgoFormatted = getTimeAgoFormatted(date, locale);
-
   useEffect(() => {
     const interval = setInterval(rerender, 1000);
     return () => clearInterval(interval);
   });
+
+  if (!date) return null;
+  const timeAgoFormatted = getTimeAgoFormatted(date, locale);
 
   return timeAgoFormatted;
 }
