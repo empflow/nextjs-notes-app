@@ -5,18 +5,18 @@ import { useQuery } from "@tanstack/react-query";
 import useGetContext from "../useGetContext";
 
 export default function useNoteQuery() {
-  const { selectedNote } = useGetContext(NotesContext);
+  const { selectedNoteId } = useGetContext(NotesContext);
 
   const query = useQuery(
-    ["notes", selectedNote?._id],
-    () => fetchNote(selectedNote?._id),
-    { enabled: !!selectedNote },
+    ["notes", selectedNoteId],
+    () => fetchNote(selectedNoteId!),
+    { enabled: !!selectedNoteId },
   );
 
   return query;
 }
 
-async function fetchNote(noteId?: string) {
+async function fetchNote(noteId: string) {
   const { data } = await httpWithAuth.get(`/notes/${noteId}`);
   return noteSchema.parse(data);
 }

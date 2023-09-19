@@ -6,18 +6,16 @@ import EditorContent from "./EditorContent";
 import TopElem from "./TopElem/TopElem";
 
 export default function Editor() {
-  const { selectedNote } = useGetContext(NotesContext);
+  const { selectedNoteId } = useGetContext(NotesContext);
   const {
     data: note,
     isLoading: isNoteLoading,
     isError: isNoteErr,
   } = useNoteQuery();
-
-  if (!selectedNote) return <div>Select a note to start editing</div>;
-  if (isNoteErr) return <div>An error has occurred</div>;
-
   let content: ReactNode;
 
+  if (!selectedNoteId) return <div>Select a note to start editing</div>;
+  if (isNoteErr) return <div>An error has occurred</div>;
   if (isNoteLoading) content = <div>Loading note...</div>;
   else {
     content = (
