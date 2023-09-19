@@ -2,11 +2,19 @@ import NotesContext from "@/contexts/NotesContext";
 import httpWithAuth from "@/utils/http/httpWithAuth/httpWithAuth";
 import { useMutation } from "@tanstack/react-query";
 import { JSONContent } from "@tiptap/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import useCommonNotifications from "../useCommonNotifications";
 import useGetContext from "../useGetContext";
 
-export default function useSaveEditorContent(content: JSONContent | null) {
+interface TProps {
+  hasContentChanged: boolean;
+  content: JSONContent | null;
+}
+
+export default function useSaveEditorContent({
+  content,
+  hasContentChanged,
+}: TProps) {
   const saveTimeout = useRef<NodeJS.Timeout | null>(null);
   const saveAfterMs = 500;
   const { selectedNote } = useGetContext(NotesContext);
@@ -21,8 +29,8 @@ export default function useSaveEditorContent(content: JSONContent | null) {
   }
 
   useEffect(() => {
+    if (!hasContentChanged) return;
     clearTimeout(saveTimeout.current!);
-
     saveTimeout.current = setTimeout(async () => {
       await mutation.mutateAsync();
     }, saveAfterMs);

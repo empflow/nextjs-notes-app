@@ -18,12 +18,14 @@ interface TProps {
 export default function EditorContent({ initContent }: TProps) {
   const [content, setContent] = useState<null | JSONContent>(initContent);
   const { setNotes, selectedNoteId } = useGetContext(NotesContext);
-  useSaveEditorContent(content);
+  const [hasContentChanged, setHasContentChanged] = useState(false);
+  useSaveEditorContent({ content, hasContentChanged });
 
   const editor = useEditor({
     content: initContent ?? "",
     extensions: [StarterKit],
     onUpdate: ({ editor }) => {
+      setHasContentChanged(true);
       updateSelectedNoteProps(setNotes, selectedNoteId);
       setContent(editor.getJSON());
     },
