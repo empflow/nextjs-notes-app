@@ -12,12 +12,7 @@ export default function FormBtn({ isLoading, text }: TProps) {
       {isLoading ? (
         <div className="flex w-full items-center justify-center">
           <div className="relative h-[1.5rem] w-[1.5rem]">
-            <Loading
-              childStyle={{
-                borderColor: "white",
-                borderTopColor: "transparent",
-              }}
-            />
+            <Loading backgroundColor="white" foregroundColor="transparent" />
           </div>
         </div>
       ) : (
