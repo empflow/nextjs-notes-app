@@ -7,7 +7,6 @@ import { notFound } from "next/navigation";
 import { ToastContainer } from "react-toastify";
 import ThemeProviders from "../providers/ThemeProviders";
 import ReactQueryProviders from "../providers/ReactQueryProviders";
-import SkeletonThemeProviders from "../providers/SkeletonThemeProviders";
 
 export const metadata = {
   title: "Notes",
@@ -43,10 +42,8 @@ export default async function RootLayout({
         <ThemeProviders>
           <ReactQueryProviders>
             <NextIntlClientProvider locale={locale} messages={messages}>
-              <SkeletonThemeProviders>
-                {children}
-                <ToastContainer hideProgressBar autoClose={3000} />
-              </SkeletonThemeProviders>
+              {children}
+              <ToastContainer hideProgressBar autoClose={3000} />
             </NextIntlClientProvider>
           </ReactQueryProviders>
         </ThemeProviders>
