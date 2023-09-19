@@ -10,15 +10,16 @@ export default function useNotesMetaState(): [TState, SetState<TState>] {
     data: notesMetaData,
     isLoading,
     isError,
+    isFetching,
   } = useObserveQuery<TNoteMetaSchema[]>(["notes"]);
   const [notesMeta, setNotesMeta] = useState<TNoteMetaSchema[] | null>(
     notesMetaData ?? null,
   );
 
   useEffect(() => {
-    if (isLoading || isError) return;
+    if (isLoading || isError || isFetching) return;
     setNotesMeta(notesMetaData);
-  }, [isLoading]);
+  }, [isLoading, isFetching]);
 
   return [notesMeta, setNotesMeta];
 }
