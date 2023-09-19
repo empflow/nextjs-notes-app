@@ -27,7 +27,7 @@ module.exports = {
         "l-main": "rgb(242, 242, 242)",
         "l-secondary": "rgb(255, 255, 255)",
         "l-tertiary": "rgb(235, 235, 235)",
-        "l-header": "rgba(255, 255, 255, 0.6)"
+        "l-header": "rgba(255, 255, 255, 0.6)",
       },
       textColor: {
         "d-main": "rgb(220, 220, 230)",
@@ -45,7 +45,7 @@ module.exports = {
       },
       colors: {
         "dark-blue": "rgb(8, 65, 120)",
-        "blue": "rgb(8, 82, 155)",
+        blue: "rgb(8, 82, 155)",
         "light-blue": "rgb(12, 100, 185)",
         "light-xl-blue": "#0976DF",
         "light-2xl-blue": "#2192FF",
@@ -53,6 +53,8 @@ module.exports = {
         "light-4xl-blue": "#73BAFF",
         "light-5xl-blue": "#9ECFFF",
 
+        "dark-6xl-gray": "rgb(35, 35, 35)",
+        "dark-5xl-gray": "rgb(40, 40, 40)",
         "dark-4xl-gray": "rgb(55, 55, 55)",
         "dark-3.5xl-gray": "rgb(62, 62, 62)",
         "dark-3xl-gray": "rgb(70, 70, 70)",
@@ -60,7 +62,7 @@ module.exports = {
         "dark-xl-gray": "rgb(100, 100, 100)",
         "dark-gray": "rgb(115, 115, 115)",
 
-        "gray": "rgb(130, 130, 130)",
+        gray: "rgb(130, 130, 130)",
 
         "light-gray": "rgb(170, 170, 170)",
         "light-xl-gray": "rgb(185, 185, 185)",
@@ -77,7 +79,7 @@ module.exports = {
         "d-accent": "rgb(41, 141, 242)",
 
         "l-success": "#0f7d00",
-        "d-success": "#3ac427" 
+        "d-success": "#3ac427",
       },
     },
   },
