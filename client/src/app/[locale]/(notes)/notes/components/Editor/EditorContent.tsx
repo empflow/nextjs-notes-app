@@ -8,7 +8,7 @@ import {
   useEditor,
 } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./editor.module.css";
 
 interface TProps {
@@ -22,14 +22,20 @@ export default function EditorContent({ initContent }: TProps) {
   useSaveEditorContent({ content, hasContentChanged });
 
   const editor = useEditor({
-    content: initContent ?? "",
     extensions: [StarterKit],
     onUpdate: ({ editor }) => {
       setHasContentChanged(true);
       updateSelectedNoteProps(setNotes, selectedNoteId);
       setContent(editor.getJSON());
     },
+    onCreate(props) {
+      props.editor.commands.setContent(initContent);
+    },
   });
+
+  useEffect(() => {
+    editor?.commands.setContent(initContent);
+  }, [initContent]);
 
   return (
     <TiptapEditorContent
