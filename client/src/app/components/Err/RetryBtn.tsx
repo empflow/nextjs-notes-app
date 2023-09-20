@@ -1,3 +1,5 @@
+"use client";
+
 import { useTranslations } from "next-intl";
 import { ReactNode, useState } from "react";
 import Loading from "../Loading";

@@ -1,3 +1,5 @@
+"use client";
+
 import SmallBtn from "@/app/components/buttons/Small";
 import FilterIcon from "@/icons/svg/filter.svg";
 import useGetContext from "@/app/hooks/useGetContext";

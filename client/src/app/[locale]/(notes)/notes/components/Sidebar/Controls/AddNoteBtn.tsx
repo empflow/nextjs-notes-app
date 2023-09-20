@@ -1,3 +1,4 @@
+"use client";
 import BigBtn from "@/app/components/buttons/Big";
 import Loading from "@/app/components/Loading";
 import useAddNewNoteMutation from "@/app/hooks/queries/useAddNoteMutation";

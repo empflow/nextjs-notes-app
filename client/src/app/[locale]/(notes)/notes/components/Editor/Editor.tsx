@@ -1,3 +1,5 @@
+"use client";
+
 import useNoteQuery from "@/app/hooks/queries/useNoteQuery";
 import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext from "@/contexts/NotesContext";

@@ -1,3 +1,5 @@
+"use client";
+
 import TinyBtn from "@/app/components/buttons/Tiny";
 import EditIcon from "@/icons/svg/edit.svg";
 import EditOffIcon from "@/icons/svg/editOff.svg";

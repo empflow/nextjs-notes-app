@@ -1,3 +1,5 @@
+"use client";
+
 import { useLocale, useTranslations } from "next-intl";
 import { ReactNode, useState } from "react";
 import Skeleton from "react-loading-skeleton";

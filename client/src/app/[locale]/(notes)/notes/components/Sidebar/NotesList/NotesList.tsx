@@ -1,3 +1,5 @@
+"use client";
+
 import Err from "@/app/components/Err/Err";
 import RepeatingElem from "@/app/components/RepeatingElem";
 import useNotesMetaQuery from "@/app/hooks/queries/useNotesMetaQuery";
