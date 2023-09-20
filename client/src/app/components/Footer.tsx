@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import ThemeSwitcher from "./ThemeSwitch";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 export default function Footer() {
   const year = new Date().getFullYear();
