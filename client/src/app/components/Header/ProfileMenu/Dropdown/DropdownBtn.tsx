@@ -1,25 +1,35 @@
-import SignOutIcon from "@/icons/SignOut";
-import { MouseEvent } from "react";
-import { useTranslations } from "next-intl";
+import { cloneElement, MouseEvent, ReactNode } from "react";
 
-interface Props {
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
-  translationName: string;
+interface TProps {
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
+  text: string;
+  icon?: any;
+  children?: ReactNode;
+  hoverable?: boolean;
 }
+
+const iconProps = {
+  width: 22,
+  className: "fill-l-accent dark:fill-d-accent",
+};
 
 export default function ProfileMenuDropdownBtn({
   onClick,
-  translationName,
-}: Props) {
-  const btnsT = useTranslations("Header.Buttons");
-
+  text,
+  icon,
+  children,
+  hoverable = true,
+}: TProps) {
   return (
     <button
       onClick={onClick}
-      className="flex items-center gap-1 p-2 hover:bg-light-5xl-gray dark:hover:bg-dark-4xl-gray"
+      className={`flex items-center gap-1 rounded p-2  ${
+        hoverable ? "hover:bg-light-5xl-gray dark:hover:bg-dark-4xl-gray" : ""
+      }`}
     >
-      <SignOutIcon pxSize={22} className="fill-l-accent dark:fill-d-accent" />
-      <div>{btnsT(translationName)}</div>
+      {icon && cloneElement(icon, iconProps)}
+      <div>{text}</div>
+      {children}
     </button>
   );
 }
