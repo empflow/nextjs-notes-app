@@ -5,17 +5,15 @@ import { useEffect, useRef, useState } from "react";
 import ComputerIcon from "@/icons/Computer";
 import MoonIcon from "@/icons/Moon";
 import SunIcon from "@/icons/Sun";
+import getTheme from "@/utils/getTheme";
 
 export default function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
+  const { isLight, isDark, isSystem } = getTheme(theme);
   const [isMounted, setIsMounted] = useState(false);
   const switchRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => setIsMounted(true), []);
-
-  const isSystem = theme === "system";
-  const isLight = theme === "light";
-  const isDark = theme === "dark";
 
   if (!isMounted) {
     return <div style={{ height: "38px" }}></div>;
