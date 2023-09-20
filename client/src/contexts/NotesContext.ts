@@ -1,5 +1,7 @@
+"use client";
+
 import { SetState, TContext } from "@/utils/types";
-import { TNoteMetaSchema } from "@shared/schemas";
+import { TNoteMetaSchema, TTagSchema } from "@shared/schemas";
 import { createContext } from "react";
 
 export type TNotesListNotesMeta = TNoteMetaSchema[] | null;
