@@ -7,7 +7,7 @@ interface Props {
   translationName: string;
 }
 
-export default function ProfileMenuDropdownButton({
+export default function ProfileMenuDropdownBtn({
   onClick,
   translationName,
 }: Props) {

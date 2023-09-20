@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
-import { ProfileMenuContext } from "./ProfileMenuContent";
 import useGetContext from "@/app/hooks/useGetContext";
-import ProfileMenuDropdownButtonsList from "./ProfileMenuDropdownButtonsList";
+import ProfileMenuDropdownBtnsList from "./DropdownBtnsList";
+import ProfileMenuContext from "@/contexts/ProfileMenu";
 
 const ProfileMenuDropdown = forwardRef<HTMLDivElement>((props, ref) => {
   const profileMenuContext = useGetContext(ProfileMenuContext);
@@ -17,7 +17,7 @@ const ProfileMenuDropdown = forwardRef<HTMLDivElement>((props, ref) => {
       <div className="flex w-full flex-col gap-3 rounded border-light-2xl-gray bg-l-secondary px-3 py-5 shadow-md dark:border-dark-3xl-gray dark:bg-d-secondary">
         <div className="px-2 font-medium">{signedInAs}</div>
 
-        <ProfileMenuDropdownButtonsList />
+        <ProfileMenuDropdownBtnsList />
       </div>
     </div>
   );
