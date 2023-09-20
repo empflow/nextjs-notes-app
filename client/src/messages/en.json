@@ -11,7 +11,13 @@
     "closeMenu": "Close menu",
     "Buttons": {
       "signOut": "Sign out"
-    }
+    },
+    "theme": "Theme"
+  },
+  "Themes": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
   },
   "Form": {
     "email": "Email",
