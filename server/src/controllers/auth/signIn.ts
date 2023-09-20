@@ -10,11 +10,11 @@ export default async function signIn(req: Request, res: Response) {
   const { forDb: refreshTokenForDb, plainTextToken: plainTextRefreshToken } =
     await user.getRefreshToken();
 
-  const { id } = await RefreshToken.create(refreshTokenForDb);
+  const { id: refreshTokenId } = await RefreshToken.create(refreshTokenForDb);
   const response: TAuthResp = {
     accessToken,
     refreshToken: {
-      id,
+      id: refreshTokenId,
       token: plainTextRefreshToken,
     },
     username: user.email,
