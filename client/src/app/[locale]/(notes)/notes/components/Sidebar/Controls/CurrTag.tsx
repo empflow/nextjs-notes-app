@@ -1,6 +1,9 @@
+"use client";
+
 import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext from "@/contexts/NotesContext";
-import { TTag, TTranslations } from "@/utils/types";
+import { TTranslations } from "@/utils/types";
+import { TTagSchema } from "@shared/schemas";
 import { useTranslations } from "next-intl";
 
 export default function CurrTag() {
@@ -16,7 +19,7 @@ export default function CurrTag() {
 }
 
 function getTagName(
-  tags: TTag[] | null,
+  tags: TTagSchema[] | null,
   selectedTagId: string | null,
   t: TTranslations,
 ) {

@@ -11,6 +11,7 @@ interface TNotesContextValue {
   selectedNoteId: string | null;
   setSelectedNoteId: SetState<string | null>;
   selectedNote: TNoteMetaSchema | null;
+  tags: TTagSchema[] | null;
   selectedTagId: string | null;
   setSelectedTagId: SetState<string | null>;
   isEditing: boolean;
