@@ -5,7 +5,7 @@ import SignUpFormContext from "@/contexts/SignUpFormContext";
 import CheckmarkIcon from "@/icons/Checkmark";
 import ErrIcon from "@/icons/Err";
 import isEmailValid from "@/utils/isEmailValid";
-import { TIsUsernameAvailableResp } from "@shared/types";
+import { TIsUsernameAvailableResp } from "@shared/respsSchemas";
 import { useQueryClient } from "@tanstack/react-query";
 import useSignUpFormTranslations from "../hooks/useSignUpFormTranslations";
 

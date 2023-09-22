@@ -1,5 +1,5 @@
 import httpWithAuth from "@/utils/http/httpWithAuth/httpWithAuth";
-import { tagSchema } from "@shared/types";
+import { tagSchema } from "@shared/schemas";
 import { useQuery } from "@tanstack/react-query";
 
 export default function useTagsQuery() {
