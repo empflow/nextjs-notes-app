@@ -7,10 +7,7 @@ const noteContent: z.ZodType<TNoteJsonContent> = z.lazy(() =>
     type: z.string().optional(),
     attrs: z.record(z.unknown()).optional(),
     content: noteContent.array().optional(),
-    marks: z
-      .object({ type: z.string(), attrs: z.record(z.any()) })
-      .array()
-      .optional(),
+    marks: z.any(),
     text: z.string().optional(),
   })
 );
