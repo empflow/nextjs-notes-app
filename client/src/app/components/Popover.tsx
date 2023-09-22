@@ -25,10 +25,11 @@ export default function Popover({
     if (isClickOutsidePopover) setIsOpen(false);
   }
 
+  // TODO: make popover half-transparent
   return (
     <div
       className={`relative border border-red-500 duration-100 ${
-        isOpen ? "opacity-100" : "opacity-0"
+        isOpen ? "opacity-100 ponter-events-auto" : "opacity-0 pointer-events-none"
       }`}
     >
       <div
