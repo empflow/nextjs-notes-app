@@ -1,5 +1,5 @@
 import serverGetAuthData from "./getAuthData/serverGetAuthData";
 
-export default async function isSignedIn() {
+export default function isSignedIn() {
   return !!serverGetAuthData();
 }
