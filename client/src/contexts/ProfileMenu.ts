@@ -7,6 +7,7 @@ interface TProfileMenuContextValue {
   setIsDropdownOpen: SetState<boolean>;
   headerIconRef: RefObject<HTMLDivElement>;
   dropdownRef: RefObject<HTMLDivElement>;
+  dropdownTopPx: number;
 }
 
 export type TProfileMenuContext = TContext<TProfileMenuContextValue>;

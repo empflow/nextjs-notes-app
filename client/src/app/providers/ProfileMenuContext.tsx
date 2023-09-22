@@ -8,11 +8,13 @@ import useOnClick from "../hooks/useOnClick";
 interface TProps {
   children: ReactNode;
   signedInAs: string;
+  dropdownTopPx?: number;
 }
 
 export default function ProfileMenuContextProviders({
   children,
   signedInAs,
+  dropdownTopPx = 0,
 }: TProps) {
   const t = useTranslations("Header");
   const [isOpen, setIsOpen] = useState(false);
@@ -41,6 +43,7 @@ export default function ProfileMenuContextProviders({
         signedInAs: signedInAs || t("signedInAsUnknown"),
         dropdownRef,
         headerIconRef,
+        dropdownTopPx,
       }}
     >
       {children}

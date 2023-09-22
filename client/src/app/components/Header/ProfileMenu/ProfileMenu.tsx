@@ -3,15 +3,17 @@ import serverGetAuthData from "@/utils/getAuthData/serverGetAuthData";
 import ProfileMenuSignIn from "./SignIn";
 import ProfileMenuContextProviders from "@/app/providers/ProfileMenuContext";
 
-// this shit can only be used inside a server component!
-// because there's apparently no way to get universal access to cookies both
-// on server and client so that they match and don't produce a hydration
-// mismatch error
-export default function ProfileMenu() {
+interface TProps {
+  dropdownTopPx?: number;
+}
+
+export default function ProfileMenu({ dropdownTopPx }: TProps) {
   const authData = serverGetAuthData();
   if (!authData) return <ProfileMenuSignIn />;
+
+  const { username: signedInAs } = authData;
   return (
-    <ProfileMenuContextProviders signedInAs={authData.username}>
+    <ProfileMenuContextProviders {...{ signedInAs, dropdownTopPx }}>
       <ProfileMenuContent />
     </ProfileMenuContextProviders>
   );
