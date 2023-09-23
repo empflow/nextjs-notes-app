@@ -1,6 +1,5 @@
 "use client";
-
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext, { TEditor } from "@/contexts/NotesContext";
 import getSelectedNote from "@/utils/getSelectedNote";
 import { ReactNode, useState } from "react";
 import useNotesMetaState from "../hooks/useNotesMetaState";
@@ -16,18 +15,23 @@ export default function NotesContextProviders({ children }: TProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
   const [notes, setNotes] = useNotesMetaState();
+  const [tags, _setTags] = useState([]);
+  const [editor, setEditor] = useState<TEditor>(null);
   const sortedNotes = useSortNotes(notes);
   const selectedNote = getSelectedNote(notes, selectedNoteId);
 
   return (
     <NotesContext.Provider
       value={{
+        editor,
+        setEditor,
         notes,
         setNotes,
         sortedNotes,
         selectedNoteId,
         setSelectedNoteId,
         selectedNote,
+        tags,
         selectedTagId,
         setSelectedTagId,
         isEditing,

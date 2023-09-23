@@ -2,11 +2,15 @@
 
 import { SetState, TContext } from "@/utils/types";
 import { TNoteMetaSchema, TTagSchema } from "@shared/schemas";
+import { Editor } from "@tiptap/core";
 import { createContext } from "react";
 
 export type TNotesListNotesMeta = TNoteMetaSchema[] | null;
+export type TEditor = Editor | null;
 
 interface TNotesContextValue {
+  editor: TEditor;
+  setEditor: SetState<TEditor>;
   notes: TNotesListNotesMeta;
   setNotes: SetState<TNotesListNotesMeta>;
   sortedNotes: TNotesListNotesMeta;
