@@ -1,3 +1,4 @@
+"use client";
 import { forwardRef } from "react";
 import useGetContext from "@/app/hooks/useGetContext";
 import ProfileMenuDropdownBtnsList from "./DropdownBtnsList";
@@ -7,8 +8,8 @@ import useGetDropdownTopPx from "./hooks/useGetDropdownTopPx";
 
 const ProfileMenuDropdown = forwardRef<HTMLDivElement>((_props, ref) => {
   const profileMenuContext = useGetContext(ProfileMenuContext);
-  const { signedInAs, isDropdownOpen } = profileMenuContext;
   const dropdownTopPx = useGetDropdownTopPx();
+  const { signedInAs, isDropdownOpen } = profileMenuContext;
 
   return (
     <div
