@@ -1,5 +1,7 @@
 import Tooltip from "@/app/components/Tooltip";
-import { cloneElement, MouseEvent } from "react";
+import NotesContext from "@/contexts/NotesContext";
+import { useTranslations } from "next-intl";
+import { cloneElement, MouseEvent, useContext } from "react";
 
 interface TProps {
   tooltipText: string;
@@ -18,18 +20,28 @@ export default function ToolbarItem({
   isActive,
   icon,
 }: TProps) {
-  return (
-    <Tooltip text={tooltipText}>
-      <button
-        onClick={onClick}
-        disabled={disabled}
-        className={`rounded-full px-3 py-1 disabled:cursor-not-allowed disabled:bg-light-4xl-gray disabled:text-dark-gray ${
-          isActive ? "bg-gray-400" : ""
-        } ${className ?? ""}`}
-        title={disabled ? `${tooltipText} (disabled)` : undefined}
-      >
-        {cloneElement(icon, { className: "fill-light-xl-blue" })}
-      </button>
-    </Tooltip>
+  const t = useTranslations("Toolbar");
+
+  const btn = (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      className={`px-[10px] py-1 disabled:cursor-not-allowed ${
+        isActive ? "bg-gray-400" : ""
+      } ${className ?? ""}`}
+      title={disabled ? `${tooltipText} (${t("disabled")})` : undefined}
+    >
+      {cloneElement(icon, {
+        className: ` ${
+          disabled
+            ? "fill-light-gray dark:fill-dark-xl-gray"
+            : "fill-light-xl-blue"
+        }`,
+      })}
+    </button>
   );
+
+  if (disabled) return btn;
+
+  return <Tooltip text={tooltipText}>{btn}</Tooltip>;
 }
