@@ -7,7 +7,7 @@ import SidebarResizableBoxProviders from "./ResizableBoxProviders";
 export default function Sidebar() {
   return (
     <SidebarResizableBoxProviders>
-      <aside className="flex w-full flex-col gap-3 overflow-auto">
+      <aside className="flex w-full flex-col gap-3 overflow-auto bg-light-5xl-gray dark:bg-d-secondary">
         <Controls />
         <NotesListContainer>
           <NotesList />

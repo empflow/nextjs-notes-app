@@ -3,8 +3,7 @@ import Toolbar from "./Toolbar/Toolbar";
 
 export default function Header() {
   return (
-    <header className="flex justify-between border-b border-light-3xl-gray p-global dark:border-dark-4xl-gray">
-      <div></div>
+    <header className="flex justify-between border-b border-light-3xl-gray bg-light-5xl-gray p-global dark:border-dark-4xl-gray dark:bg-d-secondary">
       <Toolbar />
       <ProfileMenu />
     </header>

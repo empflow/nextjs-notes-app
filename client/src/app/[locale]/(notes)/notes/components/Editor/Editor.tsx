@@ -32,7 +32,7 @@ export default function Editor() {
   }
 
   return (
-    <div className="flex flex-grow flex-col p-global sm:p-global-sm">
+    <div className="flex flex-grow flex-col bg-l-secondary p-global dark:bg-d-main sm:p-global-sm">
       {content}
     </div>
   );
