@@ -15,6 +15,7 @@
     "theme": "Theme"
   },
   "Toolbar": {
+    "disabled": "disabled",
     "tooltips": {
       "undo": "Undo",
       "redo": "Redo",
