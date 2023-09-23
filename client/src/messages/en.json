@@ -14,6 +14,20 @@
     },
     "theme": "Theme"
   },
+  "Toolbar": {
+    "tooltips": {
+      "undo": "Undo",
+      "redo": "Redo",
+      "formatText": "Format text",
+      "addLink": "Add link",
+      "addTable": "Add table",
+      "addImage": "Add image",
+      "italic": "Italic",
+      "bold": "Bold",
+      "strikethrough": "Strikethrough",
+      "code": "Code"
+    }
+  },
   "Themes": {
     "light": "Light",
     "dark": "Dark",
