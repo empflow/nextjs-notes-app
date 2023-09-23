@@ -1,5 +1,4 @@
 import NetworkStatusListener from "@/app/components/NetworkStatusListener";
-import React from "react";
 
 interface NotesLayoutContext {
   children: React.ReactNode;
