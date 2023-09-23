@@ -4,9 +4,10 @@ import { ReactNode, useRef, useState } from "react";
 
 interface TProps {
   children: ReactNode;
+  className?: string;
 }
 
-export default function TooltipContainer({ children }: TProps) {
+export default function TooltipContainer({ children, className }: TProps) {
   const [showTooltips, setShowTooltips] = useState(false);
   const timeout = useRef<NodeJS.Timeout | null>(null);
   const showTooltipsAfterMs = 800;
@@ -30,6 +31,7 @@ export default function TooltipContainer({ children }: TProps) {
       onMouseLeave={hideTooltip}
       onTouchStart={showTooltipAfterDelay}
       onTouchEnd={hideTooltip}
+      className={className}
     >
       <TooltipContainerContext.Provider value={{ showTooltips }}>
         {children}
