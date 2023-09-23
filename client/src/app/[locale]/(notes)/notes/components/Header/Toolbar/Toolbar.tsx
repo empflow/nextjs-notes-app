@@ -17,7 +17,7 @@ export default function Toolbar() {
   const { editor } = useGetContext(NotesContext);
 
   return (
-    <TooltipContainer className="m-auto flex">
+    <TooltipContainer className="flex lg:m-auto">
       <ToolbarItem
         tooltipText={t("formatText")}
         disabled={!editor?.can().chain().focus().redo().run()}
