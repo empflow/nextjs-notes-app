@@ -17,7 +17,7 @@ interface TProps {
 
 export default function EditorContent({ initContent }: TProps) {
   const [content, setContent] = useState<null | JSONContent>(initContent);
-  const { setNotes, selectedNoteId } = useGetContext(NotesContext);
+  const { setNotes, selectedNoteId, setEditor } = useGetContext(NotesContext);
   const [hasContentChanged, setHasContentChanged] = useState(false);
   useSaveEditorContent({ content, hasContentChanged });
 
@@ -28,8 +28,9 @@ export default function EditorContent({ initContent }: TProps) {
       updateSelectedNoteProps(setNotes, selectedNoteId);
       setContent(editor.getJSON());
     },
-    onCreate(props) {
-      props.editor.commands.setContent(initContent);
+    onCreate({ editor }) {
+      editor.commands.setContent(initContent);
+      setEditor(editor);
     },
   });
 
