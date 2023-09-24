@@ -10,7 +10,7 @@ import TableIcon from "@/icons/svg/table.svg";
 import LinkIcon from "@/icons/svg/link.svg";
 import TooltipContainer from "@/app/components/TooltipContainer";
 import { useTranslations } from "next-intl";
-import TextFormat from "./Items/TextFormat/TextFormat";
+import FormatText from "./Items/TextFormat/FormatText";
 import ToolbarContextProviders from "./ContextProviders";
 
 export default function Toolbar() {
@@ -20,7 +20,7 @@ export default function Toolbar() {
   return (
     <ToolbarContextProviders>
       <TooltipContainer className="flex lg:m-auto">
-        <TextFormat />
+        <FormatText />
         <ToolbarItem
           tooltipText={t("addImage")}
           disabled={!editor?.can().chain().focus().redo().run()}

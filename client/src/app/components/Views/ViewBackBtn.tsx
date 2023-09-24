@@ -13,13 +13,14 @@ export default function ViewBackBtn({ navTo, text }: TProps) {
 
   return (
     <div>
-      <button
+      <div
         className="flex items-center gap-0 text-[0.95rem] text-light-xl-blue"
         onClick={() => setActiveView(navTo)}
+        role="button"
       >
         <ArrowBackIcon className="fill-light-xl-blue" width={15} height={15} />
         {text}
-      </button>
+      </div>
     </div>
   );
 }

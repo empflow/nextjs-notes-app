@@ -5,8 +5,6 @@ interface TProfileMenuContextValue {
   signedInAs: string;
   isDropdownOpen: boolean;
   setIsDropdownOpen: SetState<boolean>;
-  headerIconRef: RefObject<HTMLDivElement>;
-  dropdownRef: RefObject<HTMLDivElement>;
   dropdownTopPx: number;
 }
 

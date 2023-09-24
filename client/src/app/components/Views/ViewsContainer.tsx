@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, forwardRef, ReactNode, useRef, useState } from "react";
 import { SetState } from "@/utils/types";
 import { TViewsContainerContext } from "@/contexts/ViewsContainerContext";
 
@@ -15,8 +15,6 @@ interface TProps {
   centered?: boolean;
   top?: number;
 }
-
-export const transitionDuration = 150;
 
 export default function ViewsContainer({
   initMenu,

@@ -7,7 +7,7 @@ import ToolbarTextFormatMainView from "./Main";
 import ToolbarTextFormatSettingsView from "./Settings";
 import { useTranslations } from "next-intl";
 
-export default function TextFormat() {
+export default function FormatText() {
   const t = useTranslations("Toolbar.tooltips");
   const { isFormatTextMenuOpen: isOpen, setIsFormatTextMenuOpen: setIsOpen } =
     useGetContext(ToolbarContext);
