@@ -1,15 +1,17 @@
 import Tooltip from "@/app/components/Tooltip";
 import NotesContext from "@/contexts/NotesContext";
 import { useTranslations } from "next-intl";
-import { cloneElement, MouseEvent, useContext } from "react";
+import { cloneElement, MouseEvent, ReactNode, useContext } from "react";
 
 interface TProps {
+  hideTooltip?: boolean;
   tooltipText: string;
   icon: any;
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
   isActive?: boolean;
   className?: string;
+  children?: ReactNode;
 }
 
 export default function ToolbarItem({
@@ -19,6 +21,8 @@ export default function ToolbarItem({
   className,
   isActive,
   icon,
+  children,
+  hideTooltip = true,
 }: TProps) {
   const t = useTranslations("Toolbar");
 
@@ -32,7 +36,7 @@ export default function ToolbarItem({
       title={disabled ? `${tooltipText} (${t("disabled")})` : undefined}
     >
       {cloneElement(icon, {
-        className: ` ${
+        className: `${
           disabled
             ? "fill-light-gray dark:fill-dark-xl-gray"
             : "fill-light-xl-blue"
@@ -43,5 +47,12 @@ export default function ToolbarItem({
 
   if (disabled) return btn;
 
-  return <Tooltip text={tooltipText}>{btn}</Tooltip>;
+  return (
+    <>
+      <Tooltip top={40} hide={hideTooltip} text={tooltipText}>
+        {btn}
+        {children}
+      </Tooltip>
+    </>
+  );
 }
