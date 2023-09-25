@@ -47,6 +47,7 @@ export default async function RootLayout({
             </NextIntlClientProvider>
           </ReactQueryProviders>
         </ThemeProviders>
+        <div id="popover-overlays"></div>
       </body>
     </html>
   );
