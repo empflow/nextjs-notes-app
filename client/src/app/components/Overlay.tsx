@@ -8,7 +8,7 @@ interface TProps {
   transparent?: boolean;
 }
 
-export default function PopoverBgOverlay({
+export default function Overlay({
   isActive,
   onClick,
   transparent = false,
