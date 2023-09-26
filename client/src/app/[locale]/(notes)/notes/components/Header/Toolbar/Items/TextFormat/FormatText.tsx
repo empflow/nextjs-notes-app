@@ -20,10 +20,9 @@ export default function FormatText() {
       tooltipText={t("formatText")}
       hideTooltip={isOpen}
     >
-      <Popover {...{ isOpen, setIsOpen }} position="left">
+      <Popover {...{ isOpen, setIsOpen }} position="bottom" offset={40}>
         <ViewsContainer
           centered={true}
-          top={40}
           {...{ isOpen, setIsOpen }}
           initMenu="main"
         >
