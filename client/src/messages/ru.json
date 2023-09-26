@@ -27,6 +27,33 @@
       "bold": "Жирный",
       "strikethrough": "Перечёркнутый",
       "code": "Код"
+    },
+    "formatText": {
+      "menuTitle": "Форматирование",
+      "formattingOptions": {
+        "bold": "Жирный",
+        "italic": "Курсив",
+        "strikethrough": "Зачеркнутый",
+        "code": "Код"
+      },
+      "titles": {
+        "title": "Главный заголовок",
+        "heading": "Заголовок",
+        "subheading": "Подзаголовок",
+        "body": "Основной текст"
+      },
+      "lists": {
+        "menuTitle": "Списки",
+        "bulleted": "Маркированный список",
+        "ordered": "Нумерованный список",
+        "dashed": "Пунктирный список"
+      },
+      "code": {
+        "inline": "Встроенный код",
+        "block": "Блок кода"
+      },
+      "horizontalRule": "Горизонтальная линия",
+      "clearFormatting": "Очистить форматирование"
     }
   },
   "Themes": {

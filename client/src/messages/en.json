@@ -22,11 +22,34 @@
       "formatText": "Format text",
       "addLink": "Add link",
       "addTable": "Add table",
-      "addImage": "Add image",
-      "italic": "Italic",
-      "bold": "Bold",
-      "strikethrough": "Strikethrough",
-      "code": "Code"
+      "addImage": "Add image"
+    },
+    "formatText": {
+      "menuTitle": "Formatting",
+      "formattingOptions": {
+        "bold": "Bold",
+        "italic": "Italic",
+        "strikethrough": "Strikethrough",
+        "code": "Code"
+      },
+      "titles": {
+        "title": "Title",
+        "heading": "Heading",
+        "subheading": "Subheading",
+        "body": "Body"
+      },
+      "lists": {
+        "menuTitle": "Lists",
+        "bulleted": "Bulleted list",
+        "ordered": "Ordered list",
+        "dashed": "Dashed list"
+      },
+      "code": {
+        "inline": "Inline code",
+        "block": "Code block"
+      },
+      "horizontalRule": "Horizontal rule",
+      "clearFormatting": "Clear formatting"
     }
   },
   "Themes": {
