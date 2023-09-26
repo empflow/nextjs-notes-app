@@ -33,9 +33,7 @@ export default function ViewsContainer({
         isOpen
           ? "pointer-events-auto translate-y-0 opacity-100"
           : "pointer-events-none -translate-y-1 opacity-0"
-      } ${
-        centered ? "left-1/2 -translate-x-1/2" : ""
-      } absolute top-0 z-10 box-content w-[300px] rounded border border-light-3xl-gray bg-l-secondary p-2 shadow-md duration-200 dark:border-dark-3xl-gray dark:bg-d-main`}
+      } box-content w-[300px] overflow-hidden rounded border border-light-3xl-gray bg-l-secondary p-2 shadow-md duration-200 dark:border-dark-3xl-gray dark:bg-d-main`}
       style={{ height, top }}
     >
       <ViewsContainerContext.Provider

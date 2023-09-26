@@ -6,6 +6,7 @@ import ToolbarItem from "../Item";
 import ToolbarTextFormatMainView from "./Main";
 import ToolbarTextFormatSettingsView from "./Settings";
 import { useTranslations } from "next-intl";
+import Popover from "@/app/components/Popover";
 
 export default function FormatText() {
   const t = useTranslations("Toolbar.tooltips");
@@ -19,15 +20,17 @@ export default function FormatText() {
       tooltipText={t("formatText")}
       hideTooltip={isOpen}
     >
-      <ViewsContainer
-        centered={true}
-        top={40}
-        {...{ isOpen, setIsOpen }}
-        initMenu="main"
-      >
-        <ToolbarTextFormatMainView />
-        <ToolbarTextFormatSettingsView />
-      </ViewsContainer>
+      <Popover {...{ isOpen, setIsOpen }} position="left">
+        <ViewsContainer
+          centered={true}
+          top={40}
+          {...{ isOpen, setIsOpen }}
+          initMenu="main"
+        >
+          <ToolbarTextFormatMainView />
+          <ToolbarTextFormatSettingsView />
+        </ViewsContainer>
+      </Popover>
     </ToolbarItem>
   );
 }
