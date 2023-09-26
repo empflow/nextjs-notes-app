@@ -6,14 +6,13 @@ import ProfileMenuContext from "@/contexts/ProfileMenu";
 import ProfileMenuDropdownCloseBtn from "./CloseBtn";
 import useGetDropdownTopPx from "./hooks/useGetDropdownTopPx";
 
-const ProfileMenuDropdown = forwardRef<HTMLDivElement>((_props, ref) => {
+export default function ProfileMenuDropdown() {
   const profileMenuContext = useGetContext(ProfileMenuContext);
   const dropdownTopPx = useGetDropdownTopPx();
   const { signedInAs, isDropdownOpen } = profileMenuContext;
 
   return (
     <div
-      ref={ref}
       className={`absolute left-0 right-0 z-10 bg-transparent duration-200 sm:left-auto sm:w-[300px] sm:px-global ${
         isDropdownOpen
           ? "pointer-events-auto translate-y-0 opacity-100"
@@ -32,6 +31,4 @@ const ProfileMenuDropdown = forwardRef<HTMLDivElement>((_props, ref) => {
       </div>
     </div>
   );
-});
-
-export default ProfileMenuDropdown;
+}
