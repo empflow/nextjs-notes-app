@@ -1,43 +1,62 @@
 import { SetState } from "@/utils/types";
-import { ReactNode, useEffect, useRef } from "react";
+import { CSSProperties, ReactNode } from "react";
+import Overlay from "./Overlay";
 
-interface TProps {
+type TProps = {
   children: ReactNode;
-  state: [boolean, SetState<boolean>];
-}
+  style?: CSSProperties;
+  isOpen: boolean;
+  setIsOpen: SetState<boolean>;
+  position: "top" | "bottom" | "left" | "right";
+  offset?: number;
+};
 
 export default function Popover({
   children,
-  state: [isOpen, setIsOpen],
+  style,
+  position,
+  isOpen,
+  setIsOpen,
+  offset = 0,
 }: TProps) {
-  const popoverRef = useRef<null | HTMLDivElement>(null);
+  let translate: string | undefined,
+    top: string | number | undefined,
+    bottom: string | number | undefined,
+    left: string | number | undefined,
+    right: string | number | undefined;
 
-  useEffect(() => {
-    document.addEventListener("click", onClickOutsideDropdown);
-    return () => document.removeEventListener("click", onClickOutsideDropdown);
-  }, []);
-
-  function onClickOutsideDropdown(e: globalThis.MouseEvent) {
-    const popover = popoverRef.current;
-    if (!(e.target instanceof Node)) return;
-
-    const isClickOutsidePopover = !popover?.contains(e.target);
-    if (isClickOutsidePopover) setIsOpen(false);
+  switch (position) {
+    case "top":
+      translate = "-50%";
+      left = "50%";
+      bottom = offset;
+      break;
+    case "bottom":
+      translate = "-50%";
+      left = "50%";
+      top = offset;
+      break;
+    case "left":
+      translate = "0 50%";
+      bottom = "50%";
+      right = offset ?? 0;
+      break;
+    case "right":
+      translate = "0 50%";
+      bottom = "50%";
+      left = offset ?? 0;
+      break;
   }
 
-  // TODO: make popover half-transparent
   return (
-    <div
-      className={`relative border border-red-500 duration-100 ${
-        isOpen ? "opacity-100 ponter-events-auto" : "opacity-0 pointer-events-none"
-      }`}
-    >
+    <>
       <div
-        className="absolute left-1/2 -translate-x-1/2 rounded border border-white"
-        ref={popoverRef}
+        style={{ ...{ top, bottom, left, right, translate }, ...style }}
+        className={`absolute z-20 ${!isOpen ? "pointer-events-none" : ""}`}
       >
         {children}
       </div>
-    </div>
+      <Overlay isActive={isOpen} setIsActive={setIsOpen} transparent={true} />
+    </>
   );
 }
