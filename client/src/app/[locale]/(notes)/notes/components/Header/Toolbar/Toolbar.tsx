@@ -10,7 +10,7 @@ import TableIcon from "@/icons/svg/table.svg";
 import LinkIcon from "@/icons/svg/link.svg";
 import TooltipContainer from "@/app/components/TooltipContainer";
 import { useTranslations } from "next-intl";
-import FormatText from "./Items/TextFormat/FormatText";
+import FormatText from "./Items/FormatText/FormatText";
 import ToolbarContextProviders from "./ContextProviders";
 
 export default function Toolbar() {
