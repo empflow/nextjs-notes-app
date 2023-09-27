@@ -13,6 +13,7 @@ interface TProps {
   isOpen: boolean;
   setIsOpen: SetState<boolean>;
   centered?: boolean;
+  width?: number;
 }
 
 export default function ViewsContainer({
@@ -20,6 +21,7 @@ export default function ViewsContainer({
   children,
   isOpen,
   setIsOpen,
+  width,
 }: TProps) {
   const [activeView, setActiveView] = useState(initMenu);
   const [height, setHeight] = useState<TViewsContainerHeight>("auto");
@@ -30,8 +32,8 @@ export default function ViewsContainer({
         isOpen
           ? "pointer-events-auto translate-y-0 opacity-100"
           : "pointer-events-none -translate-y-1 opacity-0"
-      } box-content w-[300px] overflow-hidden rounded border border-light-3xl-gray bg-l-secondary p-2 shadow-md duration-200 dark:border-dark-3xl-gray dark:bg-d-main`}
-      style={{ height }}
+      } box-content w-[300px] rounded border border-light-3xl-gray bg-l-secondary p-2 shadow-md duration-200 dark:border-dark-3xl-gray dark:bg-d-main`}
+      style={{ height, width }}
     >
       <ViewsContainerContext.Provider
         value={{
