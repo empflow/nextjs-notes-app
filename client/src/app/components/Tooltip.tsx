@@ -11,7 +11,10 @@ interface TProps {
 
 export default function Tooltip({ children, text, hide = false, top }: TProps) {
   const [isCursorHovering, setIsCursorHovering] = useState(false);
-  const { showTooltips } = useGetContext(TooltipContainerContext);
+  const { showTooltips, top: contextTop } = useGetContext(
+    TooltipContainerContext,
+  );
+  const resolvedTop = top ?? contextTop ?? 40;
   const show = !hide && isCursorHovering && showTooltips;
 
   return (
@@ -26,7 +29,7 @@ export default function Tooltip({ children, text, hide = false, top }: TProps) {
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"
         }`}
-        style={{ top }}
+        style={{ top: resolvedTop }}
       >
         <p>{text}</p>
       </div>

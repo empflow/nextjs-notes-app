@@ -3,6 +3,7 @@ import { createContext } from "react";
 
 interface TTooltipContainerContextValue {
   showTooltips: boolean;
+  top?: number;
 }
 
 type TTooltipContainerContext = TContext<TTooltipContainerContextValue>;
