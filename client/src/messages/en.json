@@ -45,6 +45,7 @@
         "dashed": "Dashed list"
       },
       "code": {
+        "menuTitle": "Code",
         "inline": "Inline code",
         "block": "Code block"
       },
