@@ -7,6 +7,7 @@ export default function useIsScreenWidthOverBreakpoint(
   const [isWidthOverBreakpoint, setIsWidthOverBreakpoint] = useState(false);
 
   useEffect(() => {
+    onResize();
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
 
