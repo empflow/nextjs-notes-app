@@ -3,13 +3,12 @@ import ArrowBackIcon from "@/icons/svg/backArrow.svg";
 import { ViewsContainerContext } from "./ViewsContainer";
 
 interface TProps {
-  navTo?: string;
-  text?: string;
+  navTo: string;
+  text: string;
 }
 
 export default function ViewBackBtn({ navTo, text }: TProps) {
   const { setActiveView } = useGetContext(ViewsContainerContext);
-  if (!navTo || !text) return null;
 
   return (
     <div>

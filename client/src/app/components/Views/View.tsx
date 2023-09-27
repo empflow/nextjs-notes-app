@@ -7,7 +7,7 @@ import ViewBackBtn from "./ViewBackBtn";
 interface TProps {
   children: React.ReactNode;
   name: string;
-  nameToShow: string;
+  nameToShow?: string;
   backBtn?: {
     text: string;
     navTo: string;
@@ -30,8 +30,10 @@ export default function View({ children, name, nameToShow, backBtn }: TProps) {
   if (!isViewVisible) return null;
   return (
     <div ref={viewRef} className="flex flex-col gap-2">
-      <ViewBackBtn text={backBtn?.text} navTo={backBtn?.navTo} />
-      <div className="text-xl font-bold">{nameToShow}</div>
+      {backBtn?.text && backBtn?.navTo && (
+        <ViewBackBtn text={backBtn?.text} navTo={backBtn?.navTo} />
+      )}
+      {nameToShow && <div className="text-xl font-bold">{nameToShow}</div>}
       <div className="flex flex-col gap-1">{children}</div>
     </div>
   );
