@@ -30,7 +30,7 @@
         "bold": "Bold",
         "italic": "Italic",
         "strikethrough": "Strikethrough",
-        "code": "Code"
+        "codeBlock": "Code block"
       },
       "titles": {
         "title": "Title",
@@ -43,11 +43,6 @@
         "bulleted": "Bulleted list",
         "ordered": "Ordered list",
         "dashed": "Dashed list"
-      },
-      "code": {
-        "menuTitle": "Code",
-        "inline": "Inline code",
-        "block": "Code block"
       },
       "horizontalRule": "Horizontal rule",
       "clearFormatting": "Clear formatting"

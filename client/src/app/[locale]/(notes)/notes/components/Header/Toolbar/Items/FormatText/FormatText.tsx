@@ -6,7 +6,6 @@ import ToolbarItem from "../Item";
 import { useTranslations } from "next-intl";
 import Popover from "@/app/components/Popover";
 import FormattingView from "./Formatting/Formatting";
-import CodeView from "./Code/Code";
 import NotesContext from "@/contexts/NotesContext";
 
 export default function FormatText() {
@@ -32,7 +31,6 @@ export default function FormatText() {
           width={250}
         >
           <FormattingView />
-          <CodeView />
         </ViewsContainer>
       </Popover>
     </ToolbarItem>

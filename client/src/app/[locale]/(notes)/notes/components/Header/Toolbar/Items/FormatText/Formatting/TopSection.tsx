@@ -7,7 +7,7 @@ import { ViewsContainerContext } from "@/app/components/Views/ViewsContainer";
 import TooltipContainer from "@/app/components/TooltipContainer";
 import { useTranslations } from "next-intl";
 import NotesContext from "@/contexts/NotesContext";
-import ToolbarItem from "../../../Item";
+import ToolbarItem from "../../Item";
 import useRerender from "@/app/hooks/useRerender";
 
 interface TProps {}
@@ -24,6 +24,12 @@ export default function TopSection() {
     .focus()
     .toggleStrike()
     .run();
+  const isCodeBlockDisabled = !editor
+    ?.can()
+    .chain()
+    .focus()
+    .toggleCodeBlock()
+    .run();
   const isItalicDisabled = !editor?.can().chain().focus().toggleItalic().run();
   const isBoldDisabled = !editor?.can().chain().focus().toggleBold().run();
 
@@ -39,6 +45,11 @@ export default function TopSection() {
 
   function toggleBold() {
     editor?.chain().toggleBold().focus().run();
+    rerender();
+  }
+
+  function toggleCodeBlock() {
+    editor?.chain().toggleCodeBlock().focus().run();
     rerender();
   }
 
@@ -66,9 +77,11 @@ export default function TopSection() {
         isDisabled={isBoldDisabled}
       />
       <ToolbarItem
-        tooltipText={t("code")}
-        onClick={() => setActiveView("code")}
+        tooltipText={t("codeBlock")}
         icon={<CodeIcon />}
+        onClick={toggleCodeBlock}
+        isActive={editor?.isActive("codeBlock")}
+        isDisabled={isCodeBlockDisabled}
       />
     </TooltipContainer>
   );

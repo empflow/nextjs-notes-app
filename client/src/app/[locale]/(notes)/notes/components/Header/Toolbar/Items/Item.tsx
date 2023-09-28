@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { MouseEvent, ReactNode } from "react";
 
 interface TProps {
+  hideTooltip?: boolean;
   tooltipText: string;
   icon: any;
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
@@ -15,6 +16,7 @@ interface TProps {
 }
 
 export default function ToolbarItem({
+  hideTooltip,
   tooltipText,
   isDisabled,
   onClick,
@@ -30,7 +32,7 @@ export default function ToolbarItem({
     <Tooltip top={top} hide={isDisabled} text={tooltipText}>
       <button
         onClick={onClick}
-        disabled={isDisabled}
+        disabled={hideTooltip ?? isDisabled}
         className={`rounded px-[10px] py-1 disabled:cursor-not-allowed ${
           isActive ? "bg-light-4xl-gray dark:bg-dark-4xl-gray" : ""
         } ${className ?? ""}`}
