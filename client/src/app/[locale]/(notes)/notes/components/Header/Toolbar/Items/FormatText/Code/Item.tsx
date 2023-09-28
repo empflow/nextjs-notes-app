@@ -1,29 +1,31 @@
+import ColoredIcon from "@/app/components/ColoredIcon";
 import { ReactNode } from "react";
 
 interface TProps {
   onClick?: () => void;
-  disabled?: boolean;
+  isDisabled?: boolean;
   isActive?: boolean;
   content?: ReactNode;
+  icon: any;
 }
 
 export default function CodeItem({
   content,
   onClick,
-  disabled,
+  isDisabled,
   isActive,
+  icon,
 }: TProps) {
   return (
     <button
-      className={`rounded px-2 py-1 text-left disabled:cursor-not-allowed ${
-        isActive
-          ? "bg-light-4xl-gray dark:bg-dark-4xl-gray"
-          : "hover:bg-light-5xl-gray dark:hover:bg-dark-5xl-gray"
+      className={`flex gap-2 rounded p-2 text-left disabled:cursor-not-allowed ${
+        isActive ? "bg-light-4xl-gray dark:bg-dark-4xl-gray" : ""
       }`}
-      disabled={disabled}
+      disabled={isDisabled}
       onClick={onClick}
     >
-      {content}
+      <ColoredIcon {...{ icon, isDisabled }} />
+      <div>{content}</div>
     </button>
   );
 }
