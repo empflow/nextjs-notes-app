@@ -1,7 +1,7 @@
 import View from "@/app/components/Views/View";
 import { useTranslations } from "next-intl";
 import Divider from "./Divider";
-import Headings from "./Headings/Headings";
+import Headings from "./Headings";
 import TopSection from "./TopSection";
 
 export default function FormattingView() {
