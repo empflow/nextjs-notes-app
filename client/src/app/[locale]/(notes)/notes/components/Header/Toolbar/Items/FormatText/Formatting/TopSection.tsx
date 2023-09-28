@@ -50,7 +50,10 @@ export default function TopSection() {
   }
 
   return (
-    <TooltipContainer tooltipsTop={35} className="flex justify-between p-2">
+    <TooltipContainer
+      tooltipsTop={35}
+      className="flex justify-between px-3 py-2"
+    >
       <ToolbarItem
         tooltipText={t("strikethrough")}
         icon={<StrikethroughIcon />}

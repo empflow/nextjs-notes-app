@@ -33,7 +33,7 @@ export default function ToolbarItem({
       <button
         onClick={onClick}
         disabled={hideTooltip ?? isDisabled}
-        className={`rounded px-[10px] py-1 disabled:cursor-not-allowed ${
+        className={`rounded p-[6px] disabled:cursor-not-allowed ${
           isActive ? "bg-light-4xl-gray dark:bg-dark-4xl-gray" : ""
         } ${className ?? ""}`}
         title={isDisabled ? `${tooltipText} (${t("disabled")})` : undefined}
