@@ -9,7 +9,7 @@ interface TProps {
   tooltipText: string;
   icon: any;
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
-  disabled?: boolean;
+  isDisabled?: boolean;
   isActive?: boolean;
   className?: string;
   children?: ReactNode;
@@ -18,32 +18,31 @@ interface TProps {
 
 export default function ToolbarItem({
   tooltipText,
-  disabled,
+  isDisabled,
   onClick,
   className,
   isActive,
   icon,
   children,
-  hideTooltip = false,
   top,
 }: TProps) {
   const t = useTranslations("Toolbar");
 
   return (
-    <Tooltip top={top} hide={hideTooltip} text={tooltipText}>
+    <Tooltip top={top} hide={isDisabled} text={tooltipText}>
       <button
         onClick={onClick}
-        disabled={disabled}
+        disabled={isDisabled}
         className={`rounded px-[10px] py-1 disabled:cursor-not-allowed ${
           isActive
             ? "bg-light-4xl-gray dark:bg-dark-4xl-gray"
             : "hover:bg-light-5xl-gray dark:hover:bg-dark-5xl-gray"
         } ${className ?? ""}`}
-        title={disabled ? `${tooltipText} (${t("disabled")})` : undefined}
+        title={isDisabled ? `${tooltipText} (${t("disabled")})` : undefined}
       >
         {cloneElement(icon, {
           className: `${
-            disabled
+            isDisabled
               ? "fill-light-gray dark:fill-dark-xl-gray"
               : "fill-light-xl-blue"
           }`,

@@ -23,31 +23,31 @@ export default function Toolbar() {
         <FormatText />
         <ToolbarItem
           tooltipText={t("addImage")}
-          disabled={!editor?.can().chain().focus().redo().run()}
+          isDisabled={!editor?.can().chain().focus().redo().run()}
           onClick={() => editor?.chain().focus().redo().run()}
           icon={<ImageIcon />}
         />
         <ToolbarItem
           tooltipText={t("addTable")}
-          disabled={!editor?.can().chain().focus().redo().run()}
+          isDisabled={!editor?.can().chain().focus().redo().run()}
           onClick={() => editor?.chain().focus().redo().run()}
           icon={<TableIcon />}
         />
         <ToolbarItem
           tooltipText={t("addLink")}
-          disabled={!editor?.can().chain().focus().redo().run()}
+          isDisabled={!editor?.can().chain().focus().redo().run()}
           onClick={() => editor?.chain().focus().redo().run()}
           icon={<LinkIcon />}
         />
         <ToolbarItem
           tooltipText={t("undo")}
-          disabled={!editor?.can().chain().focus().undo().run()}
+          isDisabled={!editor?.can().chain().focus().undo().run()}
           onClick={() => editor?.chain().focus().undo().run()}
           icon={<UndoIcon />}
         />
         <ToolbarItem
           tooltipText={t("redo")}
-          disabled={!editor?.can().chain().focus().redo().run()}
+          isDisabled={!editor?.can().chain().focus().redo().run()}
           onClick={() => editor?.chain().focus().redo().run()}
           icon={<RedoIcon />}
         />

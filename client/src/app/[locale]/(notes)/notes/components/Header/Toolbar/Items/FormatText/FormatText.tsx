@@ -7,18 +7,22 @@ import { useTranslations } from "next-intl";
 import Popover from "@/app/components/Popover";
 import FormattingView from "./Formatting/Formatting";
 import CodeView from "./Code/Code";
+import NotesContext from "@/contexts/NotesContext";
 
 export default function FormatText() {
   const t = useTranslations("Toolbar.tooltips");
   const { isFormatTextMenuOpen: isOpen, setIsFormatTextMenuOpen: setIsOpen } =
     useGetContext(ToolbarContext);
+  const { selectedNoteId } = useGetContext(NotesContext);
+  const isDisabled = !selectedNoteId;
 
   return (
     <ToolbarItem
       icon={<FormatTextIcon />}
       onClick={() => setIsOpen((prev) => !prev)}
+      isDisabled={isDisabled}
       tooltipText={t("formatText")}
-      hideTooltip={isOpen}
+      hideTooltip={isOpen || isDisabled}
     >
       <Popover {...{ isOpen, setIsOpen }} position="bottom-center" offset={40}>
         <ViewsContainer

@@ -49,7 +49,7 @@ export default function TopSection() {
         icon={<StrikethroughIcon />}
         onClick={toggleStrikethrough}
         isActive={editor?.isActive("strike")}
-        disabled={isStrikethroughDisabled}
+        isDisabled={isStrikethroughDisabled}
         hideTooltip={isStrikethroughDisabled}
       />
       <ToolbarItem
@@ -57,7 +57,7 @@ export default function TopSection() {
         icon={<ItalicIcon />}
         onClick={toggleItalic}
         isActive={editor?.isActive("italic")}
-        disabled={isItalicDisabled}
+        isDisabled={isItalicDisabled}
         hideTooltip={isItalicDisabled}
       />
       <ToolbarItem
@@ -65,7 +65,7 @@ export default function TopSection() {
         icon={<BoldIcon />}
         onClick={toggleBold}
         isActive={editor?.isActive("bold")}
-        disabled={!editor?.can().chain().focus().toggleBold().run()}
+        isDisabled={!editor?.can().chain().focus().toggleBold().run()}
         hideTooltip={isBoldDisabled}
       />
       <ToolbarItem
