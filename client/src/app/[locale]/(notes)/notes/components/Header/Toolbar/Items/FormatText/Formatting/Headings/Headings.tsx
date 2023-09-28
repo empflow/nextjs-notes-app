@@ -1,3 +1,3 @@
 export default function Headings() {
-  return <div>headings formatting</div>;
+  return <div className="p-2">headings formatting</div>;
 }

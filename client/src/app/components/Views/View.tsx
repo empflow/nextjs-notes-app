@@ -12,7 +12,8 @@ interface TProps {
     text: string;
     navTo: string;
   };
-  className?: string;
+  childrenClassName?: string;
+  headerClassName?: string;
 }
 
 export default function View({
@@ -20,7 +21,8 @@ export default function View({
   name,
   nameToShow,
   backBtn,
-  className,
+  childrenClassName,
+  headerClassName,
 }: TProps) {
   const { activeView, setViewsContainerHeight } = useGetContext(
     ViewsContainerContext,
@@ -36,12 +38,16 @@ export default function View({
 
   if (!isViewVisible) return null;
   return (
-    <div ref={viewRef} className={`flex flex-col gap-2 `}>
-      {backBtn?.text && backBtn?.navTo && (
-        <ViewBackBtn text={backBtn?.text} navTo={backBtn?.navTo} />
-      )}
-      {nameToShow && <div className="text-xl font-bold">{nameToShow}</div>}
-      <div className={`flex flex-col ${className}`}>{children}</div>
-    </div>
+    <>
+      <div ref={viewRef} className={`flex flex-col gap-2`}>
+        <div className={headerClassName}>
+          {backBtn?.text && backBtn?.navTo && (
+            <ViewBackBtn text={backBtn?.text} navTo={backBtn?.navTo} />
+          )}
+          {nameToShow && <div className="text-xl font-bold">{nameToShow}</div>}
+        </div>
+        <div className={`flex flex-col ${childrenClassName}`}>{children}</div>
+      </div>
+    </>
   );
 }

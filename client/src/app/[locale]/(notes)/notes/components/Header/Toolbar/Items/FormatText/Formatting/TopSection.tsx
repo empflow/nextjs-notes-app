@@ -3,19 +3,15 @@ import BoldIcon from "@/icons/svg/bold.svg";
 import StrikethroughIcon from "@/icons/svg/strikethrough.svg";
 import CodeIcon from "@/icons/svg/code.svg";
 import useGetContext from "@/app/hooks/useGetContext";
-import { ViewsContainerContext } from "@/app/components/Views/ViewsContainer";
 import TooltipContainer from "@/app/components/TooltipContainer";
 import { useTranslations } from "next-intl";
 import NotesContext from "@/contexts/NotesContext";
 import ToolbarItem from "../../Item";
 import useRerender from "@/app/hooks/useRerender";
 
-interface TProps {}
-
 export default function TopSection() {
   const t = useTranslations("Toolbar.formatText.formattingOptions");
   const { editor } = useGetContext(NotesContext);
-  const { setActiveView } = useGetContext(ViewsContainerContext);
   const rerender = useRerender();
 
   const isStrikethroughDisabled = !editor
@@ -54,7 +50,7 @@ export default function TopSection() {
   }
 
   return (
-    <TooltipContainer tooltipsTop={35} className="flex justify-between">
+    <TooltipContainer tooltipsTop={35} className="flex justify-between p-2">
       <ToolbarItem
         tooltipText={t("strikethrough")}
         icon={<StrikethroughIcon />}
