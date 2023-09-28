@@ -36,12 +36,12 @@ export default function View({
 
   if (!isViewVisible) return null;
   return (
-    <div ref={viewRef} className={`flex flex-col gap-2 ${className}`}>
+    <div ref={viewRef} className={`flex flex-col gap-2 `}>
       {backBtn?.text && backBtn?.navTo && (
         <ViewBackBtn text={backBtn?.text} navTo={backBtn?.navTo} />
       )}
       {nameToShow && <div className="text-xl font-bold">{nameToShow}</div>}
-      <div className="flex flex-col">{children}</div>
+      <div className={`flex flex-col ${className}`}>{children}</div>
     </div>
   );
 }
