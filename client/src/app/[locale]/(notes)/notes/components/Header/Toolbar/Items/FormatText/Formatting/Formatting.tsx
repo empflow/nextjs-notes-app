@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 import Divider from "./Divider";
 import TextTypes from "./TextTypes";
 import TextFormatting from "./TextFormatting";
+import BottomSection from "./BottomSection";
 
 export default function FormattingView() {
   const t = useTranslations("Toolbar.formatText");
@@ -16,6 +17,8 @@ export default function FormattingView() {
       <TextFormatting />
       <Divider />
       <TextTypes />
+      <Divider />
+      <BottomSection />
     </View>
   );
 }
