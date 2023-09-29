@@ -8,7 +8,7 @@ export default function Notes() {
   protectedPage();
   return (
     <NotesContextProviders>
-      <div className="flex min-h-[100dvh]">
+      <div className="flex h-[100dvh]">
         <Sidebar />
         <div className="flex w-full flex-col">
           <Header />
