@@ -2,6 +2,7 @@ import useSaveEditorContent from "@/app/hooks/queries/useSaveEditorContentQuery"
 import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext, { TNotesListNotesMeta } from "@/contexts/NotesContext";
 import { SetState } from "@/utils/types";
+import Underline from "@tiptap/extension-underline";
 import {
   EditorContent as TiptapEditorContent,
   JSONContent,
@@ -22,7 +23,7 @@ export default function EditorContent({ initContent }: TProps) {
   useSaveEditorContent({ content, hasContentChanged });
 
   const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [StarterKit, Underline],
     onUpdate: ({ editor }) => {
       setHasContentChanged(true);
       updateSelectedNoteProps(setNotes, selectedNoteId);
