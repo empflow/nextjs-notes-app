@@ -5,27 +5,34 @@ import H1Icon from "@/icons/svg/h1.svg";
 import H2Icon from "@/icons/svg/h2.svg";
 import H3Icon from "@/icons/svg/h3.svg";
 import BodyTextIcon from "@/icons/svg/text.svg";
+import CodeIcon from "@/icons/svg/code.svg";
 import { useTranslations } from "next-intl";
 import TextFormattingItem from "./Item";
 
 export type THeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
-export default function Headings() {
+export default function TextTypes() {
   const { editor } = useGetContext(NotesContext);
-  const t = useTranslations("Toolbar.formatText.titles");
+  const t = useTranslations("Toolbar.formatText.textType");
   const rerender = useRerender();
 
   const isH1Disabled = getIsHeadingDisabled({ editor, level: 1 });
   const isH2Disabled = getIsHeadingDisabled({ editor, level: 2 });
   const isH3Disabled = getIsHeadingDisabled({ editor, level: 3 });
+  const isCodeDisabled = !editor?.can().chain().focus().toggleCodeBlock().run();
 
   function setHeading({ level }: { level: THeadingLevel }) {
     editor?.chain().setHeading({ level }).focus().run();
-    rerender();
+    rerender(); // this is fucking ugly and i hate this
   }
 
   function toggleBodyText() {
     editor?.chain().setParagraph().focus().run();
+    rerender();
+  }
+
+  function toggleCode() {
+    editor?.chain().setCodeBlock().focus().run();
     rerender();
   }
 
@@ -58,6 +65,13 @@ export default function Headings() {
         onClick={toggleBodyText}
         isActive={editor?.isActive("paragraph")}
         isDisabled={false}
+      />
+      <TextFormattingItem
+        text={t("code")}
+        icon={<CodeIcon />}
+        onClick={toggleCode}
+        isActive={editor?.isActive("codeBlock")}
+        isDisabled={isCodeDisabled}
       />
     </div>
   );

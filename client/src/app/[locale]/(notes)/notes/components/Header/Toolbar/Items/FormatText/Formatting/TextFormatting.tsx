@@ -9,7 +9,7 @@ import NotesContext from "@/contexts/NotesContext";
 import ToolbarItem from "../../Item";
 import useRerender from "@/app/hooks/useRerender";
 
-export default function TopSection() {
+export default function TextFormatting() {
   const t = useTranslations("Toolbar.formatText.formattingOptions");
   const { editor } = useGetContext(NotesContext);
   const rerender = useRerender();
@@ -19,12 +19,6 @@ export default function TopSection() {
     .chain()
     .focus()
     .toggleStrike()
-    .run();
-  const isCodeBlockDisabled = !editor
-    ?.can()
-    .chain()
-    .focus()
-    .toggleCodeBlock()
     .run();
   const isItalicDisabled = !editor?.can().chain().focus().toggleItalic().run();
   const isBoldDisabled = !editor?.can().chain().focus().toggleBold().run();
@@ -86,7 +80,7 @@ export default function TopSection() {
         icon={<UnderlineIcon />}
         onClick={toggleUnderline}
         isActive={editor?.isActive("underline")}
-        isDisabled={isCodeBlockDisabled}
+        isDisabled={isUnderlineDisabled}
       />
     </TooltipContainer>
   );

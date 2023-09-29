@@ -30,13 +30,14 @@
         "bold": "Bold",
         "italic": "Italic",
         "strikethrough": "Strikethrough",
-        "codeBlock": "Code block"
+        "underline": "Underline"
       },
-      "titles": {
+      "textType": {
         "title": "Title",
         "heading": "Heading",
         "subheading": "Subheading",
-        "body": "Body"
+        "body": "Body",
+        "code": "Code"
       },
       "lists": {
         "menuTitle": "Lists",

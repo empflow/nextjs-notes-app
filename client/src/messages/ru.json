@@ -33,14 +33,15 @@
       "formattingOptions": {
         "bold": "Жирный",
         "italic": "Курсив",
-        "strikethrough": "Зачеркнутый",
-        "codeBlock": "Блок кода"
+        "strikethrough": "Зачёркнутый",
+        "underline": "Подчёркнутый"
       },
-      "titles": {
+      "textType": {
         "title": "Главный заголовок",
         "heading": "Заголовок",
         "subheading": "Подзаголовок",
-        "body": "Основной текст"
+        "body": "Основной текст",
+        "code": "Код"
       },
       "lists": {
         "menuTitle": "Списки",

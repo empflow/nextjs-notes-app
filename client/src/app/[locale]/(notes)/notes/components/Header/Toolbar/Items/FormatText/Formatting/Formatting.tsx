@@ -1,8 +1,8 @@
 import View from "@/app/components/Views/View";
 import { useTranslations } from "next-intl";
 import Divider from "./Divider";
-import Headings from "./Headings";
-import TopSection from "./TopSection";
+import TextTypes from "./TextTypes";
+import TextFormatting from "./TextFormatting";
 
 export default function FormattingView() {
   const t = useTranslations("Toolbar.formatText");
@@ -13,9 +13,9 @@ export default function FormattingView() {
       name="formatting"
       nameToShow={t("menuTitle")}
     >
-      <TopSection />
+      <TextFormatting />
       <Divider />
-      <Headings />
+      <TextTypes />
     </View>
   );
 }
