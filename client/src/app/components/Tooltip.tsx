@@ -24,7 +24,7 @@ export default function Tooltip({ children, text, hide = false, top }: TProps) {
       onMouseLeave={() => setIsCursorHovering(false)}
     >
       <div
-        className={`absolute left-1/2 w-max max-w-[250px] -translate-x-1/2 rounded border border-light-3xl-gray bg-l-secondary px-[5px] py-[2px] text-center shadow-lg duration-200 dark:border-dark-3xl-gray dark:bg-d-main ${
+        className={`absolute left-1/2 z-10 w-max max-w-[250px] -translate-x-1/2 rounded border border-light-3xl-gray bg-l-secondary px-[5px] py-[2px] text-center shadow-lg duration-200 dark:border-dark-3xl-gray dark:bg-d-main ${
           show
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"
