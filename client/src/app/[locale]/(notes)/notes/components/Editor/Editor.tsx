@@ -7,6 +7,7 @@ import { ReactNode } from "react";
 import EditorContent from "./EditorContent";
 import EditorLoading from "./EditorLoading";
 import TopElem from "./TopElem/TopElem";
+import styles from "./editor.module.css";
 
 export default function Editor() {
   const { selectedNoteId } = useGetContext(NotesContext);
@@ -32,8 +33,12 @@ export default function Editor() {
   }
 
   return (
-    <div className="flex flex-grow flex-col bg-l-secondary p-global dark:bg-d-main sm:p-global-sm">
-      {content}
+    <div className="relative flex-grow bg-l-secondary p-global pb-0 dark:bg-d-main sm:p-global-sm sm:pb-0">
+      <div
+        className={`absolute bottom-0 left-0 right-0 top-0 flex flex-col gap-2 overflow-auto ${styles.editorContainerWrapper}`}
+      >
+        {content}
+      </div>
     </div>
   );
 }
