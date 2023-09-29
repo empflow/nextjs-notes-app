@@ -22,7 +22,7 @@ export default function TextFormattingItem({
     <button
       onClick={onClick}
       disabled={isDisabled}
-      className={`flex gap-1 rounded p-1 disabled:cursor-not-allowed ${
+      className={`flex items-center gap-1 rounded p-1 text-left disabled:cursor-not-allowed ${
         isActive ? "bg-light-4xl-gray dark:bg-dark-4xl-gray" : ""
       } ${className ?? ""}`}
     >
