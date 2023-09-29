@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import Popover from "@/app/components/Popover";
 import FormattingView from "./Formatting/Formatting";
 import NotesContext from "@/contexts/NotesContext";
+import ListsView from "./Lists";
 
 export default function FormatText() {
   const t = useTranslations("Toolbar.tooltips");
@@ -31,6 +32,7 @@ export default function FormatText() {
           width={250}
         >
           <FormattingView />
+          <ListsView />
         </ViewsContainer>
       </Popover>
     </ToolbarItem>
