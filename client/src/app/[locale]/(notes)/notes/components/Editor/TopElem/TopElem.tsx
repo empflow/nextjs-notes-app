@@ -2,7 +2,6 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { ReactNode, useState } from "react";
-import Skeleton from "react-loading-skeleton";
 import useGetTimeAgoFormatted from "./hooks/useGetTimeAgoFormatted";
 
 export type TTopElemState = "createdAt" | "modifiedAt";
@@ -23,7 +22,7 @@ export default function TopElem({ createdAt, updatedAt }: TProps) {
   let content: ReactNode;
 
   const isLoading = !createdAt && !updatedAt;
-  if (isLoading) content = <Skeleton />;
+  if (isLoading) return null;
   else if (state === "createdAt") {
     content = `${t("created")} ${createdAtFormatted}`;
   } else if (state === "updatedAt") {
@@ -39,9 +38,7 @@ export default function TopElem({ createdAt, updatedAt }: TProps) {
       className="flex cursor-pointer justify-center text-dark-gray dark:text-gray"
       onClick={handleClick}
     >
-      <div className={isLoading ? "w-[180px]" : "flex w-full justify-center"}>
-        {content}
-      </div>
+      <div className="flex w-full justify-center">{content}</div>
     </div>
   );
 }
