@@ -1,7 +1,7 @@
 import ItalicIcon from "@/icons/svg/italic.svg";
 import BoldIcon from "@/icons/svg/bold.svg";
 import StrikethroughIcon from "@/icons/svg/strikethrough.svg";
-import CodeIcon from "@/icons/svg/code.svg";
+import UnderlineIcon from "@/icons/svg/underline.svg";
 import useGetContext from "@/app/hooks/useGetContext";
 import TooltipContainer from "@/app/components/TooltipContainer";
 import { useTranslations } from "next-intl";
@@ -28,6 +28,12 @@ export default function TopSection() {
     .run();
   const isItalicDisabled = !editor?.can().chain().focus().toggleItalic().run();
   const isBoldDisabled = !editor?.can().chain().focus().toggleBold().run();
+  const isUnderlineDisabled = !editor
+    ?.can()
+    .chain()
+    .focus()
+    .toggleUnderline()
+    .run();
 
   function toggleStrikethrough() {
     editor?.chain().toggleStrike().focus().run();
@@ -44,8 +50,8 @@ export default function TopSection() {
     rerender();
   }
 
-  function toggleCodeBlock() {
-    editor?.chain().toggleCodeBlock().focus().run();
+  function toggleUnderline() {
+    editor?.chain().toggleUnderline().focus().run();
     rerender();
   }
 
@@ -76,10 +82,10 @@ export default function TopSection() {
         isDisabled={isBoldDisabled}
       />
       <ToolbarItem
-        tooltipText={t("codeBlock")}
-        icon={<CodeIcon />}
-        onClick={toggleCodeBlock}
-        isActive={editor?.isActive("codeBlock")}
+        tooltipText={t("underline")}
+        icon={<UnderlineIcon />}
+        onClick={toggleUnderline}
+        isActive={editor?.isActive("underline")}
         isDisabled={isCodeBlockDisabled}
       />
     </TooltipContainer>
