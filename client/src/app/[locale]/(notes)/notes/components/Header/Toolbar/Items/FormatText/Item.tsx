@@ -10,7 +10,7 @@ interface TProps {
   className?: string;
 }
 
-export default function TextFormattingItem({
+export default function FormatTextItem({
   icon,
   text,
   className,

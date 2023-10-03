@@ -2,7 +2,7 @@ import useGetContext from "@/app/hooks/useGetContext";
 import useRerender from "@/app/hooks/useRerender";
 import NotesContext from "@/contexts/NotesContext";
 import { useTranslations } from "next-intl";
-import TextFormattingItem from "./Item";
+import FormatTextItem from "../Item";
 import ListIcon from "@/icons/svg/list.svg";
 import ClearFormattingIcon from "@/icons/svg/clearFormatting.svg";
 import { ViewsContainerContext } from "@/app/components/Views/ViewsContainer";
