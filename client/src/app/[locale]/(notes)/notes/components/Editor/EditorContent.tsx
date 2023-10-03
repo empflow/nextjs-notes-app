@@ -2,6 +2,8 @@ import useSaveEditorContent from "@/app/hooks/queries/useSaveEditorContentQuery"
 import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext, { TNotesListNotesMeta } from "@/contexts/NotesContext";
 import { SetState } from "@/utils/types";
+import TaskItem from "@tiptap/extension-task-item";
+import TaskList from "@tiptap/extension-task-list";
 import Underline from "@tiptap/extension-underline";
 import {
   EditorContent as TiptapEditorContent,
@@ -11,6 +13,7 @@ import {
 import StarterKit from "@tiptap/starter-kit";
 import { useEffect, useState } from "react";
 import styles from "./editor.module.css";
+import "./editorContent.css";
 
 interface TProps {
   initContent: JSONContent | null;
@@ -23,7 +26,12 @@ export default function EditorContent({ initContent }: TProps) {
   useSaveEditorContent({ content, hasContentChanged });
 
   const editor = useEditor({
-    extensions: [StarterKit, Underline],
+    extensions: [
+      StarterKit,
+      Underline,
+      TaskList,
+      TaskItem.configure({ HTMLAttributes: { class: "task-list-item" } }),
+    ],
     onUpdate: ({ editor }) => {
       setHasContentChanged(true);
       updateSelectedNoteProps(setNotes, selectedNoteId);
