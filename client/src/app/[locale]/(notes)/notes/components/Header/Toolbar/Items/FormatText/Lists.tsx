@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import FormatTextItem from "./Item";
 import OrderedListIcon from "@/icons/svg/orderedList.svg";
 import BulletedListIcon from "@/icons/svg/bulletedList.svg";
+import TaskListIcon from "@/icons/svg/taskList.svg";
 import useRerender from "@/app/hooks/useRerender";
 
 export default function ListsView() {
@@ -25,6 +26,12 @@ export default function ListsView() {
     .focus()
     .toggleBulletList()
     .run();
+  const isTaskListDisabled = !editor
+    ?.can()
+    .chain()
+    .focus()
+    .toggleTaskList()
+    .run();
 
   function toggleOrderedList() {
     editor?.chain().focus().toggleOrderedList().run();
@@ -33,6 +40,11 @@ export default function ListsView() {
 
   function toggleBulletedList() {
     editor?.chain().focus().toggleBulletList().run();
+    rerender();
+  }
+
+  function toggleTaskList() {
+    editor?.chain().toggleTaskList().focus().run();
     rerender();
   }
 
@@ -57,6 +69,13 @@ export default function ListsView() {
         onClick={toggleBulletedList}
         isActive={editor?.isActive("bulletList")}
         isDisabled={isBulletedListDisabled}
+      />
+      <FormatTextItem
+        text={t("task")}
+        icon={<TaskListIcon />}
+        onClick={toggleTaskList}
+        isActive={editor?.isActive("taskList")}
+        isDisabled={isTaskListDisabled}
       />
     </View>
   );
