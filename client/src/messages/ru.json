@@ -28,6 +28,13 @@
       "strikethrough": "Перечёркнутый",
       "code": "Код"
     },
+    "link": {
+      "menuTitle": "Ссылка",
+      "addBtnText": "Добавить ссылку",
+      "editBtnText": "Изменить ссылку",
+      "remove": "Убрать ссылку",
+      "inputPlaceholder": "Адрес ссылки"
+    },
     "formatText": {
       "menuTitle": "Форматирование",
       "formattingOptions": {

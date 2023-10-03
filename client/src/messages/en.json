@@ -24,6 +24,13 @@
       "addTable": "Add table",
       "addImage": "Add image"
     },
+    "link": {
+      "menuTitle": "Link",
+      "addBtnText": "Add link",
+      "editBtnText": "Edit link",
+      "remove": "Remove link",
+      "inputPlaceholder": "Link address"
+    },
     "formatText": {
       "menuTitle": "Formatting",
       "formattingOptions": {
