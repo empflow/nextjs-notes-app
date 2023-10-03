@@ -29,10 +29,10 @@ export default function ToolbarItem({
   const t = useTranslations("Toolbar");
 
   return (
-    <Tooltip top={top} hide={isDisabled} text={tooltipText}>
+    <Tooltip top={top} hide={isDisabled || hideTooltip} text={tooltipText}>
       <button
         onClick={onClick}
-        disabled={hideTooltip ?? isDisabled}
+        disabled={isDisabled}
         className={`rounded p-[6px] disabled:cursor-not-allowed ${
           isActive ? "bg-light-4xl-gray dark:bg-dark-4xl-gray" : ""
         } ${className ?? ""}`}
