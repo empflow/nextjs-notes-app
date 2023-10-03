@@ -7,11 +7,11 @@ import UndoIcon from "@/icons/svg/undo.svg";
 import RedoIcon from "@/icons/svg/redo.svg";
 import ImageIcon from "@/icons/svg/image.svg";
 import TableIcon from "@/icons/svg/table.svg";
-import LinkIcon from "@/icons/svg/link.svg";
 import TooltipContainer from "@/app/components/TooltipContainer";
 import { useTranslations } from "next-intl";
 import FormatText from "./Items/FormatText/FormatText";
 import ToolbarContextProviders from "./ContextProviders";
+import AddLink from "./Items/AddLink/AddLink";
 
 export default function Toolbar() {
   const t = useTranslations("Toolbar.tooltips");
@@ -27,17 +27,12 @@ export default function Toolbar() {
           onClick={() => editor?.chain().focus().redo().run()}
           icon={<ImageIcon />}
         />
+        <AddLink />
         <ToolbarItem
           tooltipText={t("addTable")}
           isDisabled={!editor?.can().chain().focus().redo().run()}
           onClick={() => editor?.chain().focus().redo().run()}
           icon={<TableIcon />}
-        />
-        <ToolbarItem
-          tooltipText={t("addLink")}
-          isDisabled={!editor?.can().chain().focus().redo().run()}
-          onClick={() => editor?.chain().focus().redo().run()}
-          icon={<LinkIcon />}
         />
         <ToolbarItem
           tooltipText={t("undo")}
