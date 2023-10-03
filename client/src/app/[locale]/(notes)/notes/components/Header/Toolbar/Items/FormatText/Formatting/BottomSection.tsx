@@ -27,16 +27,16 @@ export default function BottomSection() {
 
   return (
     <div className="flex flex-col px-3 py-2">
-      <TextFormattingItem
+      <FormatTextItem
+        text={t("lists.menuTitle")}
+        icon={<ListIcon />}
+        onClick={() => setActiveView("lists")}
+      />
+      <FormatTextItem
         text={t("clearFormatting")}
         icon={<ClearFormattingIcon />}
         onClick={clearFormatting}
         isDisabled={isClearFormattingDisabled}
-      />
-      <TextFormattingItem
-        text={t("lists.menuTitle")}
-        icon={<ListIcon />}
-        onClick={() => setActiveView("lists")}
       />
     </div>
   );
