@@ -2,6 +2,7 @@ import useSaveEditorContent from "@/app/hooks/queries/useSaveEditorContentQuery"
 import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext, { TNotesListNotesMeta } from "@/contexts/NotesContext";
 import { SetState } from "@/utils/types";
+import Link from "@tiptap/extension-link";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
 import Underline from "@tiptap/extension-underline";
@@ -31,6 +32,10 @@ export default function EditorContent({ initContent }: TProps) {
       Underline,
       TaskList,
       TaskItem.configure({ HTMLAttributes: { class: "task-list-item" } }),
+      Link.configure({
+        protocols: ["tel", "mailto", "ftp", "file", "sms"],
+        HTMLAttributes: { class: "link" },
+      }),
     ],
     onUpdate: ({ editor }) => {
       setHasContentChanged(true);
