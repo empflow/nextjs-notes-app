@@ -43,7 +43,7 @@
         "menuTitle": "Lists",
         "bulleted": "Bulleted list",
         "ordered": "Ordered list",
-        "dashed": "Dashed list"
+        "task": "Task list"
       },
       "horizontalRule": "Horizontal rule",
       "clearFormatting": "Clear formatting"
