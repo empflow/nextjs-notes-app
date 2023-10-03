@@ -52,7 +52,7 @@ export default function TextFormatting() {
   return (
     <TooltipContainer
       tooltipsTop={35}
-      className="flex justify-between px-3 py-2"
+      className="flex justify-between px-3 pb-3"
     >
       <ToolbarItem
         tooltipText={t("strikethrough")}
