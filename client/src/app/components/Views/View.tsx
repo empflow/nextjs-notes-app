@@ -39,8 +39,8 @@ export default function View({
   if (!isViewVisible) return null;
   return (
     <>
-      <div ref={viewRef} className={`flex flex-col gap-2`}>
-        <div className={headerClassName}>
+      <div ref={viewRef} className={`flex flex-col`}>
+        <div className={`flex flex-col gap-1 ${headerClassName}`}>
           {backBtn?.text && backBtn?.navTo && (
             <ViewBackBtn text={backBtn?.text} navTo={backBtn?.navTo} />
           )}
