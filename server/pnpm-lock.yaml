@@ -35,6 +35,9 @@ dependencies:
   jsonwebtoken:
     specifier: ^9.0.0
     version: 9.0.2
+  mime-types:
+    specifier: ^2.1.35
+    version: 2.1.35
   mongoose:
     specifier: ^7.3.1
     version: 7.6.0
