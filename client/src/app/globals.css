@@ -15,3 +15,8 @@ a {
 .light .blue-outline:focus {
   box-shadow: 0 0 0 4px rgb(10 135 215 / 60%);
 }
+
+::selection {
+  background: rgb(10 135 215);
+  color: white;
+}
