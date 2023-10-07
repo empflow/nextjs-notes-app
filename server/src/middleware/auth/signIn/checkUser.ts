@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import User from "../../../models/User";
 import { NotFoundErr } from "../../../utils/errs";
-import { TErrCode } from "@shared/types";
+import { TErrCode } from "@/shared/types";
 
 export default async function signInCheckUser(
   req: Request,

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import { TErrCode } from "@shared/types";
+import { TErrCode } from "@/shared/types";
 import { BadRequestErr, UnauthorizedErr } from "../utils/errs";
 import getEnvVar from "../utils/getEnvVar";
 import throwIfInvalidObjectId from "../utils/throwers/throwIfInvalidObjectId";

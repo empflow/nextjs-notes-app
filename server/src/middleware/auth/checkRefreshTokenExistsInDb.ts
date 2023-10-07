@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import RefreshToken from "../../models/RefreshToken";
-import { TErrCode } from "@shared/types";
+import { TErrCode } from "@/shared/types";
 import { NotFoundErr } from "../../utils/errs";
 
 export default async function checkRefreshTokenExistsInDb(

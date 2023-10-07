@@ -1,4 +1,4 @@
-import { TErrCode } from "@shared/types";
+import { TErrCode } from "@/shared/types";
 import ApiErr from "./ApiErr";
 import { HttpCode } from "./ApiErr";
 

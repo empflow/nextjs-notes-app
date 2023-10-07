@@ -1,4 +1,4 @@
-import { TErrCode } from "@shared/types";
+import { TErrCode } from "@/shared/types";
 import { Request, Response, NextFunction } from "express";
 import bToMb from "../../utils/bToMb";
 import { BadRequestErr } from "../../utils/errs";

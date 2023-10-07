@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { isValidObjectId } from "mongoose";
-import { TErrCode } from "@shared/types";
+import { TErrCode } from "@/shared/types";
 import { BadRequestErr } from "../../utils/errs";
 import throwIfInvalidRefreshTokenObj from "../../utils/throwers/throwIfInvalidRefreshTokenObj";
 

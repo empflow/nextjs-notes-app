@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { BadRequestErr } from "../../../utils/errs";
 import { minPasswordLength } from "../../../../../shared/values";
-import { TErrCode } from "@shared/types";
+import { TErrCode } from "@/shared/types";
 
 export default async function signUpCheckPasswordStrength(
   req: Request,

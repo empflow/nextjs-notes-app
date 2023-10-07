@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcrypt";
 import { BadRequestErr } from "../../utils/errs";
-import { TErrCode } from "@shared/types";
+import { TErrCode } from "@/shared/types";
 
 export default async function checkHashAndPlainTextTokensMatch(
   req: Request,

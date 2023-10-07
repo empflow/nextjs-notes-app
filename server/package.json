@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "NODE_ENV=dev ts-node-dev ./src/server.ts",
     "build": "tsc -p ./tsconfig.json",
-    "start": "NODE_ENV=prod node ./dist/server/src/server.js"
+    "start": "NODE_ENV=prod TS_NODE_BASEURL=./dist node ./dist/server/src/server.js"
   },
   "keywords": [],
   "author": "",
@@ -40,6 +40,7 @@
     "@types/morgan": "^1.9.4",
     "@types/multer": "^1.4.8",
     "@types/uuid": "^9.0.4",
-    "ts-node-dev": "^2.0.0"
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.2.0"
   }
 }

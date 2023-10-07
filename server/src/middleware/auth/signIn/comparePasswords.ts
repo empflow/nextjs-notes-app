@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { TErrCode } from "@shared/types";
+import { TErrCode } from "@/shared/types";
 import { UnauthorizedErr } from "../../../utils/errs";
 
 export default async function signInComparePasswords(

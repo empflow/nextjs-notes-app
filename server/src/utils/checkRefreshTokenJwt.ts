@@ -1,7 +1,7 @@
 import getEnvVar from "./getEnvVar";
 import jwt from "jsonwebtoken";
 import { BadRequestErr } from "./errs";
-import { TErrCode } from "@shared/types";
+import { TErrCode } from "@/shared/types";
 
 export default function checkRefreshTokenJwt(
   token: string,

@@ -1,4 +1,4 @@
-import { TErrCode } from "@shared/types";
+import { TErrCode } from "@/shared/types";
 import ApiErr, { HttpCode } from "./ApiErr";
 
 export default class BadRequestErr extends ApiErr {

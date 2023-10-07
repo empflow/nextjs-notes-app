@@ -1,4 +1,4 @@
-import { TErrCode } from "@shared/types";
+import { TErrCode } from "@/shared/types";
 
 export enum HttpCode {
   BadRequest = 400,

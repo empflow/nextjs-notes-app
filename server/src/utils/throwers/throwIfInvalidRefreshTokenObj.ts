@@ -1,4 +1,4 @@
-import { TErrCode } from "@shared/types";
+import { TErrCode } from "@/shared/types";
 import { BadRequestErr } from "../errs";
 
 export default function throwIfInvalidRefreshTokenObj(token: any) {

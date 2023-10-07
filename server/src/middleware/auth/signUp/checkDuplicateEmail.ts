@@ -1,4 +1,4 @@
-import { TErrCode } from "@shared/types";
+import { TErrCode } from "@/shared/types";
 import { Request, Response, NextFunction } from "express";
 import User from "../../../models/User";
 import { ConflictErr } from "../../../utils/errs";
