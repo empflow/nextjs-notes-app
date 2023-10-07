@@ -6,6 +6,7 @@ import Link from "@tiptap/extension-link";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
 import Underline from "@tiptap/extension-underline";
+import Image from "@tiptap/extension-image";
 import {
   EditorContent as TiptapEditorContent,
   JSONContent,
@@ -36,6 +37,7 @@ export default function EditorContent({ initContent }: TProps) {
         protocols: ["tel", "mailto", "ftp", "file", "sms"],
         HTMLAttributes: { class: "link" },
       }),
+      Image,
     ],
     onUpdate: ({ editor }) => {
       setHasContentChanged(true);
