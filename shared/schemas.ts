@@ -44,3 +44,9 @@ export type TTagSchemaBase = z.infer<typeof tagSchemaBase>;
 export type TTagSchema = z.infer<typeof tagSchema>;
 
 export const dateSchema = z.date();
+
+export const fileUploadSchema = z.object({
+  src: z.string(),
+  owner: z.string(),
+});
+export type TFileUploadSchema = z.infer<typeof fileUploadSchema>;
