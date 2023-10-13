@@ -12,7 +12,6 @@ export default function useSelectionIncludesLink(): [boolean, () => void] {
   );
 
   const updateSelectionIncludesLink = () => {
-    console.log("run");
     setSelectionIncludesLink(getSelectionIncludesLink());
   };
 
