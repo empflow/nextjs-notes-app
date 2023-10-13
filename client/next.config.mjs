@@ -1,6 +1,5 @@
-const { default: withPlaiceholder } = require("@plaiceholder/next");
-
-const withNextIntl = require("next-intl/plugin")("./src/i18n.ts");
+import nextIntlPlugin from "next-intl/plugin";
+const withNextIntl = nextIntlPlugin("./src/i18n.ts");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -47,4 +46,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withPlaiceholder(withNextIntl(nextConfig));
+export default withNextIntl(nextConfig);

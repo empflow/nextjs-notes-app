@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@plaiceholder/next": "^3.0.0",
-    "@tanstack/react-query-devtools": "^4.33.0",
+    "@tanstack/react-query": "^4.36.1",
+    "@tanstack/react-query-devtools": "^4.36.1",
     "@tiptap/extension-image": "^2.1.11",
     "@tiptap/extension-link": "^2.1.11",
     "@tiptap/extension-table": "^2.1.11",
@@ -33,7 +33,6 @@
     "next": "13.4.7",
     "next-intl": "^3.0.0-beta.9",
     "next-themes": "^0.2.1",
-    "plaiceholder": "^3.0.0",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",

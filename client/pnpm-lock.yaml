@@ -5,11 +5,11 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@plaiceholder/next':
-    specifier: ^3.0.0
-    version: 3.0.0(next@13.4.7)(plaiceholder@3.0.0)(sharp@0.32.6)
+  '@tanstack/react-query':
+    specifier: ^4.36.1
+    version: 4.36.1(react-dom@18.2.0)(react@18.2.0)
   '@tanstack/react-query-devtools':
-    specifier: ^4.33.0
+    specifier: ^4.36.1
     version: 4.36.1(@tanstack/react-query@4.36.1)(react-dom@18.2.0)(react@18.2.0)
   '@tiptap/extension-image':
     specifier: ^2.1.11
@@ -77,9 +77,6 @@ dependencies:
   next-themes:
     specifier: ^0.2.1
     version: 0.2.1(next@13.4.7)(react-dom@18.2.0)(react@18.2.0)
-  plaiceholder:
-    specifier: ^3.0.0
-    version: 3.0.0(sharp@0.32.6)
   postcss:
     specifier: 8.4.24
     version: 8.4.24
@@ -1652,18 +1649,6 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
-
-  /@plaiceholder/next@3.0.0(next@13.4.7)(plaiceholder@3.0.0)(sharp@0.32.6):
-    resolution: {integrity: sha512-7UK/H1X64hwo2VaxOPKMXE+OY9IgmKLPsq/xKHZ+gU07oqQSfIWWIgpVVucMB3ZgVYah+68agR15BRuSxAuMHw==}
-    peerDependencies:
-      next: '>= 10.0.0'
-      plaiceholder: '>=3.0.0'
-      sharp: '>= 0.30.6'
-    dependencies:
-      next: 13.4.7(@babel/core@7.23.0)(react-dom@18.2.0)(react@18.2.0)
-      plaiceholder: 3.0.0(sharp@0.32.6)
-      sharp: 0.32.6
-    dev: false
 
   /@popperjs/core@2.11.8:
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
@@ -4486,14 +4471,6 @@ packages:
   /pirates@4.0.6:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
-    dev: false
-
-  /plaiceholder@3.0.0(sharp@0.32.6):
-    resolution: {integrity: sha512-jwHxxHPnr1BwRzPCeZgEK2BMsEy2327sWynw3qb6XC/oGgGDUTPtR8pFxFQmNArhMBwhkUbUr5OPhhIJpCa8eQ==}
-    peerDependencies:
-      sharp: '>= 0.30.6'
-    dependencies:
-      sharp: 0.32.6
     dev: false
 
   /postcss-import@15.1.0(postcss@8.4.24):
