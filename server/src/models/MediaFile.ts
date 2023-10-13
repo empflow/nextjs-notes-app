@@ -9,7 +9,7 @@ export interface TMediaFileServer extends TMediaFileSchemaBase {
 
 const MediaFileSchema = new Schema<TMediaFileServer>(
   {
-    blurUrl: {
+    blurredBase64: {
       type: String,
       default: null,
     },
