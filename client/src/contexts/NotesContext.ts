@@ -1,7 +1,8 @@
 "use client";
 
 import { SetState, TContext } from "@/utils/types";
-import { TNoteMetaSchema, TTagSchema } from "@shared/schemas";
+import { TTagSchema } from "@shared/schemas/tag";
+import { TNoteMetaSchema } from "@shared/schemas/note";
 import { Editor } from "@tiptap/core";
 import { createContext } from "react";
 

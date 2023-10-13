@@ -1,4 +1,4 @@
-import { TNoteSchema } from "@/shared/schemas";
+import { TNoteSchema } from "@/shared/schemas/note";
 import { Request, Response, NextFunction } from "express";
 import { JSONContent } from "@tiptap/react";
 

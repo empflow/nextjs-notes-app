@@ -1,7 +1,7 @@
 import { TSignInFormInputValues } from "@/app/[locale]/(main)/auth/sign-in/components/SignInForm";
 import http from "@/utils/http/http/http";
 import { getCaptchaTokenOrBypassToken } from "@/utils/getCaptchaTokenOrBypassToken";
-import { authRespSchema, TAuthResp } from "@shared/respsSchemas";
+import { authRespSchema, TAuthResp } from "@shared/respSchemas/auth";
 import { useQuery } from "@tanstack/react-query";
 import { RefObject } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -13,9 +13,8 @@ interface TProps {
 
 export default function useSignInQuery({ formData, captchaRef }: TProps) {
   async function fetchSignIn() {
-    const objWithCaptchaTokenOrBypassToken = await getCaptchaTokenOrBypassToken(
-      captchaRef,
-    );
+    const objWithCaptchaTokenOrBypassToken =
+      await getCaptchaTokenOrBypassToken(captchaRef);
     const payload = {
       ...objWithCaptchaTokenOrBypassToken,
       ...formData,

@@ -3,7 +3,7 @@
 import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext from "@/contexts/NotesContext";
 import { TTranslations } from "@/utils/types";
-import { TTagSchema } from "@shared/schemas";
+import { TTagSchema } from "@shared/schemas/tag";
 import { useTranslations } from "next-intl";
 
 export default function CurrTag() {

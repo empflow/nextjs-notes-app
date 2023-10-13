@@ -1,7 +1,7 @@
 import NotesContext from "@/contexts/NotesContext";
 import httpWithAuth from "@/utils/http/httpWithAuth/httpWithAuth";
 import notify from "@/utils/notify";
-import { noteSchema, TNoteMetaSchema, TNoteSchema } from "@shared/schemas";
+import { noteSchema, TNoteMetaSchema, TNoteSchema } from "@shared/schemas/note";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
 import useGetContext from "../useGetContext";

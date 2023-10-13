@@ -1,5 +1,5 @@
 import { SetState } from "@/utils/types";
-import { TNoteMetaSchema } from "@shared/schemas";
+import { TNoteMetaSchema } from "@shared/schemas/note";
 import { useEffect, useState } from "react";
 import useObserveQuery from "./useObserveQuery";
 

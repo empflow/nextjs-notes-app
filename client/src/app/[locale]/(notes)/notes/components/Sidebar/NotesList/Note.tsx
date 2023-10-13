@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 import NotesContext from "@/contexts/NotesContext";
 import Skeleton from "react-loading-skeleton";
 import { Property as CSSProperty } from "csstype";
-import { TNoteSchema } from "@shared/schemas";
+import { TNoteSchema } from "@shared/schemas/note";
 
 interface TNoteProps {
   state?: "normal" | "loading";

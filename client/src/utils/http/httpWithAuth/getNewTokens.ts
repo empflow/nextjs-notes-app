@@ -1,4 +1,4 @@
-import { getNewTokensRespSchema } from "@shared/respsSchemas";
+import { getNewTokensRespSchema } from "@shared/respSchemas/getNewTokens";
 import axios from "axios";
 import baseUrl from "../baseUrl";
 

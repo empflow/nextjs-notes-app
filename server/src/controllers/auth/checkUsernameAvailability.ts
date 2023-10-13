@@ -1,4 +1,4 @@
-import { TIsUsernameAvailableResp } from "@/shared/respsSchemas";
+import { TIsUsernameAvailableResp } from "@/shared/respSchemas/isUsernameAvailable";
 import { Request, Response } from "express";
 import User from "../../models/User";
 import { BadRequestErr } from "../../utils/errs";

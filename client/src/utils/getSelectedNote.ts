@@ -1,4 +1,4 @@
-import { TNoteMetaSchema } from "@shared/schemas";
+import { TNoteMetaSchema } from "@shared/schemas/note";
 
 type ReturnT = null | TNoteMetaSchema;
 

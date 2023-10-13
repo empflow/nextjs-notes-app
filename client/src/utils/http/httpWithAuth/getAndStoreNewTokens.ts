@@ -1,4 +1,4 @@
-import { TAuthResp, TGetNewTokensResp } from "@shared/respsSchemas";
+import { TGetNewTokensResp } from "@shared/respSchemas/getNewTokens";
 import Cookies from "js-cookie";
 import storeAuthRespData from "@/utils/storeAuthRespData";
 import getNewTokens from "./getNewTokens";

@@ -1,6 +1,6 @@
 import NotesContext from "@/contexts/NotesContext";
 import httpWithAuth from "@/utils/http/httpWithAuth/httpWithAuth";
-import { noteSchema } from "@shared/schemas";
+import { noteSchema } from "@shared/schemas/note";
 import { useQuery } from "@tanstack/react-query";
 import useGetContext from "../useGetContext";
 

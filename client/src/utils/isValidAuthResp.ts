@@ -1,4 +1,4 @@
-import { TAuthResp } from "@shared/respsSchemas";
+import { TAuthResp } from "@shared/respSchemas/auth";
 import isObject from "./isObject";
 import isString from "./isString";
 

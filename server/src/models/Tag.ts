@@ -1,4 +1,4 @@
-import { TTagSchemaBase } from "@/shared/schemas";
+import { TTagSchemaBase } from "@/shared/schemas/tag";
 import mongoose, { Schema, Types } from "mongoose";
 
 export interface TTagServer extends TTagSchemaBase {

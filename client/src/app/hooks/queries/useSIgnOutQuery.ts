@@ -1,9 +1,7 @@
 import clearAuthData from "@/utils/clearAuthData";
 import http from "@/utils/http/http/http";
-import { signOutRespSchema } from "@shared/respsSchemas";
 import { useQuery } from "@tanstack/react-query";
 import Cookies from "js-cookie";
-import useCommonNotifications from "../useCommonNotifications";
 
 export default function useSignOutQuery() {
   return useQuery(["signOut"], fetchSignOut, { enabled: false });
