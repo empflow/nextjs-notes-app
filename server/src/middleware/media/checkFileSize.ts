@@ -17,7 +17,7 @@ export default function checkFileSize({
   multipleFiles = false,
   maxSizeInMb,
 }: TArgs) {
-  return function (req: Request, res: Response, next: NextFunction) {
+  return function (req: Request, _res: Response, next: NextFunction) {
     const { file, files } = req;
 
     if (!multipleFiles) {
@@ -39,6 +39,7 @@ function checkFileSizeExceedsLimit(
   file: Express.Multer.File
 ) {
   const fileSizeInMb = bToMb(file.size);
+
   if (fileSizeInMb > limitInMb) {
     throw new BadRequestErr(
       `File too large. Limit: ${limitInMb}mb`,
