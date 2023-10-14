@@ -1,12 +1,12 @@
 import useSaveEditorContent from "@/app/hooks/queries/useSaveEditorContentQuery";
 import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext, { TNotesListNotesMeta } from "@/contexts/NotesContext";
+import { NextImage } from "@/utils/TiptapExtensions/NextImage/NextImage";
 import { SetState } from "@/utils/types";
 import Link from "@tiptap/extension-link";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
 import Underline from "@tiptap/extension-underline";
-import Image from "@tiptap/extension-image";
 import {
   EditorContent as TiptapEditorContent,
   JSONContent,
@@ -33,11 +33,11 @@ export default function EditorContent({ initContent }: TProps) {
       Underline,
       TaskList,
       TaskItem.configure({ HTMLAttributes: { class: "task-list-item" } }),
-      Link.configure({
+      Link.extend({ inclusive: false }).configure({
         protocols: ["tel", "mailto", "ftp", "file", "sms"],
         HTMLAttributes: { class: "link" },
       }),
-      Image,
+      NextImage,
     ],
     onUpdate: ({ editor }) => {
       setHasContentChanged(true);
