@@ -5,7 +5,7 @@ function getS3FileNames(ext: string, amount: 1): string;
 function getS3FileNames(ext: string, amount: number): string[];
 
 function getS3FileNames(ext: string, amount?: number) {
-  if (!amount) return getFileName(ext);
+  if (!amount || amount === 1) return getFileName(ext);
 
   const fileNames: string[] = [];
 
