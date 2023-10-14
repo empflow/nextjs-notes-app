@@ -4,7 +4,7 @@ import { noteSchemaBase } from "./note";
 
 export const mediaFileSchemaBase = z.object({
   url: z.string(),
-  blurredBase64: z.string().nullable(),
+  placeholderImgBase64: z.string().nullable(),
   _id: z.string(),
 });
 
