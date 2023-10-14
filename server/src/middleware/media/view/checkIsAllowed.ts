@@ -23,5 +23,6 @@ export default async function viewMediaFileCheckIsAllowed(
     throw new ForbiddenErr("Access denied", TErrCode.ACCESS_DENIED);
   }
 
+  res.locals.mediaFile = mediaFile;
   next();
 }
