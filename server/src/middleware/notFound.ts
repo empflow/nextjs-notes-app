@@ -1,5 +1,5 @@
 import { NotFoundErr } from "../utils/errs";
 
 export default function notFound() {
-  throw new NotFoundErr("route does not exist");
+  throw new NotFoundErr("Route does not exist");
 }
