@@ -9,12 +9,17 @@ export interface TMediaFileServer extends TMediaFileSchemaBase {
 
 const MediaFileSchema = new Schema<TMediaFileServer>(
   {
-    blurredBase64: {
+    placeholderImgBase64: {
       type: String,
       default: null,
     },
     url: {
       type: String,
+      required: true,
+    },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
       required: true,
     },
   },
