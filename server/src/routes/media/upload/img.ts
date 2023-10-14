@@ -1,5 +1,5 @@
-import uploadImgCompressImgAndGetPlaceholder from "@/server/src/middleware/media/imgs/upload/compressImgAndGetPlaceholder";
-import uploadImgUploadCompressedImg from "@/server/src/middleware/media/imgs/upload/uploadCompressedImg";
+import uploadImgCompressImgAndGetPlaceholder from "@/server/src/middleware/media/upload/imgs/compressImgAndGetPlaceholder";
+import uploadImgUploadCompressedImg from "@/server/src/middleware/media/upload/imgs/uploadCompressedImg";
 import { maxImgSizeInMb } from "@/shared/values";
 import express from "express";
 const router = express.Router();
