@@ -18,7 +18,7 @@ function getS3FileNames(ext: string, amount?: number) {
 }
 
 function getFileName(ext: string) {
-  return `${nanoid(16)}-${Date.now()}.${ext}`;
+  return `${nanoid(16)}-${Date.now()}${ext ? `.${ext}` : ""}`;
 }
 
 export default getS3FileNames;
