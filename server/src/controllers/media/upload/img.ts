@@ -14,6 +14,7 @@ export default async function uploadImgCreateMediaFile(
   const mediaFile = await MediaFile.create({
     owner: userId,
     url: compressedImgUpload.Location,
+    key: compressedImgUpload.Key,
     placeholderImgBase64,
   });
 

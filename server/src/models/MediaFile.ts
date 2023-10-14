@@ -22,6 +22,10 @@ const MediaFileSchema = new Schema<TMediaFileServer>(
       ref: "User",
       required: true,
     },
+    key: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );

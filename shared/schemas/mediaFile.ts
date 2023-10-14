@@ -6,6 +6,7 @@ export const mediaFileSchemaBase = z.object({
   url: z.string(),
   placeholderImgBase64: z.string().nullable(),
   _id: z.string(),
+  key: z.string(),
 });
 
 export const mediaFileSchema = noteSchemaBase.extend({
