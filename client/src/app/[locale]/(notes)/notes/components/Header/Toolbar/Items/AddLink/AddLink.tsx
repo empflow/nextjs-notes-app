@@ -42,7 +42,7 @@ export default function AddLink() {
         {...{ isOpen, setIsOpen }}
         offset={40}
       >
-        <Hidable className="px-3 py-2" width={menuWidth} isOpen={isOpen}>
+        <Hidable className="px-3 py-2" width={menuWidth} isHidden={isOpen}>
           <SignleView name={t("link.menuTitle")}>
             <AddLinkPopoverContent />
           </SignleView>
