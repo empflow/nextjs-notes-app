@@ -34,18 +34,8 @@ export default function Toolbar() {
           onClick={() => editor?.chain().focus().redo().run()}
           icon={<TableIcon />}
         />
-        <ToolbarItem
-          tooltipText={t("undo")}
-          isDisabled={!editor?.can().chain().focus().undo().run()}
-          onClick={() => editor?.chain().focus().undo().run()}
-          icon={<UndoIcon />}
-        />
-        <ToolbarItem
-          tooltipText={t("redo")}
-          isDisabled={!editor?.can().chain().focus().redo().run()}
-          onClick={() => editor?.chain().focus().redo().run()}
-          icon={<RedoIcon />}
-        />
+        <Undo />
+        <Redo />
       </TooltipContainer>
     </ToolbarContextProviders>
   );
