@@ -8,6 +8,8 @@ export type TToolbarContext = TContext<{
   setLink: SetState<string>;
   isAddLinkMenuOpen: boolean;
   setIsAddLinkMenuOpen: SetState<boolean>;
+  isAddMediaFileMenuOpen: boolean;
+  setIsAddMediaFileMenuOpen: SetState<boolean>;
 }>;
 
 export const ToolbarContext = createContext<TToolbarContext>(null);
