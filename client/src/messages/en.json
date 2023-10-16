@@ -22,7 +22,16 @@
       "formatText": "Format text",
       "addLink": "Add link",
       "addTable": "Add table",
-      "addImage": "Add image"
+      "addMediaFile": "Add media file"
+    },
+    "addMediaFile": {
+      "menuTitle": "Upload media file",
+      "dragAndDrop": "Drag & Drop your file here",
+      "chooseMediaFileBtnText": "Choose file",
+      "uploadBtnText": "Upload",
+      "uploadingBtnText": "Uploading",
+      "unsupportedFileFormat": "Unsupported file format. Try uploading a different file",
+      "imageYouProvided": "The image you've provided"
     },
     "link": {
       "menuTitle": "Link",

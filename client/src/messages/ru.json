@@ -22,11 +22,20 @@
       "formatText": "Форматировать текст",
       "addLink": "Добавить ссылку",
       "addTable": "Добавить таблицу",
-      "addImage": "Добавить фото",
+      "addMediaFile": "Добавить медиа файл",
       "italic": "Курсив",
       "bold": "Жирный",
       "strikethrough": "Перечёркнутый",
       "code": "Код"
+    },
+    "addMediaFile": {
+      "menuTitle": "Загрузить медиа файл",
+      "dragAndDrop": "Перетащите файл сюда",
+      "chooseMediaFileBtnText": "Выбрать файл",
+      "uploadBtnText": "Загрузить",
+      "uploadingBtnText": "Загрузка",
+      "unsupportedFileFormat": "Неподдерживаемый формат файла. Попробуйте загрузить другой файл",
+      "imageYouProvided": "Фотография, которую вы предоставили"
     },
     "link": {
       "menuTitle": "Ссылка",
