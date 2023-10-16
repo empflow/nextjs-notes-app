@@ -1,13 +1,15 @@
 import { ButtonProps } from "@/utils/componentsProps";
-import { baseClassName } from "./common";
+import { baseClassNameNormal, baseClassNameOutlined } from "./common";
 import { forwardRef } from "react";
 
 const TinyBtn = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ children, className, ...restProps }, ref) => {
+  ({ children, variant = "normal", ...restProps }, ref) => {
     return (
       <button
         {...restProps}
-        className={`${baseClassName} px-2 py-1 text-[0.9rem] ${className}`}
+        className={`${
+          variant === "normal" ? baseClassNameNormal : baseClassNameOutlined
+        } px-2 py-1 text-[0.9rem]`}
         ref={ref}
       >
         {children}
