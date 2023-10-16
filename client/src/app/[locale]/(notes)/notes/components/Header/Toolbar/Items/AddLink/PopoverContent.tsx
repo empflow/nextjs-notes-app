@@ -26,7 +26,6 @@ export default function AddLinkPopoverContent() {
   function linkAction(cb?: () => unknown) {
     setIsAddLinkMenuOpen(false);
     setLink("");
-
     if (cb) cb();
   }
 
