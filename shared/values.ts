@@ -10,3 +10,5 @@ export const twBreakpoints = {
 };
 
 export const maxImgSizeInMb = 15;
+
+export const ALLOWED_IMG_EXTS = ["jpeg", "jpg", "png", "webp", "avif", "gif"];
