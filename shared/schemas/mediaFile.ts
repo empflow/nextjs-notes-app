@@ -1,6 +1,5 @@
 import { z } from "zod";
 import timestamps from "../localUtils/timestamps";
-import { noteSchemaBase } from "./note";
 
 export const mediaFileSchemaBase = z.object({
   url: z.string(),
@@ -9,7 +8,7 @@ export const mediaFileSchemaBase = z.object({
   key: z.string(),
 });
 
-export const mediaFileSchema = noteSchemaBase.extend({
+export const mediaFileSchema = mediaFileSchemaBase.extend({
   owner: z.string(),
   ...timestamps,
 });
