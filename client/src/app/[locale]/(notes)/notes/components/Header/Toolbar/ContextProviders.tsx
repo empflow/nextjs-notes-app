@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, useState } from "react";
-import { ToolbarContext } from "./Context";
+import { TAddMediaFileState, ToolbarContext } from "./Context";
 
 interface TProps {
   children: ReactNode;
@@ -13,6 +13,9 @@ export default function ToolbarContextProviders({ children }: TProps) {
   const [isAddLinkMenuOpen, setIsAddLinkMenuOpen] = useState(false);
   const [isAddMediaFileMenuOpen, setIsAddMediaFileMenuOpen] = useState(false);
   const [mediaFileId, setMediaFileId] = useState<string | null>(null);
+  const [mediaFiles, setMediaFiles] = useState<FileList | null>(null);
+  const [addMediaFileMenuState, setAddMediaFileMenuState] =
+    useState<TAddMediaFileState>("chooseFile");
 
   return (
     <ToolbarContext.Provider
@@ -29,6 +32,10 @@ export default function ToolbarContextProviders({ children }: TProps) {
         setIsAddMediaFileMenuOpen,
         mediaFileId,
         setMediaFileId,
+        mediaFiles,
+        setMediaFiles,
+        addMediaFileMenuState,
+        setAddMediaFileMenuState,
       }}
     >
       {children}

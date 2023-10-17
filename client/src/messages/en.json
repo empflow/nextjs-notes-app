@@ -31,7 +31,9 @@
       "uploadBtnText": "Upload",
       "uploadingBtnText": "Uploading",
       "unsupportedFileFormat": "Unsupported file format. Try uploading a different file",
-      "imageYouProvided": "The image you've provided"
+      "imageYouProvided": "The image you've provided",
+      "releaseMouseToAddFile": "Release the mouse to add the file",
+      "releaseMouseToReplaceFile": "Release the mouse to replace the file"
     },
     "link": {
       "menuTitle": "Link",

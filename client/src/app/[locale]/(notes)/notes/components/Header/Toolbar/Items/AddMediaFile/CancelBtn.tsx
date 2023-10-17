@@ -1,18 +1,14 @@
 import SmallBtn from "@/app/components/buttons/Small";
+import useGetContext from "@/app/hooks/useGetContext";
 import { SetState } from "@/utils/types";
-import { TAddMediaFileState } from "./PopoverContent";
+import { ToolbarContext } from "../../Context";
 
-interface TProps {
-  files: FileList | null;
-  setFiles: SetState<FileList | null>;
-  setState: SetState<TAddMediaFileState>;
-}
-
-export default function AddMediaFileCancelBtn({
-  files,
-  setFiles,
-  setState,
-}: TProps) {
+export default function AddMediaFileCancelBtn() {
+  const {
+    mediaFiles: files,
+    setMediaFiles: setFiles,
+    setAddMediaFileMenuState: setState,
+  } = useGetContext(ToolbarContext);
   if (!files?.length) return null;
 
   function onClick() {

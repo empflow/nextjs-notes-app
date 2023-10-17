@@ -1,13 +1,12 @@
+import useGetContext from "@/app/hooks/useGetContext";
 import checkFileFormat from "@/utils/mediaFileCheckFileFormat";
-import { SetState } from "@/utils/types";
 import { useTranslations } from "next-intl";
-import { TAddMediaFileState } from "./PopoverContent";
+import { ToolbarContext } from "../../Context";
 
-export default function useHandleFileInput(
-  setState: SetState<TAddMediaFileState>,
-  setFiles: SetState<FileList | null>,
-) {
+export default function useHandleFileInput() {
   const t = useTranslations("Toolbar.addMediaFile");
+  const { setMediaFiles, setAddMediaFileMenuState } =
+    useGetContext(ToolbarContext);
 
   async function handleFileInput(files?: FileList | null) {
     if (files?.length) {
@@ -15,8 +14,8 @@ export default function useHandleFileInput(
       const fileFormatOk = await checkFileFormat(files, errMsg);
       if (!fileFormatOk) return;
 
-      setState("uploadFile");
-      setFiles(files);
+      setAddMediaFileMenuState("uploadFile");
+      setMediaFiles(files);
     }
   }
 

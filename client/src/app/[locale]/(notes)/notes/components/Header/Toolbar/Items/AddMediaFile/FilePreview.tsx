@@ -1,11 +1,10 @@
+import useGetContext from "@/app/hooks/useGetContext";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { ToolbarContext } from "../../Context";
 
-interface TProps {
-  files: FileList | null;
-}
-
-export default function AddMediaFileFilePreview({ files }: TProps) {
+export default function AddMediaFileFilePreview() {
+  const { mediaFiles: files } = useGetContext(ToolbarContext);
   const t = useTranslations("Toolbar.addMediaFile");
 
   if (!files) return null;

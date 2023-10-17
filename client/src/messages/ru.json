@@ -35,7 +35,9 @@
       "uploadBtnText": "Загрузить",
       "uploadingBtnText": "Загрузка",
       "unsupportedFileFormat": "Неподдерживаемый формат файла. Попробуйте загрузить другой файл",
-      "imageYouProvided": "Фотография, которую вы предоставили"
+      "imageYouProvided": "Фотография, которую вы предоставили",
+      "releaseMouseToAddFile": "Отпустите мышь, чтобы добавить файл",
+      "releaseMouseToReplaceFile": "Отпустите мышь, чтобы заменить файл"
     },
     "link": {
       "menuTitle": "Ссылка",

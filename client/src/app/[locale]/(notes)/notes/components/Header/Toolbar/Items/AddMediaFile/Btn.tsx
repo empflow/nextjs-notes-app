@@ -1,12 +1,10 @@
 import SmallBtn from "@/app/components/buttons/Small";
+import useGetContext from "@/app/hooks/useGetContext";
 import { useTranslations } from "next-intl";
-import { TAddMediaFileState } from "./PopoverContent";
+import { ToolbarContext } from "../../Context";
 
-interface TProps {
-  state: TAddMediaFileState;
-}
-
-export default function AddMediaFileBtn({ state }: TProps) {
+export default function AddMediaFileBtn() {
+  const { addMediaFileMenuState: state } = useGetContext(ToolbarContext);
   const t = useTranslations("Toolbar.addMediaFile");
 
   if (state === "chooseFile") {
