@@ -14,6 +14,9 @@
     },
     "theme": "Theme"
   },
+  "Editor": {
+    "image": "Image"
+  },
   "Toolbar": {
     "disabled": "disabled",
     "tooltips": {
@@ -29,7 +32,7 @@
       "dragAndDrop": "Drag & Drop your file here",
       "chooseMediaFileBtnText": "Choose file",
       "uploadBtnText": "Upload",
-      "uploadingBtnText": "Uploading",
+      "uploadingBtnText": "Uploading...",
       "unsupportedFileFormat": "Unsupported file format. Try uploading a different file",
       "imageYouProvided": "The image you've provided",
       "releaseMouseToAddFile": "Release the mouse to add the file",
@@ -120,7 +123,8 @@
     "notSignedIn": "You're not signed in",
     "notSignedInLink": "Sign in here",
     "couldNotSyncEditorContent": "Could not sync changes",
-    "couldNotAddNote": "Could not add note"
+    "couldNotAddNote": "Could not add note",
+    "image": "Error loading image"
   },
   "NetworkStatusListener": {
     "offline": "You're offline",

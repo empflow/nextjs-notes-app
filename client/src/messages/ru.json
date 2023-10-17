@@ -14,6 +14,9 @@
     },
     "theme": "Тема"
   },
+  "Editor": {
+    "image": "Фотография"
+  },
   "Toolbar": {
     "disabled": "недоступно",
     "tooltips": {
@@ -33,7 +36,7 @@
       "dragAndDrop": "Перетащите файл сюда",
       "chooseMediaFileBtnText": "Выбрать файл",
       "uploadBtnText": "Загрузить",
-      "uploadingBtnText": "Загрузка",
+      "uploadingBtnText": "Загрузка...",
       "unsupportedFileFormat": "Неподдерживаемый формат файла. Попробуйте загрузить другой файл",
       "imageYouProvided": "Фотография, которую вы предоставили",
       "releaseMouseToAddFile": "Отпустите мышь, чтобы добавить файл",
@@ -124,7 +127,8 @@
     "notSignedIn": "Вы не вошли в аккаунт",
     "notSignedInLink": "Войти",
     "couldNotSyncEditorContent": "Не удалось синхронизировать изменения",
-    "couldNotAddNote": "Не удалось добавить заметку"
+    "couldNotAddNote": "Не удалось добавить заметку",
+    "image": "Ошибка при загрузке фотографии"
   },
   "NetworkStatusListener": {
     "offline": "Нет интернет соединения",
