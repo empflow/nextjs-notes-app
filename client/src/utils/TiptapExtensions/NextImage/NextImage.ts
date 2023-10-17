@@ -33,18 +33,9 @@ export const NextImage = Node.create<TNextImageOptions>({
 
   addAttributes() {
     return {
-      src: {
-        default: undefined,
-      },
-      alt: {
-        default: undefined,
-      },
-      title: {
-        default: undefined,
-      },
-      blurDataURL: {
-        default: undefined,
-      },
+      id: null,
+      width: null,
+      height: null,
     };
   },
 
@@ -59,27 +50,25 @@ export const NextImage = Node.create<TNextImageOptions>({
     ];
   },
 
-  addStorage() {
-    return {
-      id: null,
-    };
-  },
-
   // @ts-ignore
   addNodeView: function () {
-    return ReactNodeViewRenderer(NextImageComponent);
+    return ReactNodeViewRenderer(NextImageComponent, {
+      className: "w-full h-full",
+    });
   },
 
   addCommands() {
     return {
       setNextImage:
         (options) =>
-        ({ commands }) => {
-          this.storage.id = options.id;
-          return commands.insertContent({
+        ({ commands, state }) => {
+          const { from, to } = state.selection;
+          const selection = { from, to };
+          commands.insertContentAt(selection, {
             type: this.name,
             attrs: options,
           });
+          return true;
         },
     };
   },
