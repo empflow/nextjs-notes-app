@@ -8,7 +8,6 @@ export default async function checkFileFormat(files: FileList, errMsg: string) {
 
   const fileType = await getFileType(file);
   if (!ALLOWED_IMG_EXTS.includes(fileType)) {
-    console.log(fileType);
     notify(errMsg, "error");
     return false;
   }
