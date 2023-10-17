@@ -36,6 +36,8 @@ export default function EditorContent({ initContent }: TProps) {
       Link.extend({ inclusive: false }).configure({
         protocols: ["tel", "mailto", "ftp", "file", "sms"],
         HTMLAttributes: { class: "link" },
+        autolink: true,
+        linkOnPaste: true,
       }),
       NextImage,
     ],
