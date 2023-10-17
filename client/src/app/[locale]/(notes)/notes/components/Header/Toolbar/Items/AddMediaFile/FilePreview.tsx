@@ -1,17 +1,15 @@
 import useGetContext from "@/app/hooks/useGetContext";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { ToolbarContext } from "../../Context";
+import { AddMediaFileContext } from "./Context";
 
 export default function AddMediaFileFilePreview() {
-  const { mediaFiles: files } = useGetContext(ToolbarContext);
+  const { mediaFiles: files } = useGetContext(AddMediaFileContext);
   const t = useTranslations("Toolbar.addMediaFile");
 
-  if (!files) return null;
-  const file = files[0];
+  const file = files?.[0];
   if (!file) return null;
 
-  console.log(file);
   const previewImgSrc = URL.createObjectURL(file);
   const { name } = file;
 

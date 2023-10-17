@@ -1,19 +1,15 @@
 import SmallBtn from "@/app/components/buttons/Small";
 import useGetContext from "@/app/hooks/useGetContext";
-import { SetState } from "@/utils/types";
-import { ToolbarContext } from "../../Context";
+import { AddMediaFileContext } from "./Context";
 
 export default function AddMediaFileCancelBtn() {
-  const {
-    mediaFiles: files,
-    setMediaFiles: setFiles,
-    setAddMediaFileMenuState: setState,
-  } = useGetContext(ToolbarContext);
-  if (!files?.length) return null;
+  const { mediaFiles, setMediaFiles, setMenuState } =
+    useGetContext(AddMediaFileContext);
+  if (!mediaFiles?.length) return null;
 
   function onClick() {
-    setFiles(null);
-    setState("chooseFile");
+    setMediaFiles(null);
+    setMenuState("chooseFile");
   }
 
   return (

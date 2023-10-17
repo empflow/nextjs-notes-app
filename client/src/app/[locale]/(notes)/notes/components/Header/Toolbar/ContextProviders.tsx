@@ -11,11 +11,7 @@ export default function ToolbarContextProviders({ children }: TProps) {
   const [isFormatTextMenuOpen, setIsFormatTextMenuOpen] = useState(false);
   const [link, setLink] = useState("");
   const [isAddLinkMenuOpen, setIsAddLinkMenuOpen] = useState(false);
-  const [isAddMediaFileMenuOpen, setIsAddMediaFileMenuOpen] = useState(false);
-  const [mediaFileId, setMediaFileId] = useState<string | null>(null);
-  const [mediaFiles, setMediaFiles] = useState<FileList | null>(null);
-  const [addMediaFileMenuState, setAddMediaFileMenuState] =
-    useState<TAddMediaFileState>("chooseFile");
+  useState<TAddMediaFileState>("chooseFile");
 
   return (
     <ToolbarContext.Provider
@@ -27,15 +23,6 @@ export default function ToolbarContextProviders({ children }: TProps) {
         setLink,
         isAddLinkMenuOpen,
         setIsAddLinkMenuOpen,
-
-        isAddMediaFileMenuOpen,
-        setIsAddMediaFileMenuOpen,
-        mediaFileId,
-        setMediaFileId,
-        mediaFiles,
-        setMediaFiles,
-        addMediaFileMenuState,
-        setAddMediaFileMenuState,
       }}
     >
       {children}

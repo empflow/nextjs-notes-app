@@ -1,9 +1,9 @@
 import useGetContext from "@/app/hooks/useGetContext";
 import { useTranslations } from "next-intl";
-import { ToolbarContext } from "../../Context";
+import { AddMediaFileContext } from "./Context";
 
 export default function AddMediaFileDragAndDropHint() {
-  const { mediaFiles } = useGetContext(ToolbarContext);
+  const { mediaFiles } = useGetContext(AddMediaFileContext);
   const t = useTranslations("Toolbar.addMediaFile");
   if (!!mediaFiles?.length) return null;
 
