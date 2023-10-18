@@ -24,7 +24,7 @@
       "redo": "Redo",
       "formatText": "Format text",
       "addLink": "Add link",
-      "addTable": "Add table",
+      "table": "Table",
       "addMediaFile": "Add media file"
     },
     "addMediaFile": {
@@ -44,6 +44,13 @@
       "editBtnText": "Edit link",
       "remove": "Remove link",
       "inputPlaceholder": "Link address"
+    },
+    "table": {
+      "menuTitle": "Table",
+      "addRowAbove": "Add row above",
+      "addRowBelow": "Add row below",
+      "addColToLeft": "Add column to the left",
+      "addColToRight": "Add column to the right"
     },
     "formatText": {
       "menuTitle": "Formatting",

@@ -24,7 +24,7 @@
       "redo": "Вернуть отмененное",
       "formatText": "Форматировать текст",
       "addLink": "Добавить ссылку",
-      "addTable": "Добавить таблицу",
+      "table": "Таблица",
       "addMediaFile": "Добавить медиа файл",
       "italic": "Курсив",
       "bold": "Жирный",
@@ -48,6 +48,13 @@
       "editBtnText": "Изменить ссылку",
       "remove": "Убрать ссылку",
       "inputPlaceholder": "Адрес ссылки"
+    },
+    "table": {
+      "menuTitle": "Таблица",
+      "addRowAbove": "Добавить строку сверху",
+      "addRowBelow": "Добавить строку снизу",
+      "addColToLeft": "Добавить столбец слева",
+      "addColToRight": "Добавить столбец справа"
     },
     "formatText": {
       "menuTitle": "Форматирование",
