@@ -9,10 +9,9 @@ export default async function viewMediaFileGenerateSignedUrl(
   const { mediaFile } = res.locals;
 
   const operation = "getObject";
-  // this isn't type-safe and it sucks
   const signedUrl = await s3.getSignedUrlPromise(operation, {
     Key: mediaFile.key,
-    Expires: 10,
+    Expires: 3600,
     Bucket: s3Credentials.bucketName,
   });
 

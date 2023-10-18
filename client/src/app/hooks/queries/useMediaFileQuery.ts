@@ -6,6 +6,8 @@ export default function useMediaFileQuery(id: string | null) {
   const query = useQuery(["img", id], fetchImg, {
     enabled: !!id,
     refetchOnWindowFocus: false,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
     cacheTime: 0,
   });
 
