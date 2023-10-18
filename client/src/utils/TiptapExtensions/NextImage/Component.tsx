@@ -28,9 +28,10 @@ export default function NextImageComponent({
   const t = useTranslations("Editor");
   const { data, isLoading: isLoadingUrl, isError } = useMediaFileQuery(id);
   const aspectRatio = width && height ? width / height : undefined;
+  const defaultImgHeightPx = 500;
   const loadingOrErrStyle = {
     aspectRatio,
-    height: aspectRatio ? undefined : 200,
+    height: aspectRatio ? undefined : defaultImgHeightPx,
   };
   const [hasImageLoaded, setHasImageLoaded] = useState(false);
 
