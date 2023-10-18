@@ -5,7 +5,6 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { ReactNode, useEffect, useState } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import NextImageSkeleton from "./Skeleton";
 import styles from "./styles.module.css";
 
 interface TProps {
@@ -33,7 +32,7 @@ export default function NextImageComponent({
     aspectRatio,
     height: aspectRatio ? undefined : 200,
   };
-  const [hasImageLoaded, setHasImageLoaded] = useState(true);
+  const [hasImageLoaded, setHasImageLoaded] = useState(false);
 
   let content: ReactNode;
 
@@ -52,12 +51,11 @@ export default function NextImageComponent({
         fill={true}
         className={styles.image}
         style={{
-          aspectRatio: hasImageLoaded ? aspectRatio ?? undefined : undefined,
+          aspectRatio: aspectRatio ?? undefined,
           display: "block",
         }}
         onLoadingComplete={({ naturalWidth, naturalHeight }) => {
           setHasImageLoaded(true);
-          console.log("hello");
           if (!height || !width) {
             updateAttributes({ width: naturalWidth, height: naturalHeight });
           }
@@ -65,5 +63,16 @@ export default function NextImageComponent({
       />
     );
 
-  return <NodeViewWrapper>{content}</NodeViewWrapper>;
+  return (
+    <NodeViewWrapper>
+      <div className="overflow-hidden">
+        <div
+          className={`duration-100`}
+          style={{ filter: hasImageLoaded ? undefined : "blur(8px)" }}
+        >
+          {content}
+        </div>
+      </div>
+    </NodeViewWrapper>
+  );
 }
