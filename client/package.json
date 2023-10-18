@@ -60,6 +60,7 @@
     "@types/react-resizable": "^3.0.4",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^3.0.0",
-    "prettier-plugin-tailwindcss": "^0.4.1"
+    "prettier-plugin-tailwindcss": "^0.4.1",
+    "sass": "^1.69.4"
   }
 }
