@@ -30,9 +30,11 @@ export default function NextImageComponent({
   const { data, isLoading: isLoadingUrl, isError } = useMediaFileQuery(id);
   const aspectRatio = width && height ? width / height : undefined;
   const defaultImgHeightPx = 500;
+  const imgMaxWidthPx = 700;
   const loadingOrErrStyle = {
     aspectRatio,
     height: aspectRatio ? undefined : defaultImgHeightPx,
+    maxWidth: imgMaxWidthPx,
   };
   const [hasImageLoaded, setHasImageLoaded] = useState(false);
   const { selectedNoteId } = useGetContext(NotesContext);
@@ -59,6 +61,7 @@ export default function NextImageComponent({
         style={{
           aspectRatio: aspectRatio ?? undefined,
           display: "block",
+          maxWidth: imgMaxWidthPx,
         }}
         onLoadingComplete={({ naturalWidth, naturalHeight }) => {
           setHasImageLoaded(true);
