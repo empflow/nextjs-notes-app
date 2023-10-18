@@ -53,7 +53,7 @@ export default function EditorContent({ initContent }: TProps) {
   });
 
   useEffect(() => {
-    editor?.commands.setContent(initContent);
+    setTimeout(() => editor?.commands.setContent(initContent), 0);
   }, [initContent]);
 
   return (
