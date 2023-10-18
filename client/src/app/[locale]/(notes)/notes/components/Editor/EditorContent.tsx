@@ -6,6 +6,10 @@ import Link from "@tiptap/extension-link";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
 import Underline from "@tiptap/extension-underline";
+import Table from "@tiptap/extension-table";
+import TableCell from "@tiptap/extension-table-cell";
+import TableHeader from "@tiptap/extension-table-header";
+import TableRow from "@tiptap/extension-table-row";
 import {
   Editor,
   EditorContent as TiptapEditorContent,
@@ -14,9 +18,10 @@ import {
 } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { useEffect, useState } from "react";
-import styles from "./editor.module.css";
 import findNoteTitleAndDescription from "@shared/utils/findNoteTitleAndDescription";
-import "./editorContent.css";
+import "./styles/table.scss";
+import "./styles/taskListItem.scss";
+import editorStyles from "./styles/editor.module.scss";
 
 interface TProps {
   initContent: JSONContent | null;
@@ -41,6 +46,10 @@ export default function EditorContent({ initContent }: TProps) {
         linkOnPaste: true,
       }),
       NextImage,
+      Table.configure({ resizable: true }),
+      TableHeader,
+      TableCell,
+      TableRow,
     ],
     onUpdate: ({ editor }) => {
       setHasContentChanged(true);
@@ -59,7 +68,7 @@ export default function EditorContent({ initContent }: TProps) {
 
   return (
     <TiptapEditorContent
-      className={`flex flex-grow ${styles.editor}`}
+      className={`flex flex-grow ${editorStyles.editor}`}
       editor={editor}
     />
   );

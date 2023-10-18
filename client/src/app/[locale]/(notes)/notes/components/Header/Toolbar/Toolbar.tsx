@@ -26,10 +26,41 @@ export default function Toolbar() {
         <AddLink />
         <ToolbarItem
           tooltipText={t("addTable")}
-          isDisabled={!editor?.can().chain().focus().redo().run()}
-          onClick={() => editor?.chain().focus().redo().run()}
+          isDisabled={
+            !editor
+              ?.can()
+              .chain()
+              .focus()
+              .insertTable({ rows: 5, cols: 4, withHeaderRow: false })
+              .run()
+          }
+          onClick={() => editor?.chain().focus().insertTable().run()}
           icon={<TableIcon />}
         />
+        {/* <ToolbarItem
+          tooltipText={"add col before"}
+          isDisabled={!editor?.can().chain().focus().addColumnBefore().run()}
+          onClick={() => editor?.chain().focus().addColumnBefore().run()}
+          icon={<TableIcon />}
+        />
+        <ToolbarItem
+          tooltipText={"add col after"}
+          isDisabled={!editor?.can().chain().focus().addColumnAfter().run()}
+          onClick={() => editor?.chain().focus().addColumnAfter().run()}
+          icon={<TableIcon />}
+        />
+        <ToolbarItem
+          tooltipText={"add row before"}
+          isDisabled={!editor?.can().chain().focus().addRowBefore().run()}
+          onClick={() => editor?.chain().focus().addRowBefore().run()}
+          icon={<TableIcon />}
+        />
+        <ToolbarItem
+          tooltipText={"add row after"}
+          isDisabled={!editor?.can().chain().focus().addRowAfter().run()}
+          onClick={() => editor?.chain().focus().addRowAfter().run()}
+          icon={<TableIcon />}
+        /> */}
         <Undo />
         <Redo />
       </TooltipContainer>
