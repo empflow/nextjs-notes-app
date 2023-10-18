@@ -226,7 +226,7 @@ export const getPlaceholderImgBase64 = async (
     size = 4,
     format = ["png"],
     brightness = 1,
-    saturation = 1.2,
+    saturation = 1,
     removeAlpha = false,
     ...options
   }: GetPlaiceholderOptions = {}
