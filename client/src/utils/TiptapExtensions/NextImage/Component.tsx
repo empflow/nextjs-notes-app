@@ -1,10 +1,11 @@
 import useMediaFileQuery from "@/app/hooks/queries/useMediaFileQuery";
-import useRerender from "@/app/hooks/useRerender";
+import useGetContext from "@/app/hooks/useGetContext";
+import NotesContext from "@/contexts/NotesContext";
 import { NodeViewWrapper } from "@tiptap/react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { ReactNode, useEffect, useState } from "react";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import Skeleton from "react-loading-skeleton";
 import styles from "./styles.module.css";
 
 interface TProps {
@@ -34,15 +35,19 @@ export default function NextImageComponent({
     height: aspectRatio ? undefined : defaultImgHeightPx,
   };
   const [hasImageLoaded, setHasImageLoaded] = useState(false);
+  const { selectedNoteId } = useGetContext(NotesContext);
+
+  useEffect(() => {
+    setHasImageLoaded(false);
+  }, [selectedNoteId]);
 
   let content: ReactNode;
 
   if (isError) {
     content = <div style={loadingOrErrStyle}>{errsT("image")}</div>;
-  } else if (isLoadingUrl) {
+  } else if (isLoadingUrl || !data) {
     content = <Skeleton style={loadingOrErrStyle} />;
-  } else if (!data) content = <Skeleton style={loadingOrErrStyle} />;
-  else
+  } else
     content = (
       <Image
         alt={t("image")}
@@ -68,8 +73,10 @@ export default function NextImageComponent({
     <NodeViewWrapper>
       <div className="overflow-hidden">
         <div
-          className={`duration-100`}
-          style={{ filter: hasImageLoaded ? undefined : "blur(8px)" }}
+          className="duration-200"
+          style={{
+            filter: hasImageLoaded || !data ? undefined : "blur(8px)",
+          }}
         >
           {content}
         </div>
