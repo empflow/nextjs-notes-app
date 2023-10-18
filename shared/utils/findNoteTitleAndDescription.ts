@@ -5,7 +5,7 @@ type TFindTitleAndDescriptionInContentReturnT = {
   description: string | null;
 };
 
-export default function findTitleAndDescriptionInContent(
+export default function findNoteTitleAndDescription(
   content: JSONContent
 ): TFindTitleAndDescriptionInContentReturnT {
   let title: string | null = null;

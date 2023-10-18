@@ -1,13 +1,13 @@
 import useSaveEditorContent from "@/app/hooks/queries/useSaveEditorContentQuery";
 import useGetContext from "@/app/hooks/useGetContext";
-import NotesContext, { TNotesListNotesMeta } from "@/contexts/NotesContext";
+import NotesContext from "@/contexts/NotesContext";
 import { NextImage } from "@/utils/TiptapExtensions/NextImage/NextImage";
-import { SetState } from "@/utils/types";
 import Link from "@tiptap/extension-link";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
 import Underline from "@tiptap/extension-underline";
 import {
+  Editor,
   EditorContent as TiptapEditorContent,
   JSONContent,
   useEditor,
@@ -15,6 +15,7 @@ import {
 import StarterKit from "@tiptap/starter-kit";
 import { useEffect, useState } from "react";
 import styles from "./editor.module.css";
+import findNoteTitleAndDescription from "@shared/utils/findNoteTitleAndDescription";
 import "./editorContent.css";
 
 interface TProps {
@@ -43,7 +44,7 @@ export default function EditorContent({ initContent }: TProps) {
     ],
     onUpdate: ({ editor }) => {
       setHasContentChanged(true);
-      updateSelectedNoteProps(setNotes, selectedNoteId);
+      updateSelectedNoteProps(editor as Editor);
       setContent(editor.getJSON());
     },
     onCreate({ editor }) {
@@ -62,19 +63,22 @@ export default function EditorContent({ initContent }: TProps) {
       editor={editor}
     />
   );
-}
 
-function updateSelectedNoteProps(
-  setNotes: SetState<TNotesListNotesMeta>,
-  selectedNoteId: string | null,
-) {
-  setNotes((prevNotes) => {
-    if (!prevNotes || !selectedNoteId) return prevNotes;
+  function updateSelectedNoteProps(editor: Editor) {
+    setNotes((prevNotes) => {
+      if (!prevNotes || !selectedNoteId) return prevNotes;
 
-    return prevNotes.map((note) => {
-      if (note._id !== selectedNoteId) return note;
-      note.updatedAt = new Date().toISOString();
-      return note;
+      return prevNotes.map((note) => {
+        if (note._id !== selectedNoteId) return note;
+        console.log(editor.getJSON());
+        const { title, description } = findNoteTitleAndDescription(
+          editor?.getJSON(),
+        );
+        note.title = title;
+        note.description = description;
+        note.updatedAt = new Date().toISOString();
+        return note;
+      });
     });
-  });
+  }
 }
