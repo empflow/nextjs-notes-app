@@ -1,4 +1,4 @@
-import { mergeAttributes, Node, nodeInputRule } from "@tiptap/core";
+import { mergeAttributes, Node, nodeInputRule } from "@tiptap/react";
 import { ReactNodeViewRenderer } from "@tiptap/react";
 import NextImageComponent from "./Component";
 
@@ -6,7 +6,7 @@ export interface TNextImageOptions {
   HTMLAttributes: Record<string, any>;
 }
 
-declare module "@tiptap/core" {
+declare module "@tiptap/react" {
   interface Commands<ReturnType> {
     image: {
       setNextImage: (options: { id: string | null }) => ReturnType;

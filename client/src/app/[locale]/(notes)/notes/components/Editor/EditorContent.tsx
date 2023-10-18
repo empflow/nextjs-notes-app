@@ -49,7 +49,7 @@ export default function EditorContent({ initContent }: TProps) {
     },
     onCreate({ editor }) {
       editor.commands.setContent(initContent);
-      setEditor(editor);
+      setEditor(editor as Editor);
     },
   });
 
@@ -70,7 +70,6 @@ export default function EditorContent({ initContent }: TProps) {
 
       return prevNotes.map((note) => {
         if (note._id !== selectedNoteId) return note;
-        console.log(editor.getJSON());
         const { title, description } = findNoteTitleAndDescription(
           editor?.getJSON(),
         );

@@ -3,7 +3,7 @@
 import { SetState, TContext } from "@/utils/types";
 import { TTagSchema } from "@shared/schemas/tag";
 import { TNoteMetaSchema } from "@shared/schemas/note";
-import { Editor } from "@tiptap/core";
+import { Editor } from "@tiptap/react";
 import { createContext } from "react";
 
 export type TNotesListNotesMeta = TNoteMetaSchema[] | null;
