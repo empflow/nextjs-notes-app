@@ -31,6 +31,11 @@ $borderColor: rgb(170 170 170);
     border-top: 1px solid $borderColor;
   }
 
+  th {
+    font-weight: normal;
+    border-top: 1px solid $borderColor;
+  }
+
   thead:first-child tr:first-child th:first-child,
   tbody:first-child tr:first-child td:first-child {
     border-radius: $borderRadius 0 0 0;

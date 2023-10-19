@@ -2,7 +2,7 @@ import ViewsContainer from "@/app/components/Views/ViewsContainer";
 import useGetContext from "@/app/hooks/useGetContext";
 import { ToolbarContext } from "../../Context";
 import FormatTextIcon from "@/icons/svg/formatText.svg";
-import ToolbarItem from "../Item";
+import ToolbarItem from "../ToolbarItem";
 import { useTranslations } from "next-intl";
 import Popover from "@/app/components/Popover";
 import FormattingView from "./Formatting/Formatting";

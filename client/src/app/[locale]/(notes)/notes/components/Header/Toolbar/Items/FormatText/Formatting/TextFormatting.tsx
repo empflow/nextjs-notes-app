@@ -6,7 +6,7 @@ import useGetContext from "@/app/hooks/useGetContext";
 import TooltipContainer from "@/app/components/TooltipContainer";
 import { useTranslations } from "next-intl";
 import NotesContext from "@/contexts/NotesContext";
-import ToolbarItem from "../../Item";
+import ToolbarItem from "../../ToolbarItem";
 import useRerender from "@/app/hooks/useRerender";
 
 export default function TextFormatting() {

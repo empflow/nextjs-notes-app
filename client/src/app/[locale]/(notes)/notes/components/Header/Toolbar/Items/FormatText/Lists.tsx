@@ -2,7 +2,7 @@ import View from "@/app/components/Views/View";
 import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext from "@/contexts/NotesContext";
 import { useTranslations } from "next-intl";
-import FormatTextItem from "./Item";
+import ActivatableItem from "../ActivatableItem";
 import OrderedListIcon from "@/icons/svg/orderedList.svg";
 import BulletedListIcon from "@/icons/svg/bulletedList.svg";
 import TaskListIcon from "@/icons/svg/taskList.svg";
@@ -51,26 +51,26 @@ export default function ListsView() {
   return (
     <View
       headerClassName="px-3 py-2"
-      childrenClassName="flex justify-between px-3 py-2"
+      childrenContainerClassName="flex justify-between px-3 py-2"
       name="lists"
       nameToShow={t("menuTitle")}
       backBtn={{ navTo: "formatting", text: tFormatText("menuTitle") }}
     >
-      <FormatTextItem
+      <ActivatableItem
         text={t("ordered")}
         icon={<OrderedListIcon />}
         onClick={toggleOrderedList}
         isActive={editor?.isActive("orderedList")}
         isDisabled={isOrderedListDisabled}
       />
-      <FormatTextItem
+      <ActivatableItem
         text={t("bulleted")}
         icon={<BulletedListIcon />}
         onClick={toggleBulletedList}
         isActive={editor?.isActive("bulletList")}
         isDisabled={isBulletedListDisabled}
       />
-      <FormatTextItem
+      <ActivatableItem
         text={t("task")}
         icon={<TaskListIcon />}
         onClick={toggleTaskList}

@@ -51,10 +51,8 @@ export const NextImage = Node.create<TNextImageOptions>({
   },
 
   // @ts-ignore
-  addNodeView: function () {
-    return ReactNodeViewRenderer(NextImageComponent, {
-      className: "w-full h-full",
-    });
+  addNodeView() {
+    return ReactNodeViewRenderer(NextImageComponent);
   },
 
   addCommands() {

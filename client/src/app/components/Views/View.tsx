@@ -12,7 +12,7 @@ interface TProps {
     text: string;
     navTo: string;
   };
-  childrenClassName?: string;
+  childrenContainerClassName?: string;
   headerClassName?: string;
 }
 
@@ -21,7 +21,7 @@ export default function View({
   name,
   nameToShow,
   backBtn,
-  childrenClassName,
+  childrenContainerClassName,
   headerClassName,
 }: TProps) {
   const { activeView, setViewsContainerHeight } = useGetContext(
@@ -46,7 +46,9 @@ export default function View({
           )}
           {nameToShow && <div className="text-xl font-bold">{nameToShow}</div>}
         </div>
-        <div className={`flex flex-col ${childrenClassName}`}>{children}</div>
+        <div className={`flex flex-col ${childrenContainerClassName}`}>
+          {children}
+        </div>
       </div>
     </>
   );

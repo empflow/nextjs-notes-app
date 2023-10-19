@@ -1,7 +1,7 @@
 import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext from "@/contexts/NotesContext";
 import { useTranslations } from "next-intl";
-import ToolbarItem from "./Item";
+import ToolbarItem from "./ToolbarItem";
 import UndoIcon from "@/icons/svg/undo.svg";
 
 export default function Undo() {

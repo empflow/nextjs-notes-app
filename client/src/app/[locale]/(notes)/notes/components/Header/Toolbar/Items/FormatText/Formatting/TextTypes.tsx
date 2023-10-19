@@ -7,7 +7,7 @@ import H3Icon from "@/icons/svg/h3.svg";
 import BodyTextIcon from "@/icons/svg/text.svg";
 import CodeIcon from "@/icons/svg/code.svg";
 import { useTranslations } from "next-intl";
-import FormatTextItem from "../Item";
+import ActivatableItem from "../../ActivatableItem";
 
 export type THeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -38,35 +38,35 @@ export default function TextTypes() {
 
   return (
     <div className="flex flex-col px-3 py-2">
-      <FormatTextItem
+      <ActivatableItem
         text={t("title")}
         icon={<H1Icon />}
         onClick={() => setHeading({ level: 1 })}
         isActive={editor?.isActive("heading", { level: 1 })}
         isDisabled={isH1Disabled}
       />
-      <FormatTextItem
+      <ActivatableItem
         text={t("heading")}
         icon={<H2Icon />}
         onClick={() => setHeading({ level: 2 })}
         isActive={editor?.isActive("heading", { level: 2 })}
         isDisabled={isH2Disabled}
       />
-      <FormatTextItem
+      <ActivatableItem
         text={t("subheading")}
         icon={<H3Icon />}
         onClick={() => setHeading({ level: 3 })}
         isActive={editor?.isActive("heading", { level: 3 })}
         isDisabled={isH3Disabled}
       />
-      <FormatTextItem
+      <ActivatableItem
         text={t("body")}
         icon={<BodyTextIcon />}
         onClick={toggleBodyText}
         isActive={editor?.isActive("paragraph")}
         isDisabled={false}
       />
-      <FormatTextItem
+      <ActivatableItem
         text={t("code")}
         icon={<CodeIcon />}
         onClick={toggleCode}

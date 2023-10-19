@@ -46,7 +46,11 @@ export default function EditorContent({ initContent }: TProps) {
         linkOnPaste: true,
       }),
       NextImage,
-      Table.configure({ resizable: true }),
+      Table.configure({
+        resizable: true,
+        cellMinWidth: 70,
+        handleWidth: 50,
+      }),
       TableHeader,
       TableCell,
       TableRow,

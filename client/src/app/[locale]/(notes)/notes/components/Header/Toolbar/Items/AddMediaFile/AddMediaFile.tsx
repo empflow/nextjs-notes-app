@@ -2,7 +2,7 @@ import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext from "@/contexts/NotesContext";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
-import ToolbarItem from "../Item";
+import ToolbarItem from "../ToolbarItem";
 import ImageIcon from "@/icons/svg/image.svg";
 import Popover from "@/app/components/Popover";
 import Hidable from "@/app/components/Hidable";

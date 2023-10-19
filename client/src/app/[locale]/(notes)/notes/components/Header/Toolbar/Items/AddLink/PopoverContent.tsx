@@ -4,7 +4,7 @@ import NotesContext from "@/contexts/NotesContext";
 import { useTranslations } from "next-intl";
 import { ToolbarContext } from "../../Context";
 import useGetToggleLinkAttrs from "./useGetToggleLinkAttrs";
-import useSelectionIncludesLink from "./useSelectionIncludesLink";
+import useSelectionIncludesLink from "../../../../../../../../hooks/useSelectionIncludesMark";
 
 export default function AddLinkPopoverContent() {
   const toggleLinkAttrs = useGetToggleLinkAttrs();
@@ -12,8 +12,10 @@ export default function AddLinkPopoverContent() {
   const { link, setLink, setIsAddLinkMenuOpen, isAddLinkMenuOpen } =
     useGetContext(ToolbarContext);
   const { editor } = useGetContext(NotesContext);
-  const [selectionIncludesLink, updateSelectionIncludesLink] =
-    useSelectionIncludesLink();
+  const selectionIncludesLink = useSelectionIncludesLink({
+    isMenuOpen: isAddLinkMenuOpen,
+    markName: "link",
+  });
 
   function toggleLink() {
     linkAction(editor?.chain().focus().toggleLink(toggleLinkAttrs).run);
