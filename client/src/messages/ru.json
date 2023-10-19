@@ -51,6 +51,13 @@
     },
     "table": {
       "menuTitle": "Таблица",
+      "rows": "Строки",
+      "cols": "Столбцы",
+      "mergeSelectedCells": "Объединить выбранные ячейки",
+      "splitSelectedCells": "Разделить ячейку",
+      "fixAllTables": "Исправить все таблицы",
+      "addTable": "Добавить новую таблицу",
+      "deleteTable": "Удалить таблицу",
       "addRowAbove": "Добавить строку сверху",
       "addRowBelow": "Добавить строку снизу",
       "addColToLeft": "Добавить столбец слева",

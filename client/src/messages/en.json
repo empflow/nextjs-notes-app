@@ -47,6 +47,13 @@
     },
     "table": {
       "menuTitle": "Table",
+      "rows": "Rows",
+      "cols": "Columns",
+      "mergeSelectedCells": "Merge selected cells",
+      "splitSelectedCells": "Split cell",
+      "fixAllTables": "Fix all tables",
+      "addTable": "Add new table",
+      "deleteTable": "Delete table",
       "addRowAbove": "Add row above",
       "addRowBelow": "Add row below",
       "addColToLeft": "Add column to the left",
