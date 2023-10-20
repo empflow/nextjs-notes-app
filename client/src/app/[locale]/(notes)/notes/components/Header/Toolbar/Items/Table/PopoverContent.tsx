@@ -8,21 +8,20 @@ import { TableContext } from "./Context";
 import TableMenuSection from "./Section";
 import AddIcon from "@/icons/svg/add.svg";
 import DeleteIcon from "@/icons/svg/delete.svg";
+import useIsSelectionInsideTable from "@/app/[locale]/(notes)/notes/components/Header/Toolbar/Items/Table/useIsSelectionInsideTable";
 
 export default function TablePopoverContent() {
   const t = useTranslations("Toolbar.table");
   const { editor } = useGetContext(NotesContext);
   const { isMenuOpen } = useGetContext(TableContext);
-  const selectionIncludesTable = useSelectionIncludesMark({
+  const selectionIncludesTable = useIsSelectionInsideTable({
     isMenuOpen,
-    markName: "table",
   });
 
   const isAddTableDisabled =
     selectionIncludesTable ||
     !editor?.can().chain().insertTable({ withHeaderRow: false }).run();
-  const isDeleteTableDisabled =
-    !selectionIncludesTable || !editor?.can().chain().deleteTable().run();
+  const isDeleteTableDisabled = !editor?.can().chain().deleteTable().run();
   const isAddRowAboveDisabled = !editor?.can().chain().addRowBefore().run();
   const isAddRowBelowDisabled = !editor?.can().chain().addRowAfter().run();
   const isAddColToLeftDisabled = !editor?.can().chain().addColumnBefore().run();
