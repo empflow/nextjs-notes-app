@@ -36,13 +36,11 @@ export default function useSelectionIncludesMark({
     const selection = editor?.state?.selection;
     if (!selection) return false;
 
-    const { $from, $to } = selection;
+    const { from, to } = selection;
     let selectionIncludesMark = false;
 
-    console.log(editor.getJSON());
-    editor.state.doc.nodesBetween($from.pos, $to.pos, (node) => {
+    editor.state.doc.nodesBetween(from, to, (node) => {
       const hasTargetMark = node.marks.some((mark) => {
-        console.log(mark);
         return mark.type.name === markName;
       });
       if (hasTargetMark) selectionIncludesMark = true;
