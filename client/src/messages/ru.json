@@ -57,6 +57,8 @@
       "splitSelectedCells": "Разделить ячейку",
       "fixAllTables": "Исправить все таблицы",
       "addTable": "Добавить новую таблицу",
+      "deleteRow": "Удалить строку",
+      "deleteCol": "Удалить столбец",
       "deleteTable": "Удалить таблицу",
       "addRowAbove": "Добавить строку сверху",
       "addRowBelow": "Добавить строку снизу",

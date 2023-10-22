@@ -22,12 +22,14 @@ export default function TablePopoverContent() {
     selectionIncludesTable ||
     !editor?.can().chain().insertTable({ withHeaderRow: false }).run();
   const isDeleteTableDisabled = !editor?.can().chain().deleteTable().run();
+
   const isAddRowAboveDisabled = !editor?.can().chain().addRowBefore().run();
   const isAddRowBelowDisabled = !editor?.can().chain().addRowAfter().run();
+  const isDeleteRowDisabled = !editor?.can().chain().deleteRow().run();
+
   const isAddColToLeftDisabled = !editor?.can().chain().addColumnBefore().run();
   const isAddColToRightDisabled = !editor?.can().chain().addColumnAfter().run();
-
-  console.log(selectionIncludesTable);
+  const isDeleteColDisabled = !editor?.can().chain().deleteColumn().run();
 
   function addRowAbove() {
     editor?.chain().addRowBefore().focus().run();
@@ -48,6 +50,8 @@ export default function TablePopoverContent() {
   const addTable = () =>
     editor?.chain().insertTable({ withHeaderRow: false }).focus().run();
   const deleteTable = () => editor?.chain().deleteTable().focus().run();
+  const deleteRow = () => editor?.chain().deleteRow().focus().run();
+  const deleteCol = () => editor?.chain().deleteColumn().focus().run();
 
   return (
     <div className="flex flex-col gap-2">
@@ -77,6 +81,11 @@ export default function TablePopoverContent() {
           onClick={addRowBelow}
           isDisabled={isAddRowBelowDisabled}
         />
+        <HoverableItem
+          text={t("deleteRow")}
+          onClick={deleteRow}
+          isDisabled={isDeleteRowDisabled}
+        />
       </TableMenuSection>
       <TableMenuSection title={t("cols")}>
         <HoverableItem
@@ -88,6 +97,11 @@ export default function TablePopoverContent() {
           text={t("addColToRight")}
           onClick={addColToRight}
           isDisabled={isAddColToRightDisabled}
+        />
+        <HoverableItem
+          text={t("deleteCol")}
+          onClick={deleteCol}
+          isDisabled={isDeleteColDisabled}
         />
       </TableMenuSection>
     </div>

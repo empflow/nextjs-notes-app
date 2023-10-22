@@ -54,6 +54,8 @@
       "fixAllTables": "Fix all tables",
       "addTable": "Add new table",
       "deleteTable": "Delete table",
+      "deleteRow": "Delete row",
+      "deleteCol": "Delete column",
       "addRowAbove": "Add row above",
       "addRowBelow": "Add row below",
       "addColToLeft": "Add column to the left",
