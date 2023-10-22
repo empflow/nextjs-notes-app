@@ -63,7 +63,10 @@
       "addRowAbove": "Добавить строку сверху",
       "addRowBelow": "Добавить строку снизу",
       "addColToLeft": "Добавить столбец слева",
-      "addColToRight": "Добавить столбец справа"
+      "addColToRight": "Добавить столбец справа",
+      "toggleHeaderRow": "Переключить заглавную строку",
+      "toggleHeaderCell": "Переключить заглавную ячейку",
+      "toggleHeaderCol": "Переключить заглавный столбец"
     },
     "formatText": {
       "menuTitle": "Форматирование",

@@ -34,21 +34,26 @@ export default function TablePopoverContent() {
   const isMergeCellsDisabled = !editor?.can().chain().mergeCells().run();
   const isSplitCellDisabled = !editor?.can().chain().splitCell().run();
 
-  function addRowAbove() {
-    editor?.chain().addRowBefore().focus().run();
-  }
+  const isToggleHeaderRowDisabled = !editor
+    ?.can()
+    .chain()
+    .toggleHeaderRow()
+    .run();
+  const isToggleHeaderColDisabled = !editor
+    ?.can()
+    .chain()
+    .toggleHeaderColumn()
+    .run();
+  const isToggleHeaderCellDisabled = !editor
+    ?.can()
+    .chain()
+    .toggleHeaderCell()
+    .run();
 
-  function addRowBelow() {
-    editor?.chain().addRowAfter().focus().run();
-  }
-
-  function addColToLeft() {
-    editor?.chain().addColumnBefore().focus().run();
-  }
-
-  function addColToRight() {
-    editor?.chain().addColumnAfter().focus().run();
-  }
+  const addRowAbove = () => editor?.chain().addRowBefore().focus().run();
+  const addRowBelow = () => editor?.chain().addRowAfter().focus().run();
+  const addColToLeft = () => editor?.chain().addColumnBefore().focus().run();
+  const addColToRight = () => editor?.chain().addColumnAfter().focus().run();
 
   const addTable = () =>
     editor?.chain().insertTable({ withHeaderRow: false }).focus().run();
@@ -57,6 +62,11 @@ export default function TablePopoverContent() {
   const deleteCol = () => editor?.chain().deleteColumn().focus().run();
   const mergeCells = () => editor?.chain().mergeCells().focus().run();
   const splitCell = () => editor?.chain().splitCell().focus().run();
+  const toggleHeaderRow = () => editor?.chain().toggleHeaderRow().focus().run();
+  const toggleHeaderCol = () =>
+    editor?.chain().toggleHeaderColumn().focus().run();
+  const toggleHeaderCell = () =>
+    editor?.chain().toggleHeaderCell().focus().run();
 
   return (
     <div className="flex flex-col gap-2">
@@ -120,6 +130,24 @@ export default function TablePopoverContent() {
           text={t("splitCell")}
           onClick={splitCell}
           isDisabled={isSplitCellDisabled}
+        />
+      </TableMenuSection>
+      <Divider />
+      <TableMenuSection>
+        <HoverableItem
+          text={t("toggleHeaderRow")}
+          onClick={toggleHeaderRow}
+          isDisabled={isToggleHeaderRowDisabled}
+        />
+        <HoverableItem
+          text={t("toggleHeaderCol")}
+          onClick={toggleHeaderCol}
+          isDisabled={isToggleHeaderColDisabled}
+        />
+        <HoverableItem
+          text={t("toggleHeaderCell")}
+          onClick={toggleHeaderCell}
+          isDisabled={isToggleHeaderCellDisabled}
         />
       </TableMenuSection>
     </div>

@@ -59,7 +59,10 @@
       "addRowAbove": "Add row above",
       "addRowBelow": "Add row below",
       "addColToLeft": "Add column to the left",
-      "addColToRight": "Add column to the right"
+      "addColToRight": "Add column to the right",
+      "toggleHeaderRow": "Toggle header row",
+      "toggleHeaderCell": "Toggle header cell",
+      "toggleHeaderCol": "Toggle header column"
     },
     "formatText": {
       "menuTitle": "Formatting",
