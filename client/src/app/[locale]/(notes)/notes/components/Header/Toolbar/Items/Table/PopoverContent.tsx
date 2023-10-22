@@ -31,6 +31,9 @@ export default function TablePopoverContent() {
   const isAddColToRightDisabled = !editor?.can().chain().addColumnAfter().run();
   const isDeleteColDisabled = !editor?.can().chain().deleteColumn().run();
 
+  const isMergeCellsDisabled = !editor?.can().chain().mergeCells().run();
+  const isSplitCellDisabled = !editor?.can().chain().splitCell().run();
+
   function addRowAbove() {
     editor?.chain().addRowBefore().focus().run();
   }
@@ -52,6 +55,8 @@ export default function TablePopoverContent() {
   const deleteTable = () => editor?.chain().deleteTable().focus().run();
   const deleteRow = () => editor?.chain().deleteRow().focus().run();
   const deleteCol = () => editor?.chain().deleteColumn().focus().run();
+  const mergeCells = () => editor?.chain().mergeCells().focus().run();
+  const splitCell = () => editor?.chain().splitCell().focus().run();
 
   return (
     <div className="flex flex-col gap-2">
@@ -102,6 +107,19 @@ export default function TablePopoverContent() {
           text={t("deleteCol")}
           onClick={deleteCol}
           isDisabled={isDeleteColDisabled}
+        />
+      </TableMenuSection>
+      <Divider />
+      <TableMenuSection>
+        <HoverableItem
+          text={t("mergeCells")}
+          onClick={mergeCells}
+          isDisabled={isMergeCellsDisabled}
+        />
+        <HoverableItem
+          text={t("splitCell")}
+          onClick={splitCell}
+          isDisabled={isSplitCellDisabled}
         />
       </TableMenuSection>
     </div>
