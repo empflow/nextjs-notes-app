@@ -2,7 +2,6 @@ import useGetContext from "@/app/hooks/useGetContext";
 import { useTranslations } from "next-intl";
 import NotesContext from "@/contexts/NotesContext";
 import Skeleton from "react-loading-skeleton";
-import { Property as CSSProperty } from "csstype";
 import { TNoteSchema } from "@shared/schemas/note";
 
 interface TNoteProps {
@@ -30,7 +29,7 @@ export default function Note({
     description = !description ? t("noAdditionalText") : description;
   }
 
-  let borderColor: undefined | CSSProperty.BorderColor = undefined;
+  let borderColor: undefined | string = undefined;
   if (isSelected || isAboveSelectedNote) borderColor = "transparent";
 
   return (
