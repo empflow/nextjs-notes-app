@@ -2,9 +2,9 @@ import express from "express";
 const router = express.Router();
 import helmet from "helmet";
 import morgan from "morgan";
-import cors from "cors";
+import corsMw from "./cors";
 
-router.use(cors({ origin: "*" }));
+router.use(corsMw);
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 router.use(helmet());
