@@ -30,7 +30,9 @@ export default function useIsSelectionInsideTable({ isMenuOpen }: TProps) {
 
   function getSelectionincludesTable() {
     if (!editor) return false;
-    return editor.state.selection.$from.node(-1).type.name === "tableCell";
+    return !!(
+      editor?.state?.selection?.$from?.node(-1)?.type?.name === "tableCell"
+    );
   }
 
   return selectionIncludesTable;
