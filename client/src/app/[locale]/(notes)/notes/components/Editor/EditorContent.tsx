@@ -6,7 +6,7 @@ import Link from "@tiptap/extension-link";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
 import Underline from "@tiptap/extension-underline";
-import Table from "@tiptap/extension-table";
+import Table from "@/utils/TiptapExtensions/Table";
 import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
@@ -14,8 +14,6 @@ import {
   Editor,
   EditorContent as TiptapEditorContent,
   JSONContent,
-  NodeViewWrapper,
-  ReactNodeViewRenderer,
   useEditor,
 } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
@@ -24,8 +22,6 @@ import findNoteTitleAndDescription from "@shared/utils/findNoteTitleAndDescripti
 import "./styles/table.scss";
 import "./styles/taskListItem.scss";
 import editorStyles from "./styles/editor.module.scss";
-import TableView from "./TableView";
-import { NodeView, NodeViewRenderer } from "@tiptap/core";
 
 interface TProps {
   initContent: JSONContent | null;
@@ -50,7 +46,7 @@ export default function EditorContent({ initContent }: TProps) {
         linkOnPaste: true,
       }),
       NextImage,
-      Table.configure({}),
+      Table.configure({ HTMLAttributes: { class: "table" } }),
       TableHeader.configure({}),
       TableCell.configure({}),
       TableRow.configure({}),
