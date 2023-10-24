@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import Note from "../../models/Note";
-import { JSONContent } from "@tiptap/react";
+import { initNoteContent } from "@/shared/values";
 
 export default async function addNote(req: Request, res: Response) {
   const { content, tags } = req.body;
@@ -11,20 +11,8 @@ export default async function addNote(req: Request, res: Response) {
     owner: userId,
     title,
     tags,
-    content: content ?? getInitContent(),
+    content: content ?? initNoteContent,
     description,
   });
   res.status(201).json(note);
-}
-
-function getInitContent(): JSONContent {
-  return {
-    type: "doc",
-    content: [
-      {
-        type: "heading",
-        attrs: { level: 1 },
-      },
-    ],
-  };
 }
