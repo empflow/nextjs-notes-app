@@ -1,0 +1,18 @@
+h1 {
+  font-size: 1.7rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+pre {
+  @apply border border-light-3xl-gray bg-light-5xl-gray dark:border-dark-3xl-gray dark:bg-dark-5xl-gray;
+  padding: 8px;
+  border-radius: 4px;
+  margin: 8px 0;
+}

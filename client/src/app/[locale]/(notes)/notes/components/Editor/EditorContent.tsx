@@ -21,6 +21,7 @@ import { useEffect, useState } from "react";
 import findNoteTitleAndDescription from "@shared/utils/findNoteTitleAndDescription";
 import "./styles/table.scss";
 import "./styles/taskListItem.scss";
+import "./styles/text.scss";
 import editorStyles from "./styles/editor.module.scss";
 
 interface TProps {
