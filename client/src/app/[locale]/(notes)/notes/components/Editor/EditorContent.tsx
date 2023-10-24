@@ -14,6 +14,8 @@ import {
   Editor,
   EditorContent as TiptapEditorContent,
   JSONContent,
+  NodeViewWrapper,
+  ReactNodeViewRenderer,
   useEditor,
 } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
@@ -22,6 +24,8 @@ import findNoteTitleAndDescription from "@shared/utils/findNoteTitleAndDescripti
 import "./styles/table.scss";
 import "./styles/taskListItem.scss";
 import editorStyles from "./styles/editor.module.scss";
+import TableView from "./TableView";
+import { NodeView, NodeViewRenderer } from "@tiptap/core";
 
 interface TProps {
   initContent: JSONContent | null;
@@ -46,14 +50,10 @@ export default function EditorContent({ initContent }: TProps) {
         linkOnPaste: true,
       }),
       NextImage,
-      Table.configure({
-        resizable: true,
-        cellMinWidth: 70,
-        handleWidth: 50,
-      }),
-      TableHeader,
-      TableCell,
-      TableRow,
+      Table.configure({}),
+      TableHeader.configure({}),
+      TableCell.configure({}),
+      TableRow.configure({}),
     ],
     onUpdate: ({ editor }) => {
       setHasContentChanged(true);

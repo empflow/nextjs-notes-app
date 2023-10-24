@@ -1,11 +1,11 @@
 $borderRadius: 4px;
 $borderColor: rgb(170 170 170);
 
-.tableWrapper {
+tbody {
   overflow-x: scroll;
 }
 
-.tableWrapper table {
+table {
   border: 1px solid $borderColor;
   border-collapse: separate;
   border-left: 0;
