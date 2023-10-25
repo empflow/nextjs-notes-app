@@ -26,6 +26,7 @@ export default function Table() {
       icon={<TableIcon />}
     >
       <Popover
+        portalSelector="#main-content-popover-overlays"
         style={{ width: menuWidth }}
         position="bottom-center"
         {...{ isOpen: isMenuOpen, setIsOpen: setIsMenuOpen }}

@@ -23,6 +23,7 @@ export default function MainContent() {
     >
       <Header />
       <Editor />
+      <div id="main-content-popover-overlays"></div>
     </div>
   );
 }

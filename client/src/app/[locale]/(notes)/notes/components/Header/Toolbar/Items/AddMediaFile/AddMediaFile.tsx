@@ -1,7 +1,7 @@
 import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext from "@/contexts/NotesContext";
 import { useTranslations } from "next-intl";
-import { useRef, useState } from "react";
+import { CSSProperties, useRef, useState } from "react";
 import ToolbarItem from "../ToolbarItem";
 import ImageIcon from "@/icons/svg/image.svg";
 import Popover from "@/app/components/Popover";
@@ -9,6 +9,7 @@ import Hidable from "@/app/components/Hidable";
 import SignleView from "@/app/components/Views/SingleView";
 import AddMediaFilePopoverContent from "./PopoverContent";
 import { AddMediaFileContext, TAddMediaFileState } from "./Context";
+import useIsScreenWidthOverBreakpoint from "@/app/hooks/useIsScreenWidthOverBreakpoint";
 
 export default function AddMediaFile() {
   const menuWidth = 280;
@@ -21,6 +22,11 @@ export default function AddMediaFile() {
   const [mediaFileId, setMediaFileId] = useState<string | null>(null);
   const [mediaFiles, setMediaFiles] = useState<FileList | null>(null);
   const [menuState, setMenuState] = useState<TAddMediaFileState>("chooseFile");
+  const isMobile = !useIsScreenWidthOverBreakpoint("sm");
+  const style: CSSProperties = {
+    width: menuWidth,
+  };
+  if (isMobile) style.translate = "-30% 0";
 
   return (
     <ToolbarItem
@@ -31,7 +37,8 @@ export default function AddMediaFile() {
       icon={<ImageIcon />}
     >
       <Popover
-        style={{ width: menuWidth }}
+        portalSelector="#main-content-popover-overlays"
+        style={style}
         position="bottom-center"
         {...{ isOpen: isMenuOpen, setIsOpen: setIsMenuOpen }}
         offset={40}

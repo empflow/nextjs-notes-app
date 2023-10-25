@@ -41,6 +41,7 @@ export default function AddLink() {
         position="bottom-center"
         {...{ isOpen, setIsOpen }}
         offset={40}
+        portalSelector="#main-content-popover-overlays"
       >
         <Hidable className="px-3 py-2" width={menuWidth} isHidden={isOpen}>
           <SignleView name={t("link.menuTitle")}>

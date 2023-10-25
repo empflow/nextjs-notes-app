@@ -13,7 +13,8 @@ export default function ProfileMenuDropdown() {
 
   return (
     <Popover
-      className={`absolute left-0 right-0 z-10 bg-transparent duration-200 sm:left-auto sm:w-[300px] sm:px-global ${
+      portalSelector="#main-content-popover-overlays"
+      className={`absolute left-0 right-0 z-20 bg-transparent duration-200 sm:left-auto sm:w-[300px] sm:px-global ${
         isDropdownOpen
           ? "pointer-events-auto translate-y-0 opacity-100"
           : "pointer-events-none -translate-y-1 opacity-0"
