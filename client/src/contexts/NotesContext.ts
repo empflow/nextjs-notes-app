@@ -25,6 +25,8 @@ interface TNotesContextValue {
   setIsEditing: SetState<boolean>;
   isFilterMenuOpen: boolean;
   setIsFilterMenuOpen: SetState<boolean>;
+  hideEditorOnMobile: boolean;
+  setHideEditorOnMobile: SetState<boolean>;
 }
 
 type TNotesContext = TContext<TNotesContextValue>;

@@ -19,6 +19,7 @@
   },
   "Toolbar": {
     "disabled": "disabled",
+    "back": "Back to list of notes",
     "tooltips": {
       "undo": "Undo",
       "redo": "Redo",

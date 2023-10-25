@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 import NotesContext from "@/contexts/NotesContext";
 import Skeleton from "react-loading-skeleton";
 import { TNoteSchema } from "@shared/schemas/note";
+import { useCallback } from "react";
 
 interface TNoteProps {
   state?: "normal" | "loading";
@@ -21,8 +22,12 @@ export default function Note({
   isAboveSelectedNote,
   state = "normal",
 }: TNoteProps) {
-  const { setSelectedNoteId } = useGetContext(NotesContext);
+  const { setSelectedNoteId, setHideEditorOnMobile, hideEditorOnMobile } =
+    useGetContext(NotesContext);
   const t = useTranslations("Notes");
+  const isHighlighted = isSelected && !hideEditorOnMobile;
+  const isBorderTransparent =
+    isHighlighted || (isAboveSelectedNote && !hideEditorOnMobile);
 
   if (state === "normal") {
     title = !title ? t("noTitle") : title;
@@ -30,20 +35,27 @@ export default function Note({
   }
 
   let borderColor: undefined | string = undefined;
-  if (isSelected || isAboveSelectedNote) borderColor = "transparent";
+  if (isBorderTransparent) borderColor = "transparent";
+
+  const handleSelectNote = useCallback(function (_id: string) {
+    setHideEditorOnMobile(false);
+    setSelectedNoteId(_id);
+  }, []);
+
+  console.log(hideEditorOnMobile);
 
   return (
     <div
       className={`flex flex-col rounded-t border-b border-light-2xl-gray p-[14px] last:border-transparent dark:border-dark-4xl-gray dark:last:border-transparent ${
-        isSelected ? "rounded-b bg-light-5xl-blue dark:bg-dark-blue" : ""
+        isHighlighted ? "rounded-b bg-light-5xl-blue dark:bg-dark-blue" : ""
       } ${state === "normal" ? "cursor-pointer" : ""}`}
       style={{ borderColor }}
-      onClick={_id ? () => setSelectedNoteId(_id) : () => {}}
+      onClick={_id ? () => handleSelectNote(_id) : undefined}
     >
       <div className="truncate">{title || <Skeleton />}</div>
       <div
         className={`truncate  ${
-          isSelected
+          isHighlighted
             ? "text-dark-2xl-gray dark:text-light-xl-gray"
             : "text-dark-gray dark:text-gray"
         }`}
