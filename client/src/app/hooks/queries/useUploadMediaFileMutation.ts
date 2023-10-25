@@ -10,8 +10,13 @@ import wait from "@/utils/wait";
 
 export default function useUploadMediaFileMutation() {
   const errsT = useTranslations("Errors");
-  const { mediaFiles, setMenuState, setIsMenuOpen, setMediaFiles } =
-    useGetContext(AddMediaFileContext);
+  const {
+    mediaFiles,
+    setMenuState,
+    setIsMenuOpen,
+    setMediaFiles,
+    fileInputRef,
+  } = useGetContext(AddMediaFileContext);
   const { editor } = useGetContext(NotesContext);
   const mutation = useMutation(mutationFn, {
     onError: () => {
@@ -27,6 +32,7 @@ export default function useUploadMediaFileMutation() {
 
   async function onSuccessMenuTeardown() {
     moveSelectionAwayFromImage();
+    resetFileInput();
     setIsMenuOpen(false);
     const waitMs = 300;
     setTimeout(() => {
@@ -34,6 +40,10 @@ export default function useUploadMediaFileMutation() {
       setMediaFiles(null);
     }, waitMs);
     await wait(waitMs);
+  }
+
+  function resetFileInput() {
+    if (fileInputRef.current) fileInputRef.current.value = "";
   }
 
   function moveSelectionAwayFromImage() {

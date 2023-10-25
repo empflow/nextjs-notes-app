@@ -42,8 +42,6 @@ export default function Note({
     setSelectedNoteId(_id);
   }, []);
 
-  console.log(hideEditorOnMobile);
-
   return (
     <div
       className={`flex flex-col rounded-t border-b border-light-2xl-gray p-[14px] last:border-transparent dark:border-dark-4xl-gray dark:last:border-transparent ${
