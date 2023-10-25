@@ -23,6 +23,7 @@ import "./styles/table.scss";
 import "./styles/taskListItem.scss";
 import "./styles/text.scss";
 import "./styles/link.scss";
+import "./styles/img.scss";
 import editorStyles from "./styles/editor.module.scss";
 
 interface TProps {
