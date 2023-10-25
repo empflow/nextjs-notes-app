@@ -11,8 +11,8 @@ export default function MainContent() {
   const { hideEditorOnMobile, selectedNoteId } = useGetContext(NotesContext);
 
   const style: CSSProperties = { translate: "0 0" };
-  if (isMobile) {
-    if (!hideEditorOnMobile && selectedNoteId) style.translate = "-100% 0";
+  if (isMobile && !hideEditorOnMobile && selectedNoteId) {
+    style.translate = "-100% 0";
   }
 
   return (

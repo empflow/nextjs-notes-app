@@ -26,6 +26,7 @@ export default function useUploadMediaFileMutation() {
   });
 
   async function onSuccessMenuTeardown() {
+    moveSelectionAwayFromImage();
     setIsMenuOpen(false);
     const waitMs = 300;
     setTimeout(() => {
@@ -33,6 +34,12 @@ export default function useUploadMediaFileMutation() {
       setMediaFiles(null);
     }, waitMs);
     await wait(waitMs);
+  }
+
+  function moveSelectionAwayFromImage() {
+    editor?.view.dom.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "Enter" }),
+    );
   }
 
   async function mutationFn() {
