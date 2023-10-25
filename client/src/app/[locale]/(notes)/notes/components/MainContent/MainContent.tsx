@@ -8,12 +8,11 @@ import Header from "../Header/Header";
 
 export default function MainContent() {
   const isMobile = !useIsScreenWidthOverBreakpoint("md");
-  const { hideEditorOnMobile } = useGetContext(NotesContext);
+  const { hideEditorOnMobile, selectedNoteId } = useGetContext(NotesContext);
 
-  const style: CSSProperties = { translate: "0" };
+  const style: CSSProperties = { translate: "0 0" };
   if (isMobile) {
-    if (!hideEditorOnMobile) style.translate = "-100% 0";
-    else style.translate = "0 0";
+    if (!hideEditorOnMobile && selectedNoteId) style.translate = "-100% 0";
   }
 
   return (
