@@ -33,7 +33,7 @@ export default function ToolbarItem({
       <button
         onClick={onClick}
         disabled={isDisabled}
-        className={`rounded p-[6px] disabled:cursor-not-allowed ${
+        className={`rounded p-1 disabled:cursor-not-allowed md:p-[6px] ${
           isActive ? "bg-light-4xl-gray dark:bg-dark-4xl-gray" : ""
         } ${className ?? ""}`}
         title={isDisabled ? `${tooltipText} (${t("disabled")})` : undefined}
