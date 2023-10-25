@@ -18,14 +18,18 @@ interface TProps extends HTMLAttributes<HTMLDivElement> {
   transparent?: boolean;
   children?: ReactNode;
   portalSelector?: string;
+  blurred?: boolean;
+  centerChildren?: boolean;
 }
 
 export default function Overlay({
   isActive,
   setIsActive,
   transparent = false,
+  blurred = false,
   children,
   portalSelector = "#popover-overlays",
+  centerChildren = false,
   ...attributes
 }: TProps) {
   const portalContainer = useQuerySelector(portalSelector);
@@ -33,9 +37,11 @@ export default function Overlay({
 
   return ReactDom.createPortal(
     <div
-      className={`fixed bottom-0 left-0 right-0 top-0 z-20 ${
+      className={`fixed bottom-0 left-0 right-0 top-0 z-20 p-1 duration-100 ${
         transparent ? "bg-transparent" : "bg-black/70"
-      } ${isActive ? "opacity-100" : "pointer-events-none opacity-0"}`}
+      } ${blurred ? "backdrop-blur-sm" : "backdrop-blur-none"} ${
+        isActive ? "opacity-100" : "pointer-events-none opacity-0"
+      } ${centerChildren ? "flex flex-col items-center justify-center" : ""}`}
       onClick={setIsActive ? () => setIsActive(false) : undefined}
       {...attributes}
     >

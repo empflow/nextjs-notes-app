@@ -1,17 +1,18 @@
 "use client";
 
 import SmallBtn from "@/app/components/buttons/Small";
-import FilterIcon from "@/icons/svg/filter.svg";
 import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext from "@/contexts/NotesContext";
+import FilterIcon from "@/icons/svg/filter.svg";
 import { useTranslations } from "next-intl";
+import FilterModal from "./FilterModal/FilterModal";
 
 export default function FilterBtn() {
-  const { notes, setIsFilterMenuOpen } = useGetContext(NotesContext);
+  const { setIsFilterMenuOpen } = useGetContext(NotesContext);
   const t = useTranslations("Notes");
 
   return (
-    <div className="flex">
+    <div>
       <SmallBtn
         className="flex gap-1"
         onClick={() => setIsFilterMenuOpen((prev) => !prev)}
@@ -19,6 +20,7 @@ export default function FilterBtn() {
         <FilterIcon fill="white" width={20} />
         {t("filter")}
       </SmallBtn>
+      <FilterModal />
     </div>
   );
 }

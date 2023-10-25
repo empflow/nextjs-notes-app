@@ -1,7 +1,7 @@
 import EditBtn from "./EditBtn";
 import AddNoteBtn from "./AddNoteBtn";
 import CurrTag from "./CurrTag";
-import FilterBtn from "./FilterBtn";
+import FilterBtn from "./Filter/FilterBtn";
 
 export default function Controls() {
   return (
