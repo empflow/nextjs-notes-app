@@ -1,5 +1,5 @@
 import useGetContext from "@/app/hooks/useGetContext";
-import ProfileMenuContext from "@/contexts/ProfileMenu";
+import ProfileMenuContext from "@/contexts/ProfileMenuContext";
 import CloseIcon from "@/icons/svg/close.svg";
 import { useTranslations } from "next-intl";
 

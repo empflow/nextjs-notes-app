@@ -1,5 +1,5 @@
 import useGetContext from "@/app/hooks/useGetContext";
-import ProfileMenuContext from "@/contexts/ProfileMenu";
+import ProfileMenuContext from "@/contexts/ProfileMenuContext";
 import useIsScreenWidthOverBreakpoint from "@/app/hooks/useIsScreenWidthOverBreakpoint";
 
 export default function useGetDropdownTopPx() {

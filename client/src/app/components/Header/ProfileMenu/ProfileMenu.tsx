@@ -1,21 +1,18 @@
-import ProfileMenuContent from "./Content";
+"use client";
 import ProfileMenuSignIn from "./SignIn";
-import ProfileMenuContextProviders from "@/app/providers/ProfileMenuContext";
 import useGetContext from "@/app/hooks/useGetContext";
-import MainContentContext from "@/app/[locale]/(notes)/notes/components/MainContent/Context";
+import ProfileMenuContext from "@/contexts/ProfileMenuContext";
+import ProfileMenuHeaderIcon from "./HeaderIcon";
+import ProfileMenuDropdown from "./Dropdown/Dropdown";
 
-interface TProps {
-  dropdownTopPx?: number;
-}
-
-export default function ProfileMenu({ dropdownTopPx }: TProps) {
-  const { authData } = useGetContext(MainContentContext);
+export default function ProfileMenu() {
+  const { authData } = useGetContext(ProfileMenuContext);
   if (!authData) return <ProfileMenuSignIn />;
 
-  const { username: signedInAs } = authData;
   return (
-    <ProfileMenuContextProviders {...{ signedInAs, dropdownTopPx }}>
-      <ProfileMenuContent />
-    </ProfileMenuContextProviders>
+    <div className="sm:relative">
+      <ProfileMenuHeaderIcon />
+      <ProfileMenuDropdown />
+    </div>
   );
 }
