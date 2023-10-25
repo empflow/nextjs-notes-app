@@ -33,7 +33,7 @@ export default function Editor() {
   }
 
   return (
-    <div className="relative flex-grow bg-l-secondary p-global pb-0 dark:bg-d-main sm:p-global-sm sm:pb-0">
+    <div className="relative flex-grow bg-l-secondary p-global pb-4 dark:bg-d-main sm:p-global-sm">
       <div
         className={`absolute bottom-0 left-0 right-0 top-0 flex flex-col gap-2 overflow-auto ${editorContainerWrapperStyles.editorContainerWrapper}`}
       >
