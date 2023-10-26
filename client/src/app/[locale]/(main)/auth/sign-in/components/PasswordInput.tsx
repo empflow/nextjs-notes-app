@@ -1,4 +1,4 @@
-import Input from "@/app/components/form/Input";
+import InputWithLabel from "@/app/components/form/InputWithLabel";
 import useGetContext from "@/app/hooks/useGetContext";
 import SignInFormContext from "@/contexts/SignInFormContext";
 import { minPasswordLength, maxPasswordLength } from "@shared/values";
@@ -9,7 +9,7 @@ export default function SignInPasswordInput() {
   const { register, formErrs } = useGetContext(SignInFormContext);
 
   return (
-    <Input
+    <InputWithLabel
       label={formT("password")}
       register={register("password", {
         required: formT("noPassword"),

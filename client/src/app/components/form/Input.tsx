@@ -1,34 +1,19 @@
-import { UseFormRegisterReturn } from "react-hook-form";
-import Label from "./Label";
 import { InputHTMLAttributes } from "react";
-import FormErr from "./FormErr";
+import { UseFormRegisterReturn } from "react-hook-form";
 
-interface TInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  type: string;
-  register: UseFormRegisterReturn<string>;
-  label?: string;
-  errMsg?: string;
+interface TProps extends InputHTMLAttributes<HTMLInputElement> {
+  register: UseFormRegisterReturn;
+  className?: string;
 }
 
-export default function Input({
-  register,
-  type,
-  label,
-  errMsg,
-  ...attributes
-}: TInputProps) {
+export default function Input({ register, className, ...attrs }: TProps) {
   return (
-    <Label className="flex flex-col gap-1">
-      {label && label}
-      <input
-        type={type}
-        {...register}
-        {...attributes}
-        className={`rounded border border-slate-300 p-2 dark:border-dark-xl-gray ${
-          attributes.className ? attributes.className : ""
-        }`}
-      />
-      <FormErr content={errMsg} />
-    </Label>
+    <input
+      className={`rounded border border-slate-300 p-2 dark:border-dark-xl-gray ${
+        className ? className : ""
+      }`}
+      {...register}
+      {...attrs}
+    />
   );
 }

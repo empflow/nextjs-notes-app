@@ -1,4 +1,4 @@
-import Input from "@/app/components/form/Input";
+import InputWithLabel from "@/app/components/form/InputWithLabel";
 import useGetContext from "@/app/hooks/useGetContext";
 import SignUpFormContext from "@/contexts/SignUpFormContext";
 import { emailRegex } from "@shared/regexes";
@@ -9,7 +9,7 @@ export default function SignUpEmailInput() {
   const { register, formErrs } = useGetContext(SignUpFormContext);
 
   return (
-    <Input
+    <InputWithLabel
       label={formT("email")}
       register={register("email", {
         required: formT("noEmail"),
