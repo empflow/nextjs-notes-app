@@ -135,6 +135,14 @@
     "created": "Created",
     "updated": "Modified"
   },
+  "Tags": {
+    "noTags": "You don't have any tags. Create one now!",
+    "addTag": "Add tag",
+    "addTagForm": {
+      "noName": "No name provided",
+      "noColor": "No color provided"
+    }
+  },
   "Errors": {
     "offline": "Please check your internet connection",
     "generic": "Something went wrong. Try again later",
