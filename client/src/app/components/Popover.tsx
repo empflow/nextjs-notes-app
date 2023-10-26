@@ -19,6 +19,9 @@ type TProps = {
   offset?: number;
   className?: string;
   portalSelector?: string;
+  usePortal?: boolean;
+  overlayStyle?: CSSProperties;
+  noOverlay?: boolean;
 };
 
 interface TPosition {
@@ -38,6 +41,9 @@ export default function Popover({
   setIsOpen,
   offset = 0,
   portalSelector,
+  usePortal = true,
+  overlayStyle,
+  noOverlay,
 }: TProps) {
   const positions: Record<typeof position, TPosition> = {
     "top-center": { translate: "-50%", left: "50%", bottom: offset },
@@ -55,18 +61,25 @@ export default function Popover({
     <>
       <div
         style={{ ...activePosition, ...style }}
-        className={`absolute z-30 ${!isOpen ? "pointer-events-none" : ""} ${
-          className ?? ""
-        }`}
+        className={`absolute z-30 duration-100 ${
+          isOpen
+            ? "pointer-events-auto translate-y-0 opacity-100"
+            : "pointer-events-none -translate-y-1 opacity-0"
+        } ${className ?? ""}`}
+        onClick={(e) => e.stopPropagation()}
       >
         {children}
       </div>
-      <Overlay
-        portalSelector={portalSelector}
-        isActive={isOpen}
-        setIsActive={setIsOpen}
-        transparent={true}
-      />
+      {!noOverlay && (
+        <Overlay
+          style={overlayStyle}
+          usePortal={usePortal}
+          portalSelector={portalSelector}
+          isActive={isOpen}
+          setIsActive={setIsOpen}
+          transparent={true}
+        />
+      )}
     </>
   );
 }
