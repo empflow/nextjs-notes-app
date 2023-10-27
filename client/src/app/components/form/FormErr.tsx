@@ -1,5 +1,5 @@
 interface TProps {
-  content?: string;
+  content?: string | null;
 }
 
 export default function FormErr({ content }: TProps) {

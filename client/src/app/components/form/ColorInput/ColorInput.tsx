@@ -3,7 +3,7 @@ import { InputHTMLAttributes } from "react";
 import styles from "./styles.module.scss";
 
 interface TInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  register: UseFormRegisterReturn<string>;
+  register?: UseFormRegisterReturn<string>;
   className?: string;
 }
 

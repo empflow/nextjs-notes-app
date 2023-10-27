@@ -6,11 +6,17 @@ import InputWithLabel from "@/app/components/form/InputWithLabel";
 import Popover from "@/app/components/Popover";
 import useGetContext from "@/app/hooks/useGetContext";
 import { useTranslations } from "next-intl";
-import { MouseEvent, MouseEventHandler, useState } from "react";
+import {
+  MouseEvent,
+  MouseEventHandler,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { useForm } from "react-hook-form";
 import { TAddTagForm } from "../AddTagModal/AddTagModal";
 import FilterModalContext from "../Context";
-import TagActionsPopover from "./ActionsPopover";
+import TagActionsPopover from "./ActionsPopover/ActionsPopover";
 import TagBtns from "./Btns";
 import TagFormErrs from "./FormErrs";
 import TagInputs from "./Inputs";
@@ -30,20 +36,39 @@ export default function Tag({ name, color, _id }: TProps) {
     formState: { errors: formErrs },
     watch: formWatch,
     handleSubmit,
-  } = useForm<TAddTagForm>({ defaultValues: { color, name } });
+  } = useForm<TAddTagForm>({
+    defaultValues: { name, color },
+  });
   const formData = formWatch();
-  const formT = useTranslations("Tags.addTagForm");
+  const nameInputRef = useRef<HTMLInputElement | null>(null);
 
   async function onSubmit() {}
 
   return (
     <form className="flex flex-col gap-1" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex justify-between">
-        <TagInputs {...{ _id, isEditingThisTag, register }} />
-        <TagActionsPopover {...{ isPopoverMenuOpen, setIsPopoverMenuOpen }} />
+        <TagInputs
+          {...{ _id, isEditingThisTag, register, nameInputRef, color, name }}
+        />
+        <TagActionsPopover
+          {...{
+            nameInputRef,
+            isPopoverMenuOpen,
+            setIsPopoverMenuOpen,
+            setIsEditingThisTag,
+            isEditingThisTag,
+          }}
+        />
       </div>
-      <TagBtns {...{ isEditingThisTag, setIsEditingThisTag }} />
+      <TagBtns
+        {...{
+          isEditingThisTag,
+          setIsEditingThisTag,
+          formData,
+        }}
+      />
       <TagFormErrs
+        enabled={isEditingThisTag}
         colorErrMsg={formErrs.color?.message}
         nameErrMsg={formErrs.name?.message}
       />

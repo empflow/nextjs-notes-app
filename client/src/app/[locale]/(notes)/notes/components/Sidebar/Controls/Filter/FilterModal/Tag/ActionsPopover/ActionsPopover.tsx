@@ -1,0 +1,71 @@
+import Popover from "@/app/components/Popover";
+import useGetContext from "@/app/hooks/useGetContext";
+import { SetState } from "@/utils/types";
+import { Ref, RefObject } from "react";
+import FilterModalContext from "../../Context";
+import TagActionsPopoverBtn from "./Btn";
+import MoreIcon from "@/icons/svg/moreHorizontalCircled.svg";
+import { useTranslations } from "next-intl";
+
+interface TProps {
+  setIsPopoverMenuOpen: SetState<boolean>;
+  isPopoverMenuOpen: boolean;
+  isEditingThisTag: boolean;
+  setIsEditingThisTag: SetState<boolean>;
+  nameInputRef: RefObject<HTMLInputElement>;
+}
+
+export default function TagActionsPopover({
+  isPopoverMenuOpen,
+  setIsPopoverMenuOpen,
+  setIsEditingThisTag,
+  isEditingThisTag,
+  nameInputRef,
+}: TProps) {
+  const t = useTranslations("Tags");
+  const { isEditing } = useGetContext(FilterModalContext);
+  if (!isEditing) setIsEditingThisTag(false);
+  function handleRename() {
+    if (!isEditingThisTag) setIsEditingThisTag(true);
+    setTimeout(() => {
+      const inputRef = nameInputRef.current;
+      if (!inputRef) return;
+      inputRef.focus();
+      inputRef.selectionStart = inputRef.selectionEnd = inputRef.value.length;
+    }, 0);
+  }
+  return (
+    <>
+      {isEditing && (
+        <div
+          className="relative"
+          onClick={() => setIsPopoverMenuOpen((prev) => !prev)}
+        >
+          <MoreIcon className="cursor-pointer" />
+          <Popover
+            noOverlay={true}
+            isOpen={isPopoverMenuOpen}
+            setIsOpen={setIsPopoverMenuOpen}
+            position={"bottom-left"}
+            offset={30}
+            portalSelector="#popover-overlays"
+            className="rounded border border-light-3xl-gray bg-light-5xl-gray px-2 py-1"
+          >
+            <TagActionsPopoverBtn
+              {...{ setIsPopoverMenuOpen }}
+              onClick={handleRename}
+            >
+              {t("rename")}
+            </TagActionsPopoverBtn>
+            <TagActionsPopoverBtn
+              {...{ setIsPopoverMenuOpen }}
+              onClick={() => {}}
+            >
+              {t("delete")}
+            </TagActionsPopoverBtn>
+          </Popover>
+        </div>
+      )}
+    </>
+  );
+}

@@ -1,11 +1,17 @@
 import FormErr from "@/app/components/form/FormErr";
 
 interface TProps {
-  nameErrMsg?: string;
-  colorErrMsg?: string;
+  nameErrMsg?: string | null;
+  colorErrMsg?: string | null;
+  enabled: boolean;
 }
 
-export default function TagFormErrs({ colorErrMsg, nameErrMsg }: TProps) {
+export default function TagFormErrs({
+  colorErrMsg,
+  nameErrMsg,
+  enabled,
+}: TProps) {
+  if (!enabled) return null;
   return (
     <div>
       <FormErr content={nameErrMsg} />
