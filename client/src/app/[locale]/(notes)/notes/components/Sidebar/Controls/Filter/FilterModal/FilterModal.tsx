@@ -4,9 +4,9 @@ import NotesContext from "@/contexts/NotesContext";
 import { useState } from "react";
 import useTagsQuery from "@/app/hooks/queries/useTagsQuery";
 import FilterModalContext from "./Context";
-import TagsList from "./TagsList";
+import TagsList from "./TagsList/TagsList";
 import { useForm } from "react-hook-form";
-import AddTagModal from "./AddTagModal";
+import AddTagModal from "./AddTagModal/AddTagModal";
 
 export default function FilterModal() {
   const { setIsFilterMenuOpen, isFilterMenuOpen } = useGetContext(NotesContext);

@@ -2,7 +2,7 @@ import useTagsQuery from "@/app/hooks/queries/useTagsQuery";
 import { useTranslations } from "next-intl";
 import { ReactNode } from "react";
 import NoTags from "./NoTags";
-import Tag from "./Tag";
+import Tag from "../Tag/Tag";
 import TagsLoading from "./TagsLoading";
 
 export default function TagsList() {

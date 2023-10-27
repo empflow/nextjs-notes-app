@@ -7,7 +7,7 @@ import useGetContext from "@/app/hooks/useGetContext";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import ColorInput from "./ColorInput";
-import FilterModalContext from "./Context";
+import FilterModalContext from "../Context";
 
 export interface TAddTagForm {
   color: string;
