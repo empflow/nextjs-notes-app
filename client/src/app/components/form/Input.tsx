@@ -1,19 +1,24 @@
-import { InputHTMLAttributes } from "react";
+import { forwardRef, InputHTMLAttributes } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 
 interface TProps extends InputHTMLAttributes<HTMLInputElement> {
-  register: UseFormRegisterReturn;
+  register?: UseFormRegisterReturn;
   className?: string;
 }
 
-export default function Input({ register, className, ...attrs }: TProps) {
-  return (
-    <input
-      className={`rounded border border-slate-300 p-2 dark:border-dark-xl-gray ${
-        className ? className : ""
-      }`}
-      {...register}
-      {...attrs}
-    />
-  );
-}
+const Input = forwardRef<HTMLInputElement, TProps>(
+  ({ register, className, ...attrs }, ref) => {
+    return (
+      <input
+        {...attrs}
+        {...register}
+        className={`rounded border border-slate-300 p-2 dark:border-dark-xl-gray ${
+          className ? className : ""
+        }`}
+        ref={ref}
+      />
+    );
+  },
+);
+
+export default Input;
