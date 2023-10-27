@@ -141,7 +141,9 @@
     "addTagForm": {
       "noName": "No name provided",
       "noColor": "No color provided"
-    }
+    },
+    "rename": "Rename",
+    "delete": "Delete"
   },
   "Errors": {
     "offline": "Please check your internet connection",
