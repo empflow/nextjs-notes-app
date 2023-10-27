@@ -143,7 +143,10 @@
       "noColor": "No color provided"
     },
     "rename": "Rename",
-    "delete": "Delete"
+    "delete": "Delete",
+    "filterByTag": "Filter by tag",
+    "editTags": "Edit tags",
+    "stopEditingTags": "Stop editing"
   },
   "Errors": {
     "offline": "Please check your internet connection",
