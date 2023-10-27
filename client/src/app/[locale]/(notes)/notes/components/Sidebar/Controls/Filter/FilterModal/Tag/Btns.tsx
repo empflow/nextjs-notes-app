@@ -1,23 +1,17 @@
 import SmallBtn from "@/app/components/buttons/Small";
+import useGetContext from "@/app/hooks/useGetContext";
 import useRerender from "@/app/hooks/useRerender";
 import { SetState } from "@/utils/types";
 import { useEffect } from "react";
 import { TAddTagForm } from "../AddTagModal/AddTagModal";
+import { TagContext } from "./Tag";
 
-interface TProps {
-  isEditingThisTag: boolean;
-  setIsEditingThisTag: SetState<boolean>;
-  formData: TAddTagForm;
-}
-
-export default function TagBtns({
-  isEditingThisTag,
-  setIsEditingThisTag,
-  formData,
-}: TProps) {
+export default function TagBtns() {
+  const { form, isEditingThisTag, setIsEditingThisTag } =
+    useGetContext(TagContext);
+  const formData = form.watch();
   const rerender = useRerender();
   useEffect(rerender, [isEditingThisTag]);
-  console.log(formData);
 
   return (
     <div className="flex gap-1">

@@ -1,21 +1,20 @@
 import FormErr from "@/app/components/form/FormErr";
+import useGetContext from "@/app/hooks/useGetContext";
+import { TagContext } from "./Tag";
 
-interface TProps {
-  nameErrMsg?: string | null;
-  colorErrMsg?: string | null;
-  enabled: boolean;
-}
+export default function TagFormErrs() {
+  const {
+    isEditingThisTag,
+    form: {
+      formState: { errors: formErrs },
+    },
+  } = useGetContext(TagContext);
 
-export default function TagFormErrs({
-  colorErrMsg,
-  nameErrMsg,
-  enabled,
-}: TProps) {
-  if (!enabled) return null;
+  if (!isEditingThisTag) return null;
   return (
     <div>
-      <FormErr content={nameErrMsg} />
-      <FormErr content={colorErrMsg} />
+      <FormErr content={formErrs.name?.message} />
+      <FormErr content={formErrs.color?.message} />
     </div>
   );
 }

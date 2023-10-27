@@ -1,28 +1,18 @@
 import ColorInput from "@/app/components/form/ColorInput/ColorInput";
 import Input from "@/app/components/form/Input";
-import useObserveQuery from "@/app/hooks/useObserveQuery";
+import useGetContext from "@/app/hooks/useGetContext";
 import { useTranslations } from "next-intl";
-import { MutableRefObject, Ref, RefObject } from "react";
-import { UseFormRegister } from "react-hook-form";
-import { TAddTagForm } from "../AddTagModal/AddTagModal";
+import { TagContext } from "./Tag";
 
-interface TProps {
-  _id: string;
-  register: UseFormRegister<TAddTagForm>;
-  isEditingThisTag: boolean;
-  nameInputRef: MutableRefObject<HTMLInputElement | null>;
-  name: string;
-  color: string;
-}
-
-export default function TagInputs({
-  _id,
-  register,
-  isEditingThisTag,
-  nameInputRef,
-  color,
-  name,
-}: TProps) {
+export default function TagInputs() {
+  const {
+    isEditingThisTag,
+    nameInputRef,
+    initColor,
+    initName,
+    _id,
+    form: { register },
+  } = useGetContext(TagContext);
   const formT = useTranslations("Tags.addTagForm");
   const { ref: nameInputRegisterRef, ...nameInputRegisterRest } = register(
     "name",
@@ -57,14 +47,14 @@ export default function TagInputs({
             className="disabled:cursor-default"
             style={{ width: 30, height: 34 }}
             disabled={!isEditingThisTag}
-            value={color}
+            value={initColor}
           />
           <Input
             ref={nameInputRef}
             className="disabled:border-none disabled:bg-transparent"
             disabled={!isEditingThisTag}
             type="text"
-            value={name}
+            value={initName}
             style={{ padding: 4 }}
           />
         </>

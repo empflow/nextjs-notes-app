@@ -6,25 +6,20 @@ import FilterModalContext from "../../Context";
 import TagActionsPopoverBtn from "./Btn";
 import MoreIcon from "@/icons/svg/moreHorizontalCircled.svg";
 import { useTranslations } from "next-intl";
+import { TagContext } from "../Tag";
 
-interface TProps {
-  setIsPopoverMenuOpen: SetState<boolean>;
-  isPopoverMenuOpen: boolean;
-  isEditingThisTag: boolean;
-  setIsEditingThisTag: SetState<boolean>;
-  nameInputRef: RefObject<HTMLInputElement>;
-}
-
-export default function TagActionsPopover({
-  isPopoverMenuOpen,
-  setIsPopoverMenuOpen,
-  setIsEditingThisTag,
-  isEditingThisTag,
-  nameInputRef,
-}: TProps) {
+export default function TagActionsPopover() {
+  const {
+    setIsPopoverMenuOpen,
+    isPopoverMenuOpen,
+    isEditingThisTag,
+    setIsEditingThisTag,
+    nameInputRef,
+  } = useGetContext(TagContext);
   const t = useTranslations("Tags");
   const { isEditing } = useGetContext(FilterModalContext);
   if (!isEditing) setIsEditingThisTag(false);
+
   function handleRename() {
     if (!isEditingThisTag) setIsEditingThisTag(true);
     setTimeout(() => {
@@ -34,6 +29,7 @@ export default function TagActionsPopover({
       inputRef.selectionStart = inputRef.selectionEnd = inputRef.value.length;
     }, 0);
   }
+
   return (
     <>
       {isEditing && (
