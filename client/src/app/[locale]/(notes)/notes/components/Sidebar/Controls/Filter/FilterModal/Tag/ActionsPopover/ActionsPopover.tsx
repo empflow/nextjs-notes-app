@@ -1,7 +1,7 @@
 import Popover from "@/app/components/Popover";
 import useGetContext from "@/app/hooks/useGetContext";
 import { SetState } from "@/utils/types";
-import { Ref, RefObject } from "react";
+import { Ref, RefObject, useEffect } from "react";
 import FilterModalContext from "../../Context";
 import TagActionsPopoverBtn from "./Btn";
 import MoreIcon from "@/icons/svg/moreHorizontalCircled.svg";
@@ -18,7 +18,10 @@ export default function TagActionsPopover() {
   } = useGetContext(TagContext);
   const t = useTranslations("Tags");
   const { isEditing } = useGetContext(FilterModalContext);
-  if (!isEditing) setIsEditingThisTag(false);
+
+  useEffect(() => {
+    if (!isEditing) setIsEditingThisTag(false);
+  }, [isEditing]);
 
   function handleRename() {
     if (!isEditingThisTag) setIsEditingThisTag(true);

@@ -15,7 +15,7 @@ export default function TagsList() {
   else if (!tags.length) content = <NoTags />;
   else {
     content = tags.map(({ name, _id, color }) => (
-      <Tag {...{ name, color, _id }} />
+      <Tag {...{ name, color, _id }} key={_id} />
     ));
   }
 
