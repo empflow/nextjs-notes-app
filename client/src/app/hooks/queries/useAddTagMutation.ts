@@ -1,6 +1,8 @@
 import httpWithAuth from "@/utils/http/httpWithAuth/httpWithAuth";
+import notify from "@/utils/notify";
 import { tagSchema, TTagSchema } from "@shared/schemas/tag";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useTranslations } from "next-intl";
 
 interface TProps {
   name: string;
@@ -11,8 +13,10 @@ interface TContext {
   prevTags: TTagSchema[];
 }
 
-export default function useAddTagMutation({ name, color }: TProps) {
+export default function useAddTagMutation() {
   const queryClient = useQueryClient();
+  const t = useTranslations("Tags");
+
   const mutation = useMutation<TTagSchema, Error, TProps, TContext>(addTag, {
     onMutate: async (newTag) => {
       await queryClient.cancelQueries({ queryKey: ["tags"] });
@@ -23,13 +27,14 @@ export default function useAddTagMutation({ name, color }: TProps) {
     onError(_err, _vars, ctx) {
       const prevData = ctx?.prevTags ?? [];
       queryClient.setQueryData(["tags"], [...prevData]);
+      notify(t("couldNotAddTag"), "error");
     },
     onSettled: async () => {
       return await queryClient.invalidateQueries(["tags"]);
     },
   });
 
-  async function addTag() {
+  async function addTag({ color, name }: TProps) {
     const resp = await httpWithAuth.post("/tags/add", { name, color });
     return tagSchema.parse(resp.data);
   }

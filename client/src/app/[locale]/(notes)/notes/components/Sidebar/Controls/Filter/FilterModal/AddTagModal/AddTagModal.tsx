@@ -24,7 +24,7 @@ export default function AddTagModal() {
     formState: { errors: formErrs },
   } = useForm<TAddTagForm>();
   const formData = formWatch();
-  const { mutate: addTag, isLoading } = useAddTagMutation(formData);
+  const { mutate: addTag, isLoading } = useAddTagMutation();
   const formT = useTranslations("Tags.addTagForm");
 
   function onSubmit() {

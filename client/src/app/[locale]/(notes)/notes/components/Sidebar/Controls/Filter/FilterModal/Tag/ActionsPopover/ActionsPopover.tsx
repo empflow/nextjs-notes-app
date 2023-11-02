@@ -7,6 +7,7 @@ import TagActionsPopoverBtn from "./Btn";
 import MoreIcon from "@/icons/svg/moreHorizontalCircled.svg";
 import { useTranslations } from "next-intl";
 import { TagContext } from "../Tag";
+import useDeleteTagMutation from "@/app/hooks/queries/useDeleteTagMutation";
 
 export default function TagActionsPopover() {
   const {
@@ -18,6 +19,8 @@ export default function TagActionsPopover() {
   } = useGetContext(TagContext);
   const t = useTranslations("Tags");
   const { isEditing } = useGetContext(FilterModalContext);
+  const { _id } = useGetContext(TagContext);
+  const { mutate: deleteTag } = useDeleteTagMutation();
 
   useEffect(() => {
     if (!isEditing) setIsEditingThisTag(false);
@@ -31,6 +34,10 @@ export default function TagActionsPopover() {
       inputRef.focus();
       inputRef.selectionStart = inputRef.selectionEnd = inputRef.value.length;
     }, 0);
+  }
+
+  function handleDelete() {
+    deleteTag(_id);
   }
 
   return (
@@ -58,7 +65,7 @@ export default function TagActionsPopover() {
             </TagActionsPopoverBtn>
             <TagActionsPopoverBtn
               {...{ setIsPopoverMenuOpen }}
-              onClick={() => {}}
+              onClick={handleDelete}
             >
               {t("delete")}
             </TagActionsPopoverBtn>

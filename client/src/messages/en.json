@@ -146,7 +146,9 @@
     "delete": "Delete",
     "filterByTag": "Filter by tag",
     "editTags": "Edit tags",
-    "stopEditingTags": "Stop editing"
+    "stopEditingTags": "Stop editing",
+    "couldNotAddTag": "Could not add tag. Try again later",
+    "couldDeleteAddTag": "Could not delete tag. Try again later"
   },
   "Errors": {
     "offline": "Please check your internet connection",
