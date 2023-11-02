@@ -7,6 +7,7 @@ import useSignInTranslations from "./hooks/useFormTranslations";
 export default function SignInEmailInput() {
   const { formT } = useSignInTranslations();
   const { register, formErrs } = useGetContext(SignInFormContext);
+  console.log(formErrs);
 
   return (
     <InputWithLabel

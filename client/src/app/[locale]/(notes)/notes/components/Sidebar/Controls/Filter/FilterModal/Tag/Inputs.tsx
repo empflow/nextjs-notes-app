@@ -1,5 +1,6 @@
 import ColorInput from "@/app/components/form/ColorInput/ColorInput";
 import Input from "@/app/components/form/Input";
+import InputWithRef from "@/app/components/form/InputWithRef";
 import useGetContext from "@/app/hooks/useGetContext";
 import { useTranslations } from "next-intl";
 import { TagContext } from "./Tag";
@@ -29,7 +30,7 @@ export default function TagInputs() {
             register={register("color", { required: formT("noColor") })}
             disabled={!isEditingThisTag}
           />
-          <Input
+          <InputWithRef
             {...nameInputRegisterRest}
             ref={(e) => {
               nameInputRegisterRef(e);
@@ -49,7 +50,7 @@ export default function TagInputs() {
             disabled={!isEditingThisTag}
             value={initColor}
           />
-          <Input
+          <InputWithRef
             ref={nameInputRef}
             className="disabled:border-none disabled:bg-transparent"
             disabled={!isEditingThisTag}

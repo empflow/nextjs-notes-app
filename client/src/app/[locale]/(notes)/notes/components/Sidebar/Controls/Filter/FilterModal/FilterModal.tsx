@@ -30,6 +30,7 @@ export default function FilterModal() {
         overlayStyle={{ zIndex: 30 }}
         isOpen={isFilterMenuOpen}
         setIsOpen={setIsFilterMenuOpen}
+        className="m-auto w-full max-w-[600px]"
       >
         <div className="flex flex-col gap-4">
           <p className="text-xl font-semibold">{t("filterByTag")}</p>

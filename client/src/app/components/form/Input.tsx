@@ -6,19 +6,16 @@ interface TProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
 }
 
-const Input = forwardRef<HTMLInputElement, TProps>(
-  ({ register, className, ...attrs }, ref) => {
-    return (
-      <input
-        {...attrs}
-        {...register}
-        className={`rounded border border-slate-300 p-2 dark:border-dark-xl-gray ${
-          className ? className : ""
-        }`}
-        ref={ref}
-      />
-    );
-  },
-);
+function Input({ register, className, ...attrs }: TProps) {
+  return (
+    <input
+      {...attrs}
+      {...register}
+      className={`rounded border border-slate-300 p-2 dark:border-dark-xl-gray ${
+        className ? className : ""
+      }`}
+    />
+  );
+}
 
 export default Input;

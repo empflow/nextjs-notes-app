@@ -1,3 +1,4 @@
+import cn from "@/utils/cn";
 import { SetState } from "@/utils/types";
 import { CSSProperties, HTMLAttributes, ReactNode } from "react";
 import ReactDom from "React-dom";
@@ -16,6 +17,7 @@ export default function Modal({
   isOpen,
   setIsOpen,
   overlayStyle,
+  className,
   ...attrs
 }: TProps) {
   const portalContainer = useQuerySelector<HTMLDivElement>("#modals");
@@ -30,7 +32,10 @@ export default function Modal({
       blurred={true}
     >
       <div
-        className="w-full max-w-[600px] rounded border border-light-2xl-gray bg-light-5xl-gray p-4 dark:border-dark-3xl-gray dark:bg-dark-5xl-gray md:p-6"
+        className={cn(
+          "w-full max-w-[600px] rounded border border-light-2xl-gray bg-light-5xl-gray p-4 dark:border-dark-3xl-gray dark:bg-dark-5xl-gray md:p-6",
+          className,
+        )}
         {...attrs}
       >
         {children}
