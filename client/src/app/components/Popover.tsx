@@ -1,3 +1,4 @@
+import cn from "@/utils/cn";
 import { SetState } from "@/utils/types";
 import { CSSProperties, forwardRef, ReactNode } from "react";
 import Overlay from "./Overlay";
@@ -66,11 +67,12 @@ const Popover = forwardRef<HTMLDivElement, TProps>(
         <div
           ref={ref}
           style={{ ...activePosition, ...style }}
-          className={`absolute z-30 duration-100 ${
-            isOpen
-              ? "pointer-events-auto translate-y-0 opacity-100"
-              : "pointer-events-none -translate-y-1 opacity-0"
-          } ${className ?? ""}`}
+          className={cn(
+            `absolute z-30 duration-100`,
+            { "pointer-events-auto translate-y-0 opacity-100": isOpen },
+            { "pointer-events-none -translate-y-1 opacity-0": !isOpen },
+            className,
+          )}
           onClick={(e) => e.stopPropagation()}
         >
           {children}

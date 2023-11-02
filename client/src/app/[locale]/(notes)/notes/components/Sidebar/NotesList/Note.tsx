@@ -3,7 +3,9 @@ import { useTranslations } from "next-intl";
 import NotesContext from "@/contexts/NotesContext";
 import Skeleton from "react-loading-skeleton";
 import { TNoteSchema } from "@shared/schemas/note";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
+import getNoteContext from "./getContext";
+import NoteActionsPopover from "./NoteActionsPopover";
 
 interface TNoteProps {
   state?: "normal" | "loading";
@@ -14,6 +16,8 @@ interface TNoteProps {
   _id?: string;
 }
 
+export const NoteContext = getNoteContext();
+
 export default function Note({
   description,
   title,
@@ -22,9 +26,15 @@ export default function Note({
   isAboveSelectedNote,
   state = "normal",
 }: TNoteProps) {
-  const { setSelectedNoteId, setHideEditorOnMobile, hideEditorOnMobile } =
-    useGetContext(NotesContext);
+  const {
+    setSelectedNoteId,
+    setHideEditorOnMobile,
+    hideEditorOnMobile,
+    isEditing,
+  } = useGetContext(NotesContext);
   const t = useTranslations("Notes");
+  const [isActionsPopoverOpen, setIsActionsPopoverOpen] = useState(false);
+
   const isHighlighted = isSelected && !hideEditorOnMobile;
   const isBorderTransparent =
     isHighlighted || (isAboveSelectedNote && !hideEditorOnMobile);
@@ -43,23 +53,32 @@ export default function Note({
   }, []);
 
   return (
-    <div
-      className={`flex flex-col rounded-t border-b border-light-2xl-gray p-[14px] last:border-transparent dark:border-dark-4xl-gray dark:last:border-transparent ${
-        isHighlighted ? "rounded-b bg-light-5xl-blue dark:bg-dark-blue" : ""
-      } ${state === "normal" ? "cursor-pointer" : ""}`}
-      style={{ borderColor }}
-      onClick={_id ? () => handleSelectNote(_id) : undefined}
+    <NoteContext.Provider
+      value={{ isActionsPopoverOpen, setIsActionsPopoverOpen, _id }}
     >
-      <div className="truncate">{title || <Skeleton />}</div>
       <div
-        className={`truncate  ${
-          isHighlighted
-            ? "text-dark-2xl-gray dark:text-light-xl-gray"
-            : "text-dark-gray dark:text-gray"
-        }`}
+        className={`flex items-center justify-between rounded-t border-b border-light-2xl-gray p-[14px] last:border-transparent dark:border-dark-4xl-gray dark:last:border-transparent ${
+          isHighlighted ? "rounded-b bg-light-5xl-blue dark:bg-dark-blue" : ""
+        } ${state === "normal" ? "cursor-pointer" : ""}`}
+        style={{ borderColor }}
       >
-        {description || <Skeleton />}
+        <div
+          className="flex w-full flex-col"
+          onClick={_id ? () => handleSelectNote(_id) : undefined}
+        >
+          <div className="truncate">{title || <Skeleton />}</div>
+          <div
+            className={`truncate  ${
+              isHighlighted
+                ? "text-dark-2xl-gray dark:text-light-xl-gray"
+                : "text-dark-gray dark:text-gray"
+            }`}
+          >
+            {description || <Skeleton />}
+          </div>
+        </div>
+        {isEditing && <NoteActionsPopover />}
       </div>
-    </div>
+    </NoteContext.Provider>
   );
 }

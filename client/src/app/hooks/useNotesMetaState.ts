@@ -19,7 +19,7 @@ export default function useNotesMetaState(): [TState, SetState<TState>] {
   useEffect(() => {
     if (isLoading || isError || isFetching) return;
     setNotesMeta(notesMetaData);
-  }, [isLoading, isFetching]);
+  }, [isLoading, isFetching, notesMetaData]);
 
   return [notesMeta, setNotesMeta];
 }

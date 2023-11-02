@@ -24,7 +24,6 @@ export default function useDeleteTagMutation() {
         await queryClient.cancelQueries({ queryKey: ["tags"] });
         const prevTags = queryClient.getQueryData<TTagSchema[]>(["tags"]) ?? [];
 
-        console.log(_id);
         const updatedTags = prevTags.filter((tag) => tag._id !== _id);
         queryClient.setQueryData(["tags"], updatedTags);
 

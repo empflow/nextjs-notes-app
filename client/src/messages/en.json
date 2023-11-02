@@ -133,7 +133,10 @@
     "noAdditionalText": "No additional text",
     "noNotes": "You don't have any notes",
     "created": "Created",
-    "updated": "Modified"
+    "updated": "Modified",
+    "delete": "Delete",
+    "assignTag": "Assign tag",
+    "couldNotDeleteNote": "Could not delete note. Try again later"
   },
   "Tags": {
     "noTags": "You don't have any tags. Create one now!",

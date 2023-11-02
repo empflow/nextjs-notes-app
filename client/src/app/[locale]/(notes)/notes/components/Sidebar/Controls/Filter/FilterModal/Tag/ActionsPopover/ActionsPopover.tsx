@@ -3,7 +3,7 @@ import useGetContext from "@/app/hooks/useGetContext";
 import { SetState } from "@/utils/types";
 import { Ref, RefObject, useEffect } from "react";
 import FilterModalContext from "../../Context";
-import TagActionsPopoverBtn from "./Btn";
+import PopoverActionBtn from "../../../../../../../../../(main)/auth/sign-in/components/PopoverActionBtn";
 import MoreIcon from "@/icons/svg/moreHorizontalCircled.svg";
 import { useTranslations } from "next-intl";
 import { TagContext } from "../Tag";
@@ -57,18 +57,18 @@ export default function TagActionsPopover() {
             portalSelector="#popover-overlays"
             className="rounded border border-light-3xl-gray bg-light-5xl-gray px-2 py-1"
           >
-            <TagActionsPopoverBtn
+            <PopoverActionBtn
               {...{ setIsPopoverMenuOpen }}
               onClick={handleRename}
             >
               {t("rename")}
-            </TagActionsPopoverBtn>
-            <TagActionsPopoverBtn
+            </PopoverActionBtn>
+            <PopoverActionBtn
               {...{ setIsPopoverMenuOpen }}
               onClick={handleDelete}
             >
               {t("delete")}
-            </TagActionsPopoverBtn>
+            </PopoverActionBtn>
           </Popover>
         </div>
       )}

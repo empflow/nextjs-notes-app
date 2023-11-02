@@ -7,7 +7,7 @@ interface TProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   setIsPopoverMenuOpen: SetState<boolean>;
 }
 
-export default function TagActionsPopoverBtn({
+export default function PopoverActionBtn({
   children,
   onClick,
   setIsPopoverMenuOpen,
