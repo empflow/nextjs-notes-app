@@ -49,9 +49,11 @@ export default function EditorContent({ initContent }: TProps) {
         linkOnPaste: true,
       }),
       NextImage,
-      Table.configure({ HTMLAttributes: { class: "table" } }),
+      Table.configure({
+        HTMLAttributes: { class: "table" },
+      }),
       TableHeader.configure({}),
-      TableCell.configure({}),
+      TableCell.configure({ HTMLAttributes: { class: "min-w-[60px]" } }),
       TableRow.configure({}),
     ],
     onUpdate: ({ editor }) => {
