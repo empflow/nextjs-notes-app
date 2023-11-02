@@ -7,9 +7,10 @@ import updateNote from "../controllers/notes/updateNote";
 import noteGetTitleAndDescription from "../middleware/notes/getTitleAndDescription";
 import checkNoteIdParam from "../middleware/notes/checkNoteIdParam";
 import updateNoteCheckNewDataProvided from "../middleware/notes/updateNote/checkNewDataProvided";
+import getNotesMetaCheckQueryParams from "../middleware/notes/getNotesMeta/checkQueryParams";
 const router = express.Router();
 
-router.get("/", getNotesMeta);
+router.get("/", getNotesMetaCheckQueryParams, getNotesMeta);
 router.post("/add", noteGetTitleAndDescription, addNote);
 
 router
