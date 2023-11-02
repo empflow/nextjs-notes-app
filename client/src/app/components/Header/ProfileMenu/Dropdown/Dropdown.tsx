@@ -22,7 +22,7 @@ export default function ProfileMenuDropdown() {
       isOpen={isDropdownOpen}
       setIsOpen={setIsDropdownOpen}
       position="bottom-left"
-      style={{ top: dropdownTopPx }}
+      style={{ top: dropdownTopPx, zIndex: 40 }}
     >
       <div className="flex w-full flex-col gap-3 rounded border border-light-4xl-gray bg-l-secondary px-3 py-5 shadow-md dark:border-dark-3xl-gray dark:bg-d-secondary dark:shadow-none">
         <div>
