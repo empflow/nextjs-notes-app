@@ -14,15 +14,13 @@ export default function AddLink() {
   const menuWidth = 250;
   const t = useTranslations("Toolbar");
   const { editor } = useGetContext(NotesContext);
+  const { selectedNoteId } = useGetContext(NotesContext);
   const { isAddLinkMenuOpen: isOpen, setIsAddLinkMenuOpen: setIsOpen } =
     useGetContext(ToolbarContext);
   const toggleLinkAttrs = useGetToggleLinkAttrs();
-  const isDisabled = !editor
-    ?.can()
-    .chain()
-    .focus()
-    .toggleLink(toggleLinkAttrs)
-    .run();
+  const isDisabled =
+    !selectedNoteId ||
+    !editor?.can().chain().focus().toggleLink(toggleLinkAttrs).run();
 
   function toggleAddLinkMenu() {
     setIsOpen((prev) => !prev);

@@ -6,12 +6,14 @@ import RedoIcon from "@/icons/svg/redo.svg";
 
 export default function Redo() {
   const t = useTranslations("Toolbar.tooltips");
-  const { editor } = useGetContext(NotesContext);
+  const { editor, selectedNoteId } = useGetContext(NotesContext);
+  const isDisabled =
+    !selectedNoteId || !editor?.can().chain().focus().redo().run();
 
   return (
     <ToolbarItem
       tooltipText={t("redo")}
-      isDisabled={!editor?.can().chain().focus().redo().run()}
+      isDisabled={isDisabled}
       onClick={() => editor?.chain().focus().redo().run()}
       icon={<RedoIcon />}
     />
