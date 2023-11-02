@@ -2,13 +2,12 @@ import Modal from "@/app/components/Modal";
 import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext from "@/contexts/NotesContext";
 import { useState } from "react";
-import useTagsQuery from "@/app/hooks/queries/useTagsQuery";
 import FilterModalContext from "./Context";
 import TagsList from "./TagsList/TagsList";
-import { useForm } from "react-hook-form";
 import AddTagModal from "./AddTagModal/AddTagModal";
 import { useTranslations } from "next-intl";
 import FilterModalEditTagsBtn from "./EditTagsBtn";
+import FilterModalAddTagBtn from "./AddTagBtn";
 
 export default function FilterModal() {
   const { setIsFilterMenuOpen, isFilterMenuOpen } = useGetContext(NotesContext);
@@ -36,6 +35,7 @@ export default function FilterModal() {
           <p className="text-xl font-semibold">{t("filterByTag")}</p>
           <div className="flex flex-col gap-1">
             <FilterModalEditTagsBtn />
+            <FilterModalAddTagBtn />
             <TagsList />
           </div>
         </div>
