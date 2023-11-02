@@ -50,7 +50,10 @@ export default function Overlay({
       }}
       {...attributes}
     >
-      <div className="w-full" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="flex w-full items-center justify-center"
+        onClick={(e) => e.stopPropagation()}
+      >
         {children}
       </div>
     </div>

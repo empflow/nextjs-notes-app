@@ -29,15 +29,15 @@ export default function FilterModal() {
         overlayStyle={{ zIndex: 30 }}
         isOpen={isFilterMenuOpen}
         setIsOpen={setIsFilterMenuOpen}
-        className="m-auto w-full max-w-[600px]"
+        className="max-w-[600px]"
       >
-        <div className="flex flex-col gap-4">
-          <p className="text-xl font-semibold">{t("filterByTag")}</p>
+        <p className="mb-4 text-xl font-semibold">{t("filterByTag")}</p>
+        <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-1">
             <FilterModalEditTagsBtn />
             <FilterModalAddTagBtn />
-            <TagsList />
           </div>
+          <TagsList />
         </div>
       </Modal>
     </FilterModalContext.Provider>
