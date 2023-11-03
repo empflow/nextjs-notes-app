@@ -139,7 +139,7 @@
     "couldNotDeleteNote": "Could not delete note. Try again later"
   },
   "Tags": {
-    "noTags": "You don't have any tags. Create one now!",
+    "noTags": "You don't have any tags",
     "addTag": "Add tag",
     "addTagForm": {
       "noName": "No name provided",
@@ -151,7 +151,8 @@
     "editTags": "Edit tags",
     "stopEditingTags": "Stop editing",
     "couldNotAddTag": "Could not add tag. Try again later",
-    "couldDeleteAddTag": "Could not delete tag. Try again later"
+    "couldDeleteAddTag": "Could not delete tag. Try again later",
+    "couldNotAssignTag": "Could not assign tag. Try again later"
   },
   "Errors": {
     "offline": "Please check your internet connection",
@@ -164,6 +165,7 @@
     "couldNotAddNote": "Could not add note",
     "image": "Error loading image"
   },
+  "Loading": "Loading",
   "NetworkStatusListener": {
     "offline": "You're offline",
     "online": "You're back online",
