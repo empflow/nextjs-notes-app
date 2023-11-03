@@ -22,5 +22,5 @@ export default async function updateTag(req: Request, res: Response) {
   );
   if (!updatedTag) throw new NotFoundErr("Tag not found");
 
-  res.status(200).json(updatedTag);
+  res.status(200).json({ ok: true });
 }
