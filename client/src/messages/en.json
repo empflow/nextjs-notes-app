@@ -151,8 +151,9 @@
     "editTags": "Edit tags",
     "stopEditingTags": "Stop editing",
     "couldNotAddTag": "Could not add tag. Try again later",
-    "couldDeleteAddTag": "Could not delete tag. Try again later",
+    "couldDeleteTag": "Could not delete tag. Try again later",
     "couldNotAssignTag": "Could not assign tag. Try again later",
+    "couldNotUpdateTag": "Could not update tag. Try again later",
     "assign": "Assign",
     "unassign": "Unassign"
   },
@@ -172,5 +173,10 @@
     "offline": "You're offline",
     "online": "You're back online",
     "editorWarning": "Your changes will be saved locally until you're back online"
+  },
+  "General": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit"
   }
 }
