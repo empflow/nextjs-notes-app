@@ -2,6 +2,7 @@ import httpWithAuth from "@/utils/http/httpWithAuth/httpWithAuth";
 import notify from "@/utils/notify";
 import { tagSchema, TTagSchema } from "@shared/schemas/tag";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { nanoid } from "nanoid";
 import { useTranslations } from "next-intl";
 
 interface TProps {
@@ -18,10 +19,11 @@ export default function useAddTagMutation() {
   const t = useTranslations("Tags");
 
   const mutation = useMutation<TTagSchema, Error, TProps, TContext>(addTag, {
-    onMutate: async (newTag) => {
+    onMutate: async (newTagData) => {
       await queryClient.cancelQueries({ queryKey: ["tags"] });
       const prevTags = queryClient.getQueryData<TTagSchema[]>(["tags"]) ?? [];
-      queryClient.setQueryData(["tags"], [...prevTags, newTag]);
+      const newTag: TTagSchema = { ...newTagData, owner: "", _id: nanoid(24) };
+      queryClient.setQueryData<TTagSchema[]>(["tags"], [...prevTags, newTag]);
       return { prevTags };
     },
     onError(_err, _vars, ctx) {

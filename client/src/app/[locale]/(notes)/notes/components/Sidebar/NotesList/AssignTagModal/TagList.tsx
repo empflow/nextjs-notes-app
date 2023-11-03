@@ -17,9 +17,10 @@ export default function AssignTagsModalTagList({}: TProps) {
   else if (isLoading) content = `${t("Loading")}...`;
   else if (!tags.length) content = <AssignTagModalNoTags />;
   else {
-    content = tags.map(({ name, _id, color }) => (
-      <AssignTagModalTag {...{ name, color, _id }} key={_id} />
-    ));
+    content = tags.map(({ name, _id, color }) => {
+      console.log(_id);
+      return <AssignTagModalTag {...{ name, color, _id }} key={_id} />;
+    });
   }
 
   return <div className="flex flex-col gap-3">{content}</div>;
