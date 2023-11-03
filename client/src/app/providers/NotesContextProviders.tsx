@@ -20,10 +20,21 @@ export default function NotesContextProviders({ children }: TProps) {
   const sortedNotes = useSortNotes(notes);
   const selectedNote = getSelectedNote(notes, selectedNoteId);
   const [hideEditorOnMobile, setHideEditorOnMobile] = useState(false);
+  const [isAssignTagModalOpen, setIsAssignTagModalOpen] = useState(false);
+  const [assignTagModalNoteId, setAssignTagModalNoteId] = useState<
+    string | null
+  >(null);
+  const [isAddTagModalOpen, setIsAddTagModalOpen] = useState(false);
 
   return (
     <NotesContext.Provider
       value={{
+        isAddTagModalOpen,
+        setIsAddTagModalOpen,
+        isAssignTagModalOpen,
+        setIsAssignTagModalOpen,
+        assignTagModalNoteId,
+        setAssignTagModalNoteId,
         editor,
         setEditor,
         notes,

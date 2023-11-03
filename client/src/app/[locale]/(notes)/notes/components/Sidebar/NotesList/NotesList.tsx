@@ -5,6 +5,7 @@ import RepeatingElem from "@/app/components/RepeatingElem";
 import useNotesMetaQuery from "@/app/hooks/queries/useNotesMetaQuery";
 import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext from "@/contexts/NotesContext";
+import AssignTagModal from "./AssignTagModal/AssignTagModal";
 import Note from "./Note";
 
 export default function NotesList() {
@@ -16,6 +17,7 @@ export default function NotesList() {
   if (!notes?.length) return <>No notes</>;
   return (
     <>
+      <AssignTagModal />
       {sortedNotes?.map((note, i, notes) => {
         const { _id, title, description } = note;
 

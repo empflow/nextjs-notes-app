@@ -4,9 +4,6 @@ import { createContext } from "react";
 interface TFilterModalContextValue {
   isEditing: boolean;
   setIsEditing: SetState<boolean>;
-
-  isAddTagPopupOpen: boolean;
-  setIsAddTagPopupOpen: SetState<boolean>;
 }
 
 export type TFilterModalContext = TContext<TFilterModalContextValue>;

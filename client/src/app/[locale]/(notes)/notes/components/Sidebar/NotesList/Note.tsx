@@ -47,14 +47,18 @@ export default function Note({
   let borderColor: undefined | string = undefined;
   if (isBorderTransparent) borderColor = "transparent";
 
-  const handleSelectNote = useCallback(function (_id: string) {
+  function handleSelectNote(_id: string) {
     setHideEditorOnMobile(false);
     setSelectedNoteId(_id);
-  }, []);
+  }
 
   return (
     <NoteContext.Provider
-      value={{ isActionsPopoverOpen, setIsActionsPopoverOpen, _id }}
+      value={{
+        isActionsPopoverOpen,
+        setIsActionsPopoverOpen,
+        _id,
+      }}
     >
       <div
         className={`flex items-center justify-between rounded-t border-b border-light-2xl-gray p-[14px] last:border-transparent dark:border-dark-4xl-gray dark:last:border-transparent ${

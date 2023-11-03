@@ -27,6 +27,12 @@ interface TNotesContextValue {
   setIsFilterMenuOpen: SetState<boolean>;
   hideEditorOnMobile: boolean;
   setHideEditorOnMobile: SetState<boolean>;
+  isAssignTagModalOpen: boolean;
+  setIsAssignTagModalOpen: SetState<boolean>;
+  assignTagModalNoteId: string | null;
+  setAssignTagModalNoteId: SetState<string | null>;
+  isAddTagModalOpen: boolean;
+  setIsAddTagModalOpen: SetState<boolean>;
 }
 
 type TNotesContext = TContext<TNotesContextValue>;

@@ -5,6 +5,7 @@ import { noteSchema, TNoteMetaSchema, TNoteSchema } from "@shared/schemas/note";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
 import useGetContext from "../useGetContext";
+import { convertNoteToNoteMeta } from "../../../utils/convertNoteToNoteMeta";
 
 export default function useAddNewNoteMutation() {
   const { setSelectedNoteId } = useGetContext(NotesContext);
@@ -32,9 +33,4 @@ export default function useAddNewNoteMutation() {
 async function addNote() {
   const { data } = await httpWithAuth.post("/notes/add");
   return noteSchema.parse(data);
-}
-
-function convertNoteToNoteMeta(note: TNoteSchema): TNoteMetaSchema {
-  const { content: _, ...noteMeta } = note;
-  return noteMeta;
 }

@@ -12,24 +12,16 @@ import FilterModalAddTagBtn from "./AddTagBtn";
 export default function FilterModal() {
   const { setIsFilterMenuOpen, isFilterMenuOpen } = useGetContext(NotesContext);
   const [isEditing, setIsEditing] = useState(false);
-  const [isAddTagPopupOpen, setIsAddTagPopupOpen] = useState(false);
   const t = useTranslations("Tags");
 
   return (
-    <FilterModalContext.Provider
-      value={{
-        isEditing,
-        setIsEditing,
-        isAddTagPopupOpen,
-        setIsAddTagPopupOpen,
-      }}
-    >
+    <FilterModalContext.Provider value={{ isEditing, setIsEditing }}>
       <AddTagModal />
       <Modal
         overlayStyle={{ zIndex: 30 }}
         isOpen={isFilterMenuOpen}
         setIsOpen={setIsFilterMenuOpen}
-        className="max-w-[600px]"
+        className="w-full max-w-[600px]"
       >
         <p className="mb-4 text-xl font-semibold">{t("filterByTag")}</p>
         <div className="flex flex-col gap-2">

@@ -2,6 +2,7 @@
 import NotesContext from "@/contexts/NotesContext";
 import { SetState } from "@/utils/types";
 import {
+  CSSProperties,
   HTMLAttributes,
   ReactNode,
   useCallback,
@@ -21,6 +22,7 @@ interface TProps extends HTMLAttributes<HTMLDivElement> {
   blurred?: boolean;
   centerChildren?: boolean;
   usePortal?: boolean;
+  innerContainerStyle?: CSSProperties;
 }
 
 export default function Overlay({
@@ -32,6 +34,7 @@ export default function Overlay({
   portalSelector = "#popover-overlays",
   centerChildren = false,
   usePortal = true,
+  innerContainerStyle,
   ...attributes
 }: TProps) {
   const portalContainer = useQuerySelector(portalSelector);
@@ -50,10 +53,7 @@ export default function Overlay({
       }}
       {...attributes}
     >
-      <div
-        className="flex w-full items-center justify-center"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div style={innerContainerStyle} onClick={(e) => e.stopPropagation()}>
         {children}
       </div>
     </div>

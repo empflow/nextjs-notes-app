@@ -2,18 +2,21 @@ import MediumBtn from "@/app/components/buttons/Medium";
 import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext from "@/contexts/NotesContext";
 import { useTranslations } from "next-intl";
-import FilterModalContext from "../Context";
 
-export default function NoTags() {
+export default function AssignTagModalNoTags() {
   const t = useTranslations("Tags");
-  const { setIsAddTagModalOpen } = useGetContext(NotesContext);
+  const { setIsAssignTagModalOpen, setIsAddTagModalOpen } =
+    useGetContext(NotesContext);
+
+  function handleClick() {
+    setIsAssignTagModalOpen(false);
+    setIsAddTagModalOpen(true);
+  }
 
   return (
     <div className="flex flex-col">
       <p>{t("noTags")}</p>
-      <MediumBtn onClick={() => setIsAddTagModalOpen((prev) => !prev)}>
-        {t("addTag")}
-      </MediumBtn>
+      <MediumBtn onClick={handleClick}>{t("addTag")}</MediumBtn>
     </div>
   );
 }

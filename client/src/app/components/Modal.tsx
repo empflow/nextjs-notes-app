@@ -10,6 +10,7 @@ interface TProps extends HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;
   setIsOpen: SetState<boolean>;
   overlayStyle?: CSSProperties;
+  maxWidth?: number;
 }
 
 export default function Modal({
@@ -18,6 +19,7 @@ export default function Modal({
   setIsOpen,
   overlayStyle,
   className,
+  maxWidth = 600,
   ...attrs
 }: TProps) {
   const portalContainer = useQuerySelector<HTMLDivElement>("#modals");
@@ -30,6 +32,7 @@ export default function Modal({
       isActive={isOpen}
       setIsActive={setIsOpen}
       blurred={true}
+      innerContainerStyle={{ maxWidth, width: maxWidth ? "100%" : undefined }}
     >
       <div
         className={cn(

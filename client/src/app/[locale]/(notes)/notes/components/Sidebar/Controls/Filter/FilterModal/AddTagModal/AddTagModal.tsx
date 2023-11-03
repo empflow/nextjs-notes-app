@@ -8,6 +8,7 @@ import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import ColorInput from "./ColorInput";
 import FilterModalContext from "../Context";
+import NotesContext from "@/contexts/NotesContext";
 
 export interface TAddTagForm {
   color: string;
@@ -15,8 +16,10 @@ export interface TAddTagForm {
 }
 
 export default function AddTagModal() {
-  const { isAddTagPopupOpen, setIsAddTagPopupOpen } =
-    useGetContext(FilterModalContext);
+  const {
+    isAddTagModalOpen: isAddTagModalOpen,
+    setIsAddTagModalOpen: setIsAddTagModalOpen,
+  } = useGetContext(NotesContext);
   const {
     register,
     handleSubmit,
@@ -29,14 +32,14 @@ export default function AddTagModal() {
 
   function onSubmit() {
     addTag(formData);
-    setIsAddTagPopupOpen(false);
+    setIsAddTagModalOpen(false);
   }
 
   return (
     <Modal
       overlayStyle={{ zIndex: 40 }}
-      isOpen={isAddTagPopupOpen}
-      setIsOpen={setIsAddTagPopupOpen}
+      isOpen={isAddTagModalOpen}
+      setIsOpen={setIsAddTagModalOpen}
     >
       <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-2">

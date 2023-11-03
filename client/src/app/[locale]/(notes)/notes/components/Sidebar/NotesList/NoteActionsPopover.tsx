@@ -6,6 +6,7 @@ import NotesContext from "@/contexts/NotesContext";
 import { NoteContext } from "./Note";
 import PopoverActionBtn from "@/app/[locale]/(main)/auth/sign-in/components/PopoverActionBtn";
 import useDeleteNoteMutation from "@/app/hooks/queries/useDeleteNoteMutation";
+import Modal from "@/app/components/Modal";
 
 export default function NoteActionsPopover() {
   const t = useTranslations("Notes");
@@ -14,11 +15,16 @@ export default function NoteActionsPopover() {
     setIsActionsPopoverOpen: setIsOpen,
     _id,
   } = useGetContext(NoteContext);
-  const { setSelectedNoteId } = useGetContext(NotesContext);
+  const {
+    setSelectedNoteId,
+    setIsAssignTagModalOpen,
+    setAssignTagModalNoteId,
+  } = useGetContext(NotesContext);
   const { mutate: deleteNote } = useDeleteNoteMutation();
 
   function handleAssignTag() {
-    // TODO: impl this
+    setIsAssignTagModalOpen(true);
+    setAssignTagModalNoteId(_id as string);
   }
 
   function handleDelete() {
@@ -43,7 +49,7 @@ export default function NoteActionsPopover() {
             {...{ setIsPopoverMenuOpen: setIsOpen }}
             onClick={handleAssignTag}
           >
-            {t("assignTag")}
+            {t("updateAssignedTags")}
           </PopoverActionBtn>
           <PopoverActionBtn
             {...{ setIsPopoverMenuOpen: setIsOpen }}
