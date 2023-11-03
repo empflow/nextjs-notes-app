@@ -1,4 +1,4 @@
-import useSaveEditorContent from "@/app/hooks/queries/useSaveEditorContentQuery";
+import useSaveEditorContent from "@/app/hooks/reactQuery/useSaveEditorContentQuery";
 import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext from "@/contexts/NotesContext";
 import { NextImage } from "@/utils/TiptapExtensions/NextImage/NextImage";

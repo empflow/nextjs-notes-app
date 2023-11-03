@@ -7,7 +7,7 @@ import PopoverActionBtn from "../../../../../../../../../(main)/auth/sign-in/com
 import MoreIcon from "@/icons/svg/moreHorizontalCircled.svg";
 import { useTranslations } from "next-intl";
 import { TagContext } from "../Tag";
-import useDeleteTagMutation from "@/app/hooks/queries/useDeleteTagMutation";
+import useDeleteTagMutation from "@/app/hooks/reactQuery/useDeleteTagMutation";
 
 export default function TagActionsPopover() {
   const {

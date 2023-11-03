@@ -1,7 +1,7 @@
 import SmallBtn from "@/app/components/buttons/Small";
 import useUpdateAssignedTagsMutation, {
   TUpdateAssignedTagsAction,
-} from "@/app/hooks/queries/useUpdateAssignedTagsMutation";
+} from "@/app/hooks/reactQuery/useUpdateAssignedTagsMutation";
 import useGetContext from "@/app/hooks/useGetContext";
 import useGetNote from "@/app/hooks/useGetNote";
 import NotesContext from "@/contexts/NotesContext";

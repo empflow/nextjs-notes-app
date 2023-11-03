@@ -4,7 +4,6 @@ import copyVal from "@shared/utils/copyVal";
 
 export default function useSortNotes(notes: TNotesListNotesMeta) {
   const [sortedNotes, setSortedNotes] = useState<TNotesListNotesMeta>(null);
-  console.log(notes);
 
   useMemo(() => {
     // TODO: this sorts the notes on every content change. That's pretty bad

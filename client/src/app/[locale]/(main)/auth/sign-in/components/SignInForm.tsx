@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import Captcha from "@/app/components/Captcha";
-import useSignInQuery from "@/app/hooks/queries/useSignInQuery";
+import useSignInQuery from "@/app/hooks/reactQuery/useSignInQuery";
 import storeAuthRespData from "@/utils/storeAuthRespData";
 import useSignInTranslations from "./hooks/useFormTranslations";
 import SignInInputs from "./Inputs";

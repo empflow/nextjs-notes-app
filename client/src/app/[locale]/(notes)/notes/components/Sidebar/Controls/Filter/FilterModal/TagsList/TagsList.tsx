@@ -1,4 +1,4 @@
-import useTagsQuery from "@/app/hooks/queries/useTagsQuery";
+import useTagsQuery from "@/app/hooks/reactQuery/useTagsQuery";
 import { useTranslations } from "next-intl";
 import { ReactNode } from "react";
 import NoTags from "./NoTags";

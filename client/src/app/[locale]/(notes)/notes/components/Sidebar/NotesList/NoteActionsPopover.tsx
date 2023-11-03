@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import NotesContext from "@/contexts/NotesContext";
 import { NoteContext } from "./Note";
 import PopoverActionBtn from "@/app/[locale]/(main)/auth/sign-in/components/PopoverActionBtn";
-import useDeleteNoteMutation from "@/app/hooks/queries/useDeleteNoteMutation";
+import useDeleteNoteMutation from "@/app/hooks/reactQuery/useDeleteNoteMutation";
 import Modal from "@/app/components/Modal";
 
 export default function NoteActionsPopover() {

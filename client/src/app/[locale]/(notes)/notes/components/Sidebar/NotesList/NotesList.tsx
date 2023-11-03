@@ -2,7 +2,7 @@
 
 import Err from "@/app/components/Err/Err";
 import RepeatingElem from "@/app/components/RepeatingElem";
-import useNotesMetaQuery from "@/app/hooks/queries/useNotesMetaQuery";
+import useNotesMetaQuery from "@/app/hooks/reactQuery/useNotesMetaQuery";
 import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext from "@/contexts/NotesContext";
 import AssignTagModal from "./AssignTagModal/AssignTagModal";

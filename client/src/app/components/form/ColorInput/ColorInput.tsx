@@ -18,8 +18,8 @@ export default function ColorInput({
       className={`border border-slate-300 dark:border-dark-xl-gray ${
         styles.colorInput
       } ${className ? className : ""}`}
-      {...register}
       {...attributes}
+      {...register}
     />
   );
 }

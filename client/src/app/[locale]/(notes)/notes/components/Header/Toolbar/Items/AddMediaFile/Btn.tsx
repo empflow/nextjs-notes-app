@@ -1,5 +1,5 @@
 import SmallBtn from "@/app/components/buttons/Small";
-import useUploadMediaFileMutation from "@/app/hooks/queries/useUploadMediaFileMutation";
+import useUploadMediaFileMutation from "@/app/hooks/reactQuery/useUploadMediaFileMutation";
 import useGetContext from "@/app/hooks/useGetContext";
 import { useTranslations } from "next-intl";
 import { AddMediaFileContext } from "./Context";

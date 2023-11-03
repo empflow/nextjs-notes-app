@@ -1,22 +1,6 @@
-import SmallBtn from "@/app/components/buttons/Small";
-import ColorInput from "@/app/components/form/ColorInput/ColorInput";
-import FormErr from "@/app/components/form/FormErr";
-import Input from "@/app/components/form/Input";
-import InputWithLabel from "@/app/components/form/InputWithLabel";
-import Popover from "@/app/components/Popover";
 import useGetContext from "@/app/hooks/useGetContext";
-import { SetState, TContext } from "@/utils/types";
-import { useTranslations } from "next-intl";
-import {
-  createContext,
-  MouseEvent,
-  MouseEventHandler,
-  MutableRefObject,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { useForm, UseFormRegister, UseFormReturn } from "react-hook-form";
+import { useRef, useState } from "react";
+import { useForm } from "react-hook-form";
 import { TAddTagForm } from "../AddTagModal/AddTagModal";
 import FilterModalContext from "../Context";
 import TagActionsPopover from "./ActionsPopover/ActionsPopover";
@@ -36,20 +20,15 @@ export const TagContext = getTagContext();
 export default function Tag({ name, color, _id }: TProps) {
   const [isEditingThisTag, setIsEditingThisTag] = useState(false);
   const [isPopoverMenuOpen, setIsPopoverMenuOpen] = useState(false);
-  const { isEditing: isEditingTags } = useGetContext(FilterModalContext);
   const form = useForm<TAddTagForm>({
     defaultValues: { name, color },
   });
-  const {
-    register,
-    formState: { errors: formErrs },
-    watch: formWatch,
-    handleSubmit,
-  } = form;
-  const formData = formWatch();
+  const { handleSubmit } = form;
   const nameInputRef = useRef<HTMLInputElement | null>(null);
 
-  async function onSubmit() {}
+  async function onSubmit() {
+    setIsEditingThisTag(false);
+  }
 
   return (
     <TagContext.Provider

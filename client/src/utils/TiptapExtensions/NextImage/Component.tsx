@@ -1,4 +1,4 @@
-import useMediaFileQuery from "@/app/hooks/queries/useMediaFileQuery";
+import useMediaFileQuery from "@/app/hooks/reactQuery/useMediaFileQuery";
 import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext from "@/contexts/NotesContext";
 import { NodeViewWrapper } from "@tiptap/react";

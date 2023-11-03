@@ -1,4 +1,4 @@
-import useSignOutQuery from "@/app/hooks/queries/useSIgnOutQuery";
+import useSignOutQuery from "@/app/hooks/reactQuery/useSIgnOutQuery";
 import SignOutIcon from "@/icons/svg/signOut.svg";
 import { useTranslations } from "next-intl";
 import ProfileMenuDropdownBtn from "./DropdownBtn";

@@ -12,8 +12,9 @@ export default function TagInputs() {
     initColor,
     initName,
     _id,
-    form: { register },
+    form: { register, watch: formWatch },
   } = useGetContext(TagContext);
+  const form = formWatch();
   const formT = useTranslations("Tags.addTagForm");
   const { ref: nameInputRegisterRef, ...nameInputRegisterRest } = register(
     "name",
@@ -29,6 +30,7 @@ export default function TagInputs() {
             style={{ width: 30, height: 34 }}
             register={register("color", { required: formT("noColor") })}
             disabled={!isEditingThisTag}
+            value={form.color}
           />
           <InputWithRef
             {...nameInputRegisterRest}
@@ -40,6 +42,7 @@ export default function TagInputs() {
             disabled={!isEditingThisTag}
             type="text"
             style={{ padding: 4 }}
+            value={form.name}
           />
         </>
       ) : (

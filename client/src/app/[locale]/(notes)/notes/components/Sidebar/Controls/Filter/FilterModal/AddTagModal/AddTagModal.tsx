@@ -1,13 +1,11 @@
 import FormBtn from "@/app/components/form/FormBtn";
 import InputWithLabel from "@/app/components/form/InputWithLabel";
-import Label from "@/app/components/form/Label";
 import Modal from "@/app/components/Modal";
-import useAddTagMutation from "@/app/hooks/queries/useAddTagMutation";
+import useAddTagMutation from "@/app/hooks/reactQuery/useAddTagMutation";
 import useGetContext from "@/app/hooks/useGetContext";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import ColorInput from "./ColorInput";
-import FilterModalContext from "../Context";
 import NotesContext from "@/contexts/NotesContext";
 
 export interface TAddTagForm {
