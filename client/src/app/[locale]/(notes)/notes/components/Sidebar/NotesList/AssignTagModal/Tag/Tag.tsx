@@ -11,7 +11,11 @@ interface TProps {
 
 export default function AssignTagModalTag({ _id: tagId, color, name }: TProps) {
   return (
-    <div className={cn("flex items-center justify-between")}>
+    <div
+      className={cn(
+        "flex flex-col justify-between sm:flex-row sm:items-center",
+      )}
+    >
       <div className={cn("flex gap-2")}>
         <div
           style={{ backgroundColor: color }}
