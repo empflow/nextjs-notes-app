@@ -48,7 +48,6 @@ export default function useUpdateTagMutation() {
           tag.name = name;
           return tag;
         });
-        console.log(tagsUpdated);
 
         qc.setQueryData(["tags"], tagsUpdated);
         return { prevTags };

@@ -8,7 +8,6 @@ export default function useOnClickOutside<T>(
   cb: () => unknown,
 ) {
   useOnClick((e: TEvent) => {
-    console.log("hello");
     const { target } = e;
     if (
       ref?.current &&

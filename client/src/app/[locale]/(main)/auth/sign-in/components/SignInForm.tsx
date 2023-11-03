@@ -31,7 +31,6 @@ export default function SignInForm() {
     watch: formWatch,
   } = useForm<TSignInFormInputValues>();
   const email = formWatch("email", "");
-  console.log(email);
   const { refetch: fetchSignIn } = useSignInQuery({
     formData: getFormValues(),
     captchaRef,

@@ -41,10 +41,8 @@ export default function AssignTagModalUpdateAssignedTagsBtn({
 
   function handleClick() {
     if (mode === "assign") {
-      console.log("assign");
       updateAssignedTags({ noteId: noteId as string, tagId, action: "assign" });
     } else {
-      console.log("unassign");
       updateAssignedTags({
         noteId: noteId as string,
         tagId,

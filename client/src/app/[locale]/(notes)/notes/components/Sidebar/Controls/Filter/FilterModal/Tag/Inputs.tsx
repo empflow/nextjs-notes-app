@@ -22,7 +22,6 @@ export default function TagInputs() {
     "name",
     { required: formT("noName") },
   );
-  console.log(form.name, form.color);
 
   return (
     <div key={_id} className="flex items-center gap-2">
