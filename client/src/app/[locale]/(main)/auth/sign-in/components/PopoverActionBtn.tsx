@@ -23,6 +23,7 @@ export default function PopoverActionBtn({
       className="w-full rounded px-2 py-1 text-left hover:bg-light-4xl-gray disabled:text-gray"
       {...attrs}
       onClick={handleClick}
+      type="button"
     >
       {children}
     </button>

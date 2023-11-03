@@ -9,8 +9,10 @@ export default function TagInputs() {
   const {
     isEditingThisTag,
     nameInputRef,
-    initColor,
-    initName,
+    color,
+    setColor,
+    name,
+    setName,
     _id,
     form: { register, watch: formWatch },
   } = useGetContext(TagContext);
@@ -20,6 +22,7 @@ export default function TagInputs() {
     "name",
     { required: formT("noName") },
   );
+  console.log(form.name, form.color);
 
   return (
     <div key={_id} className="flex items-center gap-2">
@@ -51,14 +54,14 @@ export default function TagInputs() {
             className="disabled:cursor-default"
             style={{ width: 30, height: 34 }}
             disabled={!isEditingThisTag}
-            value={initColor}
+            value={color}
           />
           <InputWithRef
             ref={nameInputRef}
             className="disabled:border-none disabled:bg-transparent"
             disabled={!isEditingThisTag}
             type="text"
-            value={initName}
+            value={name}
             style={{ padding: 4 }}
           />
         </>

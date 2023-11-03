@@ -18,6 +18,7 @@ export default function TagActionsPopover() {
     nameInputRef,
   } = useGetContext(TagContext);
   const t = useTranslations("Tags");
+  const tGeneral = useTranslations("General");
   const { isEditing } = useGetContext(FilterModalContext);
   const { _id } = useGetContext(TagContext);
   const { mutate: deleteTag } = useDeleteTagMutation();
@@ -36,10 +37,7 @@ export default function TagActionsPopover() {
     }, 0);
   }
 
-  function handleDelete() {
-    deleteTag(_id);
-  }
-
+  const handleDelete = () => deleteTag(_id);
   return (
     <>
       {isEditing && (
@@ -61,7 +59,7 @@ export default function TagActionsPopover() {
               {...{ setIsPopoverMenuOpen }}
               onClick={handleRename}
             >
-              {t("rename")}
+              {tGeneral("edit")}
             </PopoverActionBtn>
             <PopoverActionBtn
               {...{ setIsPopoverMenuOpen }}

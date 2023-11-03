@@ -17,26 +17,26 @@ interface TProps {
 
 export const TagContext = getTagContext();
 
-export default function Tag({ name, color, _id }: TProps) {
+export default function Tag({ name: initName, color: initColor, _id }: TProps) {
   const [isEditingThisTag, setIsEditingThisTag] = useState(false);
   const [isPopoverMenuOpen, setIsPopoverMenuOpen] = useState(false);
+  const [color, setColor] = useState(initColor);
+  const [name, setName] = useState(initName);
   const form = useForm<TAddTagForm>({
     defaultValues: { name, color },
   });
   const { handleSubmit } = form;
   const nameInputRef = useRef<HTMLInputElement | null>(null);
 
-  async function onSubmit() {
-    setIsEditingThisTag(false);
-  }
-
   return (
     <TagContext.Provider
       value={{
         _id,
         form,
-        initColor: color,
-        initName: name,
+        color,
+        setColor,
+        name,
+        setName,
         isEditingThisTag,
         isPopoverMenuOpen,
         nameInputRef,
@@ -44,7 +44,7 @@ export default function Tag({ name, color, _id }: TProps) {
         setIsPopoverMenuOpen,
       }}
     >
-      <form className="flex flex-col gap-1" onSubmit={handleSubmit(onSubmit)}>
+      <form className="flex flex-col gap-1" onSubmit={handleSubmit(() => {})}>
         <div className="flex justify-between">
           <TagInputs />
           <TagActionsPopover />

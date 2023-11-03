@@ -8,8 +8,10 @@ interface TTagContextValue {
   setIsEditingThisTag: SetState<boolean>;
   _id: string;
   nameInputRef: MutableRefObject<HTMLInputElement | null>;
-  initColor: string;
-  initName: string;
+  color: string;
+  setColor: SetState<string>;
+  name: string;
+  setName: SetState<string>;
   isPopoverMenuOpen: boolean;
   setIsPopoverMenuOpen: SetState<boolean>;
   form: UseFormReturn<TAddTagForm>;
