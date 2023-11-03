@@ -7,16 +7,12 @@ import { useTranslations } from "next-intl";
 import useGetContext from "../useGetContext";
 import { convertNoteToNoteMeta } from "../../../utils/convertNoteToNoteMeta";
 
-interface TContext {
-  prevNotes: TNoteMetaSchema[];
-}
-
 export default function useAddNewNoteMutation() {
   const { setSelectedNoteId } = useGetContext(NotesContext);
   const errsT = useTranslations("Errors");
   const queryClient = useQueryClient();
 
-  return useMutation<TNoteSchema, Error, void, TContext>(addNote, {
+  return useMutation<TNoteSchema, Error>(addNote, {
     onSuccess(newNote) {
       const newNoteMeta = convertNoteToNoteMeta(newNote);
       queryClient.setQueryData<TNoteMetaSchema[]>(["notes"], (prevData) => {
