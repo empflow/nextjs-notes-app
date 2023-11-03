@@ -135,7 +135,7 @@
     "created": "Created",
     "updated": "Modified",
     "delete": "Delete",
-    "assignTag": "Assign tag",
+    "updateAssignedTags": "Update assigned tags",
     "couldNotDeleteNote": "Could not delete note. Try again later"
   },
   "Tags": {
@@ -152,7 +152,9 @@
     "stopEditingTags": "Stop editing",
     "couldNotAddTag": "Could not add tag. Try again later",
     "couldDeleteAddTag": "Could not delete tag. Try again later",
-    "couldNotAssignTag": "Could not assign tag. Try again later"
+    "couldNotAssignTag": "Could not assign tag. Try again later",
+    "assign": "Assign",
+    "unassign": "Unassign"
   },
   "Errors": {
     "offline": "Please check your internet connection",
