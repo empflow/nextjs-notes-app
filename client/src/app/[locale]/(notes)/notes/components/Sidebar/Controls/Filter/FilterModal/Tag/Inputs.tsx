@@ -1,18 +1,19 @@
 import ColorInput from "@/app/components/form/ColorInput/ColorInput";
-import Input from "@/app/components/form/Input";
 import InputWithRef from "@/app/components/form/InputWithRef";
+import useFilterNotes from "@/app/hooks/useFilterNotes";
 import useGetContext from "@/app/hooks/useGetContext";
+import cn from "@/utils/cn";
 import { useTranslations } from "next-intl";
+import FilterModalContext from "../Context";
 import { TagContext } from "./Tag";
 
 export default function TagInputs() {
+  const { isEditing } = useGetContext(FilterModalContext);
   const {
     isEditingThisTag,
     nameInputRef,
     color,
-    setColor,
     name,
-    setName,
     _id,
     form: { register, watch: formWatch },
   } = useGetContext(TagContext);
@@ -22,13 +23,18 @@ export default function TagInputs() {
     "name",
     { required: formT("noName") },
   );
+  const filterNotes = useFilterNotes();
+
+  function handleClick() {
+    if (!isEditing) filterNotes(_id);
+  }
 
   return (
     <div key={_id} className="flex items-center gap-2">
       {isEditingThisTag ? (
         <>
           <ColorInput
-            className="disabled:cursor-default"
+            className={cn("disabled:cursor-default")}
             style={{ width: 30, height: 34 }}
             register={register("color", { required: formT("noColor") })}
             disabled={!isEditingThisTag}
@@ -40,7 +46,7 @@ export default function TagInputs() {
               nameInputRegisterRef(e);
               nameInputRef.current = e;
             }}
-            className="disabled:border-none disabled:bg-transparent"
+            className="border-none bg-transparent"
             disabled={!isEditingThisTag}
             type="text"
             style={{ padding: 4 }}
@@ -48,22 +54,25 @@ export default function TagInputs() {
           />
         </>
       ) : (
-        <>
+        <div className={cn("relative flex justify-center")}>
+          <div
+            className={cn("absolute bottom-0 left-0 right-0 top-0")}
+            onClick={handleClick}
+          />
           <ColorInput
-            className="disabled:cursor-default"
             style={{ width: 30, height: 34 }}
-            disabled={!isEditingThisTag}
+            disabled={true}
             value={color}
           />
           <InputWithRef
             ref={nameInputRef}
-            className="disabled:border-none disabled:bg-transparent"
-            disabled={!isEditingThisTag}
+            className="cursor-pointer border-none bg-transparent"
+            disabled={true}
             type="text"
             value={name}
             style={{ padding: 4 }}
           />
-        </>
+        </div>
       )}
     </div>
   );

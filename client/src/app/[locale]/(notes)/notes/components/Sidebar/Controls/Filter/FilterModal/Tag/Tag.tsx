@@ -1,4 +1,6 @@
+import useFilterNotes from "@/app/hooks/useFilterNotes";
 import useGetContext from "@/app/hooks/useGetContext";
+import cn from "@/utils/cn";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { TAddTagForm } from "../AddTagModal/AddTagModal";
@@ -27,6 +29,12 @@ export default function Tag({ name: initName, color: initColor, _id }: TProps) {
   });
   const { handleSubmit } = form;
   const nameInputRef = useRef<HTMLInputElement | null>(null);
+  const filterNotes = useFilterNotes();
+  const { isEditing } = useGetContext(FilterModalContext);
+
+  function handleClick() {
+    if (!isEditing) filterNotes(_id);
+  }
 
   return (
     <TagContext.Provider
@@ -44,8 +52,14 @@ export default function Tag({ name: initName, color: initColor, _id }: TProps) {
         setIsPopoverMenuOpen,
       }}
     >
-      <form className="flex flex-col gap-1" onSubmit={handleSubmit(() => {})}>
-        <div className="flex justify-between">
+      <form
+        onClick={handleClick}
+        className={cn("flex flex-col gap-1 px-2 py-2", {
+          "cursor-pointer rounded hover:bg-light-4xl-gray": !isEditing,
+        })}
+        onSubmit={handleSubmit(() => {})}
+      >
+        <div className="flex items-center justify-between">
           <TagInputs />
           <TagActionsPopover />
         </div>

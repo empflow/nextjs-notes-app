@@ -9,10 +9,17 @@ import AssignTagModal from "./AssignTagModal/AssignTagModal";
 import Note from "./Note";
 
 export default function NotesList() {
-  const { isLoading, isError, refetch: fetchNotesMeta } = useNotesMetaQuery();
+  const {
+    isLoading,
+    isError,
+    refetch: fetchNotesMeta,
+    isInitialLoading,
+    isFetching,
+  } = useNotesMetaQuery();
   const { selectedNoteId, notes, sortedNotes } = useGetContext(NotesContext);
+  const isNotesFiltering = !isInitialLoading && isFetching;
 
-  if (isLoading) return <NotesListLoading />;
+  if (isLoading || isNotesFiltering) return <NotesListLoading />;
   if (isError) return <Err retryFn={fetchNotesMeta} />;
   if (!notes?.length) return <>No notes</>;
   return (

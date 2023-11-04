@@ -18,7 +18,6 @@ export default function AssignTagsModalTagList({}: TProps) {
   else if (!tags.length) content = <AssignTagModalNoTags />;
   else {
     content = tags.map(({ name, _id, color }) => {
-      console.log(_id);
       return <AssignTagModalTag {...{ name, color, _id }} key={_id} />;
     });
   }
