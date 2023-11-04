@@ -1,6 +1,6 @@
 import ProfileMenuContextProviders from "@/app/providers/ProfileMenuContext";
 import serverGetAuthData from "@/utils/getAuthData/serverGetAuthData";
-import Link from "next/link";
+import { Link } from "@/i18nUtils";
 import Logo from "../Logo";
 import ProfileMenu from "./ProfileMenu/ProfileMenu";
 

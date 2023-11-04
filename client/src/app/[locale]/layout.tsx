@@ -2,16 +2,23 @@ import "../globals.css";
 import "../globalStyles/reactLoadingSkeleton.css";
 import "react-toastify/dist/ReactToastify.css";
 import "react-loading-skeleton/dist/skeleton.css";
-import { NextIntlClientProvider, useLocale } from "next-intl";
+import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { ToastContainer } from "react-toastify";
 import ThemeProviders from "../providers/ThemeProviders";
 import ReactQueryProviders from "../providers/ReactQueryProviders";
+import { locales, timeZone } from "@/config";
+import { unstable_setRequestLocale } from "next-intl/server";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Notes",
   description: "Made by GitHub @empflow",
 };
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 interface RootLayoutContext {
   children: React.ReactNode;
@@ -22,12 +29,10 @@ interface RootLayoutContext {
 
 export default async function RootLayout({
   children,
-  params,
+  params: { locale },
 }: RootLayoutContext) {
-  const locale = useLocale();
-
-  // no idea what this is honestly but i saw this in the docs
-  if (params.locale !== locale) notFound();
+  if (!locales.includes(locale as any)) notFound();
+  unstable_setRequestLocale(locale);
 
   let messages;
   try {
@@ -41,7 +46,7 @@ export default async function RootLayout({
       <body className="flex min-h-screen flex-col">
         <ThemeProviders>
           <ReactQueryProviders>
-            <NextIntlClientProvider locale={locale} messages={messages}>
+            <NextIntlClientProvider {...{ timeZone, locale, messages }}>
               {children}
               <ToastContainer hideProgressBar autoClose={3000} />
             </NextIntlClientProvider>

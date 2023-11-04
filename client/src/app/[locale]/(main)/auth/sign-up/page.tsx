@@ -1,7 +1,17 @@
 import SignUpForm from "./components/SignUpForm";
 import { useTranslations } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
 
-export default function SignUp() {
+interface TProps {
+  params: {
+    locale: string;
+  };
+}
+
+export const dynamic = "force-dynamic";
+
+export default function SignUp({ params: { locale } }: TProps) {
+  unstable_setRequestLocale(locale);
   const t = useTranslations("SignUp");
 
   return (

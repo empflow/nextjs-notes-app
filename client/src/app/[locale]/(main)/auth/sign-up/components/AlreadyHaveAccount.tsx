@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18nUtils";
 import useSignUpFormTranslations from "../hooks/useSignUpFormTranslations";
 
 export default function SignUpAlreadyHaveAccount() {

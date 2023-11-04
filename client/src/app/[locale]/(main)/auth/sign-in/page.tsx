@@ -1,12 +1,22 @@
 import SignInForm from "./components/SignInForm";
 import { useTranslations } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
 
-export default function SignIn() {
+interface TProps {
+  params: {
+    locale: string;
+  };
+}
+
+export const dynamic = "force-dynamic";
+
+export default function SignIn({ params: { locale } }: TProps) {
+  unstable_setRequestLocale(locale);
   const t = useTranslations("SignIn");
 
   return (
     <>
-      <h1 className="font-semibold text-3xl mb-8">{t("title")}</h1>
+      <h1 className="mb-8 text-3xl font-semibold">{t("title")}</h1>
       <div>
         <SignInForm />
       </div>

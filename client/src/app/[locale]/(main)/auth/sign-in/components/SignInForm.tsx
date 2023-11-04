@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { Link, useRouter } from "@/i18nUtils";
 import { useForm } from "react-hook-form";
 import Captcha from "@/app/components/Captcha";
 import useSignInQuery from "@/app/hooks/reactQuery/useSignInQuery";
