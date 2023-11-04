@@ -27,7 +27,7 @@ export default function NoNotes() {
 
   return (
     <div className="flex-grow">
-      <div className="flex h-full items-center justify-center text-center text-lg text-light-gray">
+      <div className="flex h-full flex-col items-center justify-center gap-3 text-center text-lg text-light-gray">
         {content}
       </div>
     </div>
