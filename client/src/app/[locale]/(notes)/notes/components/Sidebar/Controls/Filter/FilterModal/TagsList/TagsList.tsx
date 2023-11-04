@@ -19,5 +19,5 @@ export default function TagsList() {
     ));
   }
 
-  return <div className="flex flex-col gap-1">{content}</div>;
+  return <div className="flex flex-col">{content}</div>;
 }

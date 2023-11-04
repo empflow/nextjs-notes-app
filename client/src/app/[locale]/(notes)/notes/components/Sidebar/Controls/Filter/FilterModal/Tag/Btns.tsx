@@ -33,18 +33,15 @@ export default function TagBtns() {
     form.reset();
   };
 
+  if (!isEditingThisTag) return null;
   return (
     <div className="flex gap-1">
-      {isEditingThisTag && (
-        <>
-          <SmallBtn onClick={handleSave} disabled={!formData.name}>
-            {t("save")}
-          </SmallBtn>
-          <SmallBtn onClick={handleCancel} type="button" variant="outlined">
-            {t("cancel")}
-          </SmallBtn>
-        </>
-      )}
+      <SmallBtn onClick={handleSave} disabled={!formData.name}>
+        {t("save")}
+      </SmallBtn>
+      <SmallBtn onClick={handleCancel} type="button" variant="outlined">
+        {t("cancel")}
+      </SmallBtn>
     </div>
   );
 }
