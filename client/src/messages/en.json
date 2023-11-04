@@ -132,6 +132,8 @@
     "noTitle": "No title",
     "noAdditionalText": "No additional text",
     "noNotes": "You don't have any notes",
+    "noNotesForThisTag": "You don't have any notes assinged to tag \"{tagName}\". You can try resetting the filter",
+    "resetFilter": "Reset filter",
     "created": "Created",
     "updated": "Modified",
     "delete": "Delete",
