@@ -43,7 +43,7 @@ export default function NoteActionsPopover() {
           position={"bottom-left"}
           offset={30}
           portalSelector="#popover-overlays"
-          className="min-w-[160px] rounded border border-light-3xl-gray bg-light-5xl-gray px-2 py-1"
+          className="min-w-[160px] rounded border border-light-3xl-gray bg-light-5xl-gray px-2 py-1 dark:border-dark-3xl-gray dark:bg-dark-5xl-gray"
         >
           <PopoverActionBtn
             {...{ setIsPopoverMenuOpen: setIsOpen }}

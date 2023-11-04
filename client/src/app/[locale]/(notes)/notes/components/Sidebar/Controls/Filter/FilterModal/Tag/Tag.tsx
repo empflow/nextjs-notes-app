@@ -55,7 +55,8 @@ export default function Tag({ name: initName, color: initColor, _id }: TProps) {
       <form
         onClick={handleClick}
         className={cn("flex flex-col gap-1 px-2 py-2", {
-          "cursor-pointer rounded hover:bg-light-4xl-gray": !isEditing,
+          "cursor-pointer rounded hover:bg-light-4xl-gray dark:hover:bg-dark-4xl-gray":
+            !isEditing,
         })}
         onSubmit={handleSubmit(() => {})}
       >
