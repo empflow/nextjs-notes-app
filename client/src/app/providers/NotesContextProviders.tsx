@@ -19,7 +19,7 @@ export default function NotesContextProviders({ children }: TProps) {
   const [editor, setEditor] = useState<TEditor>(null);
   const sortedNotes = useSortNotes(notes);
   const selectedNote = getSelectedNote(notes, selectedNoteId);
-  const [hideEditorOnMobile, setHideEditorOnMobile] = useState(false);
+  const [hideEditorOnMobile, setHideEditorOnMobile] = useState(true);
   const [isAssignTagModalOpen, setIsAssignTagModalOpen] = useState(false);
   const [assignTagModalNoteId, setAssignTagModalNoteId] = useState<
     string | null

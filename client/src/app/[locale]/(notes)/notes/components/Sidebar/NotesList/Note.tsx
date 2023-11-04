@@ -3,9 +3,10 @@ import { useTranslations } from "next-intl";
 import NotesContext from "@/contexts/NotesContext";
 import Skeleton from "react-loading-skeleton";
 import { TNoteSchema } from "@shared/schemas/note";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import getNoteContext from "./getContext";
 import NoteActionsPopover from "./NoteActionsPopover";
+import useNote from "@/app/hooks/useNote";
 
 interface TNoteProps {
   state?: "normal" | "loading";
@@ -26,14 +27,10 @@ export default function Note({
   isAboveSelectedNote,
   state = "normal",
 }: TNoteProps) {
-  const {
-    setSelectedNoteId,
-    setHideEditorOnMobile,
-    hideEditorOnMobile,
-    isEditing,
-  } = useGetContext(NotesContext);
+  const { hideEditorOnMobile, isEditing } = useGetContext(NotesContext);
   const t = useTranslations("Notes");
   const [isActionsPopoverOpen, setIsActionsPopoverOpen] = useState(false);
+  const { selectNote } = useNote();
 
   const isHighlighted = isSelected && !hideEditorOnMobile;
   const isBorderTransparent =
@@ -46,11 +43,6 @@ export default function Note({
 
   let borderColor: undefined | string = undefined;
   if (isBorderTransparent) borderColor = "transparent";
-
-  function handleSelectNote(_id: string) {
-    setHideEditorOnMobile(false);
-    setSelectedNoteId(_id);
-  }
 
   return (
     <NoteContext.Provider
@@ -68,7 +60,7 @@ export default function Note({
       >
         <div
           className="flex w-full flex-col"
-          onClick={_id ? () => handleSelectNote(_id) : undefined}
+          onClick={_id ? () => selectNote(_id) : undefined}
         >
           <div className="truncate">{title || <Skeleton />}</div>
           <div

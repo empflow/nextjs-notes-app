@@ -2,19 +2,17 @@ import NotesContext from "@/contexts/NotesContext";
 import httpWithAuth from "@/utils/http/httpWithAuth/httpWithAuth";
 import notify from "@/utils/notify";
 import { noteSchema, TNoteMetaSchema, TNoteSchema } from "@shared/schemas/note";
-import {
-  MutationFunction,
-  useMutation,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
 import useGetContext from "../useGetContext";
 import { convertNoteToNoteMeta } from "../../../utils/convertNoteToNoteMeta";
+import useNote from "../useNote";
 
 export default function useAddNoteMutation() {
-  const { setSelectedNoteId, selectedTagId } = useGetContext(NotesContext);
+  const { selectedTagId } = useGetContext(NotesContext);
   const errsT = useTranslations("Errors");
   const queryClient = useQueryClient();
+  const { selectNote: setNote } = useNote();
 
   return useMutation<TNoteSchema, Error>(addNote, {
     onSuccess(newNote) {
@@ -24,7 +22,7 @@ export default function useAddNoteMutation() {
         return [...prevData, newNoteMeta];
       });
       queryClient.setQueryData<TNoteSchema>(["notes", newNote._id], newNote);
-      setSelectedNoteId(newNote._id);
+      setNote(newNote._id);
     },
     onError() {
       notify(errsT("couldNotAddNote"), "error");
