@@ -34,6 +34,7 @@ const NoteSchema = new Schema<TNoteServer>(
     tags: {
       type: [{ type: Schema.Types.ObjectId, ref: "Tag" }],
       default: [],
+      required: true,
     },
   },
   { timestamps: true }
