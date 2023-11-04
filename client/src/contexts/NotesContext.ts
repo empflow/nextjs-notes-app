@@ -33,6 +33,8 @@ interface TNotesContextValue {
   setAssignTagModalNoteId: SetState<string | null>;
   isAddTagModalOpen: boolean;
   setIsAddTagModalOpen: SetState<boolean>;
+  isNotesFiltering: boolean;
+  setIsNotesFiltering: SetState<boolean>;
 }
 
 type TNotesContext = TContext<TNotesContextValue>;

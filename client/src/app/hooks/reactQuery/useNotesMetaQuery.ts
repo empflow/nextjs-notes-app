@@ -6,13 +6,17 @@ import { useEffect } from "react";
 import useGetContext from "../useGetContext";
 
 export default function useNotesMetaQuery() {
-  const { selectedTagId } = useGetContext(NotesContext);
+  const { selectedTagId, setIsNotesFiltering } = useGetContext(NotesContext);
   const query = useQuery<TNoteMetaSchema[]>(["notes"], fetchNotesMeta, {
     retry: false,
   });
 
   useEffect(() => {
-    query.refetch();
+    (async () => {
+      setIsNotesFiltering(true);
+      await query.refetch();
+      setIsNotesFiltering(false);
+    })();
   }, [selectedTagId]);
 
   async function fetchNotesMeta() {

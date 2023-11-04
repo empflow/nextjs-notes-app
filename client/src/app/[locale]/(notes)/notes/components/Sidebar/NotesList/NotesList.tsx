@@ -11,15 +11,9 @@ import NoNotes from "./NoNotes";
 import Note from "./Note";
 
 export default function NotesList() {
-  const {
-    isLoading,
-    isError,
-    refetch: fetchNotesMeta,
-    isInitialLoading,
-    isFetching,
-  } = useNotesMetaQuery();
-  const { selectedNoteId, notes, sortedNotes } = useGetContext(NotesContext);
-  const isNotesFiltering = !isInitialLoading && isFetching;
+  const { isLoading, isError, refetch: fetchNotesMeta } = useNotesMetaQuery();
+  const { selectedNoteId, notes, sortedNotes, isNotesFiltering } =
+    useGetContext(NotesContext);
   let content: ReactNode;
 
   if (isLoading || isNotesFiltering) content = <NotesListLoading />;

@@ -25,10 +25,13 @@ export default function NotesContextProviders({ children }: TProps) {
     string | null
   >(null);
   const [isAddTagModalOpen, setIsAddTagModalOpen] = useState(false);
+  const [isNotesFiltering, setIsNotesFiltering] = useState(false);
 
   return (
     <NotesContext.Provider
       value={{
+        isNotesFiltering,
+        setIsNotesFiltering,
         isAddTagModalOpen,
         setIsAddTagModalOpen,
         isAssignTagModalOpen,
