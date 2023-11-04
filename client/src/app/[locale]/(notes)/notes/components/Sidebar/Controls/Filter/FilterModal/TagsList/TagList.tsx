@@ -5,7 +5,7 @@ import NoTags from "./NoTags";
 import Tag from "../Tag/Tag";
 import TagsLoading from "./TagsLoading";
 
-export default function TagsList() {
+export default function TagList() {
   const { data: tags, isError, isLoading } = useTagsQuery();
   const tErrs = useTranslations("Errors");
   let content: ReactNode;

@@ -3,7 +3,7 @@ import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext from "@/contexts/NotesContext";
 import { useState } from "react";
 import FilterModalContext from "./Context";
-import TagsList from "./TagsList/TagsList";
+import TagList from "./TagsList/TagList";
 import AddTagModal from "./AddTagModal/AddTagModal";
 import { useTranslations } from "next-intl";
 import FilterModalEditTagsBtn from "./EditTagsBtn";
@@ -29,7 +29,7 @@ export default function FilterModal() {
             <FilterModalEditTagsBtn />
             <FilterModalAddTagBtn />
           </div>
-          <TagsList />
+          <TagList />
         </div>
       </Modal>
     </FilterModalContext.Provider>
