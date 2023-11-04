@@ -1,12 +1,12 @@
 "use client";
 import BigBtn from "@/app/components/buttons/Big";
 import Loading from "@/app/components/Loading";
-import useAddNewNoteMutation from "@/app/hooks/reactQuery/useAddNoteMutation";
+import useAddNoteMutation from "@/app/hooks/reactQuery/useAddNoteMutation";
 import AddIcon from "@/icons/svg/addCircle.svg";
 import { ReactNode } from "react";
 
 export default function AddNoteBtn() {
-  const { mutate: addNewNote, isLoading } = useAddNewNoteMutation();
+  const { mutate: addNewNote, isLoading } = useAddNoteMutation();
   let content: ReactNode;
 
   if (isLoading)

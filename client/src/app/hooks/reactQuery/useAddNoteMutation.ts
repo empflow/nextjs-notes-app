@@ -7,8 +7,8 @@ import { useTranslations } from "next-intl";
 import useGetContext from "../useGetContext";
 import { convertNoteToNoteMeta } from "../../../utils/convertNoteToNoteMeta";
 
-export default function useAddNewNoteMutation() {
   const { setSelectedNoteId } = useGetContext(NotesContext);
+export default function useAddNoteMutation() {
   const errsT = useTranslations("Errors");
   const queryClient = useQueryClient();
 
