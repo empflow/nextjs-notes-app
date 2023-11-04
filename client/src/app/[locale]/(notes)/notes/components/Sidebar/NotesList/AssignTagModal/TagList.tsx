@@ -4,9 +4,7 @@ import { ReactNode } from "react";
 import AssignTagModalNoTags from "./NoTags";
 import AssignTagModalTag from "./Tag/Tag";
 
-interface TProps {}
-
-export default function AssignTagsModalTagList({}: TProps) {
+export default function AssignTagsModalTagList() {
   const { data: tags, isError, isLoading } = useTagsQuery();
   const tErrs = useTranslations("Errors");
   const t = useTranslations();

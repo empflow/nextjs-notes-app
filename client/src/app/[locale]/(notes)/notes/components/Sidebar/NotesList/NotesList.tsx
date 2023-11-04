@@ -7,6 +7,7 @@ import useGetContext from "@/app/hooks/useGetContext";
 import NotesContext from "@/contexts/NotesContext";
 import { ReactNode } from "react";
 import AssignTagModal from "./AssignTagModal/AssignTagModal";
+import NoNotes from "./NoNotes";
 import Note from "./Note";
 
 export default function NotesList() {
@@ -23,7 +24,7 @@ export default function NotesList() {
 
   if (isLoading || isNotesFiltering) content = <NotesListLoading />;
   else if (isError) content = <Err retryFn={fetchNotesMeta} />;
-  else if (!notes?.length) content = <>No notes</>;
+  else if (!notes?.length) content = <NoNotes />;
   else {
     content = (
       <>
