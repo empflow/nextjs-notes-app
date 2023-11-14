@@ -12,8 +12,6 @@ interface TProps {
   };
 }
 
-export const dynamic = "force-dynamic";
-
 export default function Notes({ params: { locale } }: TProps) {
   unstable_setRequestLocale(locale);
   protectedPage();

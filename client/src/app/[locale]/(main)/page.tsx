@@ -8,8 +8,6 @@ interface TProps {
   };
 }
 
-export const dynamic = "force-dynamic";
-
 export default function Home({ params: { locale } }: TProps) {
   // `unstable_setRequestLocale` needs to be called on every page (not component)
   // and in the root layout. It's a temporary solution to enable static rendering

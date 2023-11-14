@@ -8,8 +8,6 @@ interface TProps {
   };
 }
 
-export const dynamic = "force-dynamic";
-
 export default function SignIn({ params: { locale } }: TProps) {
   unstable_setRequestLocale(locale);
   const t = useTranslations("SignIn");
