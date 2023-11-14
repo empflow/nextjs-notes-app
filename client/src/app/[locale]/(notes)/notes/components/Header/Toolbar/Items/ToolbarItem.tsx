@@ -1,5 +1,5 @@
 import ColoredIcon from "@/app/components/ColoredIcon";
-import Tooltip from "@/app/components/Tooltip";
+import Tooltip from "@/app/components/Tooltip/Tooltip";
 import { useTranslations } from "next-intl";
 import { MouseEvent, ReactNode } from "react";
 

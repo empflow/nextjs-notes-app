@@ -1,11 +1,8 @@
-import { createContext, forwardRef, ReactNode, useRef, useState } from "react";
+import { ReactNode, useState } from "react";
 import { SetState } from "@/utils/types";
-import { TViewsContainerContext } from "@/contexts/ViewsContainerContext";
+import getViewsContext, { TViewsContainerHeight } from "./getVIewsContext";
 
-export type TViewsContainerHeight = "auto" | number;
-
-export const ViewsContainerContext =
-  createContext<TViewsContainerContext>(null);
+export const ViewsContainerContext = getViewsContext();
 
 interface TProps {
   initMenu: string;

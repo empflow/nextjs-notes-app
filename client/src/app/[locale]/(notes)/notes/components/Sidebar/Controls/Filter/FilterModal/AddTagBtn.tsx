@@ -2,7 +2,7 @@ import SmallBtn from "@/app/components/buttons/Small";
 import useGetContext from "@/app/hooks/useGetContext";
 import { useTranslations } from "next-intl";
 import AddIcon from "@/icons/svg/add.svg";
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext from "@/app/[locale]/(notes)/notes/NotesContext";
 
 export default function FilterModalAddTagBtn() {
   const t = useTranslations("Tags");

@@ -1,7 +1,7 @@
 "use client";
 import useGetContext from "@/app/hooks/useGetContext";
 import useIsScreenWidthOverBreakpoint from "@/app/hooks/useIsScreenWidthOverBreakpoint";
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext from "@/app/[locale]/(notes)/notes/NotesContext";
 import { CSSProperties } from "react";
 import Editor from "../Editor/Editor";
 import Header from "../Header/Header";

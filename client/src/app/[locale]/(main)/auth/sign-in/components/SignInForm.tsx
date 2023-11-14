@@ -8,7 +8,7 @@ import storeAuthRespData from "@/utils/storeAuthRespData";
 import useSignInTranslations from "./hooks/useFormTranslations";
 import SignInInputs from "./Inputs";
 import SignInSectionBelowInputs from "./SectionBelowInputs";
-import SignInFormContext from "@/contexts/SignInFormContext";
+import SignInFormContext from "./SignInFormContext";
 import useHandleSignInErrs from "./hooks/useHandleErrs";
 import useCaptcha from "@/app/hooks/useCaptcha";
 

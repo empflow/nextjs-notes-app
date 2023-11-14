@@ -2,7 +2,7 @@
 
 import SmallBtn from "@/app/components/buttons/Small";
 import useGetContext from "@/app/hooks/useGetContext";
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext from "@/app/[locale]/(notes)/notes/NotesContext";
 import FilterIcon from "@/icons/svg/filter.svg";
 import { useTranslations } from "next-intl";
 import FilterModal from "./FilterModal/FilterModal";

@@ -1,9 +1,11 @@
 "use client";
-import NotesContext, { TEditor } from "@/contexts/NotesContext";
+import useObserveQuery from "@/app/hooks/useObserveQuery";
+import NotesContext, {
+  TEditor,
+} from "@/app/[locale]/(notes)/notes/NotesContext";
 import getSelectedNote from "@/utils/getSelectedNote";
 import { TNoteMetaSchema } from "@shared/schemas/note";
 import { ReactNode, useState } from "react";
-import useObserveQuery from "../hooks/useObserveQuery";
 
 interface TProps {
   children: ReactNode;

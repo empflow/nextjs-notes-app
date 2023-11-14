@@ -1,7 +1,7 @@
 "use client";
 import useGetContext from "@/app/hooks/useGetContext";
 import ProfileMenuDropdownBtnsList from "./DropdownBtnsList";
-import ProfileMenuContext from "@/contexts/ProfileMenuContext";
+import ProfileMenuContext from "@/app/providers/ProfileMenuContextProviders/ProfileMenuContext";
 import ProfileMenuDropdownCloseBtn from "./CloseBtn";
 import useGetDropdownTopPx from "./hooks/useGetDropdownTopPx";
 import Popover from "@/app/components/Popover";

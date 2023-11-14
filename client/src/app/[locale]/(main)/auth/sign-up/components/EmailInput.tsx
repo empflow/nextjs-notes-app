@@ -1,6 +1,6 @@
 import InputWithLabel from "@/app/components/form/InputWithLabel";
 import useGetContext from "@/app/hooks/useGetContext";
-import SignUpFormContext from "@/contexts/SignUpFormContext";
+import SignUpFormContext from "@/app/[locale]/(main)/auth/sign-up/components/SignUpFormContext";
 import { emailRegex } from "@shared/regexes";
 import useSignUpFormTranslations from "../hooks/useSignUpFormTranslations";
 

@@ -5,7 +5,7 @@ import { mediaFileSchema } from "@shared/schemas/mediaFile";
 import notify from "@/utils/notify";
 import { useTranslations } from "next-intl";
 import { AddMediaFileContext } from "@/app/[locale]/(notes)/notes/components/Header/Toolbar/Items/AddMediaFile/Context";
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext from "@/app/[locale]/(notes)/notes/NotesContext";
 import wait from "@/utils/wait";
 
 export default function useUploadMediaFileMutation() {

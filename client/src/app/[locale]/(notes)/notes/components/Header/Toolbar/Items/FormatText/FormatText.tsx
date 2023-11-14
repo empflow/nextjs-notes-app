@@ -6,7 +6,7 @@ import ToolbarItem from "../ToolbarItem";
 import { useTranslations } from "next-intl";
 import Popover from "@/app/components/Popover";
 import FormattingView from "./Formatting/Formatting";
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext from "@/app/[locale]/(notes)/notes/NotesContext";
 import ListsView from "./Lists";
 import useIsScreenWidthOverBreakpoint from "@/app/hooks/useIsScreenWidthOverBreakpoint";
 import { CSSProperties } from "react";

@@ -1,6 +1,6 @@
 import useGetContext from "@/app/hooks/useGetContext";
 import { useTranslations } from "next-intl";
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext from "@/app/[locale]/(notes)/notes/NotesContext";
 import Skeleton from "react-loading-skeleton";
 import { TNoteSchema } from "@shared/schemas/note";
 import { useState } from "react";

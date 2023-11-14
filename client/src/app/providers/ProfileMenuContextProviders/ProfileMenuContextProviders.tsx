@@ -1,6 +1,6 @@
 "use client";
 
-import ProfileMenuContext from "@/contexts/ProfileMenuContext";
+import ProfileMenuContext from "@/app/providers/ProfileMenuContextProviders/ProfileMenuContext";
 import { TGetAuthDataReturnT } from "@/utils/getAuthData/getAuthDataGetReturnVal";
 import { useTranslations } from "next-intl";
 import { ReactNode, useState } from "react";

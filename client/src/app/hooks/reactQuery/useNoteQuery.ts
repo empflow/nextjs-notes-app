@@ -1,4 +1,4 @@
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext from "@/app/[locale]/(notes)/notes/NotesContext";
 import httpWithAuth from "@/utils/http/httpWithAuth/httpWithAuth";
 import { noteSchema } from "@shared/schemas/note";
 import { useQuery } from "@tanstack/react-query";

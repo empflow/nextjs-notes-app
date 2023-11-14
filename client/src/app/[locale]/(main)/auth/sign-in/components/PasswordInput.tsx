@@ -1,6 +1,6 @@
 import InputWithLabel from "@/app/components/form/InputWithLabel";
 import useGetContext from "@/app/hooks/useGetContext";
-import SignInFormContext from "@/contexts/SignInFormContext";
+import SignInFormContext from "@/app/[locale]/(main)/auth/sign-in/components/SignInFormContext";
 import { minPasswordLength, maxPasswordLength } from "@shared/values";
 import useSignInTranslations from "./hooks/useFormTranslations";
 

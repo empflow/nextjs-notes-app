@@ -4,7 +4,7 @@ import useUpdateAssignedTagsMutation, {
 } from "@/app/hooks/reactQuery/useUpdateAssignedTagsMutation";
 import useGetContext from "@/app/hooks/useGetContext";
 import useGetNote from "@/app/hooks/useGetNote";
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext from "@/app/[locale]/(notes)/notes/NotesContext";
 import { useTranslations } from "next-intl";
 import { ReactNode } from "react";
 

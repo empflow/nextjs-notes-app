@@ -1,6 +1,6 @@
 import MediumBtn from "@/app/components/buttons/Medium";
 import useGetContext from "@/app/hooks/useGetContext";
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext from "@/app/[locale]/(notes)/notes/NotesContext";
 import { useTranslations } from "next-intl";
 
 export default function NoTags() {

@@ -2,7 +2,7 @@
 
 import useNoteQuery from "@/app/hooks/reactQuery/useNoteQuery";
 import useGetContext from "@/app/hooks/useGetContext";
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext from "@/app/[locale]/(notes)/notes/NotesContext";
 import { ReactNode } from "react";
 import EditorContent from "./EditorContent";
 import EditorLoading from "./EditorLoading";

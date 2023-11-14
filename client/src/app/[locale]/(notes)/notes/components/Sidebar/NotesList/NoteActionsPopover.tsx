@@ -2,7 +2,7 @@ import Popover from "@/app/components/Popover";
 import useGetContext from "@/app/hooks/useGetContext";
 import MoreIcon from "@/icons/svg/moreHorizontalCircled.svg";
 import { useTranslations } from "next-intl";
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext from "@/app/[locale]/(notes)/notes/NotesContext";
 import { NoteContext } from "./Note";
 import PopoverActionBtn from "@/app/[locale]/(main)/auth/sign-in/components/PopoverActionBtn";
 import useDeleteNoteMutation from "@/app/hooks/reactQuery/useDeleteNoteMutation";

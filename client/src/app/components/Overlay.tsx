@@ -1,5 +1,5 @@
 "use client";
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext from "@/app/[locale]/(notes)/notes/NotesContext";
 import { SetState } from "@/utils/types";
 import {
   CSSProperties,

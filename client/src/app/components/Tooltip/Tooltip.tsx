@@ -1,6 +1,6 @@
-import TooltipContainerContext from "@/contexts/TooltipContainerContext";
+import TooltipContainerContext from "./TooltipContainerContext";
 import { ReactNode, useState } from "react";
-import useGetContext from "../hooks/useGetContext";
+import useGetContext from "../../hooks/useGetContext";
 
 interface TProps {
   children: ReactNode;

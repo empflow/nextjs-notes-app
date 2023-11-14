@@ -1,9 +1,9 @@
 import protectedPage from "@/utils/protectedPage";
 import Sidebar from "./components/Sidebar/Sidebar";
-import NotesContextProviders from "@/app/providers/NotesContextProviders";
+import NotesContextProviders from "./NotesContextProviders";
 import serverGetAuthData from "@/utils/getAuthData/serverGetAuthData";
 import MainContent from "./components/MainContent/MainContent";
-import ProfileMenuContextProviders from "@/app/providers/ProfileMenuContext";
+import ProfileMenuContextProviders from "@/app/providers/ProfileMenuContextProviders/ProfileMenuContextProviders";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 interface TProps {

@@ -1,6 +1,8 @@
 import useGetContext from "@/app/hooks/useGetContext";
 import useRerender from "@/app/hooks/useRerender";
-import NotesContext, { TEditor } from "@/contexts/NotesContext";
+import NotesContext, {
+  TEditor,
+} from "@/app/[locale]/(notes)/notes/NotesContext";
 import H1Icon from "@/icons/svg/h1.svg";
 import H2Icon from "@/icons/svg/h2.svg";
 import H3Icon from "@/icons/svg/h3.svg";

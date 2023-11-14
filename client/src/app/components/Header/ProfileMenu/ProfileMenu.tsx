@@ -1,7 +1,7 @@
 "use client";
 import ProfileMenuSignIn from "./SignIn";
 import useGetContext from "@/app/hooks/useGetContext";
-import ProfileMenuContext from "@/contexts/ProfileMenuContext";
+import ProfileMenuContext from "@/app/providers/ProfileMenuContextProviders/ProfileMenuContext";
 import ProfileMenuHeaderIcon from "./HeaderIcon";
 import ProfileMenuDropdown from "./Dropdown/Dropdown";
 

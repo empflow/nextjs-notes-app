@@ -1,4 +1,4 @@
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext from "@/app/[locale]/(notes)/notes/NotesContext";
 import useGetContext from "./useGetContext";
 
 export default function useNote() {

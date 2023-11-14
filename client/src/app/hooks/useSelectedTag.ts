@@ -1,4 +1,4 @@
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext from "@/app/[locale]/(notes)/notes/NotesContext";
 import { TTagSchema } from "@shared/schemas/tag";
 import useGetContext from "./useGetContext";
 import useObserveQuery from "./useObserveQuery";

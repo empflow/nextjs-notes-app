@@ -1,6 +1,6 @@
 import useGetContext from "@/app/hooks/useGetContext";
 import useRerender from "@/app/hooks/useRerender";
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext from "@/app/[locale]/(notes)/notes/NotesContext";
 import { useTranslations } from "next-intl";
 import ActivatableItem from "../../ActivatableItem";
 import ListIcon from "@/icons/svg/list.svg";

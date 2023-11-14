@@ -3,11 +3,11 @@ import BoldIcon from "@/icons/svg/bold.svg";
 import StrikethroughIcon from "@/icons/svg/strikethrough.svg";
 import UnderlineIcon from "@/icons/svg/underline.svg";
 import useGetContext from "@/app/hooks/useGetContext";
-import TooltipContainer from "@/app/components/TooltipContainer";
 import { useTranslations } from "next-intl";
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext from "@/app/[locale]/(notes)/notes/NotesContext";
 import ToolbarItem from "../../ToolbarItem";
 import useRerender from "@/app/hooks/useRerender";
+import TooltipContainer from "@/app/components/Tooltip/TooltipContainer";
 
 export default function TextFormatting() {
   const t = useTranslations("Toolbar.formatText.formattingOptions");

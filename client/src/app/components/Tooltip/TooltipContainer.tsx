@@ -1,5 +1,5 @@
 "use client";
-import TooltipContainerContext from "@/contexts/TooltipContainerContext";
+import TooltipContainerContext from "./TooltipContainerContext";
 import { ReactNode, useRef, useState } from "react";
 
 interface TProps {

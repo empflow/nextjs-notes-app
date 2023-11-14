@@ -1,4 +1,4 @@
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext from "@/app/[locale]/(notes)/notes/NotesContext";
 import httpWithAuth from "@/utils/http/httpWithAuth/httpWithAuth";
 import { useMutation } from "@tanstack/react-query";
 import { JSONContent } from "@tiptap/react";

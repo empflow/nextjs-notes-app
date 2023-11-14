@@ -1,4 +1,4 @@
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext from "@/app/[locale]/(notes)/notes/NotesContext";
 import httpWithAuth from "@/utils/http/httpWithAuth/httpWithAuth";
 import notify from "@/utils/notify";
 import { noteSchema, TNoteMetaSchema, TNoteSchema } from "@shared/schemas/note";

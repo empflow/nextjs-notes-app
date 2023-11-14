@@ -1,6 +1,6 @@
 import useGetContext from "@/app/hooks/useGetContext";
 import useSelectionIncludesMark from "@/app/hooks/useSelectionIncludesMark";
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext from "@/app/[locale]/(notes)/notes/NotesContext";
 import { useTranslations } from "next-intl";
 import Divider from "../FormatText/Formatting/Divider";
 import HoverableItem from "../HoverableItem";

@@ -1,7 +1,7 @@
 import FormBtn from "@/app/components/form/FormBtn";
 import FormErr from "@/app/components/form/FormErr";
 import useGetContext from "@/app/hooks/useGetContext";
-import SignUpFormContext from "@/contexts/SignUpFormContext";
+import SignUpFormContext from "@/app/[locale]/(main)/auth/sign-up/components/SignUpFormContext";
 import useSignUpFormTranslations from "../hooks/useSignUpFormTranslations";
 import SignUpAlreadyHaveAccount from "./AlreadyHaveAccount";
 

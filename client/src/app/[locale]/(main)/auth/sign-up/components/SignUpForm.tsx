@@ -9,7 +9,7 @@ import useSignUpQuery from "@/app/hooks/reactQuery/useSignUpQuery";
 import useHandleErrs from "../hooks/useHandleErrs";
 import useSignUpFormTranslations from "../hooks/useSignUpFormTranslations";
 import useCaptcha from "@/app/hooks/useCaptcha";
-import SignUpFormContext from "@/contexts/SignUpFormContext";
+import SignUpFormContext from "@/app/[locale]/(main)/auth/sign-up/components/SignUpFormContext";
 import SignUpInputs from "./Inputs";
 import SignUpSectionBelowInputs from "./SectionBelowInputs";
 

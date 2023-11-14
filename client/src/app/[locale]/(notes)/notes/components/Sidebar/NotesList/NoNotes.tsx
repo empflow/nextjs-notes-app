@@ -1,7 +1,7 @@
 import SmallBtn from "@/app/components/buttons/Small";
 import useGetContext from "@/app/hooks/useGetContext";
 import useSelectedTag from "@/app/hooks/useSelectedTag";
-import NotesContext from "@/contexts/NotesContext";
+import NotesContext from "@/app/[locale]/(notes)/notes/NotesContext";
 import { useTranslations } from "next-intl";
 import { ReactNode } from "react";
 
