@@ -19,7 +19,7 @@ export default function useAddNoteMutation() {
       const newNoteMeta = convertNoteToNoteMeta(newNote);
       queryClient.setQueryData<TNoteMetaSchema[]>(["notes"], (prevData) => {
         if (!prevData) return [newNoteMeta];
-        return [...prevData, newNoteMeta];
+        return [newNoteMeta, ...prevData];
       });
       queryClient.setQueryData<TNoteSchema>(["notes", newNote._id], newNote);
       setNote(newNote._id);

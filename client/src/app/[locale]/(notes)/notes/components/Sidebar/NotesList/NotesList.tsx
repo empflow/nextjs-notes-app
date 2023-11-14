@@ -12,7 +12,7 @@ import Note from "./Note";
 
 export default function NotesList() {
   const { isLoading, isError, refetch: fetchNotesMeta } = useNotesMetaQuery();
-  const { selectedNoteId, notes, sortedNotes, isNotesFiltering } =
+  const { selectedNoteId, notes, isNotesFiltering } =
     useGetContext(NotesContext);
   let content: ReactNode;
 
@@ -23,7 +23,7 @@ export default function NotesList() {
     content = (
       <>
         <AssignTagModal />
-        {sortedNotes?.map((note, i, notes) => {
+        {notes?.map((note, i, notes) => {
           const { _id, title, description } = note;
           const isSelected = selectedNoteId === _id;
           const nextNote = notes[i + 1];

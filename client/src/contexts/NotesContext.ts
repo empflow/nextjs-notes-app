@@ -14,7 +14,6 @@ interface TNotesContextValue {
   setEditor: SetState<TEditor>;
   notes: TNotesListNotesMeta;
   setNotes: SetState<TNotesListNotesMeta>;
-  sortedNotes: TNotesListNotesMeta;
   selectedNoteId: string | null;
   setSelectedNoteId: SetState<string | null>;
   selectedNote: TNoteMetaSchema | null;

@@ -9,6 +9,6 @@ export default async function getNotesMeta(_req: Request, res: Response) {
   const notes = await Note.find(
     { owner: userId, ...query },
     noteMetaProjection
-  );
+  ).sort({ updatedAt: -1 });
   res.status(200).json(notes);
 }

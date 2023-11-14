@@ -3,7 +3,6 @@ import NotesContext, { TEditor } from "@/contexts/NotesContext";
 import getSelectedNote from "@/utils/getSelectedNote";
 import { ReactNode, useState } from "react";
 import useNotesMetaState from "../hooks/useNotesMetaState";
-import useSortNotes from "../hooks/useSortNotes";
 
 interface TProps {
   children: ReactNode;
@@ -17,7 +16,6 @@ export default function NotesContextProviders({ children }: TProps) {
   const [notes, setNotes] = useNotesMetaState();
   const [tags, _setTags] = useState([]);
   const [editor, setEditor] = useState<TEditor>(null);
-  const sortedNotes = useSortNotes(notes);
   const selectedNote = getSelectedNote(notes, selectedNoteId);
   const [hideEditorOnMobile, setHideEditorOnMobile] = useState(true);
   const [isAssignTagModalOpen, setIsAssignTagModalOpen] = useState(false);
@@ -42,7 +40,6 @@ export default function NotesContextProviders({ children }: TProps) {
         setEditor,
         notes,
         setNotes,
-        sortedNotes,
         selectedNoteId,
         setSelectedNoteId,
         selectedNote,
