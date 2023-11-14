@@ -4,7 +4,9 @@ import Err from "@/app/components/Err/Err";
 import RepeatingElem from "@/app/components/RepeatingElem";
 import useNotesMetaQuery from "@/app/hooks/reactQuery/useNotesMetaQuery";
 import useGetContext from "@/app/hooks/useGetContext";
+import useObserveQuery from "@/app/hooks/useObserveQuery";
 import NotesContext from "@/contexts/NotesContext";
+import { TNoteMetaSchema } from "@shared/schemas/note";
 import { ReactNode } from "react";
 import AssignTagModal from "./AssignTagModal/AssignTagModal";
 import NoNotes from "./NoNotes";
@@ -13,7 +15,7 @@ import Note from "./Note";
 export default function NotesList() {
   const { isLoading, isError, refetch: fetchNotesMeta } = useNotesMetaQuery();
   const { selectedNoteId, isNotesFiltering } = useGetContext(NotesContext);
-  const { data: notes } = useNotesMetaQuery();
+  const { data: notes } = useObserveQuery<TNoteMetaSchema[]>(["notes"]);
   let content: ReactNode;
 
   if (isLoading || isNotesFiltering) content = <NotesListLoading />;

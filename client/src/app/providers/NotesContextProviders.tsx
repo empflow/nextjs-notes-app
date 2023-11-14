@@ -1,8 +1,9 @@
 "use client";
 import NotesContext, { TEditor } from "@/contexts/NotesContext";
 import getSelectedNote from "@/utils/getSelectedNote";
+import { TNoteMetaSchema } from "@shared/schemas/note";
 import { ReactNode, useState } from "react";
-import useNotesMetaState from "../hooks/useNotesMetaState";
+import useObserveQuery from "../hooks/useObserveQuery";
 
 interface TProps {
   children: ReactNode;
@@ -13,9 +14,9 @@ export default function NotesContextProviders({ children }: TProps) {
   const [selectedTagId, setSelectedTagId] = useState<string | null>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
-  const [notes, setNotes] = useNotesMetaState();
   const [tags, _setTags] = useState([]);
   const [editor, setEditor] = useState<TEditor>(null);
+  const { data: notes } = useObserveQuery<TNoteMetaSchema[]>(["notes"]);
   const selectedNote = getSelectedNote(notes, selectedNoteId);
   const [hideEditorOnMobile, setHideEditorOnMobile] = useState(true);
   const [isAssignTagModalOpen, setIsAssignTagModalOpen] = useState(false);
@@ -38,8 +39,6 @@ export default function NotesContextProviders({ children }: TProps) {
         setAssignTagModalNoteId,
         editor,
         setEditor,
-        notes,
-        setNotes,
         selectedNoteId,
         setSelectedNoteId,
         selectedNote,

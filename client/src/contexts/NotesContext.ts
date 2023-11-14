@@ -12,8 +12,6 @@ export type TEditor = Editor | null;
 interface TNotesContextValue {
   editor: TEditor;
   setEditor: SetState<TEditor>;
-  notes: TNotesListNotesMeta;
-  setNotes: SetState<TNotesListNotesMeta>;
   selectedNoteId: string | null;
   setSelectedNoteId: SetState<string | null>;
   selectedNote: TNoteMetaSchema | null;

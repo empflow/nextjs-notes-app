@@ -3,7 +3,7 @@ import { TNoteMetaSchema } from "@shared/schemas/note";
 type ReturnT = null | TNoteMetaSchema;
 
 export default function getSelectedNote(
-  notes: TNoteMetaSchema[] | null,
+  notes?: TNoteMetaSchema[],
   selectedNoteId?: string | null,
 ): ReturnT {
   if (!notes || !selectedNoteId) return null;

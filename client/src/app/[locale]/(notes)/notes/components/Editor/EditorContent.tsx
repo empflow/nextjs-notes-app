@@ -26,6 +26,9 @@ import "./styles/link.scss";
 import "./styles/img.scss";
 import "./styles/selectedNode.scss";
 import editorStyles from "./styles/editor.module.scss";
+import { useQueryClient } from "@tanstack/react-query";
+import { TNoteMetaSchema } from "@shared/schemas/note";
+import copyVal from "@shared/utils/copyVal";
 
 interface TProps {
   initContent: JSONContent | null;
@@ -33,8 +36,9 @@ interface TProps {
 
 export default function EditorContent({ initContent }: TProps) {
   const [content, setContent] = useState<null | JSONContent>(initContent);
-  const { setNotes, selectedNoteId, setEditor } = useGetContext(NotesContext);
+  const { selectedNoteId, setEditor } = useGetContext(NotesContext);
   const [hasContentChanged, setHasContentChanged] = useState(false);
+  const queryClient = useQueryClient();
   useSaveEditorContent({ content, hasContentChanged });
 
   const editor = useEditor({
@@ -80,11 +84,13 @@ export default function EditorContent({ initContent }: TProps) {
   );
 
   function updateSelectedNoteProps(editor: Editor) {
-    setNotes((prevNotes) => {
+    queryClient.setQueryData<TNoteMetaSchema[]>(["notes"], (prevNotes) => {
       if (!prevNotes || !selectedNoteId) return prevNotes;
 
-      return prevNotes.map((note) => {
-        if (note._id !== selectedNoteId) return note;
+      return prevNotes.map((noteDangerous) => {
+        const note = copyVal(noteDangerous);
+        if (note._id !== selectedNoteId) return noteDangerous;
+
         const { title, description } = findNoteTitleAndDescription(
           editor?.getJSON(),
         );

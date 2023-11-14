@@ -1,9 +1,8 @@
-import NotesContext from "@/contexts/NotesContext";
 import { TNoteMetaSchema } from "@shared/schemas/note";
-import useGetContext from "./useGetContext";
+import useObserveQuery from "./useObserveQuery";
 
 export default function useGetNote(id: string): TNoteMetaSchema | null {
-  const { notes } = useGetContext(NotesContext);
+  const { data: notes } = useObserveQuery<TNoteMetaSchema[]>(["notes"]);
   const result = notes?.find((note) => note._id === id);
   return result ?? null;
 }
