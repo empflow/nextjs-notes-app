@@ -1,4 +1,4 @@
-import { TIsUsernameAvailableResp } from "@/shared/respSchemas/isUsernameAvailable";
+import { TBooleanResp } from "@/shared/respSchemas/booleanResp";
 import { Request, Response } from "express";
 import User from "../../models/User";
 import { BadRequestErr } from "../../utils/errs";
@@ -12,10 +12,10 @@ export default async function checkUsernameAvailability(
   const user = await User.findOne({ email: username });
 
   if (!user) {
-    const resp: TIsUsernameAvailableResp = { ok: true };
+    const resp: TBooleanResp = { ok: true };
     return res.json(resp);
   }
 
-  const resp: TIsUsernameAvailableResp = { ok: false };
+  const resp: TBooleanResp = { ok: false };
   return res.json(resp);
 }
