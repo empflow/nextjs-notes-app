@@ -1,7 +1,7 @@
 import cn from "@/utils/cn";
 import { SetState } from "@/utils/types";
 import { CSSProperties, HTMLAttributes, ReactNode } from "react";
-import ReactDom from "React-dom";
+import ReactDom from "react-dom";
 import useQuerySelector from "../hooks/useQuerySelector";
 import Overlay from "./Overlay";
 
